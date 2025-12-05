@@ -1,0 +1,142 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ============================================
+// PROJETOS
+// ============================================
+
+model Project {
+  id              String   @id @default(uuid())
+  slug            String   @unique
+  title           String
+  description     String   @db.Text
+  longDescription String?  @db.Text
+  category        String   // web, ecommerce, system, api, etc.
+  technologies    String[] // Array de tecnologias
+  images          String[] // Array de URLs de imagens
+  featuredImage   String
+  client          String?
+  year            Int
+  challenges      String?  @db.Text
+  solutions       String?  @db.Text
+  results         String?  @db.Text
+  featured        Boolean  @default(false)
+  status          ProjectStatus @default(draft)
+  order           Int      @default(0) // Para ordenação customizada
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@index([slug])
+  @@index([category])
+  @@index([featured])
+  @@index([status])
+  @@map("projects")
+}
+
+enum ProjectStatus {
+  draft
+  published
+  archived
+}
+
+// ============================================
+// SERVIÇOS
+// ============================================
+
+model Service {
+  id          String   @id @default(uuid())
+  slug        String   @unique
+  title       String
+  description String   @db.Text
+  longDescription String? @db.Text
+  icon        String?  // Nome do ícone ou URL
+  features    String[] // Array de features
+  order       Int      @default(0)
+  active      Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([slug])
+  @@index([active])
+  @@index([order])
+  @@map("services")
+}
+
+// ============================================
+// DEPOIMENTOS
+// ============================================
+
+model Testimonial {
+  id        String   @id @default(uuid())
+  name      String
+  company   String?
+  role      String?
+  content   String   @db.Text
+  image     String?  // URL da imagem
+  video     String?  // URL do vídeo (opcional)
+  rating    Int?     // 1-5 (opcional)
+  featured  Boolean  @default(false)
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([featured])
+  @@index([order])
+  @@map("testimonials")
+}
+
+// ============================================
+// FORMULÁRIOS DE CONTATO
+// ============================================
+
+model ContactSubmission {
+  id        String            @id @default(uuid())
+  name      String
+  email     String
+  phone     String?
+  service   String?           // Tipo de serviço solicitado
+  message   String            @db.Text
+  status    ContactStatus     @default(new)
+  metadata  Json?             // Dados extras (IP, user agent, etc.)
+  createdAt DateTime          @default(now())
+  updatedAt DateTime          @updatedAt
+
+  @@index([email])
+  @@index([status])
+  @@index([createdAt])
+  @@map("contact_submissions")
+}
+
+enum ContactStatus {
+  new
+  read
+  replied
+  archived
+}
+
+// ============================================
+// NEWSLETTER
+// ============================================
+
+model NewsletterSubscriber {
+  id          String   @id @default(uuid())
+  email       String   @unique
+  active      Boolean  @default(true)
+  source      String?  // De onde veio a inscrição
+  metadata    Json?    // Dados extras
+  subscribedAt DateTime @default(now())
+  unsubscribedAt DateTime?
+
+  @@index([email])
+  @@index([active])
+  @@map("newsletter_subscribers")
+}
