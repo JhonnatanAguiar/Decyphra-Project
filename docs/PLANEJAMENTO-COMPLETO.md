@@ -264,9 +264,9 @@ light: {
 - [x] Configurar Prisma
 - [x] Criar schema do banco de dados
 - [x] Configurar Prisma para usar .env.local (dotenv-cli)
-- [ ] Aplicar migrations (db:push) - **AGUARDANDO: você executar npm run db:push**
+- [x] Aplicar migrations (db:push) - ✅ Concluído
 - [x] Configurar Prisma Client
-- [ ] Criar seed de dados iniciais (serviços) - **PRÓXIMO**
+- [x] Criar seed de dados iniciais (serviços) - ✅ Criado (executar `npm run db:seed`)
 
 #### 1.4 Configurações Base
 - [x] Configurar next.config.js
@@ -274,7 +274,9 @@ light: {
 - [x] Criar utilitários base (cn, format, etc.)
 - [x] Configurar constantes do site
 
-**Progresso:** 85% completo
+**Progresso:** 90% completo
+
+**Próximo passo:** Executar `npm run db:seed` para popular banco com serviços
 
 ---
 
