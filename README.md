@@ -53,6 +53,7 @@ Toda a documentação está organizada na pasta `docs/`:
 ### 📋 Documentação Principal
 - **[PLANEJAMENTO-COMPLETO.md](./docs/PLANEJAMENTO-COMPLETO.md)** - **Documento central** com todo o planejamento, checklists e progresso
 - **[LINHA-DO-TEMPO.md](./docs/LINHA-DO-TEMPO.md)** - Histórico cronológico de alterações e problemas resolvidos
+- **[REVISOES.md](./docs/REVISOES.md)** - Histórico de revisões e verificações do projeto
 - **[GUIA-GIT.md](./docs/GUIA-GIT.md)** - Guia completo de versionamento com Git
 
 ### 📁 Por Fase/Tópico

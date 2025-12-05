@@ -258,12 +258,12 @@ git pull
 
 ## 🎯 Checklist Inicial
 
-- [ ] Git instalado (`git --version`)
-- [ ] Git configurado (nome e email)
-- [ ] Repositório inicializado (`git init`)
-- [ ] Primeiro commit feito
-- [ ] (Opcional) Repositório criado no GitHub
-- [ ] (Opcional) Código enviado para GitHub
+- [x] Git instalado (`git --version`)
+- [x] Git configurado (nome e email)
+- [x] Repositório inicializado (`git init`)
+- [x] Primeiro commit feito
+- [x] (Opcional) Repositório criado no GitHub
+- [x] (Opcional) Código enviado para GitHub
 
 ---
 

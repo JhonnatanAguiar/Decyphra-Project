@@ -36,6 +36,32 @@ Registra:
 
 ---
 
+### ✅ [REVISOES.md](./REVISOES.md)
+**Histórico de revisões e verificações**
+
+Consolida:
+- Revisões rotineiras
+- Revisões completas
+- Verificações de qualidade
+- Checkpoints do projeto
+
+**👉 [Ver Revisões](./REVISOES.md)**
+
+---
+
+### ✅ [REVISOES.md](./REVISOES.md)
+**Histórico de revisões e verificações**
+
+Consolida:
+- Revisões rotineiras
+- Revisões completas
+- Verificações de qualidade
+- Checkpoints do projeto
+
+**👉 [Ver Revisões](./REVISOES.md)**
+
+---
+
 ### 🔄 [GUIA-GIT.md](./GUIA-GIT.md)
 **Guia completo de versionamento com Git**
 
@@ -69,8 +95,9 @@ Inclui:
 
 1. **Começando?** → Leia [PLANEJAMENTO-COMPLETO.md](./PLANEJAMENTO-COMPLETO.md)
 2. **Problemas?** → Veja [LINHA-DO-TEMPO.md](./LINHA-DO-TEMPO.md) ou [troubleshooting/](./troubleshooting/)
-3. **Configurar Git?** → Veja [GUIA-GIT.md](./GUIA-GIT.md)
-4. **Acompanhar Progresso?** → Veja checklists em [PLANEJAMENTO-COMPLETO.md](./PLANEJAMENTO-COMPLETO.md)
+3. **Revisões?** → Veja [REVISOES.md](./REVISOES.md)
+4. **Configurar Git?** → Veja [GUIA-GIT.md](./GUIA-GIT.md)
+5. **Acompanhar Progresso?** → Veja checklists em [PLANEJAMENTO-COMPLETO.md](./PLANEJAMENTO-COMPLETO.md)
 
 ---
 
