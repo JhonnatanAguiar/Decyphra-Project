@@ -1,4 +1,4 @@
-import { Button, Input, Textarea } from '@/views/components/ui'
+import { Button, Input, Textarea, Select } from '@/views/components/ui'
 
 export default function Home() {
   return (
@@ -91,6 +91,57 @@ export default function Home() {
                 <Textarea placeholder="Small" size="sm" />
                 <Textarea placeholder="Medium" size="md" />
                 <Textarea placeholder="Large" size="lg" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Teste dos componentes Select */}
+        <div className="mb-12">
+          <h2 className="text-2xl font-semibold mb-4">Selects</h2>
+          <div className="max-w-md space-y-4">
+            <div>
+              <label className="block text-sm font-medium mb-2">Select Default</label>
+              <Select variant="default" size="md">
+                <option value="">Selecione uma opção...</option>
+                <option value="1">Opção 1</option>
+                <option value="2">Opção 2</option>
+                <option value="3">Opção 3</option>
+              </Select>
+            </div>
+            <div>
+              <label className="block text-sm font-medium mb-2">Select Primary</label>
+              <Select variant="primary" size="md">
+                <option value="">Selecione uma opção...</option>
+                <option value="1">Opção 1</option>
+                <option value="2">Opção 2</option>
+                <option value="3">Opção 3</option>
+              </Select>
+            </div>
+            <div>
+              <label className="block text-sm font-medium mb-2">Select Error</label>
+              <Select variant="error" size="md">
+                <option value="">Selecione uma opção...</option>
+                <option value="1">Opção 1</option>
+                <option value="2">Opção 2</option>
+                <option value="3">Opção 3</option>
+              </Select>
+            </div>
+            <div>
+              <label className="block text-sm font-medium mb-2">Tamanhos</label>
+              <div className="space-y-2">
+                <Select size="sm">
+                  <option value="">Small</option>
+                  <option value="1">Opção 1</option>
+                </Select>
+                <Select size="md">
+                  <option value="">Medium</option>
+                  <option value="1">Opção 1</option>
+                </Select>
+                <Select size="lg">
+                  <option value="">Large</option>
+                  <option value="1">Opção 1</option>
+                </Select>
               </div>
             </div>
           </div>

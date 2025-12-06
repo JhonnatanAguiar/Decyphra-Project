@@ -252,6 +252,34 @@
 
 ---
 
+**04/12/2024 - Criação do Componente Select**
+
+**Criado:**
+- ✅ Componente Select com todas as variantes (default, primary, error)
+- ✅ Componente Select com todos os tamanhos (sm, md, lg)
+- ✅ Ícone de seta customizado (SVG)
+- ✅ Efeitos focus com glow neon (variante primary)
+- ✅ Estados de erro (variante error)
+- ✅ Estilização de opções
+- ✅ Barrel export atualizado
+- ✅ Teste visual na página home
+
+**Características do Select:**
+- Variantes: default, primary, error
+- Tamanhos: sm, md, lg
+- Estados: default, focus, disabled, error
+- Efeitos: glow neon no focus (primary), transitions suaves
+- Acessibilidade: focus ring, disabled states, cursor pointer
+- Customização: ícone de seta SVG customizado, appearance-none
+
+**Status:** Fase 2 - Componente Select concluído e testado ✅
+
+**Próximos Passos:**
+1. Testar componente Select no browser
+2. Continuar Fase 2: Próximos componentes (Card, Badge/Tag, etc.)
+
+---
+
 ## 📝 Como Atualizar Este Arquivo
 
 ### Quando Adicionar Entrada
