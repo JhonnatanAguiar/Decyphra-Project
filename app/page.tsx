@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Button, Input, Textarea, Select, Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter, Badge, Modal } from '@/views/components/ui'
+import { Button, Input, Textarea, Select, Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter, Badge, Modal, LoadingSpinner } from '@/views/components/ui'
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -292,6 +292,66 @@ export default function Home() {
             </div>
           </div>
         </Modal>
+
+        {/* Teste dos componentes LoadingSpinner */}
+        <div className="mb-12">
+          <h2 className="text-2xl font-semibold mb-4">Loading Spinners</h2>
+          <div className="space-y-6">
+            <div>
+              <h3 className="text-lg font-medium mb-3">Variantes</h3>
+              <div className="flex flex-wrap items-center gap-6">
+                <div className="flex flex-col items-center gap-2">
+                  <LoadingSpinner variant="default" />
+                  <span className="text-sm text-light-300">Default</span>
+                </div>
+                <div className="flex flex-col items-center gap-2">
+                  <LoadingSpinner variant="primary" />
+                  <span className="text-sm text-light-300">Primary</span>
+                </div>
+                <div className="flex flex-col items-center gap-2">
+                  <LoadingSpinner variant="light" />
+                  <span className="text-sm text-light-300">Light</span>
+                </div>
+                <div className="flex flex-col items-center gap-2 bg-dark-800 p-4 rounded-lg">
+                  <LoadingSpinner variant="dark" />
+                  <span className="text-sm text-light-300">Dark</span>
+                </div>
+              </div>
+            </div>
+            <div>
+              <h3 className="text-lg font-medium mb-3">Tamanhos</h3>
+              <div className="flex flex-wrap items-center gap-6">
+                <div className="flex flex-col items-center gap-2">
+                  <LoadingSpinner variant="primary" size="sm" />
+                  <span className="text-sm text-light-300">Small</span>
+                </div>
+                <div className="flex flex-col items-center gap-2">
+                  <LoadingSpinner variant="primary" size="md" />
+                  <span className="text-sm text-light-300">Medium</span>
+                </div>
+                <div className="flex flex-col items-center gap-2">
+                  <LoadingSpinner variant="primary" size="lg" />
+                  <span className="text-sm text-light-300">Large</span>
+                </div>
+                <div className="flex flex-col items-center gap-2">
+                  <LoadingSpinner variant="primary" size="xl" />
+                  <span className="text-sm text-light-300">Extra Large</span>
+                </div>
+              </div>
+            </div>
+            <div>
+              <h3 className="text-lg font-medium mb-3">Exemplo de Uso em Botão</h3>
+              <div className="flex flex-wrap gap-4">
+                <Button variant="primary" isLoading>
+                  Carregando...
+                </Button>
+                <Button variant="secondary" isLoading>
+                  Processando
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </main>
   )
