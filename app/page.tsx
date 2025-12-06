@@ -1,4 +1,4 @@
-import { Button, Input, Textarea, Select, Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/views/components/ui'
+import { Button, Input, Textarea, Select, Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter, Badge } from '@/views/components/ui'
 
 export default function Home() {
   return (
@@ -210,6 +210,42 @@ export default function Home() {
                 <Button variant="primary" size="sm">Ação</Button>
               </CardFooter>
             </Card>
+          </div>
+        </div>
+
+        {/* Teste dos componentes Badge */}
+        <div className="mb-12">
+          <h2 className="text-2xl font-semibold mb-4">Badges</h2>
+          <div className="space-y-6">
+            <div>
+              <h3 className="text-lg font-medium mb-3">Variantes</h3>
+              <div className="flex flex-wrap gap-3">
+                <Badge variant="default">Default</Badge>
+                <Badge variant="primary">Primary</Badge>
+                <Badge variant="secondary">Secondary</Badge>
+                <Badge variant="success">Success</Badge>
+                <Badge variant="warning">Warning</Badge>
+                <Badge variant="error">Error</Badge>
+              </div>
+            </div>
+            <div>
+              <h3 className="text-lg font-medium mb-3">Tamanhos</h3>
+              <div className="flex flex-wrap items-center gap-3">
+                <Badge variant="primary" size="sm">Small</Badge>
+                <Badge variant="primary" size="md">Medium</Badge>
+                <Badge variant="primary" size="lg">Large</Badge>
+              </div>
+            </div>
+            <div>
+              <h3 className="text-lg font-medium mb-3">Exemplos de Uso</h3>
+              <div className="flex flex-wrap gap-3">
+                <Badge variant="success">Novo</Badge>
+                <Badge variant="primary">Popular</Badge>
+                <Badge variant="warning">Em breve</Badge>
+                <Badge variant="error">Esgotado</Badge>
+                <Badge variant="secondary">Beta</Badge>
+              </div>
+            </div>
           </div>
         </div>
       </div>
