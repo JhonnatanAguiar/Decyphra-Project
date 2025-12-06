@@ -269,7 +269,7 @@ light: {
 - [x] Criar seed de dados iniciais (serviços) - ✅ Concluído (8 serviços criados)
 
 #### 1.4 Configurações Base
-- [x] Configurar next.config.js
+- [x] Configurar next.config.jsclea
 - [x] Configurar tsconfig.json
 - [x] Criar utilitários base (cn, format, etc.)
 - [x] Configurar constantes do site
@@ -286,10 +286,10 @@ light: {
 ---
 
 ### 🎨 Fase 2: Design System e Componentes Base
-**Status:** ⏳ Pendente
+**Status:** ⏳ Em Progresso (15% completo)
 
 #### 2.1 Componentes UI Base
-- [ ] Button (todas as variantes)
+- [x] Button (todas as variantes) - ✅ Concluído e testado
 - [ ] Input
 - [ ] Textarea
 - [ ] Select
@@ -586,14 +586,14 @@ npm run type-check   # Verifica tipos TypeScript
 |------|-----------|--------|
 | Fase 0: Planejamento | 100% | ✅ Concluída |
 | Fase 1: Setup | 95% | ⏳ Quase Concluída |
-| Fase 2: Design System | 0% | ⏳ Pendente |
+| Fase 2: Design System | 10% | ⏳ Em Progresso |
 | Fase 3: Páginas | 0% | ⏳ Pendente |
 | Fase 4: Dinâmicas | 0% | ⏳ Pendente |
 | Fase 5: Backend | 0% | ⏳ Pendente |
 | Fase 6: SEO | 0% | ⏳ Pendente |
 | Fase 7: Deploy | 0% | ⏳ Pendente |
 
-**Progresso Total:** ~14% completo
+**Progresso Total:** ~15% completo
 
 ---
 
