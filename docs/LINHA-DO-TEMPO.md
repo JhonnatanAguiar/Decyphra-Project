@@ -198,6 +198,60 @@
 
 ---
 
+**04/12/2024 - Criação do Componente Input**
+
+**Criado:**
+- ✅ Componente Input com todas as variantes (default, primary, error)
+- ✅ Componente Input com todos os tamanhos (sm, md, lg)
+- ✅ Efeitos focus com glow neon (variante primary)
+- ✅ Estados de erro (variante error)
+- ✅ Placeholder estilizado
+- ✅ Barrel export atualizado
+- ✅ Teste visual na página home
+
+**Características do Input:**
+- Variantes: default, primary, error
+- Tamanhos: sm, md, lg
+- Estados: default, focus, disabled, error
+- Efeitos: glow neon no focus (primary), transitions suaves
+- Acessibilidade: focus ring, disabled states
+
+**Status:** Fase 2 - Componente Input concluído e testado ✅
+
+**Próximos Passos:**
+1. Testar componente Input no browser
+2. Continuar Fase 2: Próximos componentes (Textarea, Select, etc.)
+
+---
+
+**04/12/2024 - Criação do Componente Textarea**
+
+**Criado:**
+- ✅ Componente Textarea com todas as variantes (default, primary, error)
+- ✅ Componente Textarea com todos os tamanhos (sm, md, lg)
+- ✅ Altura mínima configurável por tamanho
+- ✅ Efeitos focus com glow neon (variante primary)
+- ✅ Estados de erro (variante error)
+- ✅ Resize vertical habilitado
+- ✅ Placeholder estilizado
+- ✅ Barrel export atualizado
+- ✅ Teste visual na página home
+
+**Características do Textarea:**
+- Variantes: default, primary, error
+- Tamanhos: sm (80px min-height), md (120px min-height), lg (160px min-height)
+- Estados: default, focus, disabled, error
+- Efeitos: glow neon no focus (primary), transitions suaves
+- Acessibilidade: focus ring, disabled states, resize vertical
+
+**Status:** Fase 2 - Componente Textarea concluído e testado ✅
+
+**Próximos Passos:**
+1. Testar componente Textarea no browser
+2. Continuar Fase 2: Próximos componentes (Select, Card, etc.)
+
+---
+
 ## 📝 Como Atualizar Este Arquivo
 
 ### Quando Adicionar Entrada
