@@ -1,4 +1,4 @@
-import { Button, Input, Textarea, Select } from '@/views/components/ui'
+import { Button, Input, Textarea, Select, Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/views/components/ui'
 
 export default function Home() {
   return (
@@ -144,6 +144,72 @@ export default function Home() {
                 </Select>
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* Teste dos componentes Card */}
+        <div className="mb-12">
+          <h2 className="text-2xl font-semibold mb-4">Cards</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl">
+            <Card variant="default">
+              <CardHeader>
+                <CardTitle>Card Default</CardTitle>
+                <CardDescription>Card padrão com borda sutil</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-light-200">
+                  Este é um exemplo de card padrão. Perfeito para exibir informações de forma organizada.
+                </p>
+              </CardContent>
+              <CardFooter>
+                <Button variant="ghost" size="sm">Ação</Button>
+              </CardFooter>
+            </Card>
+
+            <Card variant="elevated">
+              <CardHeader>
+                <CardTitle>Card Elevated</CardTitle>
+                <CardDescription>Card com sombra elevada</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-light-200">
+                  Este card tem uma sombra mais pronunciada, dando destaque visual ao conteúdo.
+                </p>
+              </CardContent>
+              <CardFooter>
+                <Button variant="primary" size="sm">Ação</Button>
+              </CardFooter>
+            </Card>
+
+            <Card variant="interactive">
+              <CardHeader>
+                <CardTitle>Card Interactive</CardTitle>
+                <CardDescription>Card com hover effects</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-light-200">
+                  Este card tem efeitos de hover, incluindo escala e sombra. Passe o mouse para ver.
+                </p>
+              </CardContent>
+              <CardFooter>
+                <Button variant="secondary" size="sm">Ação</Button>
+              </CardFooter>
+            </Card>
+
+            <Card variant="featured">
+              <CardHeader>
+                <CardTitle>Card Featured</CardTitle>
+                <CardDescription>Card destacado com borda neon</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-light-200">
+                  Este card tem uma borda verde neon e sombra especial para destacar conteúdo importante.
+                </p>
+              </CardContent>
+              <CardFooter>
+                <Button variant="primary" size="sm">Ação</Button>
+              </CardFooter>
+            </Card>
           </div>
         </div>
       </div>

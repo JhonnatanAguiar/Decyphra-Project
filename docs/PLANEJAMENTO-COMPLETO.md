@@ -286,14 +286,14 @@ light: {
 ---
 
 ### 🎨 Fase 2: Design System e Componentes Base
-**Status:** ⏳ Em Progresso (30% completo)
+**Status:** ⏳ Em Progresso (35% completo)
 
 #### 2.1 Componentes UI Base
 - [x] Button (todas as variantes) - ✅ Concluído e testado
 - [x] Input (todas as variantes) - ✅ Concluído e testado
 - [x] Textarea (todas as variantes) - ✅ Concluído e testado
 - [x] Select (todas as variantes) - ✅ Concluído e testado
-- [ ] Card
+- [x] Card (todas as variantes) - ✅ Concluído e testado
 - [ ] Badge/Tag
 - [ ] Modal
 - [ ] Loading Spinner
