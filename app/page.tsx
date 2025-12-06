@@ -1,6 +1,10 @@
-import { Button, Input, Textarea, Select, Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter, Badge } from '@/views/components/ui'
+'use client'
+
+import { useState } from 'react'
+import { Button, Input, Textarea, Select, Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter, Badge, Modal } from '@/views/components/ui'
 
 export default function Home() {
+  const [isModalOpen, setIsModalOpen] = useState(false)
   return (
     <main className="min-h-screen bg-dark-950 text-light-50">
       <div className="container mx-auto px-4 py-16">
@@ -248,6 +252,46 @@ export default function Home() {
             </div>
           </div>
         </div>
+
+        {/* Teste dos componentes Modal */}
+        <div className="mb-12">
+          <h2 className="text-2xl font-semibold mb-4">Modals</h2>
+          <div className="flex flex-wrap gap-4">
+            <Button onClick={() => setIsModalOpen(true)} variant="primary">
+              Abrir Modal
+            </Button>
+          </div>
+        </div>
+
+        {/* Modal de Exemplo */}
+        <Modal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          title="Modal de Exemplo"
+          description="Este é um exemplo de modal com todas as funcionalidades"
+          size="md"
+        >
+          <div className="space-y-4">
+            <p className="text-light-200">
+              Este modal demonstra as funcionalidades básicas:
+            </p>
+            <ul className="list-disc list-inside text-light-300 space-y-2">
+              <li>Fechamento ao clicar no overlay</li>
+              <li>Fechamento ao pressionar ESC</li>
+              <li>Bloqueio de scroll quando aberto</li>
+              <li>Animações suaves de entrada/saída</li>
+              <li>Overlay com blur</li>
+            </ul>
+            <div className="flex justify-end gap-3 pt-4">
+              <Button variant="ghost" onClick={() => setIsModalOpen(false)}>
+                Cancelar
+              </Button>
+              <Button variant="primary" onClick={() => setIsModalOpen(false)}>
+                Confirmar
+              </Button>
+            </div>
+          </div>
+        </Modal>
       </div>
     </main>
   )
