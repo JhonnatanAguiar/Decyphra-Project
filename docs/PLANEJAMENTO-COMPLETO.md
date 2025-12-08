@@ -385,11 +385,11 @@ light: {
 - [ ] Integração com API
 
 #### 3.7 Página Contato (`/contato`)
-- [ ] Hero Section
-- [ ] Formulário de Contato
-- [ ] Informações de Contato
-- [ ] Redes Sociais
-- [ ] Validação de formulário
+- [x] Hero Section - ✅ Concluído
+- [x] Formulário de Contato - ✅ Concluído
+- [x] Informações de Contato - ✅ Concluído
+- [x] Validação de formulário (react-hook-form + zod) - ✅ Concluído
+- [ ] Integração com API `/api/v1/contact` (pendente - Fase 5)
 
 #### 3.8 Página Status (`/status`)
 - [ ] Hero Section
