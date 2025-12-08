@@ -352,7 +352,7 @@ light: {
 - [x] Desenvolvimento Web (`/servicos/desenvolvimento-web`) - ✅ Concluído
 - [x] SEO & Otimização (`/servicos/seo-otimizacao`) - ✅ Concluído
 - [x] Google Ad (`/servicos/google-ad`) - ✅ Concluído
-- [ ] Marketing de Conteúdo (`/servicos/marketing-de-conteudo`)
+- [x] Marketing de Conteúdo (`/servicos/marketing-de-conteudo`) - ✅ Concluído
 - [ ] Inteligência Artificial (`/servicos/inteligencia-artificial`)
 - [ ] E-commerce Completo (`/servicos/ecommerce-completo`)
 - [ ] Consultoria Digital (`/servicos/consultoria-digital`)

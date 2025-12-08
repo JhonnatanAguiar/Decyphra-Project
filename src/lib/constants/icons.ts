@@ -114,3 +114,4 @@ export function getServiceIcon(slug: string): LucideIcon {
 export function getFeatureIcon(featureName: string): LucideIcon {
   return SERVICE_FEATURE_ICONS[featureName] || Check
 }
+
