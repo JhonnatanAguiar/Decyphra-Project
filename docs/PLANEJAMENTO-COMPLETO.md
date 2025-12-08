@@ -327,7 +327,7 @@ light: {
 ---
 
 ### 📄 Fase 3: Páginas Principais
-**Status:** ⏳ Em Progresso (15% completo)
+**Status:** ⏳ Em Progresso (25% completo)
 
 #### 3.1 Home Page (`/`)
 - [x] Estrutura de rotas criada (app/(routes)/)
@@ -341,11 +341,11 @@ light: {
 - [ ] Integração com APIs (pendente - Fase 5)
 
 #### 3.2 Página de Serviços (`/servicos`)
-- [ ] Hero Section
-- [ ] Lista de Serviços (cards expandíveis)
-- [ ] Seção de Processo
-- [ ] CTA Section
-- [ ] Integração com API de serviços
+- [x] Hero Section - ✅ Concluído
+- [x] Lista de Serviços (cards expandíveis) - ✅ Concluído
+- [x] Seção de Processo - ✅ Concluído
+- [x] CTA Section - ✅ Concluído
+- [ ] Integração com API de serviços (pendente - Fase 5)
 
 #### 3.3 Página de Portfólio (`/portfolio`)
 - [ ] Hero Section
