@@ -353,7 +353,7 @@ light: {
 - [x] SEO & Otimização (`/servicos/seo-otimizacao`) - ✅ Concluído
 - [x] Google Ad (`/servicos/google-ad`) - ✅ Concluído
 - [x] Marketing de Conteúdo (`/servicos/marketing-de-conteudo`) - ✅ Concluído
-- [ ] Inteligência Artificial (`/servicos/inteligencia-artificial`)
+- [x] Inteligência Artificial (`/servicos/inteligencia-artificial`) - ✅ Concluído
 - [ ] E-commerce Completo (`/servicos/ecommerce-completo`)
 - [ ] Consultoria Digital (`/servicos/consultoria-digital`)
 
