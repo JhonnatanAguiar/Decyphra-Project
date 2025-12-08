@@ -5,3 +5,4 @@
  */
 
 export { FadeIn, type FadeInProps } from './FadeIn'
+export { ScrollReveal, type ScrollRevealProps } from './ScrollReveal'

@@ -291,7 +291,7 @@ light: {
 ---
 
 ### 🎨 Fase 2: Design System e Componentes Base
-**Status:** ⏳ Em Progresso (72% completo)
+**Status:** ⏳ Em Progresso (75% completo)
 
 #### 2.1 Componentes UI Base
 - [x] Button (todas as variantes) - ✅ Concluído e testado
@@ -314,7 +314,7 @@ light: {
 
 #### 2.3 Componentes de Animação
 - [x] FadeIn (direções e delay configuráveis) - ✅ Concluído e testado
-- [ ] ScrollReveal
+- [x] ScrollReveal (múltiplas direções e tipos) - ✅ Concluído e testado
 - [ ] Parallax (opcional)
 - [ ] PageTransition
 

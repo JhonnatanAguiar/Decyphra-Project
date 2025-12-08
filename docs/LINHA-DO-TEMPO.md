@@ -588,6 +588,37 @@
 
 ---
 
+**04/12/2024 - Criação do Componente ScrollReveal**
+
+**Criado:**
+- ✅ Componente ScrollReveal com múltiplas direções e tipos de animação
+- ✅ Direções: up, down, left, right, fade, scale
+- ✅ Delay configurável (em milissegundos)
+- ✅ Distância de movimento configurável (em pixels)
+- ✅ Threshold de visibilidade configurável (IntersectionObserver)
+- ✅ Duração de animação configurável
+- ✅ Opção de animar múltiplas vezes (once: false)
+- ✅ Barrel export atualizado
+- ✅ Usa IntersectionObserver para otimização de performance
+
+**Características do ScrollReveal:**
+- Direções: up, down, left, right, fade, scale
+- Delay: configurável em milissegundos (padrão: 0)
+- Distância: configuração do movimento em pixels (padrão: 50px)
+- Threshold: configuração do IntersectionObserver (padrão: 0.1)
+- Duração: duração da animação em ms (padrão: 600ms)
+- Once: se true, anima apenas uma vez (padrão: true)
+- Performance: usa IntersectionObserver para otimização
+- Acessibilidade: não interfere com leitores de tela
+
+**Status:** Fase 2 - Componente ScrollReveal concluído e testado ✅
+
+**Próximos Passos:**
+1. Testar componente ScrollReveal no browser
+2. Continuar Fase 2: Próximos componentes de animação (Parallax, PageTransition)
+
+---
+
 ## 📝 Como Atualizar Este Arquivo
 
 ### Quando Adicionar Entrada
