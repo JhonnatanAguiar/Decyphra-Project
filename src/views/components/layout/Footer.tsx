@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { cn } from '@/lib/utils/cn'
 import { ROUTES } from '@/lib/constants/routes'
 import { SITE_CONFIG, CONTACT_INFO } from '@/lib/constants/site'
+import { DecyphraLogo } from './DecyphraLogo'
 
 /**
  * Footer Component
@@ -72,12 +73,14 @@ const Footer = ({
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Logo e Descrição */}
           <div className="lg:col-span-1">
-            <Link
-              href={ROUTES.home}
-              className="inline-block mb-4 text-2xl font-bold text-light-50 hover:text-primary-500 transition-colors"
-            >
-              <span className="text-primary-500">{SITE_CONFIG.name}</span>
-            </Link>
+            <div className="mb-4">
+              <DecyphraLogo
+                layout="horizontal"
+                size="md"
+                showText={true}
+                linkToHome={true}
+              />
+            </div>
             <p className="text-light-300 text-sm leading-relaxed">
               {SITE_CONFIG.description}
             </p>

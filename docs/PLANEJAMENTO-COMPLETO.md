@@ -311,6 +311,7 @@ light: {
 - [x] Footer (variantes default e minimal) - ✅ Concluído e testado
 - [x] Container (todas as variantes) - ✅ Concluído e testado
 - [x] Section (todas as variantes) - ✅ Concluído e testado
+- [x] DecyphraLogo (layouts e animações) - ✅ Concluído e testado
 
 #### 2.3 Componentes de Animação
 - [x] FadeIn (direções e delay configuráveis) - ✅ Concluído e testado

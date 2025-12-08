@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { cn } from '@/lib/utils/cn'
 import { ROUTES } from '@/lib/constants/routes'
-import { SITE_CONFIG } from '@/lib/constants/site'
+import { DecyphraLogo } from './DecyphraLogo'
 
 /**
  * Header Component
@@ -74,13 +74,13 @@ const Header = ({
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <Link
-            href={ROUTES.home}
-            className="flex items-center gap-2 text-xl font-bold text-light-50 hover:text-primary-500 transition-colors"
+          <DecyphraLogo
+            layout="horizontal"
+            size="md"
+            showText={true}
+            linkToHome={true}
             onClick={handleLinkClick}
-          >
-            <span className="text-primary-500">{SITE_CONFIG.name}</span>
-          </Link>
+          />
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-8">
