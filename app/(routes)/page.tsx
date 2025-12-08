@@ -4,8 +4,6 @@ import { Container, Section } from '@/views/components/layout'
 import { FadeIn, ScrollReveal } from '@/views/components/animations'
 import Link from 'next/link'
 import { ROUTES } from '@/lib/constants/routes'
-import { Header } from '@/views/components/layout/Header'
-import { Footer } from '@/views/components/layout/Footer'
 
 /**
  * Home Page
@@ -16,8 +14,6 @@ import { Footer } from '@/views/components/layout/Footer'
 export default function HomePage() {
   return (
     <>
-      <Header variant="default" sticky={true} />
-      
       {/* Hero Section */}
       <Section variant="dark" spacing="xl" className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-dark-950 via-dark-1000 to-dark-950 opacity-50" />
@@ -254,8 +250,6 @@ export default function HomePage() {
           </ScrollReveal>
         </Container>
       </Section>
-
-      <Footer variant="default" />
     </>
   )
 }

@@ -327,16 +327,18 @@ light: {
 ---
 
 ### 📄 Fase 3: Páginas Principais
-**Status:** ⏳ Pendente
+**Status:** ⏳ Em Progresso (15% completo)
 
 #### 3.1 Home Page (`/`)
-- [ ] Hero Section (com animação de entrada)
-- [ ] Seção de Serviços Preview
-- [ ] Seção de Estatísticas (contadores animados)
-- [ ] Seção de Projetos em Destaque
-- [ ] Seção de Depoimentos Preview
-- [ ] CTA Section
-- [ ] Integração com APIs
+- [x] Estrutura de rotas criada (app/(routes)/)
+- [x] Layout de rotas com Header e Footer
+- [x] Hero Section (com animação de entrada) - ✅ Concluído
+- [x] Seção de Serviços Preview - ✅ Concluído (placeholder)
+- [x] Seção de Estatísticas (contadores animados) - ✅ Concluído
+- [x] Seção de Projetos em Destaque - ✅ Concluído (placeholder)
+- [x] Seção de Depoimentos Preview - ✅ Concluído (placeholder)
+- [x] CTA Section - ✅ Concluído
+- [ ] Integração com APIs (pendente - Fase 5)
 
 #### 3.2 Página de Serviços (`/servicos`)
 - [ ] Hero Section
@@ -593,13 +595,13 @@ npm run type-check   # Verifica tipos TypeScript
 | Fase 0: Planejamento | 100% | ✅ Concluída |
 | Fase 1: Setup | 100% | ✅ **Concluída e Revisada** |
 | Fase 2: Design System | 100% | ✅ **Concluída** |
-| Fase 3: Páginas | 0% | ⏳ Pendente |
+| Fase 3: Páginas | 15% | ⏳ Em Progresso |
 | Fase 4: Dinâmicas | 0% | ⏳ Pendente |
 | Fase 5: Backend | 0% | ⏳ Pendente |
 | Fase 6: SEO | 0% | ⏳ Pendente |
 | Fase 7: Deploy | 0% | ⏳ Pendente |
 
-**Progresso Total:** ~28% completo
+**Progresso Total:** ~30% completo
 
 ---
 
