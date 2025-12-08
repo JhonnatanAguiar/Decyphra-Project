@@ -1258,6 +1258,37 @@
 
 ---
 
+**04/12/2024 - Criação da Página: Consultoria Digital**
+
+**Criado:**
+- ✅ Página individual de serviço `/servicos/consultoria-digital`
+- ✅ Hero Section com ícone Lightbulb (grande, fundo verde neon)
+- ✅ Seção "O que fazemos na Consultoria Digital" com 4 tarefas principais:
+  - Diagnóstico de Presença Digital (4 pontos)
+  - Estratégia de Crescimento (4 pontos)
+  - Reestruturação e Validação de Projetos (3 pontos)
+  - Apoio à Implementação e Testes (4 pontos)
+- ✅ Seção "Como usamos IA na Consultoria" com 5 pontos
+- ✅ Seção "Por que contratar a Consultoria da Decyphra?" com 6 benefícios
+- ✅ Seção "Ideal para" com 5 badges
+- ✅ Sidebar com 4 features principais
+- ✅ CTA principal: "Quer direcionamento claro e apoio estratégico?"
+- ✅ CTA secundário para outros serviços
+- ✅ Layout consistente com outras páginas de serviço
+
+**Ícones Utilizados:**
+- Hero: Lightbulb (ícone escuro com fundo verde neon)
+- Features: Search, CheckSquare, CheckCircle, Lightbulb (verde neon sem fundo)
+- Tarefas: Search, BarChart, CheckSquare, Lightbulb
+
+**Status:** Página Consultoria Digital criada ✅
+
+**Próximos Passos:**
+1. Todas as 7 páginas de serviço individuais foram concluídas!
+2. Continuar com próximas fases do projeto (Portfólio, Sobre, Depoimentos, Contato)
+
+---
+
 **04/12/2024 - Correção: Erro EINVAL no Next.js (cache corrompido)**
 
 **Problema:**

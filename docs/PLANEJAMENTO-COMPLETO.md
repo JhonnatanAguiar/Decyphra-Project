@@ -355,7 +355,7 @@ light: {
 - [x] Marketing de Conteúdo (`/servicos/marketing-de-conteudo`) - ✅ Concluído
 - [x] Inteligência Artificial (`/servicos/inteligencia-artificial`) - ✅ Concluído
 - [x] E-commerce Completo (`/servicos/ecommerce-completo`) - ✅ Concluído
-- [ ] Consultoria Digital (`/servicos/consultoria-digital`)
+- [x] Consultoria Digital (`/servicos/consultoria-digital`) - ✅ Concluído
 
 #### 3.3 Página de Portfólio (`/portfolio`)
 - [ ] Hero Section
