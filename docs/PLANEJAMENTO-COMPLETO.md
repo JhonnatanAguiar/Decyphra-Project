@@ -358,11 +358,12 @@ light: {
 - [x] Consultoria Digital (`/servicos/consultoria-digital`) - ✅ Concluído
 
 #### 3.3 Página de Portfólio (`/portfolio`)
-- [ ] Hero Section
-- [ ] Sistema de Filtros
-- [ ] Grid de Projetos (responsivo)
-- [ ] Paginação ou Infinite Scroll
-- [ ] Integração com API de projetos
+- [x] Hero Section - ✅ Concluído
+- [x] Grid de Projetos (responsivo) - ✅ Concluído (6 projetos fictícios)
+- [x] CTA Section - ✅ Concluído
+- [ ] Sistema de Filtros (opcional - futuro)
+- [ ] Paginação ou Infinite Scroll (opcional - futuro)
+- [ ] Integração com API de projetos (pendente - Fase 5)
 
 #### 3.4 Página de Projeto Individual (`/portfolio/[slug]`)
 - [ ] Hero com imagem/vídeo
