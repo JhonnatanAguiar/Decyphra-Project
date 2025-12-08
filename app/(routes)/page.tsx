@@ -4,6 +4,9 @@ import { Container, Section } from '@/views/components/layout'
 import { FadeIn, ScrollReveal } from '@/views/components/animations'
 import Link from 'next/link'
 import { ROUTES } from '@/lib/constants/routes'
+import { getServiceIcon } from '@/lib/constants/icons'
+import { Folder, Heart, TrendingUp } from 'lucide-react'
+import Image from 'next/image'
 
 /**
  * Home Page
@@ -12,6 +15,91 @@ import { ROUTES } from '@/lib/constants/routes'
  */
 
 export default function HomePage() {
+  // Dados dos serviços (primeiros 6 para preview)
+  const services = [
+    {
+      id: 1,
+      title: 'Desenvolvimento Web',
+      slug: 'desenvolvimento-web',
+      description: 'Site profissional em WordPress, Shopify e soluções personalizadas que convertem visitantes em clientes.',
+    },
+    {
+      id: 2,
+      title: 'SEO & Otimização',
+      slug: 'seo-otimizacao',
+      description: 'Posicionamento estratégico no Google para aumentar sua visibilidade e atrair mais clientes qualificados.',
+    },
+    {
+      id: 3,
+      title: 'Google Ad',
+      slug: 'google-ad',
+      description: 'Campanhas publicitárias otimizadas que geram resultados imediatos e maximizam seu retorno sobre investimento.',
+    },
+    {
+      id: 4,
+      title: 'Marketing de Conteúdo',
+      slug: 'marketing-de-conteudo',
+      description: 'Estratégias de conteúdo que engajam sua audiência e fortalecem a autoridade da sua marca no mercado.',
+    },
+    {
+      id: 5,
+      title: 'Inteligência Artificial',
+      slug: 'inteligencia-artificial',
+      description: 'Implementação de IA para automação, chatbots e otimização de processos que aumentam a eficiência.',
+    },
+    {
+      id: 6,
+      title: 'E-commerce Completo',
+      slug: 'ecommerce-completo',
+      description: 'Lojas virtuais completas com Shopify, WooCommerce e código próprio, com foco em conversão e gestão autônoma.',
+    },
+  ]
+
+  // Dados dos projetos em destaque (primeiros 3)
+  const featuredProjects = [
+    {
+      id: 1,
+      slug: 'ecommerce-fashion',
+      title: 'E-commerce Fashion',
+      description: 'Desenvolvimento completo de loja virtual para marca de moda com aumento de 300% nas vendas online.',
+      image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&h=600&fit=crop',
+    },
+    {
+      id: 2,
+      slug: 'clinica-medica-digital',
+      title: 'Clínica Médica Digital',
+      description: 'Site responsivo com sistema de agendamento online e estratégia SEO que triplicou os agendamentos.',
+      image: 'https://images.unsplash.com/photo-1631815588090-d4bfec5f4d69?w=800&h=600&fit=crop',
+    },
+    {
+      id: 3,
+      slug: 'startup-tecnologica',
+      title: 'Startup Tecnológica',
+      description: 'Landing page otimizada para conversão com campanhas Google Ads que geraram 500+ leads qualificados.',
+      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop',
+    },
+  ]
+
+  // Dados dos depoimentos (primeiros 2)
+  const featuredTestimonials = [
+    {
+      id: 1,
+      name: 'Anônimo',
+      role: 'CEO',
+      company: 'Startup de Tecnologia',
+      content: 'A Decyphra entregou um site incrível que superou nossas expectativas. O processo foi transparente e o resultado foi um aumento de 40% nos leads.',
+      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face',
+    },
+    {
+      id: 2,
+      name: 'Anônimo',
+      role: 'Gerente de Marketing',
+      company: 'E-commerce de Moda',
+      content: 'Nossas vendas online cresceram 200% após o novo site e as campanhas de marketing. A equipe é extremamente competente e ágil.',
+      avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face',
+    },
+  ]
+
   return (
     <>
       {/* Hero Section */}
@@ -63,23 +151,26 @@ export default function HomePage() {
 
           <ScrollReveal direction="up" delay={100}>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {/* Placeholder para serviços - será integrado com API */}
-              {[1, 2, 3].map((item) => (
-                <div
-                  key={item}
-                  className="bg-dark-900 rounded-lg border border-dark-800 p-6 hover:border-primary-500 transition-colors"
-                >
-                  <div className="w-12 h-12 bg-primary-500/20 rounded-lg flex items-center justify-center mb-4">
-                    <div className="w-6 h-6 bg-primary-500 rounded" />
-                  </div>
-                  <h3 className="text-xl font-semibold mb-2 text-light-50">
-                    Serviço {item}
-                  </h3>
-                  <p className="text-light-300 text-sm">
-                    Descrição do serviço será carregada da API
-                  </p>
-                </div>
-              ))}
+              {services.map((service, index) => {
+                const ServiceIcon = getServiceIcon(service.slug)
+                return (
+                  <ScrollReveal key={service.id} direction="up" delay={index * 50}>
+                    <Link href={`${ROUTES.services}/${service.slug}`}>
+                      <div className="bg-dark-900 rounded-lg border border-dark-800 p-6 hover:border-primary-500 transition-all duration-300 h-full">
+                        <div className="w-12 h-12 bg-primary-500 rounded-lg flex items-center justify-center mb-4">
+                          <ServiceIcon className="w-6 h-6 text-dark-900" strokeWidth={1.5} />
+                        </div>
+                        <h3 className="text-xl font-semibold mb-2 text-light-50">
+                          {service.title}
+                        </h3>
+                        <p className="text-light-300 text-sm">
+                          {service.description}
+                        </p>
+                      </div>
+                    </Link>
+                  </ScrollReveal>
+                )
+              })}
             </div>
 
             <div className="text-center mt-12">
@@ -137,28 +228,33 @@ export default function HomePage() {
 
           <ScrollReveal direction="up" delay={100}>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {/* Placeholder para projetos - será integrado com API */}
-              {[1, 2, 3].map((item) => (
-                <div
-                  key={item}
-                  className="bg-dark-900 rounded-lg border border-dark-800 overflow-hidden hover:border-primary-500 transition-colors"
-                >
-                  <div className="aspect-video bg-dark-800" />
-                  <div className="p-6">
-                    <h3 className="text-xl font-semibold mb-2 text-light-50">
-                      Projeto {item}
-                    </h3>
-                    <p className="text-light-300 text-sm mb-4">
-                      Descrição do projeto será carregada da API
-                    </p>
-                    <Link
-                      href={`${ROUTES.portfolio}/projeto-${item}`}
-                      className="inline-flex items-center justify-center rounded-lg font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-dark-950 bg-transparent text-primary-500 hover:bg-primary-500/10 hover:shadow-[0_0_10px_rgba(0,255,136,0.2)] focus:ring-primary-500 px-4 py-2 text-sm"
-                    >
-                      Ver Detalhes
-                    </Link>
+              {featuredProjects.map((project, index) => (
+                <ScrollReveal key={project.id} direction="up" delay={index * 50}>
+                  <div className="bg-dark-900 rounded-lg border border-dark-800 overflow-hidden hover:border-primary-500 transition-all duration-300">
+                    <div className="relative aspect-video">
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                    <div className="p-6">
+                      <h3 className="text-xl font-semibold mb-2 text-light-50">
+                        {project.title}
+                      </h3>
+                      <p className="text-light-300 text-sm mb-4">
+                        {project.description}
+                      </p>
+                      <Link
+                        href={`${ROUTES.portfolio}/${project.slug}`}
+                        className="inline-flex items-center justify-center rounded-lg font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-dark-950 bg-transparent text-primary-500 hover:bg-primary-500/10 hover:shadow-[0_0_10px_rgba(0,255,136,0.2)] focus:ring-primary-500 px-4 py-2 text-sm"
+                      >
+                        Ver Detalhes
+                      </Link>
+                    </div>
                   </div>
-                </div>
+                </ScrollReveal>
               ))}
             </div>
 
@@ -187,25 +283,31 @@ export default function HomePage() {
 
           <ScrollReveal direction="up" delay={100}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-              {/* Placeholder para depoimentos - será integrado com API */}
-              {[1, 2].map((item) => (
-                <div
-                  key={item}
-                  className="bg-dark-900 rounded-lg border border-dark-800 p-6"
-                >
-                  <p className="text-light-200 mb-4 italic">
-                    "Depoimento será carregado da API"
-                  </p>
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-dark-800 rounded-full" />
-                    <div>
-                      <div className="font-semibold text-light-50">
-                        Cliente {item}
+              {featuredTestimonials.map((testimonial, index) => (
+                <ScrollReveal key={testimonial.id} direction="up" delay={index * 50}>
+                  <div className="bg-dark-900 rounded-lg border border-primary-500/20 p-6 hover:border-primary-500/50 transition-all duration-300">
+                    <p className="text-light-200 mb-4 italic leading-relaxed">
+                      "{testimonial.content}"
+                    </p>
+                    <div className="flex items-center gap-4">
+                      <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-primary-500/30">
+                        <Image
+                          src={testimonial.avatar}
+                          alt={testimonial.name}
+                          fill
+                          className="object-cover"
+                        />
                       </div>
-                      <div className="text-sm text-light-300">Empresa</div>
+                      <div>
+                        <div className="font-semibold text-light-50">
+                          {testimonial.name}
+                        </div>
+                        <div className="text-sm text-light-300">{testimonial.role}</div>
+                        <div className="text-xs text-light-400">{testimonial.company}</div>
+                      </div>
                     </div>
                   </div>
-                </div>
+                </ScrollReveal>
               ))}
             </div>
 

@@ -18,7 +18,6 @@ import {
   Shield
 } from 'lucide-react'
 import { API_ROUTES } from '@/lib/constants/routes'
-import { motion } from 'framer-motion'
 
 /**
  * Página de Status
