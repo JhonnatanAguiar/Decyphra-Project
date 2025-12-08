@@ -879,4 +879,98 @@
 
 ---
 
+**04/12/2024 - Atualização da Home Page: Cards de Serviços**
+
+**Atualizado:**
+- ✅ Home Page: Seção de Serviços Preview atualizada com 7 serviços reais
+- ✅ Cards de serviços com informações exatas do site decyphra.com.br
+- ✅ Links para páginas individuais de serviços (`/servicos/[slug]`)
+- ✅ Remoção de bordas dos botões (seguindo design do site de referência)
+- ✅ Ícones e textos atualizados conforme site original
+- ✅ Features destacadas em cada card
+- ✅ Planejamento atualizado com páginas individuais de serviços
+
+**Serviços Implementados:**
+1. Desenvolvimento Web (`/servicos/desenvolvimento-web`)
+2. SEO & Otimização (`/servicos/seo-otimizacao`)
+3. Google Ad (`/servicos/google-ad`)
+4. Marketing de Conteúdo (`/servicos/marketing-de-conteudo`)
+5. Inteligência Artificial (`/servicos/inteligencia-artificial`)
+6. E-commerce Completo (`/servicos/ecommerce-completo`)
+7. Consultoria Digital (`/servicos/consultoria-digital`)
+
+**Mudanças de Design:**
+- Botões sem bordas (removido `border-2 border-primary-500`)
+- Botões secundários agora usam apenas `bg-transparent text-primary-500`
+- Cards de serviços com hover effects melhorados
+- Links "Saiba mais →" nos cards de serviços
+
+**Status:** Home Page atualizada com cards de serviços corretos ✅
+
+**Próximos Passos:**
+1. Aguardar ordem do usuário para implementar páginas individuais de serviços
+2. Começar pela primeira página de serviço quando solicitado
+
+---
+
+**04/12/2024 - Criação da Página Individual: Desenvolvimento Web**
+
+**Criado:**
+- ✅ Página de Desenvolvimento Web: `app/(routes)/servicos/desenvolvimento-web/page.tsx`
+- ✅ Hero Section com título e CTA principal
+- ✅ Conteúdo principal com descrição detalhada do serviço
+- ✅ Sidebar com "O que está incluído?" (WordPress, Shopify, Site Personalizado, E-commerce)
+- ✅ Lista de benefícios do serviço
+- ✅ Botão "Solicitar Orçamento" na sidebar
+- ✅ CTA Section para outros serviços
+- ✅ Animações FadeIn e ScrollReveal aplicadas
+- ✅ Layout responsivo (grid 2 colunas desktop, 1 coluna mobile)
+- ✅ Sidebar sticky no desktop
+
+**Características da Página:**
+- Hero Section: Título impactante e CTA principal
+- Conteúdo: Descrição detalhada do serviço com benefícios
+- Sidebar: Lista de recursos incluídos com ícones
+- CTA: Botão de solicitar orçamento e link para outros serviços
+- Layout: Grid responsivo (2 colunas desktop, 1 coluna mobile)
+- Animações: FadeIn no hero, ScrollReveal nas seções
+
+**Status:** Primeira página individual de serviço criada ✅
+
+**Próximos Passos:**
+1. Aguardar ordem do usuário para próxima página de serviço
+2. Continuar com SEO & Otimização quando solicitado
+
+---
+
+**04/12/2024 - Criação da Página Individual: SEO & Otimização**
+
+**Criado:**
+- ✅ Página de SEO & Otimização: `app/(routes)/servicos/seo-otimizacao/page.tsx`
+- ✅ Hero Section com título e CTA principal
+- ✅ Conteúdo principal com descrição detalhada do serviço
+- ✅ Sidebar com "O que está incluído?" (SEO Técnico, Palavra-chave, Link Building, Analytics)
+- ✅ Lista de benefícios do serviço
+- ✅ Botão "Solicitar Orçamento" na sidebar
+- ✅ CTA Section para outros serviços
+- ✅ Animações FadeIn e ScrollReveal aplicadas
+- ✅ Layout responsivo (grid 2 colunas desktop, 1 coluna mobile)
+- ✅ Sidebar sticky no desktop
+
+**Características da Página:**
+- Hero Section: Título impactante e CTA principal
+- Conteúdo: Descrição detalhada do serviço com benefícios
+- Sidebar: Lista de recursos incluídos com ícones
+- CTA: Botão de solicitar orçamento e link para outros serviços
+- Layout: Grid responsivo (2 colunas desktop, 1 coluna mobile)
+- Animações: FadeIn no hero, ScrollReveal nas seções
+
+**Status:** Segunda página individual de serviço criada ✅
+
+**Próximos Passos:**
+1. Aguardar ordem do usuário para próxima página de serviço
+2. Continuar com Google Ad quando solicitado
+
+---
+
 **Última atualização:** 04/12/2024

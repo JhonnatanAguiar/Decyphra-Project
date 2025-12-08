@@ -333,19 +333,29 @@ light: {
 - [x] Estrutura de rotas criada (app/(routes)/)
 - [x] Layout de rotas com Header e Footer
 - [x] Hero Section (com animação de entrada) - ✅ Concluído
-- [x] Seção de Serviços Preview - ✅ Concluído (placeholder)
+- [x] Seção de Serviços Preview - ✅ Concluído (7 serviços com links)
 - [x] Seção de Estatísticas (contadores animados) - ✅ Concluído
 - [x] Seção de Projetos em Destaque - ✅ Concluído (placeholder)
 - [x] Seção de Depoimentos Preview - ✅ Concluído (placeholder)
 - [x] CTA Section - ✅ Concluído
+- [x] Botões sem bordas (design atualizado) - ✅ Concluído
 - [ ] Integração com APIs (pendente - Fase 5)
 
 #### 3.2 Página de Serviços (`/servicos`)
 - [x] Hero Section - ✅ Concluído
-- [x] Lista de Serviços (cards expandíveis) - ✅ Concluído
+- [x] Lista de Serviços (cards com links) - ✅ Concluído
 - [x] Seção de Processo - ✅ Concluído
 - [x] CTA Section - ✅ Concluído
 - [ ] Integração com API de serviços (pendente - Fase 5)
+
+#### 3.2.1 Páginas Individuais de Serviços (`/servicos/[slug]`)
+- [x] Desenvolvimento Web (`/servicos/desenvolvimento-web`) - ✅ Concluído
+- [x] SEO & Otimização (`/servicos/seo-otimizacao`) - ✅ Concluído
+- [ ] Google Ad (`/servicos/google-ad`)
+- [ ] Marketing de Conteúdo (`/servicos/marketing-de-conteudo`)
+- [ ] Inteligência Artificial (`/servicos/inteligencia-artificial`)
+- [ ] E-commerce Completo (`/servicos/ecommerce-completo`)
+- [ ] Consultoria Digital (`/servicos/consultoria-digital`)
 
 #### 3.3 Página de Portfólio (`/portfolio`)
 - [ ] Hero Section

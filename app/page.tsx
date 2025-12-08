@@ -41,7 +41,7 @@ export default function HomePage() {
                 </Link>
                 <Link
                   href={ROUTES.portfolio}
-                  className="inline-flex items-center justify-center rounded-lg font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-dark-950 bg-transparent border-2 border-primary-500 text-primary-500 hover:bg-primary-500 hover:text-dark-950 hover:shadow-[0_0_20px_rgba(0,255,136,0.3)] focus:ring-primary-500 px-8 py-4 text-lg"
+                  className="inline-flex items-center justify-center rounded-lg font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-dark-950 bg-transparent text-primary-500 hover:bg-primary-500/10 hover:shadow-[0_0_20px_rgba(0,255,136,0.2)] focus:ring-primary-500 px-8 py-4 text-lg"
                 >
                   Ver Portfólio
                 </Link>
@@ -67,22 +67,86 @@ export default function HomePage() {
 
           <ScrollReveal direction="up" delay={100}>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {/* Placeholder para serviços - será integrado com API */}
-              {[1, 2, 3].map((item) => (
-                <div
-                  key={item}
-                  className="bg-dark-900 rounded-lg border border-dark-800 p-6 hover:border-primary-500 transition-colors"
-                >
-                  <div className="w-12 h-12 bg-primary-500/20 rounded-lg flex items-center justify-center mb-4">
-                    <div className="w-6 h-6 bg-primary-500 rounded" />
-                  </div>
-                  <h3 className="text-xl font-semibold mb-2 text-light-50">
-                    Serviço {item}
-                  </h3>
-                  <p className="text-light-300 text-sm">
-                    Descrição do serviço será carregada da API
-                  </p>
-                </div>
+              {[
+                {
+                  slug: 'desenvolvimento-web',
+                  title: 'Desenvolvimento Web',
+                  description: 'Site profissional em WordPress, Shopify e soluções personalizadas que convertem visitantes em clientes.',
+                  features: ['WordPress', 'Shopify', 'Site Personalizado', 'E-commerce'],
+                  icon: '🌐',
+                },
+                {
+                  slug: 'seo-otimizacao',
+                  title: 'SEO & Otimização',
+                  description: 'Posicionamento estratégico no Google para aumentar sua visibilidade e atrair mais clientes qualificados.',
+                  features: ['SEO Técnico', 'Palavra-chave', 'Link Building', 'Analytics'],
+                  icon: '🔍',
+                },
+                {
+                  slug: 'google-ad',
+                  title: 'Google Ad',
+                  description: 'Campanhas publicitárias otimizadas que geram resultados imediatos e maximizam seu retorno sobre investimento.',
+                  features: ['Campanhas de Pesquisa', 'Rede de Display', 'Google Shopping', 'Remarketing'],
+                  icon: '📢',
+                },
+                {
+                  slug: 'marketing-de-conteudo',
+                  title: 'Marketing de Conteúdo',
+                  description: 'Estratégias de conteúdo que engajam sua audiência e fortalecem a autoridade da sua marca no mercado.',
+                  features: ['Blog Post', 'Social Media', 'E-mail Marketing', 'Copywriting'],
+                  icon: '✍️',
+                },
+                {
+                  slug: 'inteligencia-artificial',
+                  title: 'Inteligência Artificial',
+                  description: 'Implementação de IA para automação, chatbots e otimização de processos que aumentam a eficiência.',
+                  features: ['Chatbot', 'Automação', 'Análise Preditiva', 'Personalização'],
+                  icon: '🤖',
+                },
+                {
+                  slug: 'ecommerce-completo',
+                  title: 'E-commerce Completo',
+                  description: 'Lojas virtuais completas com Shopify, WooCommerce e código próprio, com foco em conversão e gestão autônoma.',
+                  features: ['Shopify', 'WooCommerce', 'Pagamentos & Frete', 'SEO para E-commerce'],
+                  icon: '🛒',
+                },
+                {
+                  slug: 'consultoria-digital',
+                  title: 'Consultoria Digital',
+                  description: 'Direcionamento estratégico para micro e pequenos negócios que buscam clareza, estruturação e crescimento digital.',
+                  features: ['Diagnóstico Digital', 'Plano de Ação', 'Validação de Projeto', 'Apoio Técnico'],
+                  icon: '💡',
+                },
+              ].map((service, index) => (
+                <ScrollReveal key={service.slug} direction="up" delay={index * 100 + 200}>
+                  <Link
+                    href={`${ROUTES.services}/${service.slug}`}
+                    className="block bg-dark-900 rounded-lg border border-dark-800 p-6 hover:border-primary-500 transition-all duration-300 hover:shadow-[0_0_20px_rgba(0,255,136,0.1)]"
+                  >
+                    <div className="w-12 h-12 bg-primary-500/20 rounded-lg flex items-center justify-center mb-4 text-2xl">
+                      {service.icon}
+                    </div>
+                    <h3 className="text-xl font-semibold mb-2 text-light-50">
+                      {service.title}
+                    </h3>
+                    <p className="text-light-300 text-sm mb-4">
+                      {service.description}
+                    </p>
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {service.features.slice(0, 3).map((feature) => (
+                        <span
+                          key={feature}
+                          className="text-xs text-primary-500 bg-primary-500/10 px-2 py-1 rounded"
+                        >
+                          {feature}
+                        </span>
+                      ))}
+                    </div>
+                    <span className="text-primary-500 text-sm font-medium hover:underline">
+                      Saiba mais →
+                    </span>
+                  </Link>
+                </ScrollReveal>
               ))}
             </div>
 
@@ -159,7 +223,7 @@ export default function HomePage() {
                       href={`${ROUTES.portfolio}/projeto-${item}`}
                       className="inline-flex items-center justify-center rounded-lg font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-dark-950 bg-transparent text-primary-500 hover:bg-primary-500/10 hover:shadow-[0_0_10px_rgba(0,255,136,0.2)] focus:ring-primary-500 px-4 py-2 text-sm"
                     >
-                      Ver Detalhes
+                      Ver Detalhes →
                     </Link>
                   </div>
                 </div>
@@ -245,7 +309,7 @@ export default function HomePage() {
                 </Link>
                 <Link
                   href={ROUTES.services}
-                  className="inline-flex items-center justify-center rounded-lg font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-dark-950 bg-transparent border-2 border-primary-500 text-primary-500 hover:bg-primary-500 hover:text-dark-950 hover:shadow-[0_0_20px_rgba(0,255,136,0.3)] focus:ring-primary-500 px-8 py-4 text-lg"
+                  className="inline-flex items-center justify-center rounded-lg font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-dark-950 bg-transparent text-primary-500 hover:bg-primary-500/10 hover:shadow-[0_0_20px_rgba(0,255,136,0.2)] focus:ring-primary-500 px-8 py-4 text-lg"
                 >
                   Conheça Nossos Serviços
                 </Link>
