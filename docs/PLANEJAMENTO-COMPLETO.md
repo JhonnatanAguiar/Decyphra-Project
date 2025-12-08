@@ -291,7 +291,7 @@ light: {
 ---
 
 ### 🎨 Fase 2: Design System e Componentes Base
-**Status:** ⏳ Em Progresso (55% completo)
+**Status:** ⏳ Em Progresso (60% completo)
 
 #### 2.1 Componentes UI Base
 - [x] Button (todas as variantes) - ✅ Concluído e testado
@@ -309,8 +309,8 @@ light: {
 - [ ] Navigation (desktop)
 - [ ] MobileMenu
 - [ ] Footer
-- [ ] Container
-- [ ] Section
+- [x] Container (todas as variantes) - ✅ Concluído e testado
+- [x] Section (todas as variantes) - ✅ Concluído e testado
 
 #### 2.3 Componentes de Animação
 - [ ] FadeIn
