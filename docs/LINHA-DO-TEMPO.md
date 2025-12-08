@@ -973,4 +973,31 @@
 
 ---
 
+**04/12/2024 - Atualização: Links e Submenu de Serviços**
+
+**Atualizado:**
+- ✅ Página de Serviços: Cards agora têm links para páginas individuais
+- ✅ Header: Adicionado submenu dropdown no link "Serviços"
+- ✅ Submenu Desktop: Dropdown com todos os 7 serviços + link "Todos os Serviços"
+- ✅ Submenu Mobile: Menu expansível com todos os serviços
+- ✅ Lista de serviços atualizada com slugs corretos
+- ✅ Funcionalidade de expandir/colapsar cards mantida
+- ✅ Link "Ver detalhes completos" adicionado nos cards expandidos
+
+**Características do Submenu:**
+- Desktop: Dropdown que aparece ao clicar em "Serviços"
+- Mobile: Menu expansível dentro do menu mobile
+- Fecha automaticamente ao clicar fora (desktop)
+- Fecha ao clicar em um link
+- Animação suave de abertura/fechamento
+- Design consistente com o design system
+
+**Status:** Navegação de serviços melhorada ✅
+
+**Próximos Passos:**
+1. Continuar com páginas individuais de serviços restantes
+2. Testar navegação completa
+
+---
+
 **Última atualização:** 04/12/2024

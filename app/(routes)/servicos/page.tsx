@@ -1,6 +1,5 @@
 'use client'
 
-import { useState } from 'react'
 import { Container, Section } from '@/views/components/layout'
 import { FadeIn, ScrollReveal } from '@/views/components/animations'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/views/components/ui'
@@ -14,63 +13,74 @@ import { ROUTES } from '@/lib/constants/routes'
  */
 
 export default function ServicesPage() {
-  const [expandedService, setExpandedService] = useState<number | null>(null)
 
-  // Placeholder para serviços - será integrado com API na Fase 5
+  // Lista de serviços - será integrado com API na Fase 5
   const services = [
     {
       id: 1,
       title: 'Desenvolvimento Web',
-      description: 'Criação de sites e aplicações web modernas e responsivas',
+      slug: 'desenvolvimento-web',
+      description: 'Site profissional em WordPress, Shopify e soluções personalizadas que convertem visitantes em clientes.',
       longDescription: 'Desenvolvemos sites e aplicações web utilizando as tecnologias mais modernas do mercado. Nossas soluções são responsivas, rápidas e otimizadas para SEO.',
-      features: ['Design Responsivo', 'Performance Otimizada', 'SEO', 'Integração com APIs'],
+      features: ['WordPress', 'Shopify', 'Site Personalizado', 'E-commerce'],
       icon: '🌐',
     },
     {
       id: 2,
-      title: 'Sistemas Personalizados',
-      description: 'Sistemas sob medida para atender suas necessidades específicas',
-      longDescription: 'Criamos sistemas personalizados que se adaptam perfeitamente ao seu negócio, automatizando processos e aumentando a produtividade.',
-      features: ['Automação', 'Dashboard', 'Relatórios', 'Integração'],
-      icon: '⚙️',
+      title: 'SEO & Otimização',
+      slug: 'seo-otimizacao',
+      description: 'Posicionamento estratégico no Google para aumentar sua visibilidade e atrair mais clientes qualificados.',
+      longDescription: 'Trabalhamos com técnicas avançadas de SEO técnico, pesquisa de palavras-chave estratégicas, construção de links de qualidade e análise constante de dados.',
+      features: ['SEO Técnico', 'Palavra-chave', 'Link Building', 'Analytics'],
+      icon: '🔍',
     },
     {
       id: 3,
-      title: 'APIs e Integrações',
-      description: 'Desenvolvimento de APIs RESTful e integrações entre sistemas',
-      longDescription: 'Desenvolvemos APIs robustas e seguras para conectar seus sistemas e permitir integrações com outras plataformas.',
-      features: ['RESTful API', 'Documentação', 'Segurança', 'Escalabilidade'],
-      icon: '🔌',
+      title: 'Google Ad',
+      slug: 'google-ad',
+      description: 'Campanhas publicitárias otimizadas que geram resultados imediatos e maximizam seu retorno sobre investimento.',
+      longDescription: 'Criamos e gerenciamos campanhas publicitárias no Google que geram resultados imediatos e maximizam seu retorno sobre investimento.',
+      features: ['Campanhas de Pesquisa', 'Rede de Display', 'Google Shopping', 'Remarketing'],
+      icon: '📢',
     },
     {
       id: 4,
-      title: 'E-commerce',
-      description: 'Lojas virtuais completas e otimizadas para vendas online',
-      longDescription: 'Criamos e-commerces completos com carrinho de compras, pagamentos, gestão de estoque e muito mais.',
-      features: ['Carrinho de Compras', 'Pagamentos', 'Gestão de Estoque', 'Painel Admin'],
-      icon: '🛒',
+      title: 'Marketing de Conteúdo',
+      slug: 'marketing-de-conteudo',
+      description: 'Estratégias de conteúdo que engajam sua audiência e fortalecem a autoridade da sua marca no mercado.',
+      longDescription: 'Desenvolvemos estratégias de conteúdo que engajam sua audiência e fortalecem a autoridade da sua marca no mercado.',
+      features: ['Blog Post', 'Social Media', 'E-mail Marketing', 'Copywriting'],
+      icon: '✍️',
     },
     {
       id: 5,
-      title: 'Consultoria Técnica',
-      description: 'Orientação especializada para decisões tecnológicas',
-      longDescription: 'Oferecemos consultoria técnica para ajudar você a tomar as melhores decisões tecnológicas para seu negócio.',
-      features: ['Análise Técnica', 'Arquitetura', 'Melhores Práticas', 'Otimização'],
-      icon: '💡',
+      title: 'Inteligência Artificial',
+      slug: 'inteligencia-artificial',
+      description: 'Implementação de IA para automação, chatbots e otimização de processos que aumentam a eficiência.',
+      longDescription: 'Implementamos soluções de inteligência artificial para automação, chatbots e otimização de processos que aumentam a eficiência do seu negócio.',
+      features: ['Chatbot', 'Automação', 'Análise Preditiva', 'Personalização'],
+      icon: '🤖',
     },
     {
       id: 6,
-      title: 'Manutenção e Suporte',
-      description: 'Suporte contínuo e manutenção de sistemas',
-      longDescription: 'Garantimos que seus sistemas estejam sempre funcionando perfeitamente com suporte técnico e manutenção preventiva.',
-      features: ['Suporte 24/7', 'Monitoramento', 'Atualizações', 'Backup'],
-      icon: '🔧',
+      title: 'E-commerce Completo',
+      slug: 'ecommerce-completo',
+      description: 'Lojas virtuais completas com Shopify, WooCommerce e código próprio, com foco em conversão e gestão autônoma.',
+      longDescription: 'Criamos e-commerces completos com Shopify, WooCommerce e código próprio, com foco em conversão e gestão autônoma.',
+      features: ['Shopify', 'WooCommerce', 'Pagamentos & Frete', 'SEO para E-commerce'],
+      icon: '🛒',
+    },
+    {
+      id: 7,
+      title: 'Consultoria Digital',
+      slug: 'consultoria-digital',
+      description: 'Direcionamento estratégico para micro e pequenos negócios que buscam clareza, estruturação e crescimento digital.',
+      longDescription: 'Oferecemos consultoria digital estratégica para micro e pequenos negócios que buscam clareza, estruturação e crescimento digital.',
+      features: ['Diagnóstico Digital', 'Plano de Ação', 'Validação de Projeto', 'Apoio Técnico'],
+      icon: '💡',
     },
   ]
 
-  const toggleService = (id: number) => {
-    setExpandedService(expandedService === id ? null : id)
-  }
 
   return (
     <>
@@ -98,23 +108,21 @@ export default function ServicesPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {services.map((service, index) => (
                 <ScrollReveal key={service.id} direction="up" delay={index * 100}>
-                  <Card
-                    variant={expandedService === service.id ? 'featured' : 'interactive'}
-                    className="cursor-pointer h-full transition-all duration-300"
-                    onClick={() => toggleService(service.id)}
-                  >
-                    <CardHeader>
-                      <div className="flex items-start gap-4">
-                        <div className="text-4xl">{service.icon}</div>
-                        <div className="flex-1">
-                          <CardTitle className="text-2xl mb-2">{service.title}</CardTitle>
-                          <CardDescription>{service.description}</CardDescription>
+                  <Link href={`${ROUTES.services}/${service.slug}`}>
+                    <Card
+                      variant="interactive"
+                      className="h-full transition-all duration-300 hover:border-primary-500"
+                    >
+                      <CardHeader>
+                        <div className="flex items-start gap-4">
+                          <div className="text-4xl">{service.icon}</div>
+                          <div className="flex-1">
+                            <CardTitle className="text-2xl mb-2">{service.title}</CardTitle>
+                            <CardDescription className="text-base">{service.description}</CardDescription>
+                          </div>
                         </div>
-                      </div>
-                    </CardHeader>
-                    {expandedService === service.id && (
+                      </CardHeader>
                       <CardContent className="space-y-4">
-                        <p className="text-light-200">{service.longDescription}</p>
                         <div>
                           <h4 className="text-sm font-semibold text-primary-500 mb-2">
                             Principais Recursos:
@@ -128,9 +136,14 @@ export default function ServicesPage() {
                             ))}
                           </ul>
                         </div>
+                        <div className="pt-4 border-t border-dark-800">
+                          <span className="text-primary-500 text-sm font-medium hover:underline inline-flex items-center gap-2">
+                            Ver detalhes completos →
+                          </span>
+                        </div>
                       </CardContent>
-                    )}
-                  </Card>
+                    </Card>
+                  </Link>
                 </ScrollReveal>
               ))}
             </div>
