@@ -12,3 +12,6 @@ export type { ScrollRevealProps } from './ScrollReveal'
 
 export { PageTransition } from './PageTransition'
 export type { PageTransitionProps } from './PageTransition'
+
+export { Parallax } from './Parallax'
+export type { ParallaxProps } from './Parallax'

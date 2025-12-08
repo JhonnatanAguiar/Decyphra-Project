@@ -714,6 +714,35 @@
 
 ---
 
+**04/12/2024 - Criação do Componente Parallax**
+
+**Criado:**
+- ✅ Componente Parallax com efeito de profundidade visual
+- ✅ Velocidade configurável (0.1 a 1.0)
+- ✅ Direções configuráveis: up, down, left, right
+- ✅ Opção de desabilitar parallax (útil para mobile)
+- ✅ Performance otimizada com requestAnimationFrame
+- ✅ IntersectionObserver para detectar visibilidade
+- ✅ Barrel export atualizado
+- ✅ TypeScript: Sem erros
+- ✅ ESLint: Sem erros
+
+**Características do Parallax:**
+- Velocidade: Configurável (padrão: 0.5)
+- Direções: up, down, left, right
+- Performance: requestAnimationFrame + IntersectionObserver
+- Mobile: Opção de desabilitar (disabled prop)
+- Transform: Usa translate3d para aceleração por GPU
+- Validação: Speed limitado entre 0.1 e 1.0
+
+**Status:** Fase 2 - Componente Parallax concluído e testado ✅
+
+**Próximos Passos:**
+1. Testar componente Parallax no browser
+2. Continuar Fase 2: Hooks Customizados (2.4)
+
+---
+
 ## 📝 Como Atualizar Este Arquivo
 
 ### Quando Adicionar Entrada
