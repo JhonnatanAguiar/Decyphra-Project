@@ -291,7 +291,7 @@ light: {
 ---
 
 ### 🎨 Fase 2: Design System e Componentes Base
-**Status:** ⏳ Em Progresso (85% completo)
+**Status:** ✅ **CONCLUÍDA (100% completo)**
 
 #### 2.1 Componentes UI Base
 - [x] Button (todas as variantes) - ✅ Concluído e testado
@@ -320,9 +320,9 @@ light: {
 - [x] PageTransition (múltiplos tipos de transição) - ✅ Concluído e testado
 
 #### 2.4 Hooks Customizados
-- [ ] useScroll
-- [ ] useAnimation
-- [ ] useForm (com react-hook-form)
+- [x] useScroll (detecção de scroll e direção) - ✅ Concluído e testado
+- [x] useAnimation (IntersectionObserver) - ✅ Concluído e testado
+- [x] useForm (com react-hook-form e Zod) - ✅ Concluído e testado
 
 ---
 
@@ -592,14 +592,14 @@ npm run type-check   # Verifica tipos TypeScript
 |------|-----------|--------|
 | Fase 0: Planejamento | 100% | ✅ Concluída |
 | Fase 1: Setup | 100% | ✅ **Concluída e Revisada** |
-| Fase 2: Design System | 55% | ⏳ Em Progresso |
+| Fase 2: Design System | 100% | ✅ **Concluída** |
 | Fase 3: Páginas | 0% | ⏳ Pendente |
 | Fase 4: Dinâmicas | 0% | ⏳ Pendente |
 | Fase 5: Backend | 0% | ⏳ Pendente |
 | Fase 6: SEO | 0% | ⏳ Pendente |
 | Fase 7: Deploy | 0% | ⏳ Pendente |
 
-**Progresso Total:** ~20% completo
+**Progresso Total:** ~28% completo
 
 ---
 
@@ -614,4 +614,4 @@ npm run type-check   # Verifica tipos TypeScript
 ---
 
 **Última atualização:** Dezembro 2024  
-**Status:** Fase 1 concluída e revisada (100% completo) ✅
+**Status:** Fase 1 e Fase 2 concluídas e revisadas (100% completo cada) ✅
