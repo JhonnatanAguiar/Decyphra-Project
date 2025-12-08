@@ -380,10 +380,11 @@ light: {
 - [x] CTA Section - ✅ Concluído
 
 #### 3.6 Página Depoimentos (`/depoimentos`)
-- [ ] Hero Section
-- [ ] Grid de Depoimentos
-- [ ] Suporte a vídeos (se houver)
-- [ ] Integração com API
+- [x] Hero Section - ✅ Concluído
+- [x] Grid de Depoimentos (6 depoimentos fictícios) - ✅ Concluído
+- [x] CTA Section com satisfação - ✅ Concluído
+- [ ] Suporte a vídeos (opcional - futuro)
+- [ ] Integração com API (pendente - Fase 5)
 
 #### 3.7 Página Contato (`/contato`)
 - [x] Hero Section - ✅ Concluído
