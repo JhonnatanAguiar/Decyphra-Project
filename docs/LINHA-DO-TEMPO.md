@@ -1289,6 +1289,35 @@
 
 ---
 
+**04/12/2024 - Criação da Página: Sobre Nós**
+
+**Criado:**
+- ✅ Página `/sobre` completa
+- ✅ Hero Section com animações framer-motion (stagger children)
+- ✅ Badge "Nossa História" com ícone Users
+- ✅ Título "Decifrando o Digital" com destaque em verde neon
+- ✅ Seção "Nossa Missão" com imagem e texto em grid 2 colunas
+- ✅ Seção "Nossa Abordagem Flexível" com 3 cards:
+  - Ferramentas Populares (Zap icon)
+  - Código Sob Medida (Code icon)
+  - Potencializado por IA (Cpu icon)
+- ✅ CTA Section com link para contato
+- ✅ Animações suaves com framer-motion (fade in, slide, stagger)
+- ✅ Layout responsivo e consistente
+- ✅ Configuração do Next.js para permitir imagens do Unsplash
+
+**Ícones Utilizados:**
+- Users (badge e hero)
+- Zap, Code, Cpu (cards de abordagem)
+- ArrowRight (CTA button)
+
+**Status:** Página Sobre criada ✅
+
+**Próximos Passos:**
+1. Continuar com próximas páginas: Contato, Portfólio, Depoimentos, Status
+
+---
+
 **04/12/2024 - Correção: Erro EINVAL no Next.js (cache corrompido)**
 
 **Problema:**

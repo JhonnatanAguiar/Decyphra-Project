@@ -373,12 +373,10 @@ light: {
 - [ ] Integração com API
 
 #### 3.5 Página Sobre (`/sobre`)
-- [ ] Hero Section
-- [ ] História/Timeline
-- [ ] Equipe
-- [ ] Valores
-- [ ] Diferenciais
-- [ ] CTA Section
+- [x] Hero Section - ✅ Concluído
+- [x] História/Missão - ✅ Concluído
+- [x] Nossa Abordagem Flexível (3 cards) - ✅ Concluído
+- [x] CTA Section - ✅ Concluído
 
 #### 3.6 Página Depoimentos (`/depoimentos`)
 - [ ] Hero Section

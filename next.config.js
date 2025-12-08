@@ -7,6 +7,11 @@ const nextConfig = {
         hostname: 'cdn.worldvectorlogo.com',
         pathname: '/logos/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+        pathname: '/**',
+      },
     ],
   },
   experimental: {
