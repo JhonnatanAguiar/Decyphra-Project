@@ -1,10 +1,15 @@
 'use client'
 
 import { useState } from 'react'
-import { Button, Input, Textarea, Select, Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter, Badge, Modal, LoadingSpinner } from '@/views/components/ui'
+import { Button, Input, Textarea, Select, Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter, Badge, Modal, LoadingSpinner, Toast } from '@/views/components/ui'
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [toast, setToast] = useState<{ variant: 'success' | 'error' | 'warning' | 'info'; title: string; description?: string; isVisible: boolean }>({
+    variant: 'info',
+    title: '',
+    isVisible: false,
+  })
   return (
     <main className="min-h-screen bg-dark-950 text-light-50">
       <div className="container mx-auto px-4 py-16">
@@ -352,7 +357,49 @@ export default function Home() {
             </div>
           </div>
         </div>
+
+        {/* Teste dos componentes Toast */}
+        <div className="mb-12">
+          <h2 className="text-2xl font-semibold mb-4">Toasts</h2>
+          <div className="flex flex-wrap gap-4">
+            <Button
+              onClick={() => setToast({ variant: 'success', title: 'Sucesso!', description: 'Operação realizada com sucesso.', isVisible: true })}
+              variant="primary"
+            >
+              Mostrar Success
+            </Button>
+            <Button
+              onClick={() => setToast({ variant: 'error', title: 'Erro!', description: 'Algo deu errado. Tente novamente.', isVisible: true })}
+              variant="primary"
+            >
+              Mostrar Error
+            </Button>
+            <Button
+              onClick={() => setToast({ variant: 'warning', title: 'Atenção!', description: 'Verifique os dados informados.', isVisible: true })}
+              variant="primary"
+            >
+              Mostrar Warning
+            </Button>
+            <Button
+              onClick={() => setToast({ variant: 'info', title: 'Informação', description: 'Esta é uma mensagem informativa.', isVisible: true })}
+              variant="primary"
+            >
+              Mostrar Info
+            </Button>
+          </div>
+        </div>
       </div>
+
+      {/* Toast de Exemplo */}
+      <Toast
+        variant={toast.variant}
+        title={toast.title}
+        description={toast.description}
+        isVisible={toast.isVisible}
+        onClose={() => setToast({ ...toast, isVisible: false })}
+        duration={5000}
+        position="top-right"
+      />
     </main>
   )
 }

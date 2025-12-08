@@ -12,3 +12,4 @@ export { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter, 
 export { Badge, type BadgeProps } from './Badge'
 export { Modal, type ModalProps } from './Modal'
 export { LoadingSpinner, type LoadingSpinnerProps } from './LoadingSpinner'
+export { Toast, type ToastProps } from './Toast'
