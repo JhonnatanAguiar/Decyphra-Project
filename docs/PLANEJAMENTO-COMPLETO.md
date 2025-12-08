@@ -351,7 +351,7 @@ light: {
 #### 3.2.1 Páginas Individuais de Serviços (`/servicos/[slug]`)
 - [x] Desenvolvimento Web (`/servicos/desenvolvimento-web`) - ✅ Concluído
 - [x] SEO & Otimização (`/servicos/seo-otimizacao`) - ✅ Concluído
-- [ ] Google Ad (`/servicos/google-ad`)
+- [x] Google Ad (`/servicos/google-ad`) - ✅ Concluído
 - [ ] Marketing de Conteúdo (`/servicos/marketing-de-conteudo`)
 - [ ] Inteligência Artificial (`/servicos/inteligencia-artificial`)
 - [ ] E-commerce Completo (`/servicos/ecommerce-completo`)
