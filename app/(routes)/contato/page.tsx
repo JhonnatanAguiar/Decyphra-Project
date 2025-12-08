@@ -11,7 +11,7 @@ import { Toast } from '@/views/components/ui/Toast'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
-import { Mail, Phone, MapPin, Send, CheckCircle } from 'lucide-react'
+import { Mail, Phone, MapPin, Send, CheckCircle, Clock } from 'lucide-react'
 import { CONTACT_INFO } from '@/lib/constants/site'
 import { API_ROUTES } from '@/lib/constants/routes'
 
@@ -52,6 +52,13 @@ const qualityGuarantees = [
   'Orçamento gratuito e sem compromisso',
   'Consultoria personalizada',
   'Suporte contínuo pós-projeto',
+]
+
+// Horários de atendimento
+const businessHours = [
+  { day: 'Segunda a Sexta', hours: '09:00 - 18:00' },
+  { day: 'Sábado', hours: '09:00 - 13:00' },
+  { day: 'Domingo', hours: 'Fechado' },
 ]
 
 export default function ContactPage() {
@@ -313,7 +320,7 @@ export default function ContactPage() {
 
               {/* Garantia de Qualidade */}
               <ScrollReveal direction="up" delay={200}>
-                <div className="bg-dark-900/50 rounded-lg border border-primary-500/20 p-6">
+                <div className="bg-primary-500/5 rounded-lg border border-primary-500/30 p-6">
                   <div className="flex items-center gap-3 mb-6">
                     <CheckCircle className="w-6 h-6 text-primary-500 flex-shrink-0" />
                     <h3 className="text-xl font-semibold text-light-50">
@@ -328,6 +335,26 @@ export default function ContactPage() {
                       </li>
                     ))}
                   </ul>
+                </div>
+              </ScrollReveal>
+
+              {/* Horário de Atendimento */}
+              <ScrollReveal direction="up" delay={300}>
+                <div className="bg-dark-900/50 rounded-lg border border-primary-500/20 p-6">
+                  <div className="flex items-center gap-3 mb-6">
+                    <Clock className="w-6 h-6 text-primary-500 flex-shrink-0" />
+                    <h3 className="text-xl font-semibold text-light-50">
+                      Horário de Atendimento
+                    </h3>
+                  </div>
+                  <div className="space-y-3">
+                    {businessHours.map((schedule, index) => (
+                      <div key={index} className="flex justify-between items-center">
+                        <span className="text-light-200 font-medium">{schedule.day}</span>
+                        <span className="text-light-300">{schedule.hours}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </ScrollReveal>
             </div>
