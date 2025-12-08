@@ -5,6 +5,7 @@ import { FadeIn, ScrollReveal } from '@/views/components/animations'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/views/components/ui'
 import Link from 'next/link'
 import { ROUTES } from '@/lib/constants/routes'
+import { getServiceIcon } from '@/lib/constants/icons'
 
 /**
  * Página de Serviços
@@ -23,7 +24,6 @@ export default function ServicesPage() {
       description: 'Site profissional em WordPress, Shopify e soluções personalizadas que convertem visitantes em clientes.',
       longDescription: 'Desenvolvemos sites e aplicações web utilizando as tecnologias mais modernas do mercado. Nossas soluções são responsivas, rápidas e otimizadas para SEO.',
       features: ['WordPress', 'Shopify', 'Site Personalizado', 'E-commerce'],
-      icon: '🌐',
     },
     {
       id: 2,
@@ -32,7 +32,6 @@ export default function ServicesPage() {
       description: 'Posicionamento estratégico no Google para aumentar sua visibilidade e atrair mais clientes qualificados.',
       longDescription: 'Trabalhamos com técnicas avançadas de SEO técnico, pesquisa de palavras-chave estratégicas, construção de links de qualidade e análise constante de dados.',
       features: ['SEO Técnico', 'Palavra-chave', 'Link Building', 'Analytics'],
-      icon: '🔍',
     },
     {
       id: 3,
@@ -41,7 +40,6 @@ export default function ServicesPage() {
       description: 'Campanhas publicitárias otimizadas que geram resultados imediatos e maximizam seu retorno sobre investimento.',
       longDescription: 'Criamos e gerenciamos campanhas publicitárias no Google que geram resultados imediatos e maximizam seu retorno sobre investimento.',
       features: ['Campanhas de Pesquisa', 'Rede de Display', 'Google Shopping', 'Remarketing'],
-      icon: '📢',
     },
     {
       id: 4,
@@ -50,7 +48,6 @@ export default function ServicesPage() {
       description: 'Estratégias de conteúdo que engajam sua audiência e fortalecem a autoridade da sua marca no mercado.',
       longDescription: 'Desenvolvemos estratégias de conteúdo que engajam sua audiência e fortalecem a autoridade da sua marca no mercado.',
       features: ['Blog Post', 'Social Media', 'E-mail Marketing', 'Copywriting'],
-      icon: '✍️',
     },
     {
       id: 5,
@@ -59,7 +56,6 @@ export default function ServicesPage() {
       description: 'Implementação de IA para automação, chatbots e otimização de processos que aumentam a eficiência.',
       longDescription: 'Implementamos soluções de inteligência artificial para automação, chatbots e otimização de processos que aumentam a eficiência do seu negócio.',
       features: ['Chatbot', 'Automação', 'Análise Preditiva', 'Personalização'],
-      icon: '🤖',
     },
     {
       id: 6,
@@ -68,7 +64,6 @@ export default function ServicesPage() {
       description: 'Lojas virtuais completas com Shopify, WooCommerce e código próprio, com foco em conversão e gestão autônoma.',
       longDescription: 'Criamos e-commerces completos com Shopify, WooCommerce e código próprio, com foco em conversão e gestão autônoma.',
       features: ['Shopify', 'WooCommerce', 'Pagamentos & Frete', 'SEO para E-commerce'],
-      icon: '🛒',
     },
     {
       id: 7,
@@ -77,7 +72,6 @@ export default function ServicesPage() {
       description: 'Direcionamento estratégico para micro e pequenos negócios que buscam clareza, estruturação e crescimento digital.',
       longDescription: 'Oferecemos consultoria digital estratégica para micro e pequenos negócios que buscam clareza, estruturação e crescimento digital.',
       features: ['Diagnóstico Digital', 'Plano de Ação', 'Validação de Projeto', 'Apoio Técnico'],
-      icon: '💡',
     },
   ]
 
@@ -115,7 +109,14 @@ export default function ServicesPage() {
                     >
                       <CardHeader>
                         <div className="flex items-start gap-4">
-                          <div className="text-4xl">{service.icon}</div>
+                          {(() => {
+                            const ServiceIcon = getServiceIcon(service.slug)
+                            return (
+                              <div className="w-12 h-12 bg-primary-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <ServiceIcon className="w-6 h-6 text-dark-900" strokeWidth={1.5} />
+                              </div>
+                            )
+                          })()}
                           <div className="flex-1">
                             <CardTitle className="text-2xl mb-2">{service.title}</CardTitle>
                             <CardDescription className="text-base">{service.description}</CardDescription>

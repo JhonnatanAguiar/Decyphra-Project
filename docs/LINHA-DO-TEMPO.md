@@ -1060,4 +1060,88 @@
 
 ---
 
+**04/12/2024 - Atualização dos Ícones: Padrão Decyphra com lucide-react**
+
+**Atualizado:**
+- ✅ Instalado lucide-react para ícones profissionais
+- ✅ Ícones do Hero: ícones escuros (preto-azulado) com fundo verde neon
+- ✅ Ícones da Sidebar: ícones verde neon sem fundo
+- ✅ 3 páginas de serviço atualizadas com ícones do lucide-react
+- ✅ Estilo consistente com site de referência decyphra.com.br
+
+**Ícones Implementados:**
+- Desenvolvimento Web: Globe (hero), Code/ShoppingCart/Settings (sidebar)
+- SEO & Otimização: Search (hero), Settings/Key/Link2/BarChart (sidebar)
+- Google Ad: Megaphone (hero), Search/Monitor/ShoppingBag/Repeat (sidebar)
+
+**Estilos Aplicados:**
+- Hero: bg-primary-500 (verde neon) + ícone text-dark-900 (escuro)
+- Sidebar: ícones text-primary-500 (verde neon) sem fundo
+- Tamanhos: Hero (w-12/16), Sidebar (w-5)
+
+**Status:** Ícones atualizados para padrão Decyphra ✅
+
+**Próximos Passos:**
+1. Continuar com próximas páginas de serviço quando solicitado
+2. Aplicar mesmo padrão de ícones nas páginas restantes
+
+---
+
+**04/12/2024 - Implementação Completa de Ícones Lucide-React em Todo o Site**
+
+**Atualizado:**
+- ✅ Criado arquivo centralizado de mapeamento de ícones (`src/lib/constants/icons.ts`)
+- ✅ Home Page atualizada com ícones lucide-react (7 serviços)
+- ✅ Página de Serviços atualizada com ícones lucide-react (7 serviços)
+- ✅ Páginas individuais de serviço já atualizadas anteriormente
+- ✅ Padrão consistente: ícones escuros com fundo verde neon (cards) ou verde neon sem fundo (sidebar)
+
+**Arquivo de Constantes Criado:**
+- `src/lib/constants/icons.ts`: Centraliza todos os ícones do site
+- Mapeamento de ícones para serviços (Hero e Cards)
+- Mapeamento de ícones para features (Sidebar)
+- Helpers: `getServiceIcon()` e `getFeatureIcon()`
+
+**Ícones Implementados:**
+- Desenvolvimento Web: Globe
+- SEO & Otimização: Search
+- Google Ad: Megaphone
+- Marketing de Conteúdo: PenTool
+- Inteligência Artificial: Bot
+- E-commerce Completo: ShoppingCart
+- Consultoria Digital: Lightbulb
+
+**Estilos Aplicados:**
+- Home Page Cards: bg-primary-500 (verde neon) + ícone text-dark-900 (escuro)
+- Página Serviços Cards: bg-primary-500 (verde neon) + ícone text-dark-900 (escuro)
+- Sidebar Features: ícones text-primary-500 (verde neon) sem fundo
+- Tamanhos consistentes: w-6 h-6 (cards), w-5 h-5 (sidebar)
+
+**Status:** Ícones implementados em todas as páginas existentes ✅
+
+**Próximos Passos:**
+1. Aplicar mesmo padrão nas páginas futuras (Portfólio, Sobre, Contato, etc.)
+2. Ícones já estão mapeados e prontos para uso
+
+---
+
+**04/12/2024 - Correção: Erro EINVAL no Next.js (cache corrompido)**
+
+**Problema:**
+- Erro `EINVAL: invalid argument, readlink` ao iniciar servidor Next.js
+- Cache do diretório `.next` corrompido (problema comum no Windows)
+
+**Solução:**
+- ✅ Removido diretório `.next` para forçar recriação do cache
+- ✅ `lucide-react` instalado e adicionado ao `package.json`
+- ✅ Servidor Next.js deve ser reiniciado após limpeza do cache
+
+**Status:** Cache limpo, servidor pronto para reiniciar ✅
+
+**Próximos Passos:**
+1. Reiniciar servidor Next.js (`npm run dev`)
+2. Verificar se ícones do lucide-react estão funcionando corretamente
+
+---
+
 **Última atualização:** 04/12/2024

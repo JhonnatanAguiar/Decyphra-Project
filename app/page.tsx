@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { ROUTES } from '@/lib/constants/routes'
 import { Header } from '@/views/components/layout/Header'
 import { Footer } from '@/views/components/layout/Footer'
+import { getServiceIcon } from '@/lib/constants/icons'
 
 /**
  * Home Page
@@ -73,58 +74,53 @@ export default function HomePage() {
                   title: 'Desenvolvimento Web',
                   description: 'Site profissional em WordPress, Shopify e soluções personalizadas que convertem visitantes em clientes.',
                   features: ['WordPress', 'Shopify', 'Site Personalizado', 'E-commerce'],
-                  icon: '🌐',
                 },
                 {
                   slug: 'seo-otimizacao',
                   title: 'SEO & Otimização',
                   description: 'Posicionamento estratégico no Google para aumentar sua visibilidade e atrair mais clientes qualificados.',
                   features: ['SEO Técnico', 'Palavra-chave', 'Link Building', 'Analytics'],
-                  icon: '🔍',
                 },
                 {
                   slug: 'google-ad',
                   title: 'Google Ad',
                   description: 'Campanhas publicitárias otimizadas que geram resultados imediatos e maximizam seu retorno sobre investimento.',
                   features: ['Campanhas de Pesquisa', 'Rede de Display', 'Google Shopping', 'Remarketing'],
-                  icon: '📢',
                 },
                 {
                   slug: 'marketing-de-conteudo',
                   title: 'Marketing de Conteúdo',
                   description: 'Estratégias de conteúdo que engajam sua audiência e fortalecem a autoridade da sua marca no mercado.',
                   features: ['Blog Post', 'Social Media', 'E-mail Marketing', 'Copywriting'],
-                  icon: '✍️',
                 },
                 {
                   slug: 'inteligencia-artificial',
                   title: 'Inteligência Artificial',
                   description: 'Implementação de IA para automação, chatbots e otimização de processos que aumentam a eficiência.',
                   features: ['Chatbot', 'Automação', 'Análise Preditiva', 'Personalização'],
-                  icon: '🤖',
                 },
                 {
                   slug: 'ecommerce-completo',
                   title: 'E-commerce Completo',
                   description: 'Lojas virtuais completas com Shopify, WooCommerce e código próprio, com foco em conversão e gestão autônoma.',
                   features: ['Shopify', 'WooCommerce', 'Pagamentos & Frete', 'SEO para E-commerce'],
-                  icon: '🛒',
                 },
                 {
                   slug: 'consultoria-digital',
                   title: 'Consultoria Digital',
                   description: 'Direcionamento estratégico para micro e pequenos negócios que buscam clareza, estruturação e crescimento digital.',
                   features: ['Diagnóstico Digital', 'Plano de Ação', 'Validação de Projeto', 'Apoio Técnico'],
-                  icon: '💡',
                 },
-              ].map((service, index) => (
-                <ScrollReveal key={service.slug} direction="up" delay={index * 100 + 200}>
+              ].map((service, index) => {
+                const ServiceIcon = getServiceIcon(service.slug)
+                return (
+                  <ScrollReveal key={service.slug} direction="up" delay={index * 100 + 200}>
                   <Link
                     href={`${ROUTES.services}/${service.slug}`}
                     className="block bg-dark-900 rounded-lg border border-dark-800 p-6 hover:border-primary-500 transition-all duration-300 hover:shadow-[0_0_20px_rgba(0,255,136,0.1)]"
                   >
-                    <div className="w-12 h-12 bg-primary-500/20 rounded-lg flex items-center justify-center mb-4 text-2xl">
-                      {service.icon}
+                    <div className="w-12 h-12 bg-primary-500 rounded-lg flex items-center justify-center mb-4">
+                      <ServiceIcon className="w-6 h-6 text-dark-900" strokeWidth={1.5} />
                     </div>
                     <h3 className="text-xl font-semibold mb-2 text-light-50">
                       {service.title}
@@ -146,8 +142,9 @@ export default function HomePage() {
                       Saiba mais →
                     </span>
                   </Link>
-                </ScrollReveal>
-              ))}
+                  </ScrollReveal>
+                )
+              })}
             </div>
 
             <div className="text-center mt-12">

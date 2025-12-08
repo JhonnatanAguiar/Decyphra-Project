@@ -4,6 +4,7 @@ import { Container, Section } from '@/views/components/layout'
 import { FadeIn, ScrollReveal } from '@/views/components/animations'
 import Link from 'next/link'
 import { ROUTES } from '@/lib/constants/routes'
+import { Megaphone, Search, Monitor, ShoppingBag, Repeat } from 'lucide-react'
 
 /**
  * Página de Serviço: Google Ad
@@ -13,10 +14,10 @@ import { ROUTES } from '@/lib/constants/routes'
 
 export default function GoogleAdPage() {
   const features = [
-    { name: 'Campanhas de Pesquisa', icon: '🔍' },
-    { name: 'Rede de Display', icon: '📺' },
-    { name: 'Google Shopping', icon: '🛍️' },
-    { name: 'Remarketing', icon: '🔄' },
+    { name: 'Campanhas de Pesquisa', icon: Search },
+    { name: 'Rede de Display', icon: Monitor },
+    { name: 'Google Shopping', icon: ShoppingBag },
+    { name: 'Remarketing', icon: Repeat },
   ]
 
   return (
@@ -29,8 +30,8 @@ export default function GoogleAdPage() {
             <div className="flex flex-col lg:flex-row items-start lg:items-center gap-8 lg:gap-12 py-16 lg:py-24">
               {/* Ícone Grande */}
               <div className="flex-shrink-0">
-                <div className="w-24 h-24 lg:w-32 lg:h-32 bg-primary-500/20 rounded-2xl flex items-center justify-center text-6xl lg:text-7xl">
-                  📢
+                <div className="w-24 h-24 lg:w-32 lg:h-32 bg-primary-500 rounded-2xl flex items-center justify-center">
+                  <Megaphone className="w-12 h-12 lg:w-16 lg:h-16 text-dark-900" strokeWidth={1.5} />
                 </div>
               </div>
               {/* Título e Mensagem */}
@@ -105,12 +106,15 @@ export default function GoogleAdPage() {
                     O que está incluído?
                   </h3>
                   <ul className="space-y-4 mb-6">
-                    {features.map((feature, index) => (
-                      <li key={index} className="flex items-center gap-3">
-                        <span className="text-2xl">{feature.icon}</span>
-                        <span className="text-light-200">{feature.name}</span>
-                      </li>
-                    ))}
+                    {features.map((feature, index) => {
+                      const IconComponent = feature.icon
+                      return (
+                        <li key={index} className="flex items-center gap-3">
+                          <IconComponent className="w-5 h-5 text-primary-500 flex-shrink-0" strokeWidth={2} />
+                          <span className="text-light-200">{feature.name}</span>
+                        </li>
+                      )
+                    })}
                   </ul>
                   <Link
                     href={ROUTES.contact}
