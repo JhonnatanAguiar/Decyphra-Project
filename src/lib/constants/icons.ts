@@ -26,6 +26,22 @@ import {
   Sparkles,
   Target,
   Check,
+  Brain,
+  Compass,
+  Palette,
+  Zap,
+  Rocket,
+  CheckCircle,
+  TrendingUp,
+  Gauge,
+  Shield,
+  Smartphone,
+  FileSearch,
+  DollarSign,
+  BarChart3,
+  Users,
+  BookOpen,
+  MessageSquare,
 } from 'lucide-react'
 import { LucideIcon } from 'lucide-react'
 
