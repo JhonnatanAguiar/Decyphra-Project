@@ -7,3 +7,4 @@
 export { Container, type ContainerProps } from './Container'
 export { Section, type SectionProps } from './Section'
 export { Header, type HeaderProps } from './Header'
+export { Footer, type FooterProps } from './Footer'

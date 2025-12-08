@@ -291,7 +291,7 @@ light: {
 ---
 
 ### 🎨 Fase 2: Design System e Componentes Base
-**Status:** ⏳ Em Progresso (65% completo)
+**Status:** ⏳ Em Progresso (70% completo)
 
 #### 2.1 Componentes UI Base
 - [x] Button (todas as variantes) - ✅ Concluído e testado
@@ -306,9 +306,9 @@ light: {
 
 #### 2.2 Componentes de Layout
 - [x] Header (com navegação desktop e mobile) - ✅ Concluído e testado
-- [ ] Navigation (desktop) - ✅ Integrado no Header
-- [ ] MobileMenu - ✅ Integrado no Header
-- [ ] Footer
+- [x] Navigation (desktop) - ✅ Integrado no Header
+- [x] MobileMenu - ✅ Integrado no Header
+- [x] Footer (variantes default e minimal) - ✅ Concluído e testado
 - [x] Container (todas as variantes) - ✅ Concluído e testado
 - [x] Section (todas as variantes) - ✅ Concluído e testado
 
