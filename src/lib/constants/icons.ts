@@ -42,6 +42,8 @@ import {
   Users,
   BookOpen,
   MessageSquare,
+  PackageCheck,
+  PencilRuler,
 } from 'lucide-react'
 import { LucideIcon } from 'lucide-react'
 

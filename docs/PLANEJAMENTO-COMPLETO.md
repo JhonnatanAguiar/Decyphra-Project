@@ -354,7 +354,7 @@ light: {
 - [x] Google Ad (`/servicos/google-ad`) - ✅ Concluído
 - [x] Marketing de Conteúdo (`/servicos/marketing-de-conteudo`) - ✅ Concluído
 - [x] Inteligência Artificial (`/servicos/inteligencia-artificial`) - ✅ Concluído
-- [ ] E-commerce Completo (`/servicos/ecommerce-completo`)
+- [x] E-commerce Completo (`/servicos/ecommerce-completo`) - ✅ Concluído
 - [ ] Consultoria Digital (`/servicos/consultoria-digital`)
 
 #### 3.3 Página de Portfólio (`/portfolio`)
