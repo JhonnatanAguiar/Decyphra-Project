@@ -394,12 +394,12 @@ light: {
 - [ ] Integração com API `/api/v1/contact` (pendente - Fase 5)
 
 #### 3.8 Página Status (`/status`)
-- [ ] Hero Section
-- [ ] Status da API (cards informativos)
-- [ ] Status do Banco de Dados
-- [ ] Métricas do Servidor
-- [ ] Uptime e histórico
-- [ ] Integração com `/api/v1/status`
+- [x] Hero Section - ✅ Concluído
+- [x] Status da API (cards informativos) - ✅ Concluído
+- [x] Status do Banco de Dados - ✅ Concluído
+- [x] Métricas do Servidor - ✅ Concluído
+- [x] Integração com `/api/v1/status` - ✅ Concluído
+- [ ] Uptime e histórico (opcional - futuro)
 
 ---
 
@@ -438,7 +438,7 @@ light: {
 **Status:** ⏳ Pendente
 
 #### 5.1 API Routes (Versionadas)
-- [ ] GET `/api/v1/status` (status do site e API)
+- [x] GET `/api/v1/status` (status do site e API) - ✅ Concluído
 - [ ] POST `/api/v1/contact` (formulário de contato)
 - [ ] POST `/api/v1/newsletter` (newsletter)
 - [ ] GET `/api/v1/projects` (listar projetos)
