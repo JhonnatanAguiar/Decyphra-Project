@@ -404,7 +404,7 @@ light: {
 ---
 
 ### ⚡ Fase 4: Funcionalidades Dinâmicas
-**Status:** ⏳ Em Progresso (5% completo)
+**Status:** ⏳ Em Progresso (15% completo)
 
 #### 4.1 Animações de Scroll
 - [x] Implementar scroll suave - ✅ Concluído
@@ -414,9 +414,9 @@ light: {
 - [ ] Sticky sections
 
 #### 4.2 Interatividade
-- [ ] Hover effects em cards
-- [ ] Hover effects em botões
-- [ ] Efeitos de glow/neon
+- [x] Hover effects em cards - ✅ Concluído
+- [x] Hover effects em botões - ✅ Concluído
+- [x] Efeitos de glow/neon - ✅ Concluído
 - [ ] Micro-interações em formulários
 - [ ] Transições entre páginas
 

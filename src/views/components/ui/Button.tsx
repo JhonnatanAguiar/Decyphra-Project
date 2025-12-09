@@ -31,9 +31,9 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     const baseStyles = 'inline-flex items-center justify-center rounded-lg font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-dark-950 disabled:opacity-50 disabled:cursor-not-allowed'
     
     const variants = {
-      primary: 'bg-primary-500 text-dark-950 hover:bg-primary-400 hover:shadow-[0_0_20px_rgba(0,255,136,0.3)] focus:ring-primary-500',
-      secondary: 'bg-transparent border-2 border-primary-500 text-primary-500 hover:bg-primary-500 hover:text-dark-950 hover:shadow-[0_0_20px_rgba(0,255,136,0.3)] focus:ring-primary-500',
-      ghost: 'bg-transparent text-primary-500 hover:bg-primary-500/10 hover:shadow-[0_0_10px_rgba(0,255,136,0.2)] focus:ring-primary-500',
+      primary: 'bg-primary-500 text-dark-950 hover:bg-primary-400 hover:shadow-[0_0_25px_rgba(0,255,136,0.4)] hover:shadow-primary-500/50 focus:ring-primary-500',
+      secondary: 'bg-transparent border-2 border-primary-500 text-primary-500 hover:bg-primary-500 hover:text-dark-950 hover:shadow-[0_0_25px_rgba(0,255,136,0.4)] hover:shadow-primary-500/50 focus:ring-primary-500',
+      ghost: 'bg-transparent text-primary-500 hover:bg-primary-500/10 hover:shadow-[0_0_15px_rgba(0,255,136,0.3)] hover:shadow-primary-500/30 focus:ring-primary-500',
       dark: 'bg-dark-800 text-light-50 hover:bg-dark-700 hover:shadow-lg focus:ring-dark-600',
     }
     

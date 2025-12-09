@@ -26,7 +26,7 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
     const variants = {
       default: 'border-dark-700',
       elevated: 'border-dark-700 shadow-lg',
-      interactive: 'border-dark-700 hover:border-dark-600 hover:shadow-lg hover:scale-[1.02] cursor-pointer',
+      interactive: 'border-dark-700 hover:border-primary-500/50 hover:shadow-[0_0_20px_rgba(0,255,136,0.2)] hover:scale-[1.02] cursor-pointer transition-all duration-300',
       featured: 'border-primary-500 shadow-[0_0_20px_rgba(0,255,136,0.1)]',
     }
 

@@ -1558,3 +1558,29 @@
 
 **Próximos Passos:**
 1. Continuar com próximos itens da Fase 4.1 (Animações fade in ao scroll, slide up, etc.)
+
+---
+
+**04/12/2024 - Fase 4.2: Melhoria de Efeitos Glow/Neon**
+
+**Implementado:**
+- ✅ Melhorados efeitos glow/neon em botões (primary, secondary, ghost)
+- ✅ Melhorados efeitos glow/neon em cards (variante interactive)
+- ✅ Aumentada intensidade do glow (shadow mais pronunciado)
+- ✅ Adicionado shadow-primary-500/50 para efeito neon mais visível
+- ✅ Melhorada transição de hover em cards interactive
+
+**Melhorias Aplicadas:**
+- Botões primary: glow aumentado de 0.3 para 0.4 de opacidade + shadow-primary-500/50
+- Botões secondary: mesmo tratamento para consistência
+- Botões ghost: glow aumentado de 0.2 para 0.3 de opacidade
+- Cards interactive: borda muda para primary-500/50 no hover + glow neon
+
+**Arquivos Modificados:**
+- `src/views/components/ui/Button.tsx` - Melhorados efeitos glow
+- `src/views/components/ui/Card.tsx` - Melhorados efeitos glow e hover
+
+**Status:** Fase 4.2 concluída ✅ | Efeitos glow/neon aprimorados ✅
+
+**Próximos Passos:**
+1. Continuar com próximos itens da Fase 4 (Micro-interações, transições, etc.)
