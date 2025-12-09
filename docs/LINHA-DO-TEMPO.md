@@ -1640,3 +1640,26 @@
 
 **Próximos Passos:**
 1. Continuar com próximos itens da Fase 4
+
+---
+
+**04/12/2024 - Ajuste: Tempo de Transição Reduzido para 0.8s**
+
+**Ajuste Realizado:**
+- ✅ Tempo de transição reduzido de 1.5s para 0.8s
+- ✅ Criado componente TransitionLogo com animação rápida (0.8s)
+- ✅ Logo do header mantém animação original (1.5s) - não alterado
+- ✅ Animação do logo na transição sincronizada com nova duração
+
+**Detalhes Técnicos:**
+- Componente TransitionLogo criado especificamente para transição
+- Animações do logo ajustadas proporcionalmente:
+  - Aro externo: 0.32s (40% de 0.8s)
+  - Aro interno: 0.48s (60% de 0.8s) com delay de 0.16s
+  - Círculo central: 0.24s (30% de 0.8s) com delay de 0.4s
+- DecyphraLogo original no header permanece inalterado
+
+**Arquivos Modificados:**
+- `src/views/components/animations/PageTransition.tsx` - Ajustado tempo e criado TransitionLogo
+
+**Status:** Tempo de transição ajustado para 0.8s ✅ | Logo do header preservado ✅
