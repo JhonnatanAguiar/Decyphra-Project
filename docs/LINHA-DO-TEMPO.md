@@ -1541,3 +1541,20 @@
 ---
 
 **Última atualização:** 04/12/2024
+
+---
+
+**04/12/2024 - Início da Fase 4: Funcionalidades Dinâmicas - Scroll Suave**
+
+**Implementado:**
+- ✅ Scroll suave implementado via CSS (`scroll-behavior: smooth`)
+- ✅ Adicionado no `globals.css` para aplicar em todo o site
+- ✅ Melhora a experiência de navegação com links âncora e scroll programático
+
+**Arquivos Modificados:**
+- `app/globals.css` - Adicionado `scroll-behavior: smooth` no elemento `html`
+
+**Status:** Fase 4.1 iniciada ✅ | Scroll suave implementado ✅
+
+**Próximos Passos:**
+1. Continuar com próximos itens da Fase 4.1 (Animações fade in ao scroll, slide up, etc.)

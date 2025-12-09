@@ -11,6 +11,10 @@
     @apply border-dark-800;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply bg-dark-950 text-light-50;
     font-family: var(--font-inter);
