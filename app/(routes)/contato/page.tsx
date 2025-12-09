@@ -70,9 +70,15 @@ export default function ContactPage() {
     handleSubmit,
     formState: { errors },
     reset,
+    watch,
   } = useForm<ContactFormData>({
     resolver: zodResolver(contactFormSchema),
   })
+
+  // Observar valores dos campos para validação visual
+  const watchedName = watch('name')
+  const watchedEmail = watch('email')
+  const watchedMessage = watch('message')
 
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true)
@@ -150,6 +156,9 @@ export default function ContactPage() {
                         type="text"
                         placeholder="Seu nome completo"
                         variant={errors.name ? 'error' : 'primary'}
+                        showValidationIcon={!!watchedName}
+                        isValid={!errors.name && !!watchedName && watchedName.length >= 3}
+                        value={watchedName}
                         {...register('name')}
                       />
                       {errors.name && (
@@ -165,6 +174,8 @@ export default function ContactPage() {
                         type="email"
                         placeholder="seu@email.com"
                         variant={errors.email ? 'error' : 'primary'}
+                        showValidationIcon={!!watchedEmail}
+                        isValid={!errors.email && !!watchedEmail && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(watchedEmail)}
                         {...register('email')}
                       />
                       {errors.email && (
@@ -230,6 +241,10 @@ export default function ContactPage() {
                       variant={errors.message ? 'error' : 'primary'}
                       size="lg"
                       rows={6}
+                      showValidationIcon={!!watchedMessage}
+                      isValid={!errors.message && !!watchedMessage && watchedMessage.length >= 10}
+                      showCharCount={true}
+                      maxLength={1000}
                       {...register('message')}
                     />
                     {errors.message && (
