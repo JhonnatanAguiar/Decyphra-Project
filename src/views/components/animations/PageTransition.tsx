@@ -120,23 +120,36 @@ const PageTransition = ({
   const pathname = usePathname()
   const [isLoading, setIsLoading] = useState(false)
   const [displayChildren, setDisplayChildren] = useState(children)
+  const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
-    // Inicia transição
+    // Inicia transição - bloqueia interações
     setIsLoading(true)
+    setIsVisible(false)
+    
+    // Previne scroll durante transição
+    document.body.style.overflow = 'hidden'
     
     // Após a duração da animação do logo, atualiza o conteúdo
     const timer = setTimeout(() => {
       setDisplayChildren(children)
       setIsLoading(false)
+      // Aguarda um pouco mais para garantir que o overlay saiu antes de mostrar conteúdo
+      setTimeout(() => {
+        setIsVisible(true)
+        document.body.style.overflow = ''
+      }, 100)
     }, TRANSITION_DURATION * 1000)
 
-    return () => clearTimeout(timer)
+    return () => {
+      clearTimeout(timer)
+      document.body.style.overflow = ''
+    }
   }, [pathname, children])
 
   return (
     <>
-      {/* Overlay com logo animado durante transição */}
+      {/* Overlay com logo animado durante transição - bloqueia todas as interações */}
       <AnimatePresence>
         {isLoading && (
           <motion.div
@@ -144,23 +157,36 @@ const PageTransition = ({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-dark-950/95 backdrop-blur-sm"
+            className="fixed inset-0 z-[9999] flex items-center justify-center bg-dark-950/95 backdrop-blur-sm pointer-events-auto"
+            style={{ 
+              pointerEvents: 'auto',
+              touchAction: 'none',
+            }}
+            onClick={(e) => e.preventDefault()}
+            onTouchStart={(e) => e.preventDefault()}
           >
             <TransitionLogo />
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* Conteúdo da página */}
+      {/* Conteúdo da página - bloqueado durante transição */}
       <motion.div
         key={pathname}
         initial={{ opacity: 0 }}
-        animate={{ opacity: isLoading ? 0 : 1 }}
+        animate={{ opacity: isVisible ? 1 : 0 }}
         transition={{ 
           duration: 0.3,
-          delay: isLoading ? TRANSITION_DURATION - 0.3 : 0
+          delay: isVisible ? 0 : TRANSITION_DURATION
         }}
-        className={className}
+        className={cn(
+          className,
+          isLoading && 'pointer-events-none select-none'
+        )}
+        style={{
+          pointerEvents: isLoading ? 'none' : 'auto',
+          userSelect: isLoading ? 'none' : 'auto',
+        }}
       >
         {displayChildren}
       </motion.div>
