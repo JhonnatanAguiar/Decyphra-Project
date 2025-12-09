@@ -20,7 +20,7 @@ export default function RoutesLayout({
     <>
       <Header variant="default" sticky={true} />
       <main>
-        <PageTransition type="fade" duration={300}>
+        <PageTransition>
           {children}
         </PageTransition>
       </main>

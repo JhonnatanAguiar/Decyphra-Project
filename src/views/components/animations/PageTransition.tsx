@@ -2,111 +2,95 @@
 
 import { ReactNode, useEffect, useState } from 'react'
 import { usePathname } from 'next/navigation'
-import { cn } from '@/lib/utils/cn'
+import { motion, AnimatePresence } from 'framer-motion'
+import { DecyphraLogo } from '@/views/components/layout/DecyphraLogo'
 
 /**
  * PageTransition Component
  * 
- * Componente de transição entre páginas.
+ * Componente de transição entre páginas otimizado.
  * Segue o design system da Decyphra.
  * 
  * Características:
- * - Transições suaves entre páginas
- * - Múltiplos tipos de animação
- * - Detecção automática de mudança de rota
- * - Configurável (duração, tipo)
+ * - Transições suaves e otimizadas entre páginas
+ * - Logo animado da Decyphra no centro durante transição
+ * - Duração sincronizada com animação do logo (1.5s)
+ * - Performance otimizada com framer-motion
  */
 
 export interface PageTransitionProps {
   children: ReactNode
-  type?: 'fade' | 'slide' | 'scale' | 'slideUp' | 'slideDown'
-  duration?: number // Duração em milissegundos
   className?: string
 }
 
+const TRANSITION_DURATION = 1.5 // Mesma duração da animação do logo (1.5s)
+
 const PageTransition = ({
   children,
-  type = 'fade',
-  duration = 300,
   className,
 }: PageTransitionProps) => {
   const pathname = usePathname()
+  const [isLoading, setIsLoading] = useState(false)
   const [displayChildren, setDisplayChildren] = useState(children)
-  const [isTransitioning, setIsTransitioning] = useState(false)
-  const [isMounted, setIsMounted] = useState(false)
-
-  // Monta o componente na primeira renderização
-  useEffect(() => {
-    setIsMounted(true)
-  }, [])
 
   useEffect(() => {
-    if (!isMounted) return
-
-    // Inicia transição de saída
-    setIsTransitioning(true)
-
-    // Após a transição de saída, atualiza o conteúdo e inicia entrada
+    // Inicia transição
+    setIsLoading(true)
+    
+    // Após a duração da animação do logo, atualiza o conteúdo
     const timer = setTimeout(() => {
       setDisplayChildren(children)
-      setIsTransitioning(false)
-    }, duration)
+      setIsLoading(false)
+    }, TRANSITION_DURATION * 1000)
 
     return () => clearTimeout(timer)
-  }, [pathname, isMounted, duration])
-
-  const getTransitionClasses = () => {
-    if (isTransitioning) {
-      switch (type) {
-        case 'fade':
-          return 'opacity-0'
-        case 'slide':
-          return 'opacity-0 translate-x-4'
-        case 'scale':
-          return 'opacity-0 scale-95'
-        case 'slideUp':
-          return 'opacity-0 translate-y-4'
-        case 'slideDown':
-          return 'opacity-0 -translate-y-4'
-        default:
-          return 'opacity-0'
-      }
-    }
-
-    switch (type) {
-      case 'fade':
-        return 'opacity-100'
-      case 'slide':
-        return 'opacity-100 translate-x-0'
-      case 'scale':
-        return 'opacity-100 scale-100'
-      case 'slideUp':
-        return 'opacity-100 translate-y-0'
-      case 'slideDown':
-        return 'opacity-100 translate-y-0'
-      default:
-        return 'opacity-100'
-    }
-  }
-
-  // Se ainda não montou, mostra sem animação
-  if (!isMounted) {
-    return <div className={className}>{children}</div>
-  }
+  }, [pathname, children])
 
   return (
-    <div
-      className={cn(
-        'transition-all ease-in-out',
-        getTransitionClasses(),
-        className
-      )}
-      style={{
-        transitionDuration: `${duration}ms`,
-      }}
-    >
-      {displayChildren}
-    </div>
+    <>
+      {/* Overlay com logo animado durante transição */}
+      <AnimatePresence>
+        {isLoading && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-dark-950/95 backdrop-blur-sm"
+          >
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              transition={{ 
+                duration: 0.3,
+                ease: "easeOut"
+              }}
+            >
+              <DecyphraLogo 
+                size="xl" 
+                showText={true}
+                layout="vertical"
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Conteúdo da página */}
+      <motion.div
+        key={pathname}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: isLoading ? 0 : 1 }}
+        transition={{ 
+          duration: 0.3,
+          delay: isLoading ? TRANSITION_DURATION - 0.3 : 0
+        }}
+        className={className}
+      >
+        {displayChildren}
+      </motion.div>
+    </>
   )
 }
 

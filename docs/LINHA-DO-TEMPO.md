@@ -1608,3 +1608,35 @@
 
 **Próximos Passos:**
 1. Continuar com próximos itens da Fase 4 (Micro-interações em formulários, etc.)
+
+---
+
+**04/12/2024 - Correção: Otimização de Transições entre Páginas**
+
+**Problema Identificado:**
+- Transições travando e piscando
+- Performance ruim na navegação
+
+**Solução Implementada:**
+- ✅ Reescrito componente PageTransition com framer-motion
+- ✅ Adicionado logo animado da Decyphra no centro durante transição
+- ✅ Duração sincronizada com animação do logo (1.5s)
+- ✅ Overlay com backdrop-blur para transição suave
+- ✅ Otimização de performance com AnimatePresence
+- ✅ Removido sistema anterior que causava travamentos
+
+**Melhorias Técnicas:**
+- Uso de framer-motion para animações mais suaves
+- AnimatePresence para gerenciar entrada/saída do overlay
+- Overlay fixo com z-index alto durante transição
+- Logo exibido em layout vertical (tamanho xl) no centro
+- Transição fade otimizada para o conteúdo
+
+**Arquivos Modificados:**
+- `src/views/components/animations/PageTransition.tsx` - Reescrito completamente
+- `app/(routes)/layout.tsx` - Removidas props obsoletas
+
+**Status:** Transições otimizadas e logo animado implementado ✅
+
+**Próximos Passos:**
+1. Continuar com próximos itens da Fase 4
