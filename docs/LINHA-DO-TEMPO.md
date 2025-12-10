@@ -1729,6 +1729,43 @@
 
 ---
 
+**04/12/2024 - Fase 4.5: Cards 3D com Efeito de Levitação**
+
+**Implementado:**
+- ✅ Componente Card3D criado com GSAP
+- ✅ Efeito 3D com tilt baseado na posição do mouse
+- ✅ Efeito de levitação (hover com elevação de -8px)
+- ✅ Partículas animadas no hover (verde neon)
+- ✅ Efeito de ripple no clique
+- ✅ Magnetismo suave (movimento sutil seguindo mouse)
+- ✅ Glow neon na borda (verde #00FF88)
+- ✅ Detecção automática de mobile (desabilita animações)
+- ✅ Adaptado para identidade visual da Decyphra
+
+**Características Técnicas:**
+- GSAP instalado e integrado
+- Animações otimizadas com requestAnimationFrame
+- Partículas com glow verde neon
+- Transform 3D com preserve-3d
+- Cleanup automático de partículas e listeners
+- Performance otimizada (desabilita em mobile)
+
+**Arquivos Criados:**
+- `src/views/components/ui/Card3D.tsx` - Componente Card3D completo
+- `src/views/components/ui/index.ts` - Export adicionado
+
+**Arquivos Modificados:**
+- `package.json` - GSAP adicionado como dependência
+- `docs/PLANEJAMENTO-COMPLETO.md` - Seção 4.5 adicionada
+
+**Status:** Cards 3D implementados ✅ | Prontos para uso nas páginas ✅
+
+**Próximos Passos:**
+1. Aplicar cards 3D em páginas principais (Home, Serviços, Portfólio)
+2. Continuar com próximos itens da Fase 4
+
+---
+
 **04/12/2024 - Atualização: Fase 4.1 - Animações de Scroll Marcadas como Concluídas**
 
 **Verificação Realizada:**
