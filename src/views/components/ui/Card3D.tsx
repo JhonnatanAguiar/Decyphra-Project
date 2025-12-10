@@ -168,12 +168,12 @@ const Card3D = ({
 }: Card3DProps) => {
   const cardRef = useRef<HTMLDivElement>(null)
   const particlesRef = useRef<HTMLDivElement[]>([])
-  const timeoutsRef = useRef<number[]>([])
+  const timeoutsRef = useRef<(ReturnType<typeof setTimeout> | number)[]>([])
   const isHoveredRef = useRef(false)
   const memoizedParticles = useRef<HTMLDivElement[]>([])
   const particlesInitialized = useRef(false)
-  const quickTiltX = useRef<gsap.QuickTo | null>(null)
-  const quickTiltY = useRef<gsap.QuickTo | null>(null)
+  const quickTiltX = useRef<ReturnType<typeof gsap.quickTo> | null>(null)
+  const quickTiltY = useRef<ReturnType<typeof gsap.quickTo> | null>(null)
   const [isMobile, setIsMobile] = useState(false)
 
   // Detectar mobile
@@ -257,20 +257,23 @@ const Card3D = ({
 
     // Inicializar quickTo para tilt ultra-rápido e fluido
     if (enableTilt) {
-      // Configurar perspectiva 3D
+      // Configurar perspectiva 3D e garantir que o elemento está pronto
       gsap.set(element, {
         transformPerspective: 1000,
         transformStyle: 'preserve-3d',
+        rotationX: 0,
+        rotationY: 0,
       })
 
       // Inicializar quickTo para máxima responsividade (ultra-rápido)
-      quickTiltX.current = gsap.quickTo(element, 'rotateX', {
-        duration: 0.08,
-        ease: 'none', // Linear para resposta instantânea
+      // Usar 'rotationX' e 'rotationY' ao invés de 'rotateX' e 'rotateY'
+      quickTiltX.current = gsap.quickTo(element, 'rotationX', {
+        duration: 0.1,
+        ease: 'none',
       })
-      quickTiltY.current = gsap.quickTo(element, 'rotateY', {
-        duration: 0.08,
-        ease: 'none', // Linear para resposta instantânea
+      quickTiltY.current = gsap.quickTo(element, 'rotationY', {
+        duration: 0.1,
+        ease: 'none',
       })
     }
 
@@ -290,13 +293,7 @@ const Card3D = ({
         animateParticles()
       }
       if (enableTilt) {
-        gsap.to(element, {
-          rotateX: 5,
-          rotateY: 5,
-          duration: 0.3,
-          ease: 'power2.out',
-          transformPerspective: 1000,
-        })
+        // Apenas levitação, sem rotação fixa para não conflitar com o tilt dinâmico
         gsap.to(element, {
           y: -8,
           duration: 0.3,
@@ -312,8 +309,8 @@ const Card3D = ({
       }
       if (enableTilt) {
         gsap.to(element, {
-          rotateX: 0,
-          rotateY: 0,
+          rotationX: 0,
+          rotationY: 0,
           duration: 0.3,
           ease: 'power2.out',
         })
@@ -325,47 +322,33 @@ const Card3D = ({
       }
     }
 
-    // Usar requestAnimationFrame para otimizar chamadas do mousemove
-    let rafId: number | null = null
-
     const handleMouseMove = (e: MouseEvent) => {
-      if (!enableTilt) return
+      if (!enableTilt || !isHoveredRef.current) return
       
-      // Cancelar frame anterior se existir para evitar fila
-      if (rafId !== null) {
-        cancelAnimationFrame(rafId)
+      const rect = element.getBoundingClientRect()
+      const x = e.clientX - rect.left
+      const y = e.clientY - rect.top
+      const centerX = rect.width / 2
+      const centerY = rect.height / 2
+
+      // Tilt dinâmico - calcular rotações baseadas na posição do mouse
+      const rotateX = ((y - centerY) / centerY) * -15
+      const rotateY = ((x - centerX) / centerX) * 15
+
+      // Usar quickTo se disponível (ultra-rápido e fluido)
+      if (quickTiltX.current && quickTiltY.current) {
+        quickTiltX.current(rotateX)
+        quickTiltY.current(rotateY)
+      } else {
+        // Fallback: usar gsap.to com overwrite para cancelar animações anteriores
+        gsap.to(element, {
+          rotationX: rotateX,
+          rotationY: rotateY,
+          duration: 0.1,
+          ease: 'none',
+          overwrite: true,
+        })
       }
-
-      // Usar requestAnimationFrame para sincronizar com refresh rate do browser
-      rafId = requestAnimationFrame(() => {
-        const rect = element.getBoundingClientRect()
-        const x = e.clientX - rect.left
-        const y = e.clientY - rect.top
-        const centerX = rect.width / 2
-        const centerY = rect.height / 2
-
-        // Tilt dinâmico usando quickTo para máxima fluidez e responsividade
-        const rotateX = ((y - centerY) / centerY) * -10
-        const rotateY = ((x - centerX) / centerX) * 10
-
-        // Usar quickTo se disponível (ultra-rápido e fluido)
-        if (quickTiltX.current && quickTiltY.current) {
-          quickTiltX.current(rotateX)
-          quickTiltY.current(rotateY)
-        } else {
-          // Fallback: usar gsap.to com overwrite para cancelar animações anteriores
-          gsap.to(element, {
-            rotateX,
-            rotateY,
-            duration: 0.03, // Ultra-rápido no fallback
-            ease: 'none', // Linear para resposta instantânea
-            transformPerspective: 1000,
-            overwrite: 'auto', // Cancela automaticamente animações em conflito
-          })
-        }
-
-        rafId = null
-      })
     }
 
     const handleClick = (e: MouseEvent) => {
@@ -412,11 +395,6 @@ const Card3D = ({
 
     return () => {
       isHoveredRef.current = false
-      // Cancelar requestAnimationFrame pendente
-      if (rafId !== null) {
-        cancelAnimationFrame(rafId)
-        rafId = null
-      }
       element.removeEventListener('mouseenter', handleMouseEnter)
       element.removeEventListener('mouseleave', handleMouseLeave)
       element.removeEventListener('mousemove', handleMouseMove)
