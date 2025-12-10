@@ -421,7 +421,7 @@ light: {
 - [x] Transições entre páginas - ✅ Concluído
 
 #### 4.3 Efeitos Especiais
-- [ ] Background effects (partículas, gradientes)
+- [x] Background effects (LetterGlitch nas hero sections) - ✅ Concluído
 - [ ] Text reveal animations
 - [ ] Loading states elegantes
 - [ ] Cursor customizado (opcional)

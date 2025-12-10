@@ -1,7 +1,7 @@
 'use client'
 
 import { Container, Section } from '@/views/components/layout'
-import { FadeIn, ScrollReveal } from '@/views/components/animations'
+import { FadeIn, ScrollReveal, LetterGlitch } from '@/views/components/animations'
 import { Card3D } from '@/views/components/ui/Card3D'
 import Link from 'next/link'
 import { ROUTES } from '@/lib/constants/routes'
@@ -33,8 +33,15 @@ export default function AboutPage() {
     <>
       {/* Hero Section */}
       <Section variant="dark" spacing="lg" className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-black/10 to-dark-950" />
-        <div className="absolute top-0 right-0 w-72 h-72 bg-primary-500/5 rounded-full blur-3xl animate-pulse" />
+        <LetterGlitch
+          glitchColors={['#000000', '#00FF88', '#00CC6A']}
+          glitchSpeed={50}
+          centerVignette={false}
+          outerVignette={true}
+          smooth={true}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/10 to-dark-950 z-[1]" />
+        <div className="absolute top-0 right-0 w-72 h-72 bg-primary-500/5 rounded-full blur-3xl animate-pulse z-[1]" />
         <Container size="lg" className="relative z-10">
           <motion.div
             initial="hidden"
@@ -51,13 +58,13 @@ export default function AboutPage() {
             </motion.div>
             <motion.h1
               variants={itemVariants}
-              className="text-5xl lg:text-7xl font-bold mb-4 text-light-50"
+              className="text-5xl lg:text-7xl font-bold mb-4 text-light-50 drop-shadow-[0_0_20px_rgba(0,255,136,0.5)]"
             >
-              <span className="text-primary-500">Decifrando</span> o Digital
+              <span className="text-primary-500 drop-shadow-[0_0_30px_rgba(0,255,136,0.8)]">Decifrando</span> o Digital
             </motion.h1>
             <motion.p
               variants={itemVariants}
-              className="text-xl text-light-200 max-w-3xl mx-auto"
+              className="text-xl text-light-200 max-w-3xl mx-auto drop-shadow-[0_0_15px_rgba(0,0,0,0.8)]"
             >
               Somos uma dupla de desenvolvedores que transforma ideias em presença digital. 
               Combinamos código, design e IA para criar sites que impulsionam negócios reais.

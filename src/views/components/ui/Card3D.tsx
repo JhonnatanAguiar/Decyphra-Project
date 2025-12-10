@@ -331,9 +331,9 @@ const Card3D = ({
       const centerX = rect.width / 2
       const centerY = rect.height / 2
 
-      // Tilt dinâmico - calcular rotações baseadas na posição do mouse
-      const rotateX = ((y - centerY) / centerY) * -15
-      const rotateY = ((x - centerX) / centerX) * 15
+      // Tilt dinâmico - calcular rotações baseadas na posição do mouse (mais sutil)
+      const rotateX = ((y - centerY) / centerY) * -8
+      const rotateY = ((x - centerX) / centerX) * 8
 
       // Usar quickTo se disponível (ultra-rápido e fluido)
       if (quickTiltX.current && quickTiltY.current) {

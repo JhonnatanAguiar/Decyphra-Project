@@ -15,3 +15,5 @@ export type { PageTransitionProps } from './PageTransition'
 
 export { Parallax } from './Parallax'
 export type { ParallaxProps } from './Parallax'
+
+export { default as LetterGlitch } from './LetterGlitch'

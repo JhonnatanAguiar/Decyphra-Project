@@ -1,7 +1,7 @@
 'use client'
 
 import { Container, Section } from '@/views/components/layout'
-import { FadeIn, ScrollReveal } from '@/views/components/animations'
+import { FadeIn, ScrollReveal, LetterGlitch } from '@/views/components/animations'
 import { Card3D } from '@/views/components/ui/Card3D'
 import { CardHeader, CardTitle, CardDescription } from '@/views/components/ui/Card'
 import Link from 'next/link'
@@ -106,15 +106,22 @@ export default function HomePage() {
     <>
       {/* Hero Section */}
       <Section variant="dark" spacing="xl" className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-dark-950 via-dark-1000 to-dark-950 opacity-50" />
+        <LetterGlitch
+          glitchColors={['#000000', '#00FF88', '#00CC6A']}
+          glitchSpeed={50}
+          centerVignette={false}
+          outerVignette={true}
+          smooth={true}
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-dark-950 via-dark-1000 to-dark-950 opacity-50 z-[1]" />
         <Container size="lg" className="relative z-10">
           <FadeIn direction="up" delay={0}>
             <div className="text-center max-w-4xl mx-auto py-20 lg:py-32">
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-light-50">
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-light-50 drop-shadow-[0_0_20px_rgba(0,255,136,0.5)]">
                 Transforme seu{' '}
-                <span className="text-primary-500">negócio digital</span>
+                <span className="text-primary-500 drop-shadow-[0_0_30px_rgba(0,255,136,0.8)]">negócio digital</span>
               </h1>
-              <p className="text-xl md:text-2xl text-light-200 mb-8 leading-relaxed">
+              <p className="text-xl md:text-2xl text-light-200 mb-8 leading-relaxed drop-shadow-[0_0_15px_rgba(0,0,0,0.8)]">
                 Desenvolvimento web, sistemas e APIs para pequenas e médias empresas.
                 Soluções que impulsionam resultados.
               </p>

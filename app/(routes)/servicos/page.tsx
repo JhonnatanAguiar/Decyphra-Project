@@ -1,7 +1,7 @@
 'use client'
 
 import { Container, Section } from '@/views/components/layout'
-import { FadeIn, ScrollReveal } from '@/views/components/animations'
+import { FadeIn, ScrollReveal, LetterGlitch } from '@/views/components/animations'
 import { Card3D } from '@/views/components/ui/Card3D'
 import { CardHeader, CardTitle, CardDescription, CardContent } from '@/views/components/ui'
 import Link from 'next/link'
@@ -81,14 +81,21 @@ export default function ServicesPage() {
     <>
       {/* Hero Section */}
       <Section variant="dark" spacing="lg" className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-dark-950 via-dark-1000 to-dark-950 opacity-50" />
+        <LetterGlitch
+          glitchColors={['#000000', '#00FF88', '#00CC6A']}
+          glitchSpeed={50}
+          centerVignette={false}
+          outerVignette={true}
+          smooth={true}
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-dark-950 via-dark-1000 to-dark-950 opacity-50 z-[1]" />
         <Container size="lg" className="relative z-10">
           <FadeIn direction="up" delay={0}>
             <div className="text-center max-w-3xl mx-auto py-16 lg:py-24">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-light-50">
-                Nossos <span className="text-primary-500">Serviços</span>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-light-50 drop-shadow-[0_0_20px_rgba(0,255,136,0.5)]">
+                Nossos <span className="text-primary-500 drop-shadow-[0_0_30px_rgba(0,255,136,0.8)]">Serviços</span>
               </h1>
-              <p className="text-xl md:text-2xl text-light-200 leading-relaxed">
+              <p className="text-xl md:text-2xl text-light-200 leading-relaxed drop-shadow-[0_0_15px_rgba(0,0,0,0.8)]">
                 Soluções completas em desenvolvimento web, sistemas e APIs para transformar seu negócio digital
               </p>
             </div>

@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { Container, Section } from '@/views/components/layout'
-import { FadeIn, ScrollReveal } from '@/views/components/animations'
+import { FadeIn, ScrollReveal, LetterGlitch } from '@/views/components/animations'
 import { Input } from '@/views/components/ui/Input'
 import { Textarea } from '@/views/components/ui/Textarea'
 import { Select } from '@/views/components/ui/Select'
@@ -116,14 +116,21 @@ export default function ContactPage() {
     <>
       {/* Seção Introdutória "Vamos Conversar?" */}
       <Section variant="dark" spacing="lg" className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-dark-950 via-dark-1000 to-dark-950 opacity-50" />
+        <LetterGlitch
+          glitchColors={['#000000', '#00FF88', '#00CC6A']}
+          glitchSpeed={50}
+          centerVignette={false}
+          outerVignette={true}
+          smooth={true}
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-dark-950 via-dark-1000 to-dark-950 opacity-50 z-[1]" />
         <Container size="lg" className="relative z-10">
           <FadeIn direction="up" delay={0}>
             <div className="text-center py-12 lg:py-16">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-primary-500">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-primary-500 drop-shadow-[0_0_30px_rgba(0,255,136,0.8)]">
                 Vamos Conversar?
               </h1>
-              <p className="text-lg md:text-xl text-light-200 leading-relaxed max-w-3xl mx-auto">
+              <p className="text-lg md:text-xl text-light-200 leading-relaxed max-w-3xl mx-auto drop-shadow-[0_0_15px_rgba(0,0,0,0.8)]">
                 Pronto para transformar seu negócio? Entre em contato conosco e receba um orçamento gratuito personalizado.
               </p>
             </div>
