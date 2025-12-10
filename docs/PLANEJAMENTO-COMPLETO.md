@@ -404,7 +404,7 @@ light: {
 ---
 
 ### ⚡ Fase 4: Funcionalidades Dinâmicas
-**Status:** ⏳ Em Progresso (55% completo)
+**Status:** ⏳ Em Progresso (60% completo)
 
 #### 4.1 Animações de Scroll
 - [x] Implementar scroll suave - ✅ Concluído
@@ -434,7 +434,7 @@ light: {
 
 #### 4.5 Elevação de Componentes
 - [x] Cards 3D com efeito de levitação - ✅ Concluído
-- [ ] Aplicar cards 3D em páginas principais
+- [x] Aplicar cards 3D em páginas principais - ✅ Concluído
 - [ ] Botões com efeitos 3D (opcional)
 - [ ] Outros componentes com elevação (opcional)
 

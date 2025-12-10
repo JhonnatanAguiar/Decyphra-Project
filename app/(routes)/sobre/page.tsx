@@ -2,6 +2,7 @@
 
 import { Container, Section } from '@/views/components/layout'
 import { FadeIn, ScrollReveal } from '@/views/components/animations'
+import { Card3D } from '@/views/components/ui/Card3D'
 import Link from 'next/link'
 import { ROUTES } from '@/lib/constants/routes'
 import { Users, Cpu, Code, Zap, ArrowRight } from 'lucide-react'
@@ -142,56 +143,62 @@ export default function AboutPage() {
                 </p>
               </motion.div>
               <div className="grid md:grid-cols-3 gap-8 text-center">
-                <motion.div
-                  initial={{ opacity: 0, y: 50 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.1, duration: 0.6, ease: 'easeOut' }}
-                  viewport={{ once: true, amount: 0.5 }}
-                  className="bg-dark-900/50 border border-primary-500/20 p-8 rounded-xl hover:-translate-y-2 hover:border-primary-500/50 transition-transform duration-300"
-                >
-                  <Zap className="w-10 h-10 mx-auto mb-4 text-primary-500" />
-                  <h3 className="text-xl font-bold text-light-50 mb-2">
-                    Ferramentas Populares
-                  </h3>
-                  <p className="text-light-300">
-                    Utilizamos desde ferramentas populares como o WordPress, até construtores com 
-                    inteligência artificial como o Horizon da Hostinger.
-                  </p>
-                </motion.div>
-                <motion.div
-                  initial={{ opacity: 0, y: 50 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2, duration: 0.6, ease: 'easeOut' }}
-                  viewport={{ once: true, amount: 0.5 }}
-                  className="bg-dark-900/50 border border-primary-500/20 p-8 rounded-xl hover:-translate-y-2 hover:border-primary-500/50 transition-transform duration-300"
-                >
-                  <Code className="w-10 h-10 mx-auto mb-4 text-primary-500" />
-                  <h3 className="text-xl font-bold text-light-50 mb-2">
-                    Código Sob Medida
-                  </h3>
-                  <p className="text-light-300">
-                    Desenvolvemos sites e soluções totalmente do zero com código próprio, quando 
-                    necessário, para projetos únicos e personalizados.
-                  </p>
-                </motion.div>
-                <motion.div
-                  initial={{ opacity: 0, y: 50 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3, duration: 0.6, ease: 'easeOut' }}
-                  viewport={{ once: true, amount: 0.5 }}
-                  className="bg-dark-900/50 border border-primary-500/20 p-8 rounded-xl hover:-translate-y-2 hover:border-primary-500/50 transition-transform duration-300"
-                >
-                  <Cpu className="w-10 h-10 mx-auto mb-4 text-primary-500" />
-                  <h3 className="text-xl font-bold text-light-50 mb-2">
-                    Potencializado por IA
-                  </h3>
-                  <p className="text-light-300">
-                    Nossa principal vantagem? Dominamos o uso de IA em todas as etapas, desde a 
-                    criação de conteúdo, automação de tarefas repetitivas, SEO, design assistido, 
-                    até programação. Isso nos permite oferecer soluções modernas, escaláveis e 
-                    acessíveis, sem abrir mão da personalização e do toque humano.
-                  </p>
-                </motion.div>
+                <ScrollReveal direction="up" delay={100}>
+                  <Card3D
+                    enableTilt={true}
+                    enableParticles={false}
+                    enableRipple={true}
+                    enableBorderGlow={true}
+                    className="p-8"
+                  >
+                    <Zap className="w-10 h-10 mx-auto mb-4 text-primary-500" />
+                    <h3 className="text-xl font-bold text-light-50 mb-2">
+                      Ferramentas Populares
+                    </h3>
+                    <p className="text-light-300">
+                      Utilizamos desde ferramentas populares como o WordPress, até construtores com 
+                      inteligência artificial como o Horizon da Hostinger.
+                    </p>
+                  </Card3D>
+                </ScrollReveal>
+                <ScrollReveal direction="up" delay={200}>
+                  <Card3D
+                    enableTilt={true}
+                    enableParticles={false}
+                    enableRipple={true}
+                    enableBorderGlow={true}
+                    className="p-8"
+                  >
+                    <Code className="w-10 h-10 mx-auto mb-4 text-primary-500" />
+                    <h3 className="text-xl font-bold text-light-50 mb-2">
+                      Código Sob Medida
+                    </h3>
+                    <p className="text-light-300">
+                      Desenvolvemos sites e soluções totalmente do zero com código próprio, quando 
+                      necessário, para projetos únicos e personalizados.
+                    </p>
+                  </Card3D>
+                </ScrollReveal>
+                <ScrollReveal direction="up" delay={300}>
+                  <Card3D
+                    enableTilt={true}
+                    enableParticles={false}
+                    enableRipple={true}
+                    enableBorderGlow={true}
+                    className="p-8"
+                  >
+                    <Cpu className="w-10 h-10 mx-auto mb-4 text-primary-500" />
+                    <h3 className="text-xl font-bold text-light-50 mb-2">
+                      Potencializado por IA
+                    </h3>
+                    <p className="text-light-300">
+                      Nossa principal vantagem? Dominamos o uso de IA em todas as etapas, desde a 
+                      criação de conteúdo, automação de tarefas repetitivas, SEO, design assistido, 
+                      até programação. Isso nos permite oferecer soluções modernas, escaláveis e 
+                      acessíveis, sem abrir mão da personalização e do toque humano.
+                    </p>
+                  </Card3D>
+                </ScrollReveal>
               </div>
             </div>
           </ScrollReveal>

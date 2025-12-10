@@ -2,6 +2,7 @@
 
 import { Container, Section } from '@/views/components/layout'
 import { FadeIn, ScrollReveal } from '@/views/components/animations'
+import { Card3D } from '@/views/components/ui/Card3D'
 import { Button } from '@/views/components/ui/Button'
 import Link from 'next/link'
 import { ROUTES } from '@/lib/constants/routes'
@@ -137,12 +138,12 @@ export default function PortfolioPage() {
               const IconComponent = project.icon
               return (
                 <ScrollReveal key={project.id} direction="up" delay={index * 50}>
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                    className="bg-dark-900/50 rounded-lg border border-dark-800 overflow-hidden hover:border-primary-500/50 transition-all duration-300 group"
+                  <Card3D
+                    enableTilt={true}
+                    enableParticles={false}
+                    enableRipple={true}
+                    enableBorderGlow={true}
+                    className="overflow-hidden group"
                   >
                     {/* Imagem do Projeto */}
                     <div className="relative h-48 overflow-hidden">
@@ -153,13 +154,13 @@ export default function PortfolioPage() {
                         className="object-cover group-hover:scale-110 transition-transform duration-500"
                       />
                       {/* Tag de Categoria */}
-                      <div className="absolute bottom-4 left-4">
+                      <div className="absolute bottom-4 left-4 z-10">
                         <span className={`${project.categoryColor} text-dark-950 px-3 py-1 rounded-full text-xs font-semibold`}>
                           {project.category}
                         </span>
                       </div>
                       {/* Ícone Decorativo */}
-                      <div className="absolute top-4 right-4">
+                      <div className="absolute top-4 right-4 z-10">
                         <div className="w-10 h-10 bg-dark-900/80 rounded-lg flex items-center justify-center border border-primary-500/20">
                           <IconComponent className="w-5 h-5 text-primary-500" />
                         </div>
@@ -194,7 +195,7 @@ export default function PortfolioPage() {
                         <ExternalLink className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
                       </Link>
                     </div>
-                  </motion.div>
+                  </Card3D>
                 </ScrollReveal>
               )
             })}

@@ -2,6 +2,8 @@
 
 import { Container, Section } from '@/views/components/layout'
 import { FadeIn, ScrollReveal } from '@/views/components/animations'
+import { Card3D } from '@/views/components/ui/Card3D'
+import { CardHeader, CardTitle, CardDescription } from '@/views/components/ui/Card'
 import Link from 'next/link'
 import { ROUTES } from '@/lib/constants/routes'
 import { getServiceIcon } from '@/lib/constants/icons'
@@ -156,7 +158,13 @@ export default function HomePage() {
                 return (
                   <ScrollReveal key={service.id} direction="up" delay={index * 50}>
                     <Link href={`${ROUTES.services}/${service.slug}`}>
-                      <div className="bg-dark-900 rounded-lg border border-dark-800 p-6 hover:border-primary-500 transition-all duration-300 h-full">
+                      <Card3D
+                        enableTilt={true}
+                        enableParticles={false}
+                        enableRipple={true}
+                        enableBorderGlow={true}
+                        className="h-full p-6"
+                      >
                         <div className="w-12 h-12 bg-primary-500 rounded-lg flex items-center justify-center mb-4">
                           <ServiceIcon className="w-6 h-6 text-dark-900" strokeWidth={1.5} />
                         </div>
@@ -166,7 +174,7 @@ export default function HomePage() {
                         <p className="text-light-300 text-sm">
                           {service.description}
                         </p>
-                      </div>
+                      </Card3D>
                     </Link>
                   </ScrollReveal>
                 )
@@ -230,30 +238,35 @@ export default function HomePage() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {featuredProjects.map((project, index) => (
                 <ScrollReveal key={project.id} direction="up" delay={index * 50}>
-                  <div className="bg-dark-900 rounded-lg border border-dark-800 overflow-hidden hover:border-primary-500 transition-all duration-300">
-                    <div className="relative aspect-video">
-                      <Image
-                        src={project.image}
-                        alt={project.title}
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                    <div className="p-6">
-                      <h3 className="text-xl font-semibold mb-2 text-light-50">
-                        {project.title}
-                      </h3>
-                      <p className="text-light-300 text-sm mb-4">
-                        {project.description}
-                      </p>
-                      <Link
-                        href={`${ROUTES.portfolio}/${project.slug}`}
-                        className="inline-flex items-center justify-center rounded-lg font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-dark-950 bg-transparent text-primary-500 hover:bg-primary-500/10 hover:shadow-[0_0_10px_rgba(0,255,136,0.2)] focus:ring-primary-500 px-4 py-2 text-sm"
-                      >
-                        Ver Detalhes
-                      </Link>
-                    </div>
-                  </div>
+                  <Link href={`${ROUTES.portfolio}/${project.slug}`}>
+                    <Card3D
+                      enableTilt={true}
+                      enableParticles={false}
+                      enableRipple={true}
+                      enableBorderGlow={true}
+                      className="overflow-hidden"
+                    >
+                      <div className="relative aspect-video">
+                        <Image
+                          src={project.image}
+                          alt={project.title}
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
+                      <div className="p-6">
+                        <h3 className="text-xl font-semibold mb-2 text-light-50">
+                          {project.title}
+                        </h3>
+                        <p className="text-light-300 text-sm mb-4">
+                          {project.description}
+                        </p>
+                        <span className="text-primary-500 text-sm font-medium hover:underline inline-flex items-center gap-2">
+                          Ver projeto →
+                        </span>
+                      </div>
+                    </Card3D>
+                  </Link>
                 </ScrollReveal>
               ))}
             </div>
@@ -285,7 +298,13 @@ export default function HomePage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
               {featuredTestimonials.map((testimonial, index) => (
                 <ScrollReveal key={testimonial.id} direction="up" delay={index * 50}>
-                  <div className="bg-dark-900 rounded-lg border border-primary-500/20 p-6 hover:border-primary-500/50 transition-all duration-300">
+                  <Card3D
+                    enableTilt={true}
+                    enableParticles={false}
+                    enableRipple={true}
+                    enableBorderGlow={true}
+                    className="p-6"
+                  >
                     <p className="text-light-200 mb-4 italic leading-relaxed">
                       "{testimonial.content}"
                     </p>
@@ -306,7 +325,7 @@ export default function HomePage() {
                         <div className="text-xs text-light-400">{testimonial.company}</div>
                       </div>
                     </div>
-                  </div>
+                  </Card3D>
                 </ScrollReveal>
               ))}
             </div>

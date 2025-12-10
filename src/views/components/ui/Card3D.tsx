@@ -11,18 +11,17 @@ import { cn } from '@/lib/utils/cn'
  * Segue o design system da Decyphra com verde neon (#00FF88).
  * 
  * Características:
- * - Efeito 3D com tilt baseado na posição do mouse
+ * - Efeito 3D com tilt dinâmico que acompanha o cursor
  * - Efeito de levitação (hover)
  * - Partículas animadas no hover
  * - Efeito de ripple no clique
- * - Magnetismo suave
  * - Glow neon na borda
+ * - Spotlight effect global que ilumina cards próximos
  */
 
 export interface Card3DProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode
   enableTilt?: boolean
-  enableMagnetism?: boolean
   enableParticles?: boolean
   enableRipple?: boolean
   enableBorderGlow?: boolean
@@ -34,6 +33,108 @@ export interface Card3DProps extends HTMLAttributes<HTMLDivElement> {
 const DEFAULT_PARTICLE_COUNT = 8
 const DEFAULT_GLOW_COLOR = '0, 255, 136' // Verde neon da Decyphra (#00FF88)
 const MOBILE_BREAKPOINT = 768
+const SPOTLIGHT_RADIUS = 500 // Raio do spotlight em pixels
+
+// Spotlight global (singleton)
+let spotlightElement: HTMLDivElement | null = null
+let spotlightInitialized = false
+const cardInstances = new Set<HTMLDivElement>()
+
+const initializeSpotlight = () => {
+  if (spotlightInitialized || typeof window === 'undefined') return
+
+  spotlightElement = document.createElement('div')
+  spotlightElement.className = 'card3d-spotlight'
+  spotlightElement.style.cssText = `
+    position: fixed;
+    width: ${SPOTLIGHT_RADIUS * 2}px;
+    height: ${SPOTLIGHT_RADIUS * 2}px;
+    border-radius: 50%;
+    pointer-events: none;
+    background: radial-gradient(
+      circle,
+      rgba(${DEFAULT_GLOW_COLOR}, 0.15) 0%,
+      rgba(${DEFAULT_GLOW_COLOR}, 0.08) 15%,
+      rgba(${DEFAULT_GLOW_COLOR}, 0.04) 25%,
+      rgba(${DEFAULT_GLOW_COLOR}, 0.02) 40%,
+      transparent 70%
+    );
+    z-index: 100;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    mix-blend-mode: screen;
+    transition: opacity 0.2s ease;
+  `
+  document.body.appendChild(spotlightElement)
+  spotlightInitialized = true
+
+  // Handler global de movimento do mouse para spotlight
+  const handleGlobalMouseMove = (e: MouseEvent) => {
+    if (!spotlightElement) return
+
+    gsap.to(spotlightElement, {
+      left: e.clientX,
+      top: e.clientY,
+      duration: 0.1,
+      ease: 'none',
+    })
+
+    // Atualizar glow em todos os cards baseado na distância
+    cardInstances.forEach(card => {
+      const rect = card.getBoundingClientRect()
+      const cardCenterX = rect.left + rect.width / 2
+      const cardCenterY = rect.top + rect.height / 2
+      const distance = Math.hypot(e.clientX - cardCenterX, e.clientY - cardCenterY)
+      
+      // Calcular intensidade baseada na distância (raio 500px)
+      let intensity = 0
+      if (distance <= SPOTLIGHT_RADIUS) {
+        intensity = 1 - (distance / SPOTLIGHT_RADIUS)
+      }
+
+      // Aplicar glow na borda do card
+      const relativeX = ((e.clientX - rect.left) / rect.width) * 100
+      const relativeY = ((e.clientY - rect.top) / rect.height) * 100
+      
+      card.style.setProperty('--glow-x', `${relativeX}%`)
+      card.style.setProperty('--glow-y', `${relativeY}%`)
+      card.style.setProperty('--glow-intensity', intensity.toString())
+    })
+
+    // Mostrar spotlight se houver cards próximos
+    const hasNearbyCards = Array.from(cardInstances).some(card => {
+      const rect = card.getBoundingClientRect()
+      const cardCenterX = rect.left + rect.width / 2
+      const cardCenterY = rect.top + rect.height / 2
+      const distance = Math.hypot(e.clientX - cardCenterX, e.clientY - cardCenterY)
+      return distance <= SPOTLIGHT_RADIUS
+    })
+
+    gsap.to(spotlightElement, {
+      opacity: hasNearbyCards ? 0.8 : 0,
+      duration: 0.2,
+      ease: 'power2.out',
+    })
+  }
+
+  const handleMouseLeave = () => {
+    if (!spotlightElement) return
+    gsap.to(spotlightElement, {
+      opacity: 0,
+      duration: 0.3,
+      ease: 'power2.out',
+    })
+    // Resetar glow em todos os cards
+    cardInstances.forEach(card => {
+      card.style.setProperty('--glow-intensity', '0')
+    })
+  }
+
+  document.addEventListener('mousemove', handleGlobalMouseMove)
+  document.addEventListener('mouseleave', handleMouseLeave)
+
+  // Cleanup será feito quando não houver mais cards
+}
 
 const createParticleElement = (x: number, y: number, color: string = DEFAULT_GLOW_COLOR): HTMLDivElement => {
   const el = document.createElement('div')
@@ -57,7 +158,6 @@ const Card3D = ({
   children,
   className,
   enableTilt = true,
-  enableMagnetism = true,
   enableParticles = true,
   enableRipple = true,
   enableBorderGlow = true,
@@ -72,7 +172,8 @@ const Card3D = ({
   const isHoveredRef = useRef(false)
   const memoizedParticles = useRef<HTMLDivElement[]>([])
   const particlesInitialized = useRef(false)
-  const magnetismAnimationRef = useRef<gsap.core.Tween | null>(null)
+  const quickTiltX = useRef<gsap.QuickTo | null>(null)
+  const quickTiltY = useRef<gsap.QuickTo | null>(null)
   const [isMobile, setIsMobile] = useState(false)
 
   // Detectar mobile
@@ -97,7 +198,6 @@ const Card3D = ({
   const clearAllParticles = useCallback(() => {
     timeoutsRef.current.forEach(clearTimeout)
     timeoutsRef.current = []
-    magnetismAnimationRef.current?.kill()
     particlesRef.current.forEach(particle => {
       gsap.to(particle, {
         scale: 0,
@@ -145,6 +245,40 @@ const Card3D = ({
     })
   }, [initializeParticles, enableParticles])
 
+  // Inicializar spotlight e registrar card
+  useEffect(() => {
+    if (shouldDisableAnimations || !cardRef.current) return
+
+    const element = cardRef.current
+    cardInstances.add(element)
+
+    // Inicializar spotlight se ainda não foi
+    initializeSpotlight()
+
+    // Inicializar quickTo para tilt ultra-rápido e fluido
+    if (enableTilt) {
+      // Configurar perspectiva 3D
+      gsap.set(element, {
+        transformPerspective: 1000,
+        transformStyle: 'preserve-3d',
+      })
+
+      // Inicializar quickTo para máxima responsividade (ultra-rápido)
+      quickTiltX.current = gsap.quickTo(element, 'rotateX', {
+        duration: 0.08,
+        ease: 'none', // Linear para resposta instantânea
+      })
+      quickTiltY.current = gsap.quickTo(element, 'rotateY', {
+        duration: 0.08,
+        ease: 'none', // Linear para resposta instantânea
+      })
+    }
+
+    return () => {
+      cardInstances.delete(element)
+    }
+  }, [shouldDisableAnimations, enableTilt])
+
   useEffect(() => {
     if (shouldDisableAnimations || !cardRef.current) return
 
@@ -156,6 +290,13 @@ const Card3D = ({
         animateParticles()
       }
       if (enableTilt) {
+        gsap.to(element, {
+          rotateX: 5,
+          rotateY: 5,
+          duration: 0.3,
+          ease: 'power2.out',
+          transformPerspective: 1000,
+        })
         gsap.to(element, {
           y: -8,
           duration: 0.3,
@@ -173,14 +314,10 @@ const Card3D = ({
         gsap.to(element, {
           rotateX: 0,
           rotateY: 0,
-          y: 0,
           duration: 0.3,
           ease: 'power2.out',
         })
-      }
-      if (enableMagnetism) {
         gsap.to(element, {
-          x: 0,
           y: 0,
           duration: 0.3,
           ease: 'power2.out',
@@ -188,45 +325,47 @@ const Card3D = ({
       }
     }
 
+    // Usar requestAnimationFrame para otimizar chamadas do mousemove
+    let rafId: number | null = null
+
     const handleMouseMove = (e: MouseEvent) => {
-      if (!enableTilt && !enableMagnetism) return
-      const rect = element.getBoundingClientRect()
-      const x = e.clientX - rect.left
-      const y = e.clientY - rect.top
-      const centerX = rect.width / 2
-      const centerY = rect.height / 2
-
-      if (enableTilt) {
-        const rotateX = ((y - centerY) / centerY) * -8
-        const rotateY = ((x - centerX) / centerX) * 8
-        gsap.to(element, {
-          rotateX,
-          rotateY,
-          duration: 0.1,
-          ease: 'power2.out',
-          transformPerspective: 1000,
-        })
+      if (!enableTilt) return
+      
+      // Cancelar frame anterior se existir para evitar fila
+      if (rafId !== null) {
+        cancelAnimationFrame(rafId)
       }
 
-      if (enableMagnetism) {
-        const magnetX = (x - centerX) * 0.03
-        const magnetY = (y - centerY) * 0.03
-        magnetismAnimationRef.current = gsap.to(element, {
-          x: magnetX,
-          y: magnetY,
-          duration: 0.3,
-          ease: 'power2.out',
-        })
-      }
+      // Usar requestAnimationFrame para sincronizar com refresh rate do browser
+      rafId = requestAnimationFrame(() => {
+        const rect = element.getBoundingClientRect()
+        const x = e.clientX - rect.left
+        const y = e.clientY - rect.top
+        const centerX = rect.width / 2
+        const centerY = rect.height / 2
 
-      // Atualizar glow da borda
-      if (enableBorderGlow && element) {
-        const relativeX = ((x / rect.width) * 100).toFixed(2)
-        const relativeY = ((y / rect.height) * 100).toFixed(2)
-        element.style.setProperty('--glow-x', `${relativeX}%`)
-        element.style.setProperty('--glow-y', `${relativeY}%`)
-        element.style.setProperty('--glow-intensity', '1')
-      }
+        // Tilt dinâmico usando quickTo para máxima fluidez e responsividade
+        const rotateX = ((y - centerY) / centerY) * -10
+        const rotateY = ((x - centerX) / centerX) * 10
+
+        // Usar quickTo se disponível (ultra-rápido e fluido)
+        if (quickTiltX.current && quickTiltY.current) {
+          quickTiltX.current(rotateX)
+          quickTiltY.current(rotateY)
+        } else {
+          // Fallback: usar gsap.to com overwrite para cancelar animações anteriores
+          gsap.to(element, {
+            rotateX,
+            rotateY,
+            duration: 0.03, // Ultra-rápido no fallback
+            ease: 'none', // Linear para resposta instantânea
+            transformPerspective: 1000,
+            overwrite: 'auto', // Cancela automaticamente animações em conflito
+          })
+        }
+
+        rafId = null
+      })
     }
 
     const handleClick = (e: MouseEvent) => {
@@ -273,13 +412,18 @@ const Card3D = ({
 
     return () => {
       isHoveredRef.current = false
+      // Cancelar requestAnimationFrame pendente
+      if (rafId !== null) {
+        cancelAnimationFrame(rafId)
+        rafId = null
+      }
       element.removeEventListener('mouseenter', handleMouseEnter)
       element.removeEventListener('mouseleave', handleMouseLeave)
       element.removeEventListener('mousemove', handleMouseMove)
       element.removeEventListener('click', handleClick)
       clearAllParticles()
     }
-  }, [animateParticles, clearAllParticles, shouldDisableAnimations, enableTilt, enableMagnetism, enableRipple, enableParticles, enableBorderGlow, glowColor])
+  }, [animateParticles, clearAllParticles, shouldDisableAnimations, enableTilt, enableRipple, enableParticles, glowColor])
 
   return (
     <>
@@ -292,6 +436,8 @@ const Card3D = ({
         )}
         style={{
           transformStyle: 'preserve-3d',
+          perspective: enableTilt ? '1000px' : 'none',
+          willChange: enableTilt ? 'transform' : 'auto',
           '--glow-x': '50%',
           '--glow-y': '50%',
           '--glow-intensity': '0',

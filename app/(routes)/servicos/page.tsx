@@ -2,7 +2,8 @@
 
 import { Container, Section } from '@/views/components/layout'
 import { FadeIn, ScrollReveal } from '@/views/components/animations'
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/views/components/ui'
+import { Card3D } from '@/views/components/ui/Card3D'
+import { CardHeader, CardTitle, CardDescription, CardContent } from '@/views/components/ui'
 import Link from 'next/link'
 import { ROUTES } from '@/lib/constants/routes'
 import { getServiceIcon } from '@/lib/constants/icons'
@@ -103,9 +104,12 @@ export default function ServicesPage() {
               {services.map((service, index) => (
                 <ScrollReveal key={service.id} direction="up" delay={index * 100}>
                   <Link href={`${ROUTES.services}/${service.slug}`}>
-                    <Card
-                      variant="interactive"
-                      className="h-full transition-all duration-300 hover:border-primary-500"
+                    <Card3D
+                      enableTilt={true}
+                      enableParticles={false}
+                      enableRipple={true}
+                      enableBorderGlow={true}
+                      className="h-full"
                     >
                       <CardHeader>
                         <div className="flex items-start gap-4">
@@ -143,7 +147,7 @@ export default function ServicesPage() {
                           </span>
                         </div>
                       </CardContent>
-                    </Card>
+                    </Card3D>
                   </Link>
                 </ScrollReveal>
               ))}
