@@ -1,7 +1,7 @@
 'use client'
 
 import { Container, Section } from '@/views/components/layout'
-import { FadeIn, ScrollReveal } from '@/views/components/animations'
+import { FadeIn, ScrollReveal, LetterGlitch } from '@/views/components/animations'
 import Link from 'next/link'
 import { ROUTES } from '@/lib/constants/routes'
 import { Bot, Brain, Compass, Palette, BarChart, Code, FileText, Zap, Rocket, CheckCircle, Settings, Sparkles } from 'lucide-react'
@@ -73,7 +73,14 @@ export default function InteligenciaArtificialPage() {
     <>
       {/* Hero Section */}
       <Section variant="dark" spacing="lg" className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-dark-950 via-dark-1000 to-dark-950 opacity-50" />
+        <LetterGlitch
+          glitchColors={['#0a1a0f', '#00FF88', '#00CC6A']}
+          glitchSpeed={50}
+          centerVignette={false}
+          outerVignette={true}
+          smooth={true}
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-dark-950 via-dark-1000 to-dark-950 opacity-50 z-[1]" />
         <Container size="lg" className="relative z-10">
           <FadeIn direction="up" delay={0}>
             <div className="flex flex-col lg:flex-row items-start lg:items-center gap-8 lg:gap-12 py-16 lg:py-24">
@@ -85,10 +92,10 @@ export default function InteligenciaArtificialPage() {
               </div>
               {/* Título e Mensagem */}
               <div className="flex-1">
-                <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-light-50 leading-tight">
-                  Inteligência <span className="text-primary-500">Artificial</span>
+                <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-light-50 leading-tight drop-shadow-[0_0_20px_rgba(0,255,136,0.5)]">
+                  Inteligência <span className="text-primary-500 drop-shadow-[0_0_30px_rgba(0,255,136,0.8)]">Artificial</span>
                 </h1>
-                <p className="text-xl md:text-2xl lg:text-3xl text-light-200 leading-relaxed max-w-3xl">
+                <p className="text-xl md:text-2xl lg:text-3xl text-light-200 leading-relaxed max-w-3xl drop-shadow-[0_0_15px_rgba(0,0,0,0.8)]">
                   Implementação de IA para automação, chatbots e otimização de processos que aumentam a eficiência.
                 </p>
               </div>

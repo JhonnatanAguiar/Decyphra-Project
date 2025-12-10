@@ -1,13 +1,12 @@
 'use client'
 
 import { Container, Section } from '@/views/components/layout'
-import { FadeIn, ScrollReveal, LetterGlitch } from '@/views/components/animations'
+import { FadeIn, ScrollReveal } from '@/views/components/animations'
 import { Card3D } from '@/views/components/ui/Card3D'
 import { CardHeader, CardTitle, CardDescription } from '@/views/components/ui/Card'
 import Link from 'next/link'
 import { ROUTES } from '@/lib/constants/routes'
 import { getServiceIcon } from '@/lib/constants/icons'
-import { Folder, Heart, TrendingUp } from 'lucide-react'
 import Image from 'next/image'
 
 /**
@@ -106,14 +105,7 @@ export default function HomePage() {
     <>
       {/* Hero Section */}
       <Section variant="dark" spacing="xl" className="relative overflow-hidden">
-        <LetterGlitch
-          glitchColors={['#000000', '#00FF88', '#00CC6A']}
-          glitchSpeed={50}
-          centerVignette={false}
-          outerVignette={true}
-          smooth={true}
-        />
-        <div className="absolute inset-0 bg-gradient-to-br from-dark-950 via-dark-1000 to-dark-950 opacity-50 z-[1]" />
+        <div className="absolute inset-0 bg-gradient-to-br from-dark-950 via-dark-1000 to-dark-950 opacity-30 z-[1]" />
         <Container size="lg" className="relative z-10">
           <FadeIn direction="up" delay={0}>
             <div className="text-center max-w-4xl mx-auto py-20 lg:py-32">

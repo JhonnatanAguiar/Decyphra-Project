@@ -1,7 +1,7 @@
 'use client'
 
 import { Container, Section } from '@/views/components/layout'
-import { FadeIn, ScrollReveal } from '@/views/components/animations'
+import { FadeIn, ScrollReveal, LetterGlitch } from '@/views/components/animations'
 import Link from 'next/link'
 import { ROUTES } from '@/lib/constants/routes'
 import { ShoppingCart, Settings, PackageCheck, CheckCircle, CreditCard, Truck, Monitor, Users, PencilRuler, Bot, Check, Code, Zap, Rocket, TrendingUp, Target } from 'lucide-react'
@@ -81,7 +81,14 @@ export default function EcommerceCompletoPage() {
     <>
       {/* Hero Section */}
       <Section variant="dark" spacing="lg" className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-dark-950 via-dark-1000 to-dark-950 opacity-50" />
+        <LetterGlitch
+          glitchColors={['#0a1a0f', '#00FF88', '#00CC6A']}
+          glitchSpeed={50}
+          centerVignette={false}
+          outerVignette={true}
+          smooth={true}
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-dark-950 via-dark-1000 to-dark-950 opacity-50 z-[1]" />
         <Container size="lg" className="relative z-10">
           <FadeIn direction="up" delay={0}>
             <div className="flex flex-col lg:flex-row items-start lg:items-center gap-8 lg:gap-12 py-16 lg:py-24">
@@ -146,7 +153,7 @@ export default function EcommerceCompletoPage() {
                           {platform.isImage ? (
                             <div className="w-10 h-10 relative">
                               <Image
-                                src={platform.icon}
+                                src={platform.icon as string}
                                 alt={`${platform.name} logo`}
                                 width={40}
                                 height={40}
@@ -154,7 +161,9 @@ export default function EcommerceCompletoPage() {
                               />
                             </div>
                           ) : (
-                            <platform.icon className="w-10 h-10 text-primary-500" />
+                            typeof platform.icon !== 'string' && (
+                              <platform.icon className="w-10 h-10 text-primary-500" />
+                            )
                           )}
                           <h4 className="text-xl font-semibold text-light-50 sm:hidden">{platform.name}</h4>
                         </div>

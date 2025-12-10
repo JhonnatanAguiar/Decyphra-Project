@@ -22,6 +22,7 @@ const LetterGlitch = ({
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
   const wrapperRef = useRef<HTMLDivElement | null>(null)
   const animationRef = useRef<number | null>(null)
+  const resizeObserverRef = useRef<ResizeObserver | null>(null)
   const letters = useRef<
     {
       char: string
@@ -98,33 +99,33 @@ const LetterGlitch = ({
   const resizeCanvas = () => {
     const canvas = canvasRef.current
     const wrapper = wrapperRef.current
-    if (!canvas || !context.current) return
     
-    // Estratégia: usar o wrapper para encontrar o Section parent
-    let parent: HTMLElement | null = wrapper?.parentElement || null
-    
-    // Se não encontrou pelo wrapper, tentar pelo canvas
-    if (!parent) {
-      parent = canvas.parentElement?.parentElement || canvas.parentElement
-    }
-    
-    // Se ainda não encontrou, tentar encontrar o Section usando closest
-    if (!parent || !parent.classList.contains('relative')) {
-      parent = wrapper?.closest('.relative') as HTMLElement || 
-               canvas.closest('.relative') as HTMLElement ||
-               parent
-    }
-    
-    if (!parent) return
-
-    const dpr = window.devicePixelRatio || 1
-    let rect = parent.getBoundingClientRect()
-
-    // Se o rect ainda não tem dimensões válidas, tentar novamente
-    if (rect.width === 0 || rect.height === 0) {
-      setTimeout(() => resizeCanvas(), 50)
+    if (!canvas || !context.current) {
       return
     }
+    
+    // Estratégia: tentar wrapper primeiro, depois parent Section, depois viewport
+    let rect: DOMRect | null = null
+    
+    // 1. Tentar wrapper
+    if (wrapper) {
+      rect = wrapper.getBoundingClientRect()
+    }
+    
+    // 2. Se wrapper não tem dimensões, tentar encontrar o Section parent
+    if (!rect || rect.width === 0 || rect.height === 0) {
+      const section = wrapper?.closest('section') || wrapper?.parentElement?.closest('section')
+      if (section) {
+        rect = section.getBoundingClientRect()
+      }
+    }
+    
+    // 3. Se ainda não tem dimensões, usar viewport como fallback
+    if (!rect || rect.width === 0 || rect.height === 0) {
+      rect = new DOMRect(0, 0, window.innerWidth, window.innerHeight)
+    }
+
+    const dpr = window.devicePixelRatio || 1
 
     // Ajustar dimensões do canvas para DPR
     const width = Math.max(rect.width, 100)
@@ -148,7 +149,14 @@ const LetterGlitch = ({
   }
 
   const drawLetters = () => {
-    if (!context.current || letters.current.length === 0 || !canvasRef.current) return
+    if (!context.current || !canvasRef.current) {
+      return
+    }
+    
+    if (letters.current.length === 0) {
+      return
+    }
+    
     const ctx = context.current
     const canvas = canvasRef.current
     
@@ -226,68 +234,66 @@ const LetterGlitch = ({
     animationRef.current = requestAnimationFrame(animate)
   }
 
+  const canvasCallbackRef = (canvas: HTMLCanvasElement | null) => {
+    canvasRef.current = canvas
+    
+    if (canvas && !context.current) {
+      context.current = canvas.getContext('2d', { alpha: false })
+      
+      // Aguardar um frame para garantir que wrapperRef está disponível
+      requestAnimationFrame(() => {
+        if (context.current && wrapperRef.current) {
+          setTimeout(() => {
+            resizeCanvas()
+            if (letters.current.length > 0 && !animationRef.current) {
+              animate()
+            }
+          }, 100)
+        }
+      })
+    }
+  }
+
   useEffect(() => {
     const canvas = canvasRef.current
-    if (!canvas) return
+    
+    if (!canvas) {
+      return
+    }
 
-    context.current = canvas.getContext('2d', { alpha: false })
-    if (!context.current) return
+    if (!context.current) {
+      context.current = canvas.getContext('2d', { alpha: false })
+    }
 
-    let initTimeout: ReturnType<typeof setTimeout>
-    let resizeTimeout: ReturnType<typeof setTimeout>
+    if (!context.current) {
+      return
+    }
 
-    // Aguardar múltiplos frames para garantir que o elemento está totalmente renderizado
-    // Usar requestAnimationFrame duplo para garantir que o DOM está totalmente renderizado
-    const initFrame = requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        initTimeout = setTimeout(() => {
-          // Verificar novamente se o canvas e context estão disponíveis
-          if (canvas && context.current && wrapperRef.current) {
-            // Forçar um redraw inicial
-            resizeCanvas()
-            // Aguardar um pouco mais e verificar se o canvas foi redimensionado
-            setTimeout(() => {
-              if (letters.current.length > 0) {
-                animate()
-              } else {
-                // Se ainda não conseguiu, tentar redimensionar novamente (até 3 tentativas)
-                let attempts = 0
-                const retryResize = () => {
-                  attempts++
-                  resizeCanvas()
-                  setTimeout(() => {
-                    if (letters.current.length > 0) {
-                      animate()
-                    } else if (attempts < 3) {
-                      retryResize()
-                    }
-                  }, 100)
-                }
-                retryResize()
-              }
-            }, 150)
-          }
-        }, 400)
-      })
-    })
+    // Tentar inicializar quando o wrapper estiver disponível
+    const initInterval = setInterval(() => {
+      if (wrapperRef.current && context.current) {
+        clearInterval(initInterval)
+        resizeCanvas()
+        if (letters.current.length > 0 && !animationRef.current) {
+          animate()
+        }
+      }
+    }, 100)
 
     const handleResize = () => {
-      clearTimeout(resizeTimeout)
-      resizeTimeout = setTimeout(() => {
-        if (animationRef.current) {
-          cancelAnimationFrame(animationRef.current)
-        }
-        resizeCanvas()
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current)
+      }
+      resizeCanvas()
+      if (letters.current.length > 0) {
         animate()
-      }, 100)
+      }
     }
 
     window.addEventListener('resize', handleResize)
 
     return () => {
-      cancelAnimationFrame(initFrame)
-      clearTimeout(initTimeout)
-      clearTimeout(resizeTimeout)
+      clearInterval(initInterval)
       if (animationRef.current) {
         cancelAnimationFrame(animationRef.current)
       }
@@ -295,23 +301,39 @@ const LetterGlitch = ({
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [glitchSpeed, smooth])
-
+  
   return (
     <div 
       ref={wrapperRef}
-      className="absolute inset-0 w-full h-full min-h-[400px] bg-black overflow-hidden pointer-events-none z-0" 
-      style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}
+      className="absolute inset-0 w-full h-full min-h-[400px] overflow-hidden pointer-events-none z-0" 
+      style={{ 
+        position: 'absolute', 
+        top: 0, 
+        left: 0, 
+        right: 0, 
+        bottom: 0,
+        width: '100%',
+        height: '100%'
+      }}
     >
       <canvas 
-        ref={canvasRef} 
+        ref={canvasCallbackRef} 
         className="block w-full h-full"
-        style={{ imageRendering: 'pixelated', display: 'block' }}
+        style={{ 
+          imageRendering: 'pixelated', 
+          display: 'block',
+          width: '100%',
+          height: '100%',
+          position: 'absolute',
+          top: 0,
+          left: 0
+        }}
       />
       {outerVignette && (
-        <div className="absolute top-0 left-0 w-full h-full pointer-events-none bg-[radial-gradient(circle,_rgba(0,0,0,0)_60%,_rgba(0,0,0,1)_100%)] z-10"></div>
+        <div className="absolute top-0 left-0 w-full h-full pointer-events-none bg-[radial-gradient(circle,_rgba(0,0,0,0)_60%,_rgba(0,0,0,1)_100%)] z-[1]"></div>
       )}
       {centerVignette && (
-        <div className="absolute top-0 left-0 w-full h-full pointer-events-none bg-[radial-gradient(circle,_rgba(0,0,0,0.8)_0%,_rgba(0,0,0,0)_60%)] z-10"></div>
+        <div className="absolute top-0 left-0 w-full h-full pointer-events-none bg-[radial-gradient(circle,_rgba(0,0,0,0.8)_0%,_rgba(0,0,0,0)_60%)] z-[1]"></div>
       )}
     </div>
   )

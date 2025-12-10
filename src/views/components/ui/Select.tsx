@@ -19,7 +19,7 @@ import { cn } from '@/lib/utils/cn'
  * - lg: padding 1rem 1.25rem, texto 1.125rem
  */
 
-export interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
+export interface SelectProps extends Omit<SelectHTMLAttributes<HTMLSelectElement>, 'size'> {
   variant?: 'default' | 'primary' | 'error'
   size?: 'sm' | 'md' | 'lg'
 }

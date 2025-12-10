@@ -21,7 +21,7 @@ import { CheckCircle, XCircle } from 'lucide-react'
  * - lg: padding 1rem 1.25rem, texto 1.125rem
  */
 
-export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
   variant?: 'default' | 'primary' | 'error'
   size?: 'sm' | 'md' | 'lg'
   showValidationIcon?: boolean

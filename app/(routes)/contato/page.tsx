@@ -117,7 +117,7 @@ export default function ContactPage() {
       {/* Seção Introdutória "Vamos Conversar?" */}
       <Section variant="dark" spacing="lg" className="relative overflow-hidden">
         <LetterGlitch
-          glitchColors={['#000000', '#00FF88', '#00CC6A']}
+          glitchColors={['#0a1a0f', '#00FF88', '#00CC6A']}
           glitchSpeed={50}
           centerVignette={false}
           outerVignette={true}

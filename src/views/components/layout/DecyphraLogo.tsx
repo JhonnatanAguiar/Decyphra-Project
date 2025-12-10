@@ -142,7 +142,7 @@ const DecyphraLogo = ({
       )}
       whileHover={{ scale: 1.05 }}
       transition={{ type: 'spring', stiffness: 300 }}
-      {...props}
+      {...(props as Omit<typeof props, 'onDrag'>)}
     >
       <DecyphraIcon size={iconSizes[size]} />
       {showText && (
