@@ -250,6 +250,8 @@ export default function HomePage() {
                           alt={project.title}
                           fill
                           className="object-cover"
+                          loading="lazy"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         />
                       </div>
                       <div className="p-6">
@@ -312,6 +314,8 @@ export default function HomePage() {
                           alt={testimonial.name}
                           fill
                           className="object-cover"
+                          loading="lazy"
+                          sizes="48px"
                         />
                       </div>
                       <div>

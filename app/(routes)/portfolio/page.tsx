@@ -159,6 +159,8 @@ export default function PortfolioPage() {
                         alt={project.title}
                         fill
                         className="object-cover group-hover:scale-110 transition-transform duration-500"
+                        loading="lazy"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       />
                       {/* Tag de Categoria */}
                       <div className="absolute bottom-4 left-4 z-10">

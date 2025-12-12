@@ -127,6 +127,8 @@ export default function TestimonialsPage() {
                         alt={testimonial.name}
                         fill
                         className="object-cover"
+                        loading="lazy"
+                        sizes="(max-width: 768px) 80px, 100px"
                       />
                     </div>
                     <div className="flex-1">

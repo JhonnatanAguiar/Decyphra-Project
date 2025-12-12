@@ -93,6 +93,7 @@ export default function AboutPage() {
                   height={400}
                   className="rounded-2xl shadow-2xl shadow-primary-500/10 object-cover w-full"
                   loading="lazy"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
                 />
               </motion.div>
               <motion.div
