@@ -341,3 +341,5 @@ void main() {
 }
 
 RippleGrid.displayName = 'RippleGrid'
+
+RippleGrid.displayName = 'RippleGrid'

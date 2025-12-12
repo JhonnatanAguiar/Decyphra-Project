@@ -49,16 +49,17 @@ Consolida:
 
 ---
 
-### ✅ [REVISOES.md](./REVISOES.md)
-**Histórico de revisões e verificações**
+### 🔍 [REVISAO-FASE-5.md](./REVISAO-FASE-5.md)
+**Revisão completa para iniciar Fase 5**
 
-Consolida:
-- Revisões rotineiras
-- Revisões completas
-- Verificações de qualidade
-- Checkpoints do projeto
+Documento detalhado com:
+- Verificações completas do projeto
+- Checklist de pré-requisitos
+- Pendências para Fase 5
+- Fluxo de trabalho recomendado
+- Análise de consistência
 
-**👉 [Ver Revisões](./REVISOES.md)**
+**👉 [Ver Revisão Fase 5](./REVISAO-FASE-5.md)**
 
 ---
 

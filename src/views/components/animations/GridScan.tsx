@@ -922,3 +922,5 @@ function dist2(a: { x: number; y: number }, b: { x: number; y: number }) {
 }
 
 GridScan.displayName = 'GridScan'
+
+GridScan.displayName = 'GridScan'
