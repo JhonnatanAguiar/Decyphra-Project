@@ -180,7 +180,7 @@ export default function TestimonialsPage() {
                 Junte-se a nós e transforme seu negócio digital.
               </p>
               <Link href={ROUTES.contact}>
-                <Button variant="primary" size="lg">
+                <Button variant="primary" size="lg" enable3D={true}>
                   Quero Ser o Próximo Sucesso
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>

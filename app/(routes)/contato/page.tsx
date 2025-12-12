@@ -265,6 +265,7 @@ export default function ContactPage() {
                     variant="primary"
                     size="lg"
                     isLoading={isSubmitting}
+                    enable3D={true}
                     className="w-full md:w-auto"
                   >
                     {isSubmitting ? (

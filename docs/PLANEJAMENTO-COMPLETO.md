@@ -404,7 +404,7 @@ light: {
 ---
 
 ### ⚡ Fase 4: Funcionalidades Dinâmicas
-**Status:** ⏳ Em Progresso (60% completo)
+**Status:** ⏳ Em Progresso (80% completo)
 
 #### 4.1 Animações de Scroll
 - [x] Implementar scroll suave - ✅ Concluído
@@ -435,8 +435,9 @@ light: {
 #### 4.5 Elevação de Componentes
 - [x] Cards 3D com efeito de levitação - ✅ Concluído
 - [x] Aplicar cards 3D em páginas principais - ✅ Concluído
-- [ ] Botões com efeitos 3D (opcional)
-- [ ] Outros componentes com elevação (opcional)
+- [x] Botões com efeitos 3D - ✅ Concluído
+- [x] Badges com efeitos 3D sutis - ✅ Concluído
+- [x] Aplicar efeitos 3D em botões principais do site - ✅ Concluído
 
 ---
 
@@ -612,7 +613,7 @@ npm run type-check   # Verifica tipos TypeScript
 | Fase 1: Setup | 100% | ✅ **Concluída e Revisada** |
 | Fase 2: Design System | 100% | ✅ **Concluída** |
 | Fase 3: Páginas | 15% | ⏳ Em Progresso |
-| Fase 4: Dinâmicas | 0% | ⏳ Pendente |
+| Fase 4: Dinâmicas | 80% | ⏳ Em Progresso |
 | Fase 5: Backend | 0% | ⏳ Pendente |
 | Fase 6: SEO | 0% | ⏳ Pendente |
 | Fase 7: Deploy | 0% | ⏳ Pendente |

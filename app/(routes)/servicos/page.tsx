@@ -2,6 +2,7 @@
 
 import { Container, Section } from '@/views/components/layout'
 import { FadeIn, ScrollReveal, LetterGlitch } from '@/views/components/animations'
+import { Button } from '@/views/components/ui/Button'
 import { Card3D } from '@/views/components/ui/Card3D'
 import { CardHeader, CardTitle, CardDescription, CardContent } from '@/views/components/ui'
 import Link from 'next/link'
@@ -232,17 +233,15 @@ export default function ServicesPage() {
                 Entre em contato e vamos conversar sobre como podemos ajudar você
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link
-                  href={ROUTES.contact}
-                  className="inline-flex items-center justify-center rounded-lg font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-dark-950 bg-primary-500 text-dark-950 hover:bg-primary-400 hover:shadow-[0_0_20px_rgba(0,255,136,0.3)] focus:ring-primary-500 px-8 py-4 text-lg"
-                >
-                  Fale Conosco
+                <Link href={ROUTES.contact}>
+                  <Button variant="primary" size="lg" enable3D={true}>
+                    Fale Conosco
+                  </Button>
                 </Link>
-                <Link
-                  href={ROUTES.portfolio}
-                  className="inline-flex items-center justify-center rounded-lg font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-dark-950 bg-transparent text-primary-500 hover:bg-primary-500/10 hover:shadow-[0_0_20px_rgba(0,255,136,0.2)] focus:ring-primary-500 px-8 py-4 text-lg"
-                >
-                  Ver Portfólio
+                <Link href={ROUTES.portfolio}>
+                  <Button variant="ghost" size="lg" enable3D={true}>
+                    Ver Portfólio
+                  </Button>
                 </Link>
               </div>
             </div>

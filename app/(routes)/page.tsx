@@ -4,6 +4,7 @@ import { Container, Section } from '@/views/components/layout'
 import { FadeIn, ScrollReveal } from '@/views/components/animations'
 import { Card3D } from '@/views/components/ui/Card3D'
 import { CardHeader, CardTitle, CardDescription } from '@/views/components/ui/Card'
+import { Button } from '@/views/components/ui/Button'
 import Link from 'next/link'
 import { ROUTES } from '@/lib/constants/routes'
 import { getServiceIcon } from '@/lib/constants/icons'
@@ -118,17 +119,15 @@ export default function HomePage() {
                 Soluções que impulsionam resultados.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link
-                  href={ROUTES.contact}
-                  className="inline-flex items-center justify-center rounded-lg font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-dark-950 bg-primary-500 text-dark-950 hover:bg-primary-400 hover:shadow-[0_0_20px_rgba(0,255,136,0.3)] focus:ring-primary-500 px-8 py-4 text-lg"
-                >
-                  Fale Conosco
+                <Link href={ROUTES.contact}>
+                  <Button variant="primary" size="lg" enable3D={true}>
+                    Fale Conosco
+                  </Button>
                 </Link>
-                <Link
-                  href={ROUTES.portfolio}
-                  className="inline-flex items-center justify-center rounded-lg font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-dark-950 bg-transparent text-primary-500 hover:bg-primary-500/10 hover:shadow-[0_0_20px_rgba(0,255,136,0.2)] focus:ring-primary-500 px-8 py-4 text-lg"
-                >
-                  Ver Portfólio
+                <Link href={ROUTES.portfolio}>
+                  <Button variant="ghost" size="lg" enable3D={true}>
+                    Ver Portfólio
+                  </Button>
                 </Link>
               </div>
             </div>
@@ -271,11 +270,10 @@ export default function HomePage() {
             </div>
 
             <div className="text-center mt-12">
-              <Link
-                href={ROUTES.portfolio}
-                className="inline-flex items-center justify-center rounded-lg font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-dark-950 bg-primary-500 text-dark-950 hover:bg-primary-400 hover:shadow-[0_0_20px_rgba(0,255,136,0.3)] focus:ring-primary-500 px-8 py-4 text-lg"
-              >
-                Ver Portfólio Completo
+              <Link href={ROUTES.portfolio}>
+                <Button variant="primary" size="lg" enable3D={true}>
+                  Ver Portfólio Completo
+                </Button>
               </Link>
             </div>
           </ScrollReveal>
@@ -353,17 +351,15 @@ export default function HomePage() {
                 Entre em contato e descubra como podemos ajudar você a alcançar seus objetivos
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link
-                  href={ROUTES.contact}
-                  className="inline-flex items-center justify-center rounded-lg font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-dark-950 bg-primary-500 text-dark-950 hover:bg-primary-400 hover:shadow-[0_0_20px_rgba(0,255,136,0.3)] focus:ring-primary-500 px-8 py-4 text-lg"
-                >
-                  Fale Conosco Agora
+                <Link href={ROUTES.contact}>
+                  <Button variant="primary" size="lg" enable3D={true}>
+                    Fale Conosco Agora
+                  </Button>
                 </Link>
-                <Link
-                  href={ROUTES.services}
-                  className="inline-flex items-center justify-center rounded-lg font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-dark-950 bg-transparent text-primary-500 hover:bg-primary-500/10 hover:shadow-[0_0_20px_rgba(0,255,136,0.2)] focus:ring-primary-500 px-8 py-4 text-lg"
-                >
-                  Conheça Nossos Serviços
+                <Link href={ROUTES.services}>
+                  <Button variant="ghost" size="lg" enable3D={true}>
+                    Conheça Nossos Serviços
+                  </Button>
                 </Link>
               </div>
             </div>

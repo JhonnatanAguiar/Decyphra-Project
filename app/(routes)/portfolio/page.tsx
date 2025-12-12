@@ -223,7 +223,7 @@ export default function PortfolioPage() {
                 Cada projeto é único e desenvolvido com estratégia personalizada para maximizar resultados.
               </p>
               <Link href={ROUTES.contact}>
-                <Button variant="primary" size="lg">
+                <Button variant="primary" size="lg" enable3D={true}>
                   Iniciar Meu Projeto
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
