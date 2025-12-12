@@ -22,7 +22,6 @@ const LetterGlitch = ({
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
   const wrapperRef = useRef<HTMLDivElement | null>(null)
   const animationRef = useRef<number | null>(null)
-  const resizeObserverRef = useRef<ResizeObserver | null>(null)
   const letters = useRef<
     {
       char: string

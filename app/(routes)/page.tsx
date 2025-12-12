@@ -1,9 +1,8 @@
 'use client'
 
 import { Container, Section } from '@/views/components/layout'
-import { FadeIn, ScrollReveal } from '@/views/components/animations'
+import { FadeIn, ScrollReveal, GridScan } from '@/views/components/animations'
 import { Card3D } from '@/views/components/ui/Card3D'
-import { CardHeader, CardTitle, CardDescription } from '@/views/components/ui/Card'
 import { Button } from '@/views/components/ui/Button'
 import Link from 'next/link'
 import { ROUTES } from '@/lib/constants/routes'
@@ -106,6 +105,22 @@ export default function HomePage() {
     <>
       {/* Hero Section */}
       <Section variant="dark" spacing="xl" className="relative overflow-hidden">
+        <GridScan
+          sensitivity={0.55}
+          lineThickness={1}
+          linesColor="#0a1a0f"
+          gridScale={0.1}
+          scanColor="#00FF88"
+          scanOpacity={0.4}
+          enablePost={true}
+          bloomIntensity={0.6}
+          chromaticAberration={0.002}
+          noiseIntensity={0.01}
+          scanDirection="pingpong"
+          scanDuration={2.0}
+          scanDelay={2.0}
+          className="z-0"
+        />
         <div className="absolute inset-0 bg-gradient-to-br from-dark-950 via-dark-1000 to-dark-950 opacity-30 z-[1]" />
         <Container size="lg" className="relative z-10">
           <FadeIn direction="up" delay={0}>
@@ -180,11 +195,10 @@ export default function HomePage() {
             </div>
 
             <div className="text-center mt-12">
-              <Link
-                href={ROUTES.services}
-                className="inline-flex items-center justify-center rounded-lg font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-dark-950 bg-transparent text-primary-500 hover:bg-primary-500/10 hover:shadow-[0_0_10px_rgba(0,255,136,0.2)] focus:ring-primary-500 px-8 py-4 text-lg"
-              >
-                Ver Todos os Serviços
+              <Link href={ROUTES.services}>
+                <Button variant="ghost" size="lg" enable3D={true}>
+                  Ver Todos os Serviços
+                </Button>
               </Link>
             </div>
           </ScrollReveal>
@@ -332,11 +346,10 @@ export default function HomePage() {
             </div>
 
             <div className="text-center mt-12">
-              <Link
-                href={ROUTES.testimonials}
-                className="inline-flex items-center justify-center rounded-lg font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-dark-950 bg-transparent text-primary-500 hover:bg-primary-500/10 hover:shadow-[0_0_10px_rgba(0,255,136,0.2)] focus:ring-primary-500 px-8 py-4 text-lg"
-              >
-                Ver Todos os Depoimentos
+              <Link href={ROUTES.testimonials}>
+                <Button variant="ghost" size="lg" enable3D={true}>
+                  Ver Todos os Depoimentos
+                </Button>
               </Link>
             </div>
           </ScrollReveal>

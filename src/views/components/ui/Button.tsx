@@ -62,9 +62,6 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     const tiltY = useRef(0)
     const targetTiltX = useRef(0)
     const targetTiltY = useRef(0)
-    const lastMouseX = useRef(0)
-    const lastMouseY = useRef(0)
-    const lastTime = useRef(0)
 
     // Detectar mobile
     useEffect(() => {

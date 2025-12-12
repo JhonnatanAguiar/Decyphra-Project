@@ -2,6 +2,7 @@
 
 import { Container, Section } from '@/views/components/layout'
 import { FadeIn, ScrollReveal, LetterGlitch } from '@/views/components/animations'
+import { Button } from '@/views/components/ui/Button'
 import Link from 'next/link'
 import { ROUTES } from '@/lib/constants/routes'
 import { ShoppingCart, Settings, PackageCheck, CheckCircle, CreditCard, Truck, Monitor, Users, PencilRuler, Bot, Check, Code, Zap, Rocket, TrendingUp, Target } from 'lucide-react'
@@ -275,11 +276,10 @@ export default function EcommerceCompletoPage() {
                       )
                     })}
                   </ul>
-                  <Link
-                    href={ROUTES.contact}
-                    className="w-full inline-flex items-center justify-center rounded-lg font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-dark-950 bg-primary-500 text-dark-950 hover:bg-primary-400 hover:shadow-[0_0_20px_rgba(0,255,136,0.3)] focus:ring-primary-500 px-6 py-3 text-base"
-                  >
-                    Solicitar Orçamento
+                  <Link href={ROUTES.contact} className="w-full">
+                    <Button variant="primary" size="md" enable3D={true} className="w-full">
+                      Solicitar Orçamento
+                    </Button>
                   </Link>
                 </div>
               </ScrollReveal>
@@ -293,11 +293,10 @@ export default function EcommerceCompletoPage() {
         <Container size="lg">
           <ScrollReveal direction="up" delay={0}>
             <div className="text-center max-w-3xl mx-auto py-12">
-              <Link
-                href={ROUTES.contact}
-                className="inline-flex items-center justify-center rounded-lg font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-dark-950 bg-primary-500 text-dark-950 hover:bg-primary-400 hover:shadow-[0_0_20px_rgba(0,255,136,0.3)] focus:ring-primary-500 px-8 py-4 text-lg"
-              >
-                Pronto para vender com uma loja profissional?
+              <Link href={ROUTES.contact}>
+                <Button variant="primary" size="lg" enable3D={true}>
+                  Pronto para vender com uma loja profissional?
+                </Button>
               </Link>
             </div>
           </ScrollReveal>
@@ -315,11 +314,10 @@ export default function EcommerceCompletoPage() {
               <p className="text-xl text-light-200 mb-8">
                 Explore nossa gama completa de soluções digitais para encontrar a combinação perfeita para o seu sucesso.
               </p>
-              <Link
-                href={ROUTES.services}
-                className="inline-flex items-center justify-center rounded-lg font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-dark-950 bg-transparent text-primary-500 hover:bg-primary-500/10 hover:shadow-[0_0_20px_rgba(0,255,136,0.2)] focus:ring-primary-500 px-8 py-4 text-lg"
-              >
-                Ver todos os serviços
+              <Link href={ROUTES.services}>
+                <Button variant="ghost" size="lg" enable3D={true}>
+                  Ver todos os serviços
+                </Button>
               </Link>
             </div>
           </ScrollReveal>

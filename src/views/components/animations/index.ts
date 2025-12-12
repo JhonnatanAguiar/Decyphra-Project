@@ -17,3 +17,6 @@ export { Parallax } from './Parallax'
 export type { ParallaxProps } from './Parallax'
 
 export { default as LetterGlitch } from './LetterGlitch'
+
+export { GridScan } from './GridScan'
+export type { GridScanProps } from './GridScan'

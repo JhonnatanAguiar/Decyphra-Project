@@ -3,6 +3,7 @@
 import { Container, Section } from '@/views/components/layout'
 import { FadeIn, ScrollReveal, LetterGlitch } from '@/views/components/animations'
 import { Card3D } from '@/views/components/ui/Card3D'
+import { Button } from '@/views/components/ui/Button'
 import Link from 'next/link'
 import { ROUTES } from '@/lib/constants/routes'
 import { Users, Cpu, Code, Zap, ArrowRight } from 'lucide-react'
@@ -229,12 +230,11 @@ export default function AboutPage() {
                 fortalecer sua presença digital, com quem entende de tecnologia e entrega com 
                 agilidade, conte com a Decyphra.
               </p>
-              <Link
-                href={ROUTES.contact}
-                className="inline-flex items-center justify-center rounded-lg font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-dark-950 bg-primary-500 text-dark-950 hover:bg-primary-400 hover:shadow-[0_0_20px_rgba(0,255,136,0.3)] hover:scale-105 focus:ring-primary-500 px-8 py-4 text-lg font-bold"
-              >
-                Solicite um Orçamento
-                <ArrowRight className="w-5 h-5 ml-2" />
+              <Link href={ROUTES.contact}>
+                <Button variant="primary" size="lg" enable3D={true} className="font-bold">
+                  Solicite um Orçamento
+                  <ArrowRight className="w-5 h-5 ml-2" />
+                </Button>
               </Link>
             </motion.div>
           </ScrollReveal>
