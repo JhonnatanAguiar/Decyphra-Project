@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useRef, useEffect, CSSProperties } from 'react'
+import { useRef, useEffect, CSSProperties } from 'react'
 
 class Grad {
   x: number
@@ -135,7 +135,7 @@ export interface WavesProps {
   className?: string
 }
 
-export const Waves: React.FC<WavesProps> = ({
+export const Waves = ({
   lineColor = '#00FF88',
   backgroundColor = 'transparent',
   waveSpeedX = 0.0125,
@@ -399,3 +399,6 @@ export const Waves: React.FC<WavesProps> = ({
     </div>
   )
 }
+
+Waves.displayName = 'Waves'
+

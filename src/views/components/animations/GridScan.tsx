@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { EffectComposer, RenderPass, EffectPass, BloomEffect, ChromaticAberrationEffect } from 'postprocessing'
 import * as THREE from 'three'
 import * as faceapi from 'face-api.js'
@@ -301,7 +301,7 @@ void main(){
 }
 `
 
-export const GridScan: React.FC<GridScanProps> = ({
+export const GridScan = ({
   enableWebcam = false,
   showPreview = false,
   modelsPath = 'https://cdn.jsdelivr.net/gh/justadudewhohacks/face-api.js@0.22.2/weights',
@@ -920,3 +920,5 @@ function centroid(points: { x: number; y: number }[]) {
 function dist2(a: { x: number; y: number }, b: { x: number; y: number }) {
   return Math.hypot(a.x - b.x, a.y - b.y)
 }
+
+GridScan.displayName = 'GridScan'

@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { Container, Section } from '@/views/components/layout'
-import { FadeIn, ScrollReveal, LetterGlitch, Waves } from '@/views/components/animations'
+import { FadeIn, ScrollReveal, Waves } from '@/views/components/animations'
 import { Input } from '@/views/components/ui/Input'
 import { Textarea } from '@/views/components/ui/Textarea'
 import { Select } from '@/views/components/ui/Select'
@@ -129,7 +129,7 @@ export default function ContactPage() {
             friction={0.925}
             tension={0.005}
             maxCursorMove={100}
-            className="z-0"
+            className="opacity-50 z-0"
           />
         </div>
         <div className="absolute inset-0 bg-gradient-to-br from-dark-950 via-dark-1000 to-dark-950 opacity-50 z-[1] pointer-events-none" />

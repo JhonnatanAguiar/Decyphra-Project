@@ -20,7 +20,7 @@ export type RippleGridProps = {
   style?: React.CSSProperties
 }
 
-export const RippleGrid: React.FC<RippleGridProps> = ({
+export const RippleGrid = ({
   enableRainbow = false,
   gridColor = '#00FF88',
   rippleIntensity = 0.05,
@@ -339,3 +339,5 @@ void main() {
     />
   )
 }
+
+RippleGrid.displayName = 'RippleGrid'

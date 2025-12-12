@@ -19,6 +19,7 @@
 9. [Roadmap com Checklists](#roadmap-com-checklists)
 10. [Responsabilidades](#responsabilidades)
 11. [Configurações](#configurações)
+12. [Backgrounds Animados Implementados](#-backgrounds-animados-implementados)
 
 ---
 
@@ -70,7 +71,8 @@ Reconstruir completamente o site da Decyphra, mantendo a identidade visual atual
 - **Framework:** Next.js 14+ (App Router)
 - **Linguagem:** TypeScript
 - **Estilização:** Tailwind CSS
-- **Animações:** Framer Motion
+- **Animações:** Framer Motion, GSAP
+- **WebGL:** ogl (para efeitos 3D e backgrounds animados)
 - **Scroll:** Locomotive Scroll ou similar (para efeitos dinâmicos)
 
 ### Backend
@@ -318,6 +320,10 @@ light: {
 - [x] ScrollReveal (múltiplas direções e tipos) - ✅ Concluído e testado
 - [x] Parallax (velocidade e direção configuráveis) - ✅ Concluído e testado
 - [x] PageTransition (múltiplos tipos de transição) - ✅ Concluído e testado
+- [x] LetterGlitch (background animado com caracteres) - ✅ Concluído e testado
+- [x] GridScan (grid 3D interativo com WebGL) - ✅ Concluído e testado
+- [x] RippleGrid (grid animado com ondas de ripple) - ✅ Concluído e testado
+- [x] Waves (grid de linhas onduladas com Perlin Noise) - ✅ Concluído e testado
 
 #### 2.4 Hooks Customizados
 - [x] useScroll (detecção de scroll e direção) - ✅ Concluído e testado
@@ -327,18 +333,19 @@ light: {
 ---
 
 ### 📄 Fase 3: Páginas Principais
-**Status:** ⏳ Em Progresso (25% completo)
+**Status:** ✅ **CONCLUÍDA (100% completo)**
 
 #### 3.1 Home Page (`/`)
 - [x] Estrutura de rotas criada (app/(routes)/)
 - [x] Layout de rotas com Header e Footer
 - [x] Hero Section (com animação de entrada) - ✅ Concluído
+- [x] Background GridScan 3D animado no HeroSection - ✅ Concluído
 - [x] Seção de Serviços Preview - ✅ Concluído (7 serviços com links)
 - [x] Seção de Estatísticas (contadores animados) - ✅ Concluído
-- [x] Seção de Projetos em Destaque - ✅ Concluído (placeholder)
-- [x] Seção de Depoimentos Preview - ✅ Concluído (placeholder)
+- [x] Seção de Projetos em Destaque - ✅ Concluído (3 projetos com Card3D)
+- [x] Seção de Depoimentos Preview - ✅ Concluído (2 depoimentos)
 - [x] CTA Section - ✅ Concluído
-- [x] Botões sem bordas (design atualizado) - ✅ Concluído
+- [x] Botões padronizados com componente Button (enable3D) - ✅ Concluído
 - [ ] Integração com APIs (pendente - Fase 5)
 
 #### 3.2 Página de Serviços (`/servicos`)
@@ -359,7 +366,8 @@ light: {
 
 #### 3.3 Página de Portfólio (`/portfolio`)
 - [x] Hero Section - ✅ Concluído
-- [x] Grid de Projetos (responsivo) - ✅ Concluído (6 projetos fictícios)
+- [x] Background RippleGrid animado no HeroSection - ✅ Concluído
+- [x] Grid de Projetos (responsivo) - ✅ Concluído (6 projetos fictícios com Card3D)
 - [x] CTA Section - ✅ Concluído
 - [ ] Sistema de Filtros (opcional - futuro)
 - [ ] Paginação ou Infinite Scroll (opcional - futuro)
@@ -375,22 +383,26 @@ light: {
 
 #### 3.5 Página Sobre (`/sobre`)
 - [x] Hero Section - ✅ Concluído
+- [x] Background RippleGrid animado no HeroSection - ✅ Concluído
 - [x] História/Missão - ✅ Concluído
 - [x] Nossa Abordagem Flexível (3 cards) - ✅ Concluído
 - [x] CTA Section - ✅ Concluído
 
 #### 3.6 Página Depoimentos (`/depoimentos`)
 - [x] Hero Section - ✅ Concluído
-- [x] Grid de Depoimentos (6 depoimentos fictícios) - ✅ Concluído
+- [x] Background RippleGrid animado no HeroSection - ✅ Concluído
+- [x] Grid de Depoimentos (6 depoimentos fictícios com Card3D) - ✅ Concluído
 - [x] CTA Section com satisfação - ✅ Concluído
 - [ ] Suporte a vídeos (opcional - futuro)
 - [ ] Integração com API (pendente - Fase 5)
 
 #### 3.7 Página Contato (`/contato`)
 - [x] Hero Section - ✅ Concluído
+- [x] Background Waves animado no HeroSection - ✅ Concluído
 - [x] Formulário de Contato - ✅ Concluído
 - [x] Informações de Contato - ✅ Concluído
 - [x] Validação de formulário (react-hook-form + zod) - ✅ Concluído
+- [x] Micro-interações em formulários - ✅ Concluído
 - [ ] Integração com API `/api/v1/contact` (pendente - Fase 5)
 
 #### 3.8 Página Status (`/status`)
@@ -420,8 +432,23 @@ light: {
 - [x] Micro-interações em formulários - ✅ Concluído
 - [x] Transições entre páginas - ✅ Concluído
 
-#### 4.3 Efeitos Especiais
-- [x] Background effects (LetterGlitch nas hero sections) - ✅ Concluído
+#### 4.3 Efeitos Especiais e Backgrounds Animados
+- [x] LetterGlitch (background com caracteres animados) - ✅ Concluído
+  - Aplicado em páginas de serviços individuais
+- [x] GridScan (grid 3D interativo com WebGL/ogl) - ✅ Concluído
+  - Aplicado na HomePage HeroSection
+  - Efeitos de scan animado, bloom e chromatic aberration
+  - Interação com mouse (tilt e movimento)
+- [x] RippleGrid (grid animado com ondas de ripple usando WebGL/ogl) - ✅ Concluído
+  - Aplicado nas páginas Portfólio, Sobre e Depoimentos
+  - Efeitos de ripple animados com Perlin Noise
+  - Interação com mouse criando ondas
+  - Configurações otimizadas padronizadas
+- [x] Waves (grid de linhas onduladas com Perlin Noise) - ✅ Concluído
+  - Aplicado na página Contato
+  - Animações de ondas com física (friction, tension)
+  - Interação com mouse criando ondas ao mover
+  - Indicador visual do cursor
 - [ ] Text reveal animations
 - [ ] Loading states elegantes
 - [ ] Cursor customizado (opcional)
@@ -612,13 +639,49 @@ npm run type-check   # Verifica tipos TypeScript
 | Fase 0: Planejamento | 100% | ✅ Concluída |
 | Fase 1: Setup | 100% | ✅ **Concluída e Revisada** |
 | Fase 2: Design System | 100% | ✅ **Concluída** |
-| Fase 3: Páginas | 15% | ⏳ Em Progresso |
+| Fase 3: Páginas | 100% | ✅ **Concluída** |
 | Fase 4: Dinâmicas | 100% | ✅ **Concluída** |
-| Fase 5: Backend | 0% | ⏳ Pendente |
+| Fase 5: Backend | 14% | ⏳ Em Progresso |
 | Fase 6: SEO | 0% | ⏳ Pendente |
 | Fase 7: Deploy | 0% | ⏳ Pendente |
 
-**Progresso Total:** ~30% completo
+**Progresso Total:** ~60% completo
+
+---
+
+## 🎨 Backgrounds Animados Implementados
+
+### GridScan (HomePage)
+- **Tecnologia:** WebGL com ogl e shaders GLSL
+- **Localização:** HeroSection da HomePage (`/`)
+- **Características:**
+  - Grid 3D interativo que responde ao movimento do mouse
+  - Efeito de scan animado com direção pingpong
+  - Bloom e chromatic aberration
+  - Cores: verde neon (#00FF88) com grid escuro (#0a1a0f)
+- **Dependências:** ogl, three, postprocessing, face-api.js
+
+### RippleGrid (Portfólio, Sobre, Depoimentos)
+- **Tecnologia:** WebGL com ogl e shaders GLSL
+- **Localização:** HeroSection das páginas Portfólio, Sobre e Depoimentos
+- **Características:**
+  - Grid animado com ondas de ripple que se propagam
+  - Efeito de pulso sincronizado com o tempo
+  - Interação com mouse criando ondas
+  - Vignette e glow intenso
+  - Configurações padronizadas: gridSize 7.0, glowIntensity 0.8, fadeDistance 3.0
+- **Dependências:** ogl
+
+### Waves (Contato)
+- **Tecnologia:** Canvas API com Perlin Noise
+- **Localização:** HeroSection da página Contato
+- **Características:**
+  - Grid de linhas onduladas animadas
+  - Perlin Noise para animações orgânicas
+  - Interação física com mouse (ondas que seguem o cursor)
+  - Indicador visual do cursor (ponto verde neon)
+  - Suporte a touch events
+- **Dependências:** Nenhuma (Canvas API nativo)
 
 ---
 
@@ -633,4 +696,4 @@ npm run type-check   # Verifica tipos TypeScript
 ---
 
 **Última atualização:** Dezembro 2024  
-**Status:** Fase 1 e Fase 2 concluídas e revisadas (100% completo cada) ✅
+**Status:** Fases 1, 2, 3 e 4 concluídas e revisadas (100% completo cada) ✅
