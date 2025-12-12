@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { Container, Section } from '@/views/components/layout'
-import { FadeIn, ScrollReveal, LetterGlitch } from '@/views/components/animations'
+import { FadeIn, ScrollReveal, LetterGlitch, Waves } from '@/views/components/animations'
 import { Input } from '@/views/components/ui/Input'
 import { Textarea } from '@/views/components/ui/Textarea'
 import { Select } from '@/views/components/ui/Select'
@@ -116,14 +116,23 @@ export default function ContactPage() {
     <>
       {/* Seção Introdutória "Vamos Conversar?" */}
       <Section variant="dark" spacing="lg" className="relative overflow-hidden">
-        <LetterGlitch
-          glitchColors={['#0a1a0f', '#00FF88', '#00CC6A']}
-          glitchSpeed={50}
-          centerVignette={false}
-          outerVignette={true}
-          smooth={true}
-        />
-        <div className="absolute inset-0 bg-gradient-to-br from-dark-950 via-dark-1000 to-dark-950 opacity-50 z-[1]" />
+        <div className="absolute inset-0 w-full h-full pointer-events-auto">
+          <Waves
+            lineColor="#00FF88"
+            backgroundColor="transparent"
+            waveSpeedX={0.0125}
+            waveSpeedY={0.005}
+            waveAmpX={32}
+            waveAmpY={16}
+            xGap={10}
+            yGap={32}
+            friction={0.925}
+            tension={0.005}
+            maxCursorMove={100}
+            className="z-0"
+          />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-br from-dark-950 via-dark-1000 to-dark-950 opacity-50 z-[1] pointer-events-none" />
         <Container size="lg" className="relative z-10">
           <FadeIn direction="up" delay={0}>
             <div className="text-center py-12 lg:py-16">

@@ -23,3 +23,6 @@ export type { GridScanProps } from './GridScan'
 
 export { RippleGrid } from './RippleGrid'
 export type { RippleGridProps } from './RippleGrid'
+
+export { Waves } from './Waves'
+export type { WavesProps } from './Waves'
