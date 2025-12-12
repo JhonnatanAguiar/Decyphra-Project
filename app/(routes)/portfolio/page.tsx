@@ -1,7 +1,7 @@
 'use client'
 
 import { Container, Section } from '@/views/components/layout'
-import { FadeIn, ScrollReveal, LetterGlitch } from '@/views/components/animations'
+import { FadeIn, ScrollReveal, LetterGlitch, RippleGrid } from '@/views/components/animations'
 import { Card3D } from '@/views/components/ui/Card3D'
 import { Button } from '@/views/components/ui/Button'
 import Link from 'next/link'
@@ -115,14 +115,23 @@ export default function PortfolioPage() {
     <>
       {/* Hero Section */}
       <Section variant="dark" spacing="lg" className="relative overflow-hidden">
-        <LetterGlitch
-          glitchColors={['#0a1a0f', '#00FF88', '#00CC6A']}
-          glitchSpeed={50}
-          centerVignette={false}
-          outerVignette={true}
-          smooth={true}
-        />
-        <div className="absolute inset-0 bg-gradient-to-br from-dark-950 via-dark-1000 to-dark-950 opacity-50 z-[1]" />
+        <div className="absolute inset-0 w-full h-full pointer-events-auto">
+          <RippleGrid
+            gridColor="#00FF88"
+            rippleIntensity={0.08}
+            gridSize={7.0}
+            gridThickness={18.0}
+            fadeDistance={3.0}
+            vignetteStrength={5.0}
+            glowIntensity={0.8}
+            opacity={0.6}
+            gridRotation={0}
+            mouseInteraction={true}
+            mouseInteractionRadius={1.2}
+            className="z-0"
+          />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-br from-dark-950 via-dark-1000 to-dark-950 opacity-50 z-[1] pointer-events-none" />
         <Container size="lg" className="relative z-10">
           <FadeIn direction="up" delay={0}>
             <div className="text-center py-16 lg:py-24">

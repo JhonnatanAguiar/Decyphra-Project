@@ -20,3 +20,6 @@ export { default as LetterGlitch } from './LetterGlitch'
 
 export { GridScan } from './GridScan'
 export type { GridScanProps } from './GridScan'
+
+export { RippleGrid } from './RippleGrid'
+export type { RippleGridProps } from './RippleGrid'

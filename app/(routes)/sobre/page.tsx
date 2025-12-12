@@ -1,7 +1,7 @@
 'use client'
 
 import { Container, Section } from '@/views/components/layout'
-import { FadeIn, ScrollReveal, LetterGlitch } from '@/views/components/animations'
+import { FadeIn, ScrollReveal, LetterGlitch, RippleGrid } from '@/views/components/animations'
 import { Card3D } from '@/views/components/ui/Card3D'
 import { Button } from '@/views/components/ui/Button'
 import Link from 'next/link'
@@ -34,14 +34,23 @@ export default function AboutPage() {
     <>
       {/* Hero Section */}
       <Section variant="dark" spacing="lg" className="relative overflow-hidden">
-        <LetterGlitch
-          glitchColors={['#0a1a0f', '#00FF88', '#00CC6A']}
-          glitchSpeed={50}
-          centerVignette={false}
-          outerVignette={true}
-          smooth={true}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/10 to-dark-950 z-[1]" />
+        <div className="absolute inset-0 w-full h-full pointer-events-auto">
+          <RippleGrid
+            gridColor="#00FF88"
+            rippleIntensity={0.08}
+            gridSize={7.0}
+            gridThickness={18.0}
+            fadeDistance={3.0}
+            vignetteStrength={5.0}
+            glowIntensity={0.8}
+            opacity={0.6}
+            gridRotation={0}
+            mouseInteraction={true}
+            mouseInteractionRadius={1.2}
+            className="z-0"
+          />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/10 to-dark-950 z-[1] pointer-events-none" />
         <div className="absolute top-0 right-0 w-72 h-72 bg-primary-500/5 rounded-full blur-3xl animate-pulse z-[1]" />
         <Container size="lg" className="relative z-10">
           <motion.div
