@@ -319,7 +319,7 @@ export default function HomePage() {
                     className="p-6"
                   >
                     <p className="text-light-200 mb-4 italic leading-relaxed">
-                      "{testimonial.content}"
+                      &ldquo;{testimonial.content}&rdquo;
                     </p>
                     <div className="flex items-center gap-4">
                       <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-primary-500/30">

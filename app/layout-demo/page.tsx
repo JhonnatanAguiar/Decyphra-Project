@@ -259,7 +259,7 @@ export default function LayoutDemoPage() {
                       <li>Scroll detection (muda estilo ao rolar)</li>
                       <li>Sticky header (fixo no topo)</li>
                       <li>Logo integrado com DecyphraLogo</li>
-                      <li>CTA button "Fale Conosco"</li>
+                      <li>CTA button &ldquo;Fale Conosco&rdquo;</li>
                     </ul>
                   </div>
                 </div>
