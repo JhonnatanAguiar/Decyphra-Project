@@ -35,7 +35,7 @@ export const RippleGrid = ({
   mouseInteractionRadius = 1,
   className,
   style,
-}) => {
+}: RippleGridProps) => {
   const containerRef = useRef<HTMLDivElement>(null)
   const mousePositionRef = useRef({ x: 0.5, y: 0.5 })
   const targetMouseRef = useRef({ x: 0.5, y: 0.5 })

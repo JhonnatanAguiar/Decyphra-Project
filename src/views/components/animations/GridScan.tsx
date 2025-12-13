@@ -330,7 +330,7 @@ export const GridScan = ({
   snapBackDelay = 250,
   className,
   style
-}) => {
+}: GridScanProps) => {
   const containerRef = useRef<HTMLDivElement | null>(null)
   const videoRef = useRef<HTMLVideoElement | null>(null)
 

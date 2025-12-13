@@ -120,6 +120,7 @@ export default function HomePage() {
           scanDuration={2.0}
           scanDelay={2.0}
           className="z-0"
+          style={{}}
         />
         <div className="absolute inset-0 bg-gradient-to-br from-dark-950 via-dark-1000 to-dark-950 opacity-30 z-[1]" />
         <Container size="lg" className="relative z-10">
