@@ -59,7 +59,7 @@ export default function StatusPage() {
         }
         const data = await response.json()
         setStatusData(data)
-      } catch (err) {
+      } catch {
         setError('Não foi possível carregar o status')
         // Dados mockados para fallback
         setStatusData({

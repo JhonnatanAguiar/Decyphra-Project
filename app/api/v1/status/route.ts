@@ -20,7 +20,7 @@ export async function GET() {
     dbResponseTime = Date.now() - dbStartTime
     dbConnected = true
     dbStatus = dbResponseTime < 100 ? 'operational' : dbResponseTime < 500 ? 'degraded' : 'down'
-  } catch (error) {
+  } catch {
     dbStatus = 'down'
     dbConnected = false
     dbResponseTime = 0

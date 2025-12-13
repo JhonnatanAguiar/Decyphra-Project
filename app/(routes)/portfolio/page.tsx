@@ -7,7 +7,6 @@ import { Button } from '@/views/components/ui/Button'
 import Link from 'next/link'
 import { ROUTES } from '@/lib/constants/routes'
 import { Folder, Heart, TrendingUp, Users, Building, Wrench, ArrowRight, ExternalLink } from 'lucide-react'
-import { motion } from 'framer-motion'
 import Image from 'next/image'
 
 /**

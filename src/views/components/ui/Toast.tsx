@@ -1,6 +1,6 @@
 'use client'
 
-import { HTMLAttributes, ReactNode, useEffect } from 'react'
+import { HTMLAttributes, useEffect } from 'react'
 import { cn } from '@/lib/utils/cn'
 
 /**

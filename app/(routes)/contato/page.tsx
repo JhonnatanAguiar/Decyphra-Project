@@ -102,7 +102,7 @@ export default function ContactPage() {
         type: 'success',
       })
       reset()
-    } catch (error) {
+    } catch {
       setToast({
         message: 'Erro ao enviar mensagem. Tente novamente mais tarde.',
         type: 'error',

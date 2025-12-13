@@ -1,7 +1,7 @@
 'use client'
 
 import { Container, Section } from '@/views/components/layout'
-import { FadeIn, ScrollReveal, RippleGrid } from '@/views/components/animations'
+import { ScrollReveal, RippleGrid } from '@/views/components/animations'
 import { Card3D } from '@/views/components/ui/Card3D'
 import { Button } from '@/views/components/ui/Button'
 import Link from 'next/link'

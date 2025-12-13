@@ -5,7 +5,7 @@ import { FadeIn, ScrollReveal, LetterGlitch } from '@/views/components/animation
 import { Button } from '@/views/components/ui/Button'
 import Link from 'next/link'
 import { ROUTES } from '@/lib/constants/routes'
-import { ShoppingCart, Settings, PackageCheck, CheckCircle, CreditCard, Truck, Monitor, Users, PencilRuler, Bot, Check, Code, Zap, Rocket, TrendingUp, Target } from 'lucide-react'
+import { ShoppingCart, Settings, PackageCheck, CheckCircle, CreditCard, Truck, Monitor, Users, PencilRuler, Bot, Check, Code } from 'lucide-react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 

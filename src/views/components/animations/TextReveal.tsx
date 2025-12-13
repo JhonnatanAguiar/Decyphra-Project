@@ -4,7 +4,11 @@ import { HTMLAttributes, ReactNode, useEffect, useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { cn } from '@/lib/utils/cn'
 
-export interface TextRevealProps extends HTMLAttributes<HTMLDivElement> {
+export interface TextRevealProps extends Omit<HTMLAttributes<HTMLDivElement>, 
+  'onDrag' | 'onDragStart' | 'onDragEnd' | 'onDragEnter' | 'onDragExit' | 'onDragLeave' | 'onDragOver' | 'onDrop' |
+  'onAnimationStart' | 'onAnimationEnd' | 'onAnimationIteration' |
+  'onTransitionEnd'
+> {
   children: ReactNode
   delay?: number
   duration?: number

@@ -26,6 +26,20 @@ const nextConfig = {
       exclude: ['error', 'warn'],
     } : false,
   },
+  // Configuração do webpack para resolver problemas com face-api.js
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+      // Resolver problemas com módulos do Node.js sendo importados no cliente
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        fs: false,
+        encoding: false,
+        path: false,
+        crypto: false,
+      }
+    }
+    return config
+  },
   // Code splitting automático já está habilitado no Next.js 14+
   // Dynamic imports para componentes pesados
 }

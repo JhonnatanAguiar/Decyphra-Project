@@ -5,7 +5,7 @@ import { FadeIn, ScrollReveal, LetterGlitch } from '@/views/components/animation
 import { Button } from '@/views/components/ui/Button'
 import Link from 'next/link'
 import { ROUTES } from '@/lib/constants/routes'
-import { PenTool, FileText, Share2, Mail, CheckCircle, Users, TrendingUp, Target, Zap, Rocket, BookOpen, MessageSquare } from 'lucide-react'
+import { PenTool, FileText, Share2, Mail, CheckCircle, Users, BookOpen, MessageSquare, Target, Rocket, TrendingUp } from 'lucide-react'
 import { motion } from 'framer-motion'
 
 /**

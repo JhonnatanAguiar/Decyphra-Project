@@ -19,7 +19,11 @@ import { ROUTES } from '@/lib/constants/routes'
  * - Link opcional para home
  */
 
-export interface DecyphraLogoProps extends HTMLAttributes<HTMLDivElement> {
+export interface DecyphraLogoProps extends Omit<HTMLAttributes<HTMLDivElement>, 
+  'onDrag' | 'onDragStart' | 'onDragEnd' | 'onDragEnter' | 'onDragExit' | 'onDragLeave' | 'onDragOver' | 'onDrop' |
+  'onAnimationStart' | 'onAnimationEnd' | 'onAnimationIteration' |
+  'onTransitionEnd'
+> {
   layout?: 'horizontal' | 'vertical'
   size?: 'sm' | 'md' | 'lg' | 'xl'
   showText?: boolean
@@ -142,7 +146,7 @@ const DecyphraLogo = ({
       )}
       whileHover={{ scale: 1.05 }}
       transition={{ type: 'spring', stiffness: 300 }}
-      {...(props as Omit<typeof props, 'onDrag'>)}
+      {...props}
     >
       <DecyphraIcon size={iconSizes[size]} />
       {showText && (

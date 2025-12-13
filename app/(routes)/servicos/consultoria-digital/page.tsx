@@ -5,7 +5,7 @@ import { FadeIn, ScrollReveal, LetterGlitch } from '@/views/components/animation
 import { Button } from '@/views/components/ui/Button'
 import Link from 'next/link'
 import { ROUTES } from '@/lib/constants/routes'
-import { Lightbulb, Search, BarChart, CheckSquare, Bot, Check, CheckCircle, Compass, Zap, Rocket, Target, TrendingUp } from 'lucide-react'
+import { Lightbulb, Search, BarChart, CheckSquare, Bot, Check, CheckCircle, Compass } from 'lucide-react'
 import { motion } from 'framer-motion'
 
 /**
