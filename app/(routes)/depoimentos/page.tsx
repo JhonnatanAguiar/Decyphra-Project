@@ -93,6 +93,7 @@ export default function TestimonialsPage() {
             mouseInteraction={true}
             mouseInteractionRadius={1.2}
             className="z-0"
+            style={{}}
           />
         </div>
         <div className="absolute inset-0 bg-gradient-to-br from-dark-950 via-dark-1000 to-dark-950 opacity-50 z-[1] pointer-events-none" />

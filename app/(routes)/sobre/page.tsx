@@ -48,6 +48,7 @@ export default function AboutPage() {
             mouseInteraction={true}
             mouseInteractionRadius={1.2}
             className="z-0"
+            style={{}}
           />
         </div>
         <div className="absolute inset-0 bg-gradient-to-b from-black/10 to-dark-950 z-[1] pointer-events-none" />
