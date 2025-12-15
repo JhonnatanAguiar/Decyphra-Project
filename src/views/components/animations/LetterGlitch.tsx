@@ -1,6 +1,7 @@
 'use client'
 
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, useState } from 'react'
+import Beams from './Beams'
 
 interface LetterGlitchProps {
   glitchColors?: string[]
@@ -11,6 +12,23 @@ interface LetterGlitchProps {
   characters?: string
 }
 
+// Hook para detectar mobile
+const useIsMobile = () => {
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
+
+  return isMobile
+}
+
 const LetterGlitch = ({
   glitchColors = ['#2b4539', '#61dca3', '#61b3dc'],
   glitchSpeed = 50,
@@ -19,6 +37,42 @@ const LetterGlitch = ({
   smooth = true,
   characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$&*()-_+=/[]{};:<>.,0123456789'
 }: LetterGlitchProps) => {
+  const isMobile = useIsMobile()
+
+  // Em mobile, renderizar Beams ao invés de LetterGlitch
+  if (isMobile) {
+    return (
+      <div 
+        className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0" 
+        style={{ 
+          position: 'absolute', 
+          top: 0, 
+          left: 0, 
+          right: 0, 
+          bottom: 0,
+          width: '100%',
+          height: '100%'
+        }}
+      >
+        <Beams 
+          beamWidth={2}
+          beamHeight={15}
+          beamNumber={12}
+          lightColor="#85ffca"
+          speed={2}
+          noiseIntensity={1.75}
+          scale={0.2}
+          rotation={0}
+        />
+        {outerVignette && (
+          <div className="absolute top-0 left-0 w-full h-full pointer-events-none bg-[radial-gradient(circle,_rgba(0,0,0,0)_60%,_rgba(0,0,0,1)_100%)] z-[1]"></div>
+        )}
+        {centerVignette && (
+          <div className="absolute top-0 left-0 w-full h-full pointer-events-none bg-[radial-gradient(circle,_rgba(0,0,0,0.8)_0%,_rgba(0,0,0,0)_60%)] z-[1]"></div>
+        )}
+      </div>
+    )
+  }
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
   const wrapperRef = useRef<HTMLDivElement | null>(null)
   const animationRef = useRef<number | null>(null)
@@ -33,6 +87,8 @@ const LetterGlitch = ({
   const grid = useRef({ columns: 0, rows: 0 })
   const context = useRef<CanvasRenderingContext2D | null>(null)
   const lastGlitchTime = useRef(Date.now())
+  const resizeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const lastDimensionsRef = useRef({ width: 0, height: 0 })
 
   const lettersAndSymbols = Array.from(characters)
 
@@ -103,15 +159,15 @@ const LetterGlitch = ({
       return
     }
     
-    // Estratégia: tentar wrapper primeiro, depois parent Section, depois viewport
+    // Estratégia melhorada para responsividade
     let rect: DOMRect | null = null
     
-    // 1. Tentar wrapper
+    // 1. Tentar wrapper primeiro
     if (wrapper) {
       rect = wrapper.getBoundingClientRect()
     }
     
-    // 2. Se wrapper não tem dimensões, tentar encontrar o Section parent
+    // 2. Se wrapper não tem dimensões válidas, tentar encontrar o Section parent
     if (!rect || rect.width === 0 || rect.height === 0) {
       const section = wrapper?.closest('section') || wrapper?.parentElement?.closest('section')
       if (section) {
@@ -119,20 +175,31 @@ const LetterGlitch = ({
       }
     }
     
-    // 3. Se ainda não tem dimensões, usar viewport como fallback
+    // 3. Se ainda não tem dimensões, tentar parent direto
     if (!rect || rect.width === 0 || rect.height === 0) {
-      rect = new DOMRect(0, 0, window.innerWidth, window.innerHeight)
+      const parent = wrapper?.parentElement
+      if (parent) {
+        rect = parent.getBoundingClientRect()
+      }
+    }
+    
+    // 4. Fallback: usar viewport (mas com altura mínima razoável)
+    if (!rect || rect.width === 0 || rect.height === 0) {
+      const viewportHeight = Math.max(window.innerHeight, 400)
+      rect = new DOMRect(0, 0, window.innerWidth, viewportHeight)
     }
 
-    const dpr = window.devicePixelRatio || 1
+    const dpr = Math.min(window.devicePixelRatio || 1, 2) // Limitar DPR para melhor performance em mobile
 
-    // Ajustar dimensões do canvas para DPR
-    const width = Math.max(rect.width, 100)
-    const height = Math.max(rect.height, 100)
+    // Garantir dimensões mínimas e máximas razoáveis
+    const width = Math.max(Math.min(rect.width, window.innerWidth), 320) // Mínimo 320px (mobile)
+    const height = Math.max(Math.min(rect.height, window.innerHeight * 0.8), 400) // Mínimo 400px
     
+    // Ajustar dimensões do canvas para DPR
     canvas.width = width * dpr
     canvas.height = height * dpr
 
+    // Estilos do canvas devem usar dimensões lógicas (não com DPR)
     canvas.style.width = `${width}px`
     canvas.style.height = `${height}px`
 
@@ -162,10 +229,11 @@ const LetterGlitch = ({
     // Limpar canvas usando dimensões reais (com DPR já aplicado)
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     
-    // Usar DPR para font size
-    const dpr = window.devicePixelRatio || 1
+    // Usar DPR limitado para font size (mesmo valor usado no resize)
+    const dpr = Math.min(window.devicePixelRatio || 1, 2)
     ctx.font = `${fontSize * dpr}px monospace`
     ctx.textBaseline = 'top'
+    ctx.textAlign = 'left'
 
     letters.current.forEach((letter, index) => {
       // Coordenadas escaladas pelo DPR (já que o contexto foi escalado)
@@ -280,23 +348,61 @@ const LetterGlitch = ({
     }, 100)
 
     const handleResize = () => {
-      if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current)
+      // Debounce para melhor performance em mobile
+      if (resizeTimeoutRef.current) {
+        clearTimeout(resizeTimeoutRef.current)
       }
-      resizeCanvas()
-      if (letters.current.length > 0) {
-        animate()
-      }
+      
+      resizeTimeoutRef.current = setTimeout(() => {
+        const wrapper = wrapperRef.current
+        if (!wrapper) return
+        
+        const rect = wrapper.getBoundingClientRect()
+        const currentWidth = Math.round(rect.width)
+        const currentHeight = Math.round(rect.height)
+        
+        // Só redimensionar se as dimensões realmente mudaram
+        if (
+          currentWidth !== lastDimensionsRef.current.width ||
+          currentHeight !== lastDimensionsRef.current.height
+        ) {
+          lastDimensionsRef.current = { width: currentWidth, height: currentHeight }
+          
+          if (animationRef.current) {
+            cancelAnimationFrame(animationRef.current)
+            animationRef.current = null
+          }
+          
+          resizeCanvas()
+          
+          if (letters.current.length > 0) {
+            animate()
+          }
+        }
+      }, 150) // Debounce de 150ms
     }
 
+    // Adicionar listener de resize
     window.addEventListener('resize', handleResize)
+    
+    // Adicionar listener de orientationchange para mobile
+    window.addEventListener('orientationchange', () => {
+      // Aguardar um pouco para o browser recalcular dimensões
+      setTimeout(() => {
+        handleResize()
+      }, 300)
+    })
 
     return () => {
       clearInterval(initInterval)
+      if (resizeTimeoutRef.current) {
+        clearTimeout(resizeTimeoutRef.current)
+      }
       if (animationRef.current) {
         cancelAnimationFrame(animationRef.current)
       }
       window.removeEventListener('resize', handleResize)
+      window.removeEventListener('orientationchange', handleResize)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [glitchSpeed, smooth])
@@ -312,20 +418,22 @@ const LetterGlitch = ({
         right: 0, 
         bottom: 0,
         width: '100%',
-        height: '100%'
+        height: '100%',
+        minHeight: '400px'
       }}
     >
       <canvas 
         ref={canvasCallbackRef} 
         className="block w-full h-full"
         style={{ 
-          imageRendering: 'pixelated', 
+          imageRendering: 'auto', // Mudado de 'pixelated' para melhor renderização em mobile
           display: 'block',
           width: '100%',
           height: '100%',
           position: 'absolute',
           top: 0,
-          left: 0
+          left: 0,
+          objectFit: 'cover' // Garante que o canvas cubra toda a área
         }}
       />
       {outerVignette && (

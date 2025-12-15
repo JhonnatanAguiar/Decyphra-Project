@@ -1540,6 +1540,34 @@
 
 ---
 
+**04/12/2024 - Implementação: Background Beams para Mobile**
+
+**Contexto:**
+- LetterGlitch não funcionava bem em dispositivos móveis (letras se sobrepunham)
+- Necessário background alternativo para mobile que mantenha o estilo premium
+
+**Implementado:**
+- ✅ Componente Beams criado com Three.js e @react-three/fiber
+- ✅ Cor adaptada para #85ffca (verde neon da Decyphra)
+- ✅ LetterGlitch modificado para detectar mobile (< 768px)
+- ✅ Em mobile: renderiza Beams ao invés de LetterGlitch
+- ✅ Em desktop: mantém LetterGlitch original
+- ✅ Dependências instaladas: @react-three/fiber@^8.15.0 e @react-three/drei@^9.88.0
+- ✅ Hook useIsMobile criado para detecção responsiva
+- ✅ Vignettes mantidas em ambos os backgrounds
+
+**Arquivos Criados:**
+- `src/views/components/animations/Beams.tsx` - Componente Beams completo
+
+**Arquivos Modificados:**
+- `src/views/components/animations/LetterGlitch.tsx` - Detecção mobile e renderização condicional
+- `src/views/components/animations/index.ts` - Export do Beams adicionado
+- `package.json` - Dependências @react-three/fiber e @react-three/drei adicionadas
+
+**Status:** ✅ Implementado
+
+---
+
 **Última atualização:** 04/12/2024
 
 ---
@@ -1840,3 +1868,28 @@
 - ✅ Sticky sections - Header sticky implementado, sticky sections em uso (ex: página Contato)
 
 **Status:** Fase 4.1 completamente concluída ✅ | Todas as animações de scroll implementadas ✅
+
+---
+
+**04/12/2024 - Correção: Responsividade do LetterGlitch nas Páginas de Serviços**
+
+**Problema Identificado:**
+- LetterGlitch não estava redimensionando corretamente em dispositivos móveis
+- Canvas não calculava dimensões corretamente em diferentes tamanhos de tela
+- Performance ruim em mobile devido a DPR alto
+- Falta de debounce no resize causando múltiplos recálculos
+
+**Solução Implementada:**
+- ✅ Melhorado cálculo de dimensões com fallbacks múltiplos (wrapper → section → parent → viewport)
+- ✅ Limitado DPR a máximo de 2 para melhor performance em mobile
+- ✅ Adicionado debounce de 150ms no resize para evitar recálculos excessivos
+- ✅ Adicionado listener de orientationchange para detectar mudanças de orientação
+- ✅ Melhorada detecção de mudanças de dimensões (só redimensiona se realmente mudou)
+- ✅ Alterado imageRendering de 'pixelated' para 'auto' para melhor renderização em mobile
+- ✅ Adicionado objectFit: 'cover' no canvas para garantir cobertura completa
+- ✅ Garantidas dimensões mínimas (320px width, 400px height) para evitar problemas em mobile
+
+**Arquivos Modificados:**
+- `src/views/components/animations/LetterGlitch.tsx` - Correções de responsividade
+
+**Status:** ✅ Resolvido | LetterGlitch agora é totalmente responsivo
