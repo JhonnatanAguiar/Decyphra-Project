@@ -1,7 +1,6 @@
 'use client'
 
-import { useRef, useEffect, useState } from 'react'
-import Beams from './Beams'
+import { useRef, useEffect } from 'react'
 
 interface LetterGlitchProps {
   glitchColors?: string[]
@@ -12,23 +11,6 @@ interface LetterGlitchProps {
   characters?: string
 }
 
-// Hook para detectar mobile
-const useIsMobile = () => {
-  const [isMobile, setIsMobile] = useState(false)
-
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768)
-    }
-
-    checkMobile()
-    window.addEventListener('resize', checkMobile)
-    return () => window.removeEventListener('resize', checkMobile)
-  }, [])
-
-  return isMobile
-}
-
 const LetterGlitch = ({
   glitchColors = ['#2b4539', '#61dca3', '#61b3dc'],
   glitchSpeed = 50,
@@ -37,42 +19,6 @@ const LetterGlitch = ({
   smooth = true,
   characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$&*()-_+=/[]{};:<>.,0123456789'
 }: LetterGlitchProps) => {
-  const isMobile = useIsMobile()
-
-  // Em mobile, renderizar Beams ao invés de LetterGlitch
-  if (isMobile) {
-    return (
-      <div 
-        className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0" 
-        style={{ 
-          position: 'absolute', 
-          top: 0, 
-          left: 0, 
-          right: 0, 
-          bottom: 0,
-          width: '100%',
-          height: '100%'
-        }}
-      >
-        <Beams 
-          beamWidth={2}
-          beamHeight={15}
-          beamNumber={12}
-          lightColor="#85ffca"
-          speed={2}
-          noiseIntensity={1.75}
-          scale={0.2}
-          rotation={0}
-        />
-        {outerVignette && (
-          <div className="absolute top-0 left-0 w-full h-full pointer-events-none bg-[radial-gradient(circle,_rgba(0,0,0,0)_60%,_rgba(0,0,0,1)_100%)] z-[1]"></div>
-        )}
-        {centerVignette && (
-          <div className="absolute top-0 left-0 w-full h-full pointer-events-none bg-[radial-gradient(circle,_rgba(0,0,0,0.8)_0%,_rgba(0,0,0,0)_60%)] z-[1]"></div>
-        )}
-      </div>
-    )
-  }
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
   const wrapperRef = useRef<HTMLDivElement | null>(null)
   const animationRef = useRef<number | null>(null)

@@ -27,4 +27,3 @@ export type { RippleGridProps } from './RippleGrid'
 export { Waves } from './Waves'
 export type { WavesProps } from './Waves'
 
-export { default as Beams } from './Beams'
