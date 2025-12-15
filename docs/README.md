@@ -77,6 +77,25 @@ Inclui:
 
 ---
 
+### 🤖 [COMPORTAMENTOS-AGENTES.md](./COMPORTAMENTOS-AGENTES.md)
+**Comportamentos padronizados para agentes de IA**
+
+Define:
+- Revisão de documentação obrigatória
+- Atualização de documentações centrais
+- Centralização de documentos
+- Implementação passo a passo
+- Testes e debug
+- Comunicação e explicações
+- Versionamento Git
+- Sugestões de melhorias
+- Organização do projeto
+- Qualidade de código
+
+**👉 [Ler Comportamentos Padronizados](./COMPORTAMENTOS-AGENTES.md)**
+
+---
+
 ## 📁 Documentação por Fase
 
 ### 🚀 [Fase 1 - Setup](./fase-1-setup/)
@@ -95,10 +114,11 @@ Inclui:
 ## 🎯 Como Usar Esta Documentação
 
 1. **Começando?** → Leia [PLANEJAMENTO-COMPLETO.md](./PLANEJAMENTO-COMPLETO.md)
-2. **Problemas?** → Veja [LINHA-DO-TEMPO.md](./LINHA-DO-TEMPO.md) ou [troubleshooting/](./troubleshooting/)
-3. **Revisões?** → Veja [REVISOES.md](./REVISOES.md)
-4. **Configurar Git?** → Veja [GUIA-GIT.md](./GUIA-GIT.md)
-5. **Acompanhar Progresso?** → Veja checklists em [PLANEJAMENTO-COMPLETO.md](./PLANEJAMENTO-COMPLETO.md)
+2. **Agentes de IA?** → Leia [COMPORTAMENTOS-AGENTES.md](./COMPORTAMENTOS-AGENTES.md) primeiro
+3. **Problemas?** → Veja [LINHA-DO-TEMPO.md](./LINHA-DO-TEMPO.md) ou [troubleshooting/](./troubleshooting/)
+4. **Revisões?** → Veja [REVISOES.md](./REVISOES.md)
+5. **Configurar Git?** → Veja [GUIA-GIT.md](./GUIA-GIT.md)
+6. **Acompanhar Progresso?** → Veja checklists em [PLANEJAMENTO-COMPLETO.md](./PLANEJAMENTO-COMPLETO.md)
 
 ---
 
