@@ -183,7 +183,8 @@ const Card3D = ({
   const isHoveredRef = useRef(false)
   const memoizedParticles = useRef<HTMLDivElement[]>([])
   const particlesInitialized = useRef(false)
-  const [isMobile, setIsMobile] = useState(false)
+  const isMobileRef = useRef(false)
+  const [mounted, setMounted] = useState(false)
 
   // Refs para tilt otimizado (sem GSAP)
   const tiltX = useRef(0)
@@ -194,15 +195,18 @@ const Card3D = ({
   const lastMouseMoveTime = useRef(0)
   const mouseEventQueue = useRef<{ x: number; y: number } | null>(null)
 
-  // Detectar mobile
+  // Detectar mobile (apenas após mount)
   useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth <= MOBILE_BREAKPOINT)
+    setMounted(true)
+    const checkMobile = () => {
+      isMobileRef.current = window.innerWidth <= MOBILE_BREAKPOINT
+    }
     checkMobile()
     window.addEventListener('resize', checkMobile)
     return () => window.removeEventListener('resize', checkMobile)
   }, [])
 
-  const shouldDisableAnimations = disableAnimations || isMobile
+  const shouldDisableAnimations = disableAnimations || isMobileRef.current
 
   const initializeParticles = useCallback(() => {
     if (particlesInitialized.current || !cardRef.current) return
@@ -212,6 +216,8 @@ const Card3D = ({
     )
     particlesInitialized.current = true
   }, [particleCount, glowColor])
+
+  // NOTE: não retornar aqui para preservar ordem de hooks (mounted usado apenas na renderização)
 
   const clearAllParticles = useCallback(() => {
     timeoutsRef.current.forEach(clearTimeout)
@@ -436,6 +442,23 @@ const Card3D = ({
     enableParticles,
     glowColor,
   ])
+
+  if (!mounted) {
+    return (
+      <div
+        ref={cardRef}
+        className={cn(
+          'relative overflow-hidden rounded-lg border border-dark-700 bg-dark-800 transition-all duration-300',
+          enableBorderGlow &&
+            'hover:border-primary-500/50 hover:shadow-[0_0_25px_rgba(0,255,136,0.3)]',
+          className
+        )}
+        {...props}
+      >
+        <div className="relative z-10">{children}</div>
+      </div>
+    )
+  }
 
   return (
     <>

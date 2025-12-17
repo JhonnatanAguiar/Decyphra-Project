@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { EffectComposer, RenderPass, EffectPass, BloomEffect, ChromaticAberrationEffect } from 'postprocessing'
 import * as THREE from 'three'
-import * as faceapi from 'face-api.js'
+// face-api.js é carregado dinamicamente apenas no cliente
 
 export type GridScanProps = {
   enableWebcam?: boolean
@@ -340,6 +340,7 @@ export const GridScan = ({
   const bloomRef = useRef<BloomEffect | null>(null)
   const chromaRef = useRef<ChromaticAberrationEffect | null>(null)
   const rafRef = useRef<number | null>(null)
+  const faceapiRef = useRef<any>(null)
 
   const [modelsReady, setModelsReady] = useState(false)
   const [uiFaceActive, setUiFaceActive] = useState(false)
@@ -680,12 +681,14 @@ export const GridScan = ({
     let canceled = false
     const load = async () => {
       try {
+        const faceapi = await import('face-api.js')
+        faceapiRef.current = faceapi
         await Promise.all([
           faceapi.nets.tinyFaceDetector.loadFromUri(modelsPath),
           faceapi.nets.faceLandmark68TinyNet.loadFromUri(modelsPath)
         ])
         if (!canceled) setModelsReady(true)
-      } catch {
+      } catch (e) {
         if (!canceled) setModelsReady(false)
       }
     }
@@ -715,6 +718,8 @@ export const GridScan = ({
         return
       }
 
+      const faceapi = faceapiRef.current
+      if (!faceapi) return
       const opts = new faceapi.TinyFaceDetectorOptions({ inputSize: 320, scoreThreshold: 0.5 })
 
       const detect = async (ts: number) => {
@@ -723,6 +728,11 @@ export const GridScan = ({
         if (ts - lastDetect >= 33) {
           lastDetect = ts
           try {
+            const faceapi = faceapiRef.current
+            if (!faceapi) {
+              setUiFaceActive(false)
+              return
+            }
             const res = await faceapi.detectSingleFace(video, opts).withFaceLandmarks(true)
             if (res && res.detection) {
               const det = res.detection
