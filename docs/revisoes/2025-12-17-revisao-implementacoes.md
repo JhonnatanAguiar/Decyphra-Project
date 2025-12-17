@@ -8,11 +8,7 @@
 Revisar alterações realizadas para corrigir erros de build e implementar o endpoint `POST /api/v1/contact` (Fase 5.1).
 
 ## Mudanças
-- `app/api/v1/contact/route.ts` — novo endpoint `POST /api/v1/contact` com validação Zod e resposta stub.
-- `src/views/components/animations/GridScan.tsx` — import de `face-api.js` convertido para import dinâmico e uso de `faceapiRef`.
-- `src/views/components/ui/Card3D.tsx` — removido retorno condicional antes da declaração de hooks para preservar ordem de hooks.
-- `package.json` / `package-lock.json` — adicionada dependência `encoding`.
-
+ Adicionado `src/lib/services/contact.service.ts` para envio de e-mails via Resend com fallback de log.
 ## Verificações realizadas
 - `npm install` executado para restaurar dependências
 - `npm run type-check` executado — sem erros fatais

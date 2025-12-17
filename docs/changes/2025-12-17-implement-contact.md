@@ -18,6 +18,7 @@ Verificações realizadas:
 Arquivos alterados/criados:
 
 - `app/api/v1/contact/route.ts` (novo)
+- `src/lib/services/contact.service.ts` (novo)
 - `src/views/components/animations/GridScan.tsx` (modificado)
 - `src/views/components/ui/Card3D.tsx` (modificado)
 - `package.json` / `package-lock.json` (dependência `encoding` adicionada)

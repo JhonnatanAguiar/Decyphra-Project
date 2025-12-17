@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { z } from 'zod'
+import { sendContactEmail } from '@/lib/services/contact.service'
 
 const contactSchema = z.object({
   name: z.string().min(3),
@@ -15,12 +16,15 @@ export async function POST(req: Request) {
     const body = await req.json()
     const data = contactSchema.parse(body)
 
-    // TODO: integrar com serviço de email / persistência (Fase 5.2)
-    // Por enquanto, apenas logamos e retornamos sucesso
-    // eslint-disable-next-line no-console
-    console.info('[api/contact] received', { name: data.name, email: data.email, service: data.service })
+    // Integra com serviço de email (Resend) com fallback para log
+    const result = await sendContactEmail(data)
+    if (!result.ok) {
+      // eslint-disable-next-line no-console
+      console.error('[api/contact] sendContactEmail error', result.error)
+      return NextResponse.json({ ok: false, message: 'Erro enviando mensagem' }, { status: 500 })
+    }
 
-    return NextResponse.json({ ok: true, message: 'Mensagem recebida' })
+    return NextResponse.json({ ok: true, message: 'Mensagem recebida', via: result.provider })
   } catch (err) {
     if (err instanceof z.ZodError) {
       return NextResponse.json({ ok: false, errors: err.errors }, { status: 400 })
