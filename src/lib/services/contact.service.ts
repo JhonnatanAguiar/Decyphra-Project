@@ -38,12 +38,19 @@ async function sendViaResend(payload: ContactPayload) {
     }),
   })
 
-  if (!res.ok) {
-    const text = await res.text()
-    throw new Error(`Resend error: ${res.status} ${text}`)
+  const text = await res.text()
+  let body: any = text
+  try {
+    body = JSON.parse(text)
+  } catch (e) {
+    // keep raw text
   }
 
-  return true
+  if (!res.ok) {
+    throw new Error(`Resend error: ${res.status} ${JSON.stringify(body)}`)
+  }
+
+  return body
 }
 
 import { prisma } from '@/lib/db/prisma'
@@ -51,9 +58,10 @@ import { prisma } from '@/lib/db/prisma'
 export async function sendContactEmail(payload: ContactPayload) {
   try {
     const via = process.env.RESEND_API_KEY ? 'resend' : 'log'
+    let providerResult: any = null
 
     if (process.env.RESEND_API_KEY) {
-      await sendViaResend(payload)
+      providerResult = await sendViaResend(payload)
     } else {
       // Fallback: apenas logar quando não há chave configurada
       // eslint-disable-next-line no-console
@@ -61,6 +69,7 @@ export async function sendContactEmail(payload: ContactPayload) {
     }
 
     // Persistir submissão no banco, se config disponível
+
     if (process.env.DATABASE_URL) {
       try {
         await prisma.contactSubmission.create({
@@ -70,7 +79,7 @@ export async function sendContactEmail(payload: ContactPayload) {
             phone: payload.phone ?? null,
             service: payload.service ?? null,
             message: payload.message,
-            metadata: undefined,
+            metadata: providerResult ?? null,
           },
         })
       } catch (dbErr) {
@@ -79,7 +88,7 @@ export async function sendContactEmail(payload: ContactPayload) {
       }
     }
 
-    return { ok: true, provider: via }
+    return { ok: true, provider: via, providerResult }
   } catch (err) {
     // eslint-disable-next-line no-console
     console.error('[contact.service] error', err)
