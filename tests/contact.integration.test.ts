@@ -5,7 +5,7 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 let proc: ReturnType<typeof spawn> | null = null
 let port = 3000
 
-async function waitForUp(p: number, timeout = 20000) {
+async function waitForUp(p: number, timeout = 60000) {
   const start = Date.now()
   while (Date.now() - start < timeout) {
     try {
@@ -20,22 +20,23 @@ async function waitForUp(p: number, timeout = 20000) {
 }
 
 beforeAll(async () => {
-  // Start dev server
-  proc = spawn('npm', ['run', 'dev'], { stdio: 'inherit' })
+  // Build the app then start a production server (`next start`) on port 4000
+  await new Promise<void>((resolve, reject) => {
+    const b = spawn('npm', ['run', 'build'], { stdio: 'inherit' })
+    b.on('exit', (code) => (code === 0 ? resolve() : reject(new Error('build failed'))))
+    b.on('error', reject)
+  })
 
-  // wait for either 3000 or 3001
-  const ok3000 = await waitForUp(3000, 15000)
-  if (ok3000) {
-    port = 3000
-    return
-  }
-  const ok3001 = await waitForUp(3001, 15000)
-  if (ok3001) {
-    port = 3001
-    return
-  }
-  throw new Error('Next dev server did not start in time')
-}, 30000)
+  const START_PORT = 4000
+  port = START_PORT
+  proc = spawn('npm', ['start'], {
+    env: { ...process.env, PORT: String(START_PORT) },
+    stdio: 'inherit',
+  })
+
+  const ok = await waitForUp(START_PORT, 60000)
+  if (!ok) throw new Error('Next start did not become available in time')
+}, 300000)
 
 afterAll(() => {
   if (proc) proc.kill()
