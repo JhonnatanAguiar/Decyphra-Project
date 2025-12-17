@@ -35,4 +35,5 @@ export async function POST(req: Request) {
   }
 }
 
-export const runtime = 'edge'
+// Usar runtime Node para permitir uso de Prisma no servidor
+export const runtime = 'nodejs'

@@ -46,17 +46,40 @@ async function sendViaResend(payload: ContactPayload) {
   return true
 }
 
+import { prisma } from '@/lib/db/prisma'
+
 export async function sendContactEmail(payload: ContactPayload) {
   try {
+    const via = process.env.RESEND_API_KEY ? 'resend' : 'log'
+
     if (process.env.RESEND_API_KEY) {
       await sendViaResend(payload)
-      return { ok: true, provider: 'resend' }
+    } else {
+      // Fallback: apenas logar quando não há chave configurada
+      // eslint-disable-next-line no-console
+      console.info('[contact.service] fallback log:', payload)
     }
 
-    // Fallback: apenas logar quando não há chave configurada
-    // eslint-disable-next-line no-console
-    console.info('[contact.service] fallback log:', payload)
-    return { ok: true, provider: 'log' }
+    // Persistir submissão no banco, se config disponível
+    if (process.env.DATABASE_URL) {
+      try {
+        await prisma.contactSubmission.create({
+          data: {
+            name: payload.name,
+            email: payload.email,
+            phone: payload.phone ?? null,
+            service: payload.service ?? null,
+            message: payload.message,
+            metadata: undefined,
+          },
+        })
+      } catch (dbErr) {
+        // eslint-disable-next-line no-console
+        console.error('[contact.service] prisma error', dbErr)
+      }
+    }
+
+    return { ok: true, provider: via }
   } catch (err) {
     // eslint-disable-next-line no-console
     console.error('[contact.service] error', err)
