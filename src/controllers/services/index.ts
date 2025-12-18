@@ -5,4 +5,5 @@
  */
 
 export { sendContactEmail } from './contact.service'
+export { listServices } from './service.service'
 
