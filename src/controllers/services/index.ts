@@ -6,4 +6,5 @@
 
 export { sendContactEmail } from './contact.service'
 export { listServices } from './service.service'
+export { listProjects } from './project.service'
 
