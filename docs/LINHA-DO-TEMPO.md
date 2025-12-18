@@ -2143,3 +2143,35 @@ src/
 - `src/controllers/services/index.ts` - Adicionado export do `listTestimonials`
 
 **Status:** ✅ API implementada e funcional
+
+---
+
+**18/12/2025 - Planejamento: Mini-CRM e Painel Admin**
+
+**Contexto:** Decisão de adicionar um sistema interno (mini-CRM) para gerenciar leads, interações e acompanhamento de vendas.
+
+**Decisão:**
+- ✅ Adicionar nova funcionalidade: Mini-CRM e Painel Admin
+- ✅ Sistema para gerenciar leads do formulário de contato
+- ✅ Registrar histórico de interações (timeline)
+- ✅ Atribuir leads a membros da equipe (owner)
+- ✅ Acompanhar status do funil de vendas
+- ✅ Rastrear origem dos leads (UTM, referrer)
+
+**Estrutura Planejada:**
+- **Models Prisma:** User, Lead, LeadInteraction
+- **Enums:** LeadStatus, InteractionType, UserRole
+- **API Routes:** POST /api/leads (público), GET/PATCH /api/admin/leads/* (protegido)
+- **Frontend Admin:** /admin/leads (lista), /admin/leads/[id] (detalhes)
+- **Autenticação:** NextAuth.js / Auth.js com allowlist e RBAC
+
+**Roadmap Criado:**
+- Fase 8.1: Schema e Migrations
+- Fase 8.2: API Pública de Leads
+- Fase 8.3: Autenticação
+- Fase 8.4: API Admin
+- Fase 8.5: Frontend Admin - Lista
+- Fase 8.6: Frontend Admin - Detalhes
+- Fase 8.7: Integrações e Melhorias
+
+**Status:** ✅ Planejamento documentado | Aguardando início da implementação

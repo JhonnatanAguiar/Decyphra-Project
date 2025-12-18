@@ -21,6 +21,8 @@
 11. [Configurações](#configurações)
 12. [Melhorias e Ajustes Implementados](#-melhorias-e-ajustes-implementados)
 13. [Backgrounds Animados Implementados](#-backgrounds-animados-implementados)
+14. [Mini-CRM e Painel Admin](#-mini-crm-e-painel-admin)
+14. [Mini-CRM e Painel Admin](#-mini-crm-e-painel-admin)
 
 ---
 
@@ -765,6 +767,296 @@ npm run type-check   # Verifica tipos TypeScript
 
 ---
 
+## 🎛️ Mini-CRM e Painel Admin
+
+> **Sistema de Gestão de Leads e Clientes**  
+> Painel administrativo para gerenciar leads, interações e acompanhamento de vendas  
+> Planejado: 18/12/2025
+
+---
+
+### 📋 Visão Geral
+
+Sistema interno (mini-CRM) para gerenciar leads provenientes do formulário de contato, registrar interações (e-mails, WhatsApp, calls) e acompanhar o funil de vendas de forma organizada.
+
+### 🎯 Objetivos
+
+- ✅ Centralizar todos os leads em um único lugar
+- ✅ Registrar histórico de interações (timeline)
+- ✅ Atribuir leads a membros da equipe (owner)
+- ✅ Acompanhar status do funil de vendas
+- ✅ Rastrear origem dos leads (UTM, referrer)
+- ✅ Facilitar comunicação e follow-up
+
+---
+
+### 🗄️ Estrutura de Dados (Prisma Schema)
+
+#### Models Principais
+
+**User** - Usuários do sistema admin
+```prisma
+model User {
+  id        String   @id @default(cuid())
+  name      String?
+  email     String   @unique
+  role      UserRole @default(ADMIN)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  leadsOwned Lead[]  @relation("LeadOwner")
+  leadNotes  LeadInteraction[]
+}
+```
+
+**Lead** - Leads do formulário de contato
+```prisma
+model Lead {
+  id           String     @id @default(cuid())
+  name         String
+  email        String
+  phone        String?
+  message      String?
+  service      String?
+  status       LeadStatus @default(NEW)
+  priority     Int        @default(0)
+
+  // Rastreio
+  utmSource    String?
+  utmMedium    String?
+  utmCampaign  String?
+  referrer     String?
+  ipHash       String?
+
+  ownerId      String?
+  owner        User?      @relation("LeadOwner", fields: [ownerId], references: [id])
+
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  firstReplyAt DateTime?
+
+  interactions LeadInteraction[]
+}
+```
+
+**LeadInteraction** - Histórico de interações
+```prisma
+model LeadInteraction {
+  id        String   @id @default(cuid())
+  leadId    String
+  userId    String?
+
+  type      InteractionType
+  channel   String?
+  subject   String?
+  content   String?
+  meta      Json?
+
+  createdAt DateTime @default(now())
+
+  lead      Lead     @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  user      User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+}
+```
+
+#### Enums
+
+```prisma
+enum LeadStatus {
+  NEW
+  CONTACTED
+  QUALIFIED
+  PROPOSAL_SENT
+  WON
+  LOST
+  SPAM
+}
+
+enum InteractionType {
+  NOTE
+  EMAIL_SENT
+  EMAIL_RECEIVED
+  WHATSAPP
+  CALL
+  MEETING
+  PROPOSAL
+}
+
+enum UserRole {
+  ADMIN
+  MEMBER
+}
+```
+
+---
+
+### 🔌 API Routes
+
+#### Rotas Públicas
+- `POST /api/leads` - Recebe lead do formulário público
+  - Validação com Zod
+  - Honeypot (campo invisível)
+  - Rate limit (por IP hash)
+  - Normalização (email lowercased)
+  - Salva no banco
+  - Dispara e-mails (confirmação + notificação interna)
+
+#### Rotas Admin (Protegidas)
+- `GET /api/admin/leads` - Lista leads (com filtros e busca)
+- `GET /api/admin/leads/:id` - Detalhes do lead
+- `PATCH /api/admin/leads/:id` - Atualiza status, owner, notas
+- `POST /api/admin/leads/:id/interactions` - Registra interação
+
+---
+
+### 🎨 Frontend Admin
+
+#### Páginas
+
+**`/admin/leads`** - Lista de Leads
+- Tabela com: Nome, Email, Serviço, Status, Owner, Criado em, Última interação
+- Filtros:
+  - Status (NEW, CONTACTED, QUALIFIED, etc.)
+  - Owner (atribuído a)
+  - Serviço
+  - "Novos últimos 7 dias"
+- Busca: nome/email/telefone
+- Ações rápidas:
+  - "Marcar como contatado"
+  - "Atribuir a mim"
+  - "Abrir no WhatsApp" (se tiver phone)
+
+**`/admin/leads/[id]`** - Detalhes do Lead
+- Cards:
+  - Dados do lead
+  - Origem (UTM/referrer)
+  - Status + Owner (editável)
+- Timeline (LeadInteractions)
+- Campo "Adicionar nota"
+- Botões:
+  - "Enviar e-mail" (integração futura)
+  - "Copiar e-mail"
+  - "Abrir WhatsApp"
+
+---
+
+### 🔐 Autenticação e Segurança
+
+#### Autenticação
+- **NextAuth.js / Auth.js** (ou Clerk como alternativa SaaS)
+- Allowlist de emails autorizados
+- RBAC básico (ADMIN / MEMBER)
+
+#### Proteção
+- Middleware protegendo `/admin/*`
+- Rotas `/api/admin/*` validam sessão no servidor
+- Rate limit no `POST /api/leads`
+- Honeypot no formulário público
+- Log de auditoria (via LeadInteraction)
+
+#### Checklist de Segurança
+- [ ] `/admin` bloqueado por middleware
+- [ ] `/api/admin/*` checa sessão no server
+- [ ] Allowlist de emails do time
+- [ ] Rate limit no `POST /api/leads`
+- [ ] Honeypot + validação Zod
+- [ ] Log de auditoria simples
+- [ ] Nunca expor dados do lead em client sem precisar
+
+---
+
+### 📝 Roadmap de Implementação
+
+#### Fase 8.1: Schema e Migrations
+- [ ] Criar models Prisma (User, Lead, LeadInteraction)
+- [ ] Criar enums (LeadStatus, InteractionType, UserRole)
+- [ ] Aplicar migrations no banco
+- [ ] Criar seed inicial (usuários admin)
+
+#### Fase 8.2: API Pública de Leads
+- [ ] Implementar `POST /api/leads`
+- [ ] Validação com Zod schema
+- [ ] Honeypot no formulário
+- [ ] Rate limiting
+- [ ] Normalização de dados
+- [ ] Integração com Resend (e-mails)
+- [ ] Rastreamento UTM/referrer
+
+#### Fase 8.3: Autenticação
+- [ ] Configurar NextAuth.js / Auth.js
+- [ ] Implementar allowlist de emails
+- [ ] Criar middleware de proteção `/admin`
+- [ ] Proteger rotas `/api/admin/*`
+- [ ] Página de login
+
+#### Fase 8.4: API Admin
+- [ ] `GET /api/admin/leads` (lista com filtros)
+- [ ] `GET /api/admin/leads/:id` (detalhes)
+- [ ] `PATCH /api/admin/leads/:id` (atualização)
+- [ ] `POST /api/admin/leads/:id/interactions` (registrar interação)
+
+#### Fase 8.5: Frontend Admin - Lista
+- [ ] Página `/admin/leads`
+- [ ] Tabela de leads
+- [ ] Filtros (status, owner, serviço, data)
+- [ ] Busca (nome/email/telefone)
+- [ ] Ações rápidas
+- [ ] Paginação
+
+#### Fase 8.6: Frontend Admin - Detalhes
+- [ ] Página `/admin/leads/[id]`
+- [ ] Cards de informações
+- [ ] Timeline de interações
+- [ ] Campo para adicionar nota
+- [ ] Botões de ação (e-mail, WhatsApp)
+- [ ] Edição de status e owner
+
+#### Fase 8.7: Integrações e Melhorias
+- [ ] Integração de envio de e-mail pelo sistema (opcional)
+- [ ] Métricas básicas (tempo até primeira resposta, taxa de ganho)
+- [ ] Exportação de leads (opcional)
+- [ ] Notificações em tempo real (opcional)
+
+---
+
+### 🔄 Integração com Sistema Atual
+
+#### Modificações Necessárias
+
+**Formulário de Contato (`/contato`)**
+- Modificar `POST /api/v1/contact` para também criar Lead
+- Ou criar novo endpoint `POST /api/leads` e usar no formulário
+- Adicionar campos de rastreamento (UTM, referrer)
+
+**ContactSubmission (Model Existente)**
+- Manter para histórico/compatibilidade
+- Lead será o modelo principal para CRM
+- Considerar migração futura de dados
+
+---
+
+### 📊 Benefícios Esperados
+
+- ✅ **Organização:** Todos os leads em um só lugar
+- ✅ **Histórico:** Timeline completa de interações
+- ✅ **Colaboração:** Divisão de leads entre membros da equipe
+- ✅ **Rastreamento:** Origem dos leads (UTM, referrer)
+- ✅ **Métricas:** Dados para análise de conversão
+- ✅ **Eficiência:** Ações rápidas e automações
+
+---
+
+### 🎯 Próximos Passos Imediatos
+
+1. **Criar models Prisma** e aplicar migrations
+2. **Implementar `POST /api/leads`** com validação + Resend
+3. **Implementar Auth + middleware** do `/admin`
+4. **Criar `/admin/leads`** listando do banco (com filtros)
+5. **Criar `/admin/leads/[id]`** com timeline + notas + mudança de status
+6. **Adicionar "owner" e "assign to me"**
+
+---
+
 ## 📝 Notas Importantes
 
 1. **Código Limpo:** Manter código simples, claro e fácil de entender
@@ -778,4 +1070,5 @@ npm run type-check   # Verifica tipos TypeScript
 **Última atualização:** 18/12/2025  
 **Status:** Fases 1, 2, 3 e 4 concluídas e revisadas (100% completo cada). Fase 5: progresso inicial implementado.  
 **Deploy:** Site hospedado na Vercel, aguardando propagação DNS ✅  
-**Melhorias Recentes:** Scroll para topo no refresh e background estático mobile para serviços implementados (18/12/2025)
+**Melhorias Recentes:** Scroll para topo no refresh e background estático mobile para serviços implementados (18/12/2025)  
+**Novo:** Mini-CRM e Painel Admin planejado (18/12/2025)
