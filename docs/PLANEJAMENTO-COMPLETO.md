@@ -513,13 +513,14 @@ light: {
 - [ ] POST `/api/v1/newsletter` (newsletter) - ⏸️ Standby (deixado para futuro)
 - [x] GET `/api/v1/projects` (listar projetos) - ✅ Concluído (filtros, paginação)
 - [x] GET `/api/v1/projects/[slug]` (detalhes) - ✅ Concluído
-- [ ] GET `/api/v1/testimonials` (depoimentos)
+- [x] GET `/api/v1/testimonials` (depoimentos) - ✅ Concluído (filtros, paginação)
 - [x] GET `/api/v1/services` (serviços) - ✅ Concluído (filtros, paginação)
 
 #### 5.2 Services
 - [x] Contact Service - ✅ Concluído (envio de email, persistência)
 - [x] Service Service - ✅ Concluído (listagem com filtros e paginação)
 - [x] Project Service - ✅ Concluído (listagem com filtros e paginação)
+- [x] Testimonial Service - ✅ Concluído (listagem com filtros e paginação)
 - [ ] Email Service (Resend ou SendGrid) - ⏸️ Parcialmente implementado (via Contact Service)
 - [ ] Newsletter Service - ⏸️ Standby (deixado para futuro)
 

@@ -2118,3 +2118,28 @@ src/
 - `src/controllers/services/index.ts` - Adicionado export do `getProjectBySlug`
 
 **Status:** ✅ API implementada e funcional
+
+---
+
+**18/12/2025 - Implementação GET /api/v1/testimonials - Listagem de Depoimentos**
+
+**Contexto:** Implementação da última API de leitura (GET) para listagem de depoimentos.
+
+**Implementação Realizada:**
+- ✅ Criado `testimonial.service.ts` com função `listTestimonials()`
+- ✅ Implementado filtros (featured) e paginação (limit, offset)
+- ✅ Ordenação por `order` ASC, `featured` DESC e `createdAt` DESC
+- ✅ Retorna metadados de paginação (total, hasMore)
+- ✅ Criado `app/api/v1/testimonials/route.ts` como controller
+- ✅ Validação de query params com Zod schema centralizado
+- ✅ Tratamento de erros padronizado
+- ✅ Headers de API versionada (`X-API-Version: v1`)
+
+**Arquivos Criados:**
+- `src/controllers/services/testimonial.service.ts`
+- `app/api/v1/testimonials/route.ts`
+
+**Arquivos Modificados:**
+- `src/controllers/services/index.ts` - Adicionado export do `listTestimonials`
+
+**Status:** ✅ API implementada e funcional

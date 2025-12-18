@@ -7,4 +7,5 @@
 export { sendContactEmail } from './contact.service'
 export { listServices } from './service.service'
 export { listProjects, getProjectBySlug } from './project.service'
+export { listTestimonials } from './testimonial.service'
 
