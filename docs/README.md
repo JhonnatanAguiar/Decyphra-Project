@@ -49,20 +49,6 @@ Consolida:
 
 ---
 
-### 🔍 [REVISAO-FASE-5.md](./REVISAO-FASE-5.md)
-**Revisão completa para iniciar Fase 5**
-
-Documento detalhado com:
-- Verificações completas do projeto
-- Checklist de pré-requisitos
-- Pendências para Fase 5
-- Fluxo de trabalho recomendado
-- Análise de consistência
-
-**👉 [Ver Revisão Fase 5](./REVISAO-FASE-5.md)**
-
----
-
 ### 🔄 [GUIA-GIT.md](./GUIA-GIT.md)
 **Guia completo de versionamento com Git**
 
@@ -96,30 +82,23 @@ Define:
 
 ---
 
-## 📁 Documentação por Fase
-
-### 🚀 [Fase 1 - Setup](./fase-1-setup/)
-- FASE1-STATUS.md - Status atual
-- INSTALACAO-DEPENDENCIAS.md - Guia de instalação
-- CONFIGURACAO-ENV.md - Configuração de variáveis
-
-### 🔧 [Troubleshooting](./troubleshooting/)
-- RESOLVER-AGORA.md - Soluções rápidas
-- SOLUCAO-FINAL-PRISMA.md - Solução Prisma
-- SOLUCAO-PRISMA.md - Solução inicial
-- TROUBLESHOOTING-PRISMA.md - Guia completo
-
----
-
 ## 🎯 Como Usar Esta Documentação
 
 1. **Começando?** → Leia [PLANEJAMENTO-COMPLETO.md](./PLANEJAMENTO-COMPLETO.md)
 2. **Agentes de IA?** → Leia [COMPORTAMENTOS-AGENTES.md](./COMPORTAMENTOS-AGENTES.md) primeiro
-3. **Problemas?** → Veja [LINHA-DO-TEMPO.md](./LINHA-DO-TEMPO.md) ou [troubleshooting/](./troubleshooting/)
+3. **Problemas?** → Veja [LINHA-DO-TEMPO.md](./LINHA-DO-TEMPO.md) ou [REVISOES.md](./REVISOES.md)
 4. **Revisões?** → Veja [REVISOES.md](./REVISOES.md)
 5. **Configurar Git?** → Veja [GUIA-GIT.md](./GUIA-GIT.md)
 6. **Acompanhar Progresso?** → Veja checklists em [PLANEJAMENTO-COMPLETO.md](./PLANEJAMENTO-COMPLETO.md)
 
 ---
 
-**Última atualização:** Dezembro 2024
+## 📝 Notas Importantes
+
+- **Configuração de Ambiente:** Todas as informações sobre configuração de variáveis de ambiente estão documentadas em [PLANEJAMENTO-COMPLETO.md](./PLANEJAMENTO-COMPLETO.md) na seção "Configurações".
+- **Troubleshooting:** Problemas e soluções estão registrados em [LINHA-DO-TEMPO.md](./LINHA-DO-TEMPO.md) com histórico completo de correções.
+- **Revisões:** Todas as revisões e verificações estão centralizadas em [REVISOES.md](./REVISOES.md).
+
+---
+
+**Última atualização:** 17/12/2025
