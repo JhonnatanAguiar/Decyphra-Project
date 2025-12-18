@@ -6,10 +6,10 @@ import { FadeIn, ScrollReveal, Waves } from '@/views/components/animations'
 import { Input, Textarea, Select, Button, Toast } from '@/views/components/ui'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { z } from 'zod'
 import { Mail, Phone, MapPin, Send, CheckCircle, Clock } from 'lucide-react'
 import { CONTACT_INFO } from '@/lib/constants/site'
 import { API_ROUTES } from '@/lib/constants/routes'
+import { contactSchema, type ContactInput } from '@/models/schemas'
 
 /**
  * Página de Contato
@@ -18,17 +18,7 @@ import { API_ROUTES } from '@/lib/constants/routes'
  * Replicado fielmente do site de referência decyphra.com.br
  */
 
-// Schema de validação
-const contactFormSchema = z.object({
-  name: z.string().min(3, 'Nome deve ter pelo menos 3 caracteres'),
-  email: z.string().email('E-mail inválido'),
-  phone: z.string().optional(),
-  company: z.string().optional(),
-  service: z.string().optional(),
-  message: z.string().min(10, 'Mensagem deve ter pelo menos 10 caracteres'),
-})
-
-type ContactFormData = z.infer<typeof contactFormSchema>
+type ContactFormData = ContactInput
 
 // Lista de serviços para o select
 const services = [
@@ -68,7 +58,7 @@ export default function ContactPage() {
     reset,
     watch,
   } = useForm<ContactFormData>({
-    resolver: zodResolver(contactFormSchema),
+    resolver: zodResolver(contactSchema),
   })
 
   // Observar valores dos campos para validação visual

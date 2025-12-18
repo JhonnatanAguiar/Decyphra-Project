@@ -1963,3 +1963,82 @@
 - ✅ Responsivo automático: alterna entre animado (desktop) e estático (mobile)
 
 **Status:** ✅ Implementado e testado | Build compilando com sucesso
+
+---
+
+**18/12/2025 - Organização da Estrutura MVC Adaptada para Next.js**
+
+**Contexto:** Reorganização da estrutura do projeto seguindo o padrão MVC adaptado para Next.js, centralizando schemas, types e services.
+
+**Implementações Realizadas:**
+
+1. **Centralização de Schemas Zod** (`src/models/schemas/`)
+   - ✅ Criado `contact.schema.ts` - Schema para formulário de contato
+   - ✅ Criado `newsletter.schema.ts` - Schema para newsletter
+   - ✅ Criado `project.schema.ts` - Schemas para projetos (listagem e detalhes)
+   - ✅ Criado `testimonial.schema.ts` - Schema para depoimentos
+   - ✅ Criado `service.schema.ts` - Schema para serviços
+   - ✅ Criado `index.ts` - Barrel export para facilitar imports
+
+2. **Criação de Types TypeScript** (`src/models/types/`)
+   - ✅ Criado `contact.types.ts` - DTOs e types de contato
+   - ✅ Criado `project.types.ts` - DTOs e types de projetos
+   - ✅ Criado `testimonial.types.ts` - DTOs e types de depoimentos
+   - ✅ Criado `service.types.ts` - DTOs e types de serviços
+   - ✅ Criado `index.ts` - Barrel export
+
+3. **Organização de Services** (`src/controllers/services/`)
+   - ✅ Movido `contact.service.ts` de `src/lib/services/` para `src/controllers/services/`
+   - ✅ Atualizado para usar types centralizados (`ContactInput`, `ContactEmailResult`)
+   - ✅ Corrigido tipo do metadata para Prisma.JsonValue
+   - ✅ Criado `index.ts` - Barrel export
+
+4. **Atualização de API Routes**
+   - ✅ Atualizado `app/api/v1/contact/route.ts` para usar schema centralizado
+   - ✅ Removido schema inline, agora importa de `@/models/schemas`
+   - ✅ Adicionada documentação JSDoc no controller
+
+5. **Atualização de Views**
+   - ✅ Atualizado `app/(routes)/contato/page.tsx` para usar schema centralizado
+   - ✅ Removido schema duplicado, agora importa de `@/models/schemas`
+
+**Arquivos Criados:**
+- `src/models/schemas/contact.schema.ts`
+- `src/models/schemas/newsletter.schema.ts`
+- `src/models/schemas/project.schema.ts`
+- `src/models/schemas/testimonial.schema.ts`
+- `src/models/schemas/service.schema.ts`
+- `src/models/schemas/index.ts`
+- `src/models/types/contact.types.ts`
+- `src/models/types/project.types.ts`
+- `src/models/types/testimonial.types.ts`
+- `src/models/types/service.types.ts`
+- `src/models/types/index.ts`
+- `src/controllers/services/contact.service.ts`
+- `src/controllers/services/index.ts`
+
+**Arquivos Modificados:**
+- `app/api/v1/contact/route.ts` - Atualizado para usar schema centralizado
+- `app/(routes)/contato/page.tsx` - Atualizado para usar schema centralizado
+
+**Arquivos Removidos:**
+- `src/lib/services/contact.service.ts` - Movido para `src/controllers/services/`
+
+**Benefícios:**
+- ✅ **Separação clara de responsabilidades** - Models, Controllers, Services bem organizados
+- ✅ **Reutilização de schemas** - Um único schema usado em API e formulário
+- ✅ **Type safety** - Types TypeScript centralizados e reutilizáveis
+- ✅ **Manutenibilidade** - Estrutura MVC clara e fácil de navegar
+- ✅ **Escalabilidade** - Fácil adicionar novos schemas, types e services
+- ✅ **Padrão Next.js** - Segue convenções da comunidade Next.js
+
+**Estrutura Final:**
+```
+src/
+├── models/          # Models (Schemas Zod + Types TypeScript)
+├── controllers/     # Controllers (Services + API Routes)
+├── views/          # Views (Componentes React)
+└── lib/            # Utilitários
+```
+
+**Status:** ✅ Estrutura MVC organizada e funcional | Pronto para implementar novas APIs

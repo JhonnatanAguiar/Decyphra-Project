@@ -97,20 +97,32 @@ Reconstruir completamente o site da Decyphra, mantendo a identidade visual atual
 
 ```
 src/
-├── app/                    # Next.js App Router (Views)
-│   ├── (routes)/          # Rotas públicas
-│   ├── api/v1/           # API Routes (Controllers) - Versionadas
+├── app/                    # Next.js App Router
+│   ├── (routes)/          # Views (Páginas React)
+│   ├── api/v1/           # Controllers (API Routes) - Versionadas
 │   └── layout.tsx         # Layout principal
 │
-├── models/                 # Models (Prisma + TypeScript)
-│   ├── schemas/           # Schemas Zod
-│   └── types/             # Types TypeScript
+├── models/                 # Models (Camada de Dados)
+│   ├── schemas/           # Schemas Zod (validação)
+│   │   ├── contact.schema.ts
+│   │   ├── newsletter.schema.ts
+│   │   ├── project.schema.ts
+│   │   ├── testimonial.schema.ts
+│   │   ├── service.schema.ts
+│   │   └── index.ts
+│   └── types/             # Types TypeScript (DTOs)
+│       ├── contact.types.ts
+│       ├── project.types.ts
+│       ├── testimonial.types.ts
+│       ├── service.types.ts
+│       └── index.ts
 │
-├── controllers/            # Controllers (Lógica de negócio)
-│   ├── api/               # Controllers de API
+├── controllers/            # Controllers (Lógica de Negócio)
 │   └── services/          # Services (regras de negócio)
+│       ├── contact.service.ts
+│       └── index.ts
 │
-├── views/                  # Componentes React (Views)
+├── views/                  # Views (Componentes React)
 │   ├── components/        # Componentes reutilizáveis
 │   ├── sections/          # Seções de página
 │   └── layouts/           # Layouts específicos
@@ -124,10 +136,28 @@ src/
 ### Fluxo de Dados MVC
 
 ```
-VIEW → CONTROLLER → SERVICE → MODEL → DATABASE
-  ↑                                    ↓
-  └────────── Response ←────────────────┘
+1. View (React Component) → Faz requisição
+2. Controller (API Route) → Recebe requisição
+3. Controller → Valida com Schema (Zod)
+4. Controller → Chama Service
+5. Service → Acessa Model (Prisma)
+6. Model → Banco de Dados
+7. Response volta pela mesma cadeia
 ```
+
+### Estrutura MVC Organizada (18/12/2025)
+
+**Models (`src/models/`):**
+- **Schemas Zod** (`schemas/`) - Validação de dados (API e formulários)
+- **Types TypeScript** (`types/`) - DTOs e tipos de entidades
+
+**Controllers (`src/controllers/`):**
+- **Services** (`services/`) - Lógica de negócio reutilizável
+- **API Routes** (`app/api/v1/`) - Endpoints HTTP (Controllers)
+
+**Views (`src/views/` + `app/(routes)/`):**
+- **Componentes React** - UI reutilizável
+- **Páginas** (`app/(routes)/`) - Páginas do site
 
 ### Convenções de Nomenclatura
 - **Components:** PascalCase (`ContactForm.tsx`)

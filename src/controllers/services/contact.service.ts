@@ -1,13 +1,18 @@
-export type ContactPayload = {
-  name: string
-  email: string
-  phone?: string
-  company?: string
-  service?: string
-  message: string
-}
+import { Prisma } from '@prisma/client'
+import { prisma } from '@/lib/db/prisma'
+import type { ContactInput } from '@/models/schemas'
+import type { ContactEmailResult } from '@/models/types'
 
-async function sendViaResend(payload: ContactPayload) {
+/**
+ * Contact Service
+ * 
+ * Service responsável pela lógica de negócio de contato
+ * - Envio de emails via Resend
+ * - Persistência no banco de dados
+ * - Fallback para log quando Resend não está configurado
+ */
+
+async function sendViaResend(payload: ContactInput) {
   const key = process.env.RESEND_API_KEY
   const from = process.env.EMAIL_FROM || 'noreply@decyphra.com.br'
   const to = process.env.EMAIL_TO || 'jhonnatanaguiar@decyphra.com.br'
@@ -39,10 +44,10 @@ async function sendViaResend(payload: ContactPayload) {
   })
 
   const text = await res.text()
-  let body: any = text
+  let body: unknown = text
   try {
     body = JSON.parse(text)
-  } catch (e) {
+  } catch {
     // keep raw text
   }
 
@@ -53,12 +58,16 @@ async function sendViaResend(payload: ContactPayload) {
   return body
 }
 
-import { prisma } from '@/lib/db/prisma'
-
-export async function sendContactEmail(payload: ContactPayload) {
+/**
+ * Envia email de contato via Resend e persiste no banco de dados
+ * 
+ * @param payload - Dados do formulário de contato
+ * @returns Resultado do envio (ok, provider, error)
+ */
+export async function sendContactEmail(payload: ContactInput): Promise<ContactEmailResult> {
   try {
     const via = process.env.RESEND_API_KEY ? 'resend' : 'log'
-    let providerResult: any = null
+    let providerResult: unknown = null
 
     if (process.env.RESEND_API_KEY) {
       providerResult = await sendViaResend(payload)
@@ -69,7 +78,6 @@ export async function sendContactEmail(payload: ContactPayload) {
     }
 
     // Persistir submissão no banco, se config disponível
-
     if (process.env.DATABASE_URL) {
       try {
         await prisma.contactSubmission.create({
@@ -79,7 +87,7 @@ export async function sendContactEmail(payload: ContactPayload) {
             phone: payload.phone ?? null,
             service: payload.service ?? null,
             message: payload.message,
-            metadata: providerResult ?? null,
+            metadata: providerResult ? (providerResult as Prisma.InputJsonValue) : null,
           },
         })
       } catch (dbErr) {
@@ -92,6 +100,7 @@ export async function sendContactEmail(payload: ContactPayload) {
   } catch (err) {
     // eslint-disable-next-line no-console
     console.error('[contact.service] error', err)
-    return { ok: false, error: String(err) }
+    return { ok: false, error: String(err), provider: 'log' }
   }
 }
+

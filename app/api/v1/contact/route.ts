@@ -1,15 +1,16 @@
 import { NextResponse } from 'next/server'
 import { z } from 'zod'
-import { sendContactEmail } from '@/lib/services/contact.service'
+import { contactSchema } from '@/models/schemas'
+import { sendContactEmail } from '@/controllers/services'
 
-const contactSchema = z.object({
-  name: z.string().min(3),
-  email: z.string().email(),
-  phone: z.string().optional(),
-  company: z.string().optional(),
-  service: z.string().optional(),
-  message: z.string().min(10),
-})
+/**
+ * API Route: POST /api/v1/contact
+ * 
+ * Controller para envio de formulário de contato
+ * - Valida dados com Zod schema
+ * - Chama service para processar
+ * - Retorna resposta padronizada
+ */
 
 export async function POST(req: Request) {
   try {
