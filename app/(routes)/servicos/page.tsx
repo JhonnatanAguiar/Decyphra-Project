@@ -1,7 +1,7 @@
 'use client'
 
 import { Container, Section } from '@/views/components/layout'
-import { FadeIn, ScrollReveal, LetterGlitch } from '@/views/components/animations'
+import { FadeIn, ScrollReveal, ServiceBackground } from '@/views/components/animations'
 import { Button } from '@/views/components/ui/Button'
 import { Card3D } from '@/views/components/ui/Card3D'
 import { CardHeader, CardTitle, CardDescription, CardContent } from '@/views/components/ui'
@@ -82,7 +82,7 @@ export default function ServicesPage() {
     <>
       {/* Hero Section */}
       <Section variant="dark" spacing="lg" className="relative overflow-hidden">
-        <LetterGlitch
+        <ServiceBackground
           glitchColors={['#0a1a0f', '#00FF88', '#00CC6A']}
           glitchSpeed={50}
           centerVignette={false}

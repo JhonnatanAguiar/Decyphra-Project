@@ -27,3 +27,6 @@ export type { RippleGridProps } from './RippleGrid'
 export { Waves } from './Waves'
 export type { WavesProps } from './Waves'
 
+export { StaticBackground } from './StaticBackground'
+export { ServiceBackground } from './ServiceBackground'
+

@@ -1,7 +1,7 @@
 'use client'
 
 import { Container, Section } from '@/views/components/layout'
-import { FadeIn, ScrollReveal, LetterGlitch } from '@/views/components/animations'
+import { FadeIn, ScrollReveal, ServiceBackground } from '@/views/components/animations'
 import { Button } from '@/views/components/ui/Button'
 import Link from 'next/link'
 import { ROUTES } from '@/lib/constants/routes'
@@ -74,7 +74,7 @@ export default function InteligenciaArtificialPage() {
     <>
       {/* Hero Section */}
       <Section variant="dark" spacing="lg" className="relative overflow-hidden">
-        <LetterGlitch
+        <ServiceBackground
           glitchColors={['#0a1a0f', '#00FF88', '#00CC6A']}
           glitchSpeed={50}
           centerVignette={false}
