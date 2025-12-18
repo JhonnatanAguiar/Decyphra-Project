@@ -403,7 +403,7 @@ light: {
 - [x] Informações de Contato - ✅ Concluído
 - [x] Validação de formulário (react-hook-form + zod) - ✅ Concluído
 - [x] Micro-interações em formulários - ✅ Concluído
-- [ ] Integração com API `/api/v1/contact` (pendente - Fase 5)
+- [x] Integração com API `/api/v1/contact` (implementado - Fase 5)
 
 #### 3.8 Página Status (`/status`)
 - [x] Hero Section - ✅ Concluído
@@ -471,9 +471,9 @@ light: {
 ### 🔧 Fase 5: Backend e Integrações
 **Status:** ⏳ Pendente
 
-#### 5.1 API Routes (Versionadas)
+-#### 5.1 API Routes (Versionadas)
 - [x] GET `/api/v1/status` (status do site e API) - ✅ Concluído
-- [ ] POST `/api/v1/contact` (formulário de contato)
+- [x] POST `/api/v1/contact` (formulário de contato) - ✅ Implementado (validação Zod, stub de processamento)
 - [ ] POST `/api/v1/newsletter` (newsletter)
 - [ ] GET `/api/v1/projects` (listar projetos)
 - [ ] GET `/api/v1/projects/[slug]` (detalhes)
@@ -644,7 +644,7 @@ npm run type-check   # Verifica tipos TypeScript
 | Fase 2: Design System | 100% | ✅ **Concluída** |
 | Fase 3: Páginas | 100% | ✅ **Concluída** |
 | Fase 4: Dinâmicas | 100% | ✅ **Concluída** |
-| Fase 5: Backend | 14% | ⏳ Em Progresso |
+| Fase 5: Backend | 18% | ⏳ Em Progresso |
 | Fase 6: SEO | 0% | ⏳ Pendente |
 | Fase 7: Deploy | 85% | ✅ **Deploy Concluído** |
 
@@ -698,6 +698,6 @@ npm run type-check   # Verifica tipos TypeScript
 
 ---
 
-**Última atualização:** Dezembro 2024  
-**Status:** Fases 1, 2, 3 e 4 concluídas e revisadas (100% completo cada) ✅  
+**Última atualização:** 17/12/2025  
+**Status:** Fases 1, 2, 3 e 4 concluídas e revisadas (100% completo cada). Fase 5: progresso inicial implementado.  
 **Deploy:** Site hospedado na Vercel, aguardando propagação DNS ✅

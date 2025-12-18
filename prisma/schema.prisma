@@ -109,6 +109,7 @@ model ContactSubmission {
   metadata  Json?             // Dados extras (IP, user agent, etc.)
   createdAt DateTime          @default(now())
   updatedAt DateTime          @updatedAt
+  emailEvents EmailEvent[]
 
   @@index([email])
   @@index([status])
@@ -139,4 +140,21 @@ model NewsletterSubscriber {
   @@index([email])
   @@index([active])
   @@map("newsletter_subscribers")
+}
+
+// ============================================
+// EMAIL EVENTS (webhook)
+// ============================================
+
+model EmailEvent {
+  id                  String   @id @default(uuid())
+  messageId           String
+  event               String
+  payload             Json
+  contactSubmission   ContactSubmission? @relation(fields: [contactSubmissionId], references: [id])
+  contactSubmissionId String?
+  createdAt           DateTime @default(now())
+
+  @@index([messageId])
+  @@map("email_events")
 }

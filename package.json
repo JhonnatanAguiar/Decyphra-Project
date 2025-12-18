@@ -4,6 +4,7 @@
     "private": true,
     "scripts": {
         "dev": "node scripts/dev.js",
+        "test": "vitest run",
         "build": "node scripts/build.js",
         "start": "next start",
         "lint": "next lint",
@@ -19,10 +20,9 @@
     "dependencies": {
         "@hookform/resolvers": "^3.9.0",
         "@prisma/client": "^5.19.0",
-        "@react-three/drei": "^9.122.0",
-        "@react-three/fiber": "^8.18.0",
         "clsx": "^2.1.1",
         "date-fns": "^3.6.0",
+        "encoding": "^0.1.13",
         "face-api.js": "^0.22.2",
         "framer-motion": "^11.3.0",
         "gsap": "^3.12.5",
@@ -45,6 +45,7 @@
         "@types/react-dom": "^18.3.0",
         "@types/three": "^0.181.0",
         "autoprefixer": "^10.4.0",
+        "cross-fetch": "^3.2.0",
         "dotenv-cli": "^7.4.2",
         "eslint": "^8.57.0",
         "eslint-config-next": "^14.2.0",
@@ -54,6 +55,7 @@
         "prisma": "^5.19.0",
         "tailwindcss": "^3.4.0",
         "tsx": "^4.16.0",
-        "typescript": "^5.5.0"
+        "typescript": "^5.5.0",
+        "vitest": "^1.6.1"
     }
 }

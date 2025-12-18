@@ -140,6 +140,26 @@
 
 **Status:** Fase 1 - 95% completo
 
+---
+
+## 📅 Dezembro 2025
+
+### 🛠️ Correções e Integrações - 17/12/2025
+
+**Resumo:** Implementado endpoint `POST /api/v1/contact`, adicionada integração de envio de e-mail via Resend com fallback para log e persistência de submissões usando Prisma quando `DATABASE_URL` estiver configurada.
+
+**O que foi feito:**
+
+- `app/api/v1/contact/route.ts` — nova rota integrada com `src/lib/services/contact.service.ts` e configurada para runtime `nodejs`.
+- `src/lib/services/contact.service.ts` — implementado envio via Resend; persistência em `contact_submissions` (Prisma) quando `DATABASE_URL` presente; fallback para log quando chave não configurada.
+- Atualizações de documentação: `docs/changes/2025-12-17-implement-contact.md` e `docs/revisoes/2025-12-17-revisao-implementacoes.md` criadas/atualizadas.
+
+**Observações:**
+
+- Build e checagem de tipos executadas — build compilou com warnings (Prisma em tempo de build requer `DATABASE_URL` para algumas consultas; em ambiente de produção, configurar variável de ambiente). 
+- Próximo passo sugerido: configurar `RESEND_API_KEY`, `EMAIL_FROM`, `EMAIL_TO`, `DATABASE_URL` em ambiente de produção.
+
+
 **04/12/2024 - Início da Fase 2: Design System**
 
 **Criado:**

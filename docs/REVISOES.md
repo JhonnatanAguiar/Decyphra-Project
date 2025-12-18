@@ -182,3 +182,15 @@ Ver detalhes completos em: [REVISAO-FASE-5.md](./REVISAO-FASE-5.md)
 ---
 
 **Última Atualização:** 04/12/2024
+
+---
+
+## 🔧 Revisão e Integração - 17/12/2025
+
+**Resumo:** Integração do endpoint de contato com serviço de envio (Resend) e persistência via Prisma.
+
+**Alterações:**
+- `app/api/v1/contact/route.ts` — rota integrada com serviço; runtime alterado para `nodejs` para suportar Prisma.
+- `src/lib/services/contact.service.ts` — envio via Resend com fallback para log; persiste em `contact_submissions` quando `DATABASE_URL` configurada.
+
+**Status:** ✅ Implementado e testado localmente (build OK com warnings).
