@@ -1,4 +1,5 @@
 import { prisma } from '@/lib/db/prisma'
+import { API_DEFAULTS } from '@/lib/api/constants'
 import type { ProjectListQuery, ProjectSlugParams } from '@/models/schemas'
 import type { ProjectListDTO, ProjectDetailDTO } from '@/models/types'
 
@@ -10,9 +11,6 @@ import type { ProjectListDTO, ProjectDetailDTO } from '@/models/types'
  * - Filtros e paginação
  */
 
-const DEFAULT_LIMIT = 50
-const MAX_LIMIT = 100
-
 /**
  * Lista projetos com filtros e paginação
  * 
@@ -20,7 +18,7 @@ const MAX_LIMIT = 100
  * @returns Lista de projetos com metadados de paginação
  */
 export async function listProjects(query: ProjectListQuery = {}): Promise<ProjectListDTO> {
-  const { category, featured, status, limit = DEFAULT_LIMIT, offset = 0 } = query
+  const { category, featured, status, limit = API_DEFAULTS.DEFAULT_LIMIT, offset = 0 } = query
 
   // Construir filtros
   const where: {
@@ -53,7 +51,7 @@ export async function listProjects(query: ProjectListQuery = {}): Promise<Projec
         { featured: 'desc' },
         { createdAt: 'desc' },
       ],
-      take: Math.min(limit, MAX_LIMIT),
+      take: Math.min(limit, API_DEFAULTS.MAX_LIMIT),
       skip: offset,
     }),
     prisma.project.count({ where }),
@@ -62,7 +60,7 @@ export async function listProjects(query: ProjectListQuery = {}): Promise<Projec
   return {
     projects,
     total,
-    limit: Math.min(limit, MAX_LIMIT),
+    limit: Math.min(limit, API_DEFAULTS.MAX_LIMIT),
     offset,
     hasMore: offset + projects.length < total,
   }

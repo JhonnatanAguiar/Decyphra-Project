@@ -1,4 +1,4 @@
-import { NextResponse } from 'next/server'
+import { apiError, apiResponse } from '@/lib/api/response'
 import { projectSlugSchema } from '@/models/schemas'
 import { getProjectBySlug } from '@/controllers/services/project.service'
 
@@ -23,29 +23,19 @@ export async function GET(
     const project = await getProjectBySlug(validatedParams)
 
     if (!project) {
-      return NextResponse.json(
-        { ok: false, message: 'Projeto não encontrado' },
-        { status: 404 }
-      )
+      return apiError('Projeto não encontrado', 404)
     }
 
-    return NextResponse.json(project, {
-      status: 200,
-      headers: {
-        'Content-Type': 'application/json',
-        'X-API-Version': 'v1',
-      },
-    })
+    return apiResponse(project, 200)
   } catch (err) {
     // eslint-disable-next-line no-console
     console.error('[api/projects/[slug]] error', err)
-    return NextResponse.json(
-      { ok: false, message: 'Erro ao buscar projeto' },
-      { status: 500 }
-    )
+    return apiError('Erro ao buscar projeto', 500)
   }
 }
 
 // Usar runtime Node para permitir uso de Prisma no servidor
 export const runtime = 'nodejs'
+// Forçar renderização dinâmica (rota dinâmica com params)
+export const dynamic = 'force-dynamic'
 

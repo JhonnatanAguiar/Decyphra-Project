@@ -1,4 +1,4 @@
-import { NextResponse } from 'next/server'
+import { apiResponse } from '@/lib/api/response'
 import { prisma } from '@/lib/db/prisma'
 
 /**
@@ -56,11 +56,10 @@ export async function GET() {
     timestamp: new Date().toISOString(),
   }
 
-  return NextResponse.json(statusData, {
-    status: 200,
-    headers: {
-      'Content-Type': 'application/json',
-      'X-API-Version': 'v1',
-    },
-  })
+  return apiResponse(statusData, 200)
 }
+
+// Usar runtime Node para permitir uso de Prisma no servidor
+export const runtime = 'nodejs'
+// Forçar renderização dinâmica (rota de API)
+export const dynamic = 'force-dynamic'

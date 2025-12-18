@@ -87,7 +87,7 @@ export async function sendContactEmail(payload: ContactInput): Promise<ContactEm
             phone: payload.phone ?? null,
             service: payload.service ?? null,
             message: payload.message,
-            metadata: providerResult ? (providerResult as Prisma.InputJsonValue) : null,
+            metadata: providerResult ? (providerResult as Prisma.InputJsonValue) : undefined,
           },
         })
       } catch (dbErr) {

@@ -3,6 +3,8 @@ import { prisma } from '@/lib/db/prisma'
 import crypto from 'crypto'
 
 export const runtime = 'nodejs'
+// Forçar renderização dinâmica (rota de webhook)
+export const dynamic = 'force-dynamic'
 
 function secureCompare(a: Buffer, b: Buffer) {
   if (a.length !== b.length) return false

@@ -1,4 +1,4 @@
-import { NextResponse } from 'next/server'
+import { apiError, apiResponse } from '@/lib/api/response'
 import { serviceListQuerySchema } from '@/models/schemas'
 import { listServices } from '@/controllers/services/service.service'
 
@@ -21,23 +21,16 @@ export async function GET(req: Request) {
     // Buscar serviços
     const result = await listServices(query)
 
-    return NextResponse.json(result, {
-      status: 200,
-      headers: {
-        'Content-Type': 'application/json',
-        'X-API-Version': 'v1',
-      },
-    })
+    return apiResponse(result, 200)
   } catch (err) {
     // eslint-disable-next-line no-console
     console.error('[api/services] error', err)
-    return NextResponse.json(
-      { ok: false, message: 'Erro ao buscar serviços' },
-      { status: 500 }
-    )
+    return apiError('Erro ao buscar serviços', 500)
   }
 }
 
 // Usar runtime Node para permitir uso de Prisma no servidor
 export const runtime = 'nodejs'
+// Forçar renderização dinâmica (usa request.url)
+export const dynamic = 'force-dynamic'
 

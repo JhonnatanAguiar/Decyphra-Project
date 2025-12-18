@@ -1,4 +1,4 @@
-import { NextResponse } from 'next/server'
+import { apiError, apiResponse } from '@/lib/api/response'
 import { z } from 'zod'
 import { contactSchema } from '@/models/schemas'
 import { sendContactEmail } from '@/controllers/services'
@@ -22,19 +22,21 @@ export async function POST(req: Request) {
     if (!result.ok) {
       // eslint-disable-next-line no-console
       console.error('[api/contact] sendContactEmail error', result.error)
-      return NextResponse.json({ ok: false, message: 'Erro enviando mensagem' }, { status: 500 })
+      return apiError('Erro enviando mensagem', 500)
     }
 
-    return NextResponse.json({ ok: true, message: 'Mensagem recebida', via: result.provider })
+    return apiResponse({ ok: true, message: 'Mensagem recebida', via: result.provider }, 200)
   } catch (err) {
     if (err instanceof z.ZodError) {
-      return NextResponse.json({ ok: false, errors: err.errors }, { status: 400 })
+      return apiError('Dados inválidos', 400, err.errors)
     }
     // eslint-disable-next-line no-console
     console.error('[api/contact] error', err)
-    return NextResponse.json({ ok: false, message: 'Erro interno' }, { status: 500 })
+    return apiError('Erro interno', 500)
   }
 }
 
 // Usar runtime Node para permitir uso de Prisma no servidor
 export const runtime = 'nodejs'
+// Forçar renderização dinâmica (rota de API)
+export const dynamic = 'force-dynamic'
