@@ -52,7 +52,8 @@ export async function POST(req: Request) {
     // Try to associate with an existing ContactSubmission by matching metadata.id
     if (messageId) {
       try {
-        const subs = await prisma.contactSubmission.findMany({ where: { metadata: { not: null } } })
+        const allSubs = await prisma.contactSubmission.findMany()
+        const subs = allSubs.filter((s) => s.metadata != null)
         const match = subs.find((s) => {
           try {
             const m: any = s.metadata
