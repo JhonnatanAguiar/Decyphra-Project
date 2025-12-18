@@ -2,7 +2,7 @@
 
 > **Documento Central de Planejamento**  
 > Este arquivo consolida toda a documentação de planejamento do projeto.  
-> Última atualização: Dezembro 2024
+> Última atualização: 18/12/2025
 
 ---
 
@@ -19,7 +19,8 @@
 9. [Roadmap com Checklists](#roadmap-com-checklists)
 10. [Responsabilidades](#responsabilidades)
 11. [Configurações](#configurações)
-12. [Backgrounds Animados Implementados](#-backgrounds-animados-implementados)
+12. [Melhorias e Ajustes Implementados](#-melhorias-e-ajustes-implementados)
+13. [Backgrounds Animados Implementados](#-backgrounds-animados-implementados)
 
 ---
 
@@ -314,6 +315,7 @@ light: {
 - [x] Container (todas as variantes) - ✅ Concluído e testado
 - [x] Section (todas as variantes) - ✅ Concluído e testado
 - [x] DecyphraLogo (layouts e animações) - ✅ Concluído e testado
+- [x] ScrollToTop (scroll para topo no refresh e mudança de rota) - ✅ Concluído e testado
 
 #### 2.3 Componentes de Animação
 - [x] FadeIn (direções e delay configuráveis) - ✅ Concluído e testado
@@ -324,6 +326,8 @@ light: {
 - [x] GridScan (grid 3D interativo com WebGL) - ✅ Concluído e testado
 - [x] RippleGrid (grid animado com ondas de ripple) - ✅ Concluído e testado
 - [x] Waves (grid de linhas onduladas com Perlin Noise) - ✅ Concluído e testado
+- [x] StaticBackground (background estático moderno para mobile) - ✅ Concluído e testado
+- [x] ServiceBackground (wrapper que alterna LetterGlitch/StaticBackground por dispositivo) - ✅ Concluído e testado
 
 #### 2.4 Hooks Customizados
 - [x] useScroll (detecção de scroll e direção) - ✅ Concluído e testado
@@ -424,6 +428,7 @@ light: {
 - [x] Animações slide up - ✅ Concluído (ScrollReveal direction="up" implementado e em uso)
 - [x] Parallax effects (se necessário) - ✅ Concluído (componente Parallax implementado, disponível para uso quando necessário)
 - [x] Sticky sections - ✅ Concluído (Header sticky implementado, sticky sections em uso na página Contato)
+- [x] Scroll para topo no refresh e mudança de rota - ✅ Concluído (componente ScrollToTop implementado no layout)
 
 #### 4.2 Interatividade
 - [x] Hover effects em cards - ✅ Concluído
@@ -458,6 +463,7 @@ light: {
 - [x] Code splitting - ✅ Concluído (Next.js 14+ faz automaticamente, optimizePackageImports configurado)
 - [x] Otimização de bundle - ✅ Concluído (optimizePackageImports para framer-motion, lucide-react, gsap)
 - [x] Image optimization - ✅ Concluído (next/image com AVIF/WebP, deviceSizes e imageSizes configurados)
+- [x] Background estático para mobile em páginas de serviços - ✅ Concluído (StaticBackground otimizado para performance em mobile, ServiceBackground alterna automaticamente)
 
 #### 4.5 Elevação de Componentes
 - [x] Cards 3D com efeito de levitação - ✅ Concluído
@@ -652,6 +658,32 @@ npm run type-check   # Verifica tipos TypeScript
 
 ---
 
+## 🔄 Melhorias e Ajustes Implementados
+
+### 18/12/2025 - Melhorias de UX e Performance
+
+#### Scroll para Topo no Refresh
+- **Componente:** `ScrollToTop.tsx`
+- **Funcionalidade:** Rola automaticamente para o topo quando a página é recarregada ou quando há mudança de rota
+- **Localização:** Integrado no layout das rotas públicas (`app/(routes)/layout.tsx`)
+- **Benefício:** Melhora a experiência do usuário, garantindo que sempre comece no topo da página
+
+#### Background Estático para Mobile em Páginas de Serviços
+- **Componentes:** `StaticBackground.tsx` e `ServiceBackground.tsx`
+- **Funcionalidade:** 
+  - Desktop (≥ 768px): Mantém LetterGlitch animado
+  - Mobile (< 768px): Usa StaticBackground estático e moderno
+- **Características do StaticBackground:**
+  - Gradiente radial com cores da identidade Decyphra
+  - Grid sutil com linhas verde neon
+  - Pontos de brilho verde neon aleatórios
+  - Vignette nas bordas
+  - Performance otimizada (sem animações)
+- **Páginas Atualizadas:** Todas as 8 páginas de serviços (principal + 7 sub-páginas)
+- **Benefício:** Melhor performance em mobile, mantendo design moderno e identidade visual
+
+---
+
 ## 🎨 Backgrounds Animados Implementados
 
 ### GridScan (HomePage)
@@ -686,6 +718,19 @@ npm run type-check   # Verifica tipos TypeScript
   - Suporte a touch events
 - **Dependências:** Nenhuma (Canvas API nativo)
 
+### StaticBackground (Páginas de Serviços - Mobile)
+- **Tecnologia:** Canvas API (renderização estática)
+- **Localização:** HeroSection das páginas de serviços em dispositivos móveis (< 768px)
+- **Características:**
+  - Gradiente radial com cores da identidade Decyphra
+  - Grid sutil com linhas verde neon
+  - Pontos de brilho verde neon aleatórios
+  - Vignette nas bordas
+  - Performance otimizada (sem animações)
+  - Alterna automaticamente com LetterGlitch via ServiceBackground
+- **Dependências:** Nenhuma (Canvas API nativo)
+- **Nota:** Usado apenas em mobile para melhor performance; desktop mantém LetterGlitch animado
+
 ---
 
 ## 📝 Notas Importantes
@@ -698,6 +743,7 @@ npm run type-check   # Verifica tipos TypeScript
 
 ---
 
-**Última atualização:** 17/12/2025  
+**Última atualização:** 18/12/2025  
 **Status:** Fases 1, 2, 3 e 4 concluídas e revisadas (100% completo cada). Fase 5: progresso inicial implementado.  
-**Deploy:** Site hospedado na Vercel, aguardando propagação DNS ✅
+**Deploy:** Site hospedado na Vercel, aguardando propagação DNS ✅  
+**Melhorias Recentes:** Scroll para topo no refresh e background estático mobile para serviços implementados (18/12/2025)

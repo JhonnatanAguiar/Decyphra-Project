@@ -1588,7 +1588,7 @@
 
 ---
 
-**Última atualização:** 04/12/2024
+**Última atualização:** 18/12/2025
 
 ---
 
@@ -1913,3 +1913,53 @@
 - `src/views/components/animations/LetterGlitch.tsx` - Correções de responsividade
 
 **Status:** ✅ Resolvido | LetterGlitch agora é totalmente responsivo
+
+---
+
+**18/12/2025 - Melhorias de UX: Scroll para Topo e Background Estático Mobile**
+
+**Contexto:** Implementação de melhorias de UX solicitadas pelo usuário para melhorar a experiência de navegação e performance em dispositivos móveis.
+
+**Implementações Realizadas:**
+
+1. **Scroll para Topo no Refresh e Mudança de Rota**
+   - ✅ Criado componente `ScrollToTop.tsx` que detecta refresh e mudanças de rota
+   - ✅ Integrado no layout das rotas públicas (`app/(routes)/layout.tsx`)
+   - ✅ Usa `usePathname()` do Next.js para detectar mudanças de rota
+   - ✅ Comportamento instantâneo (sem animação) para melhor UX
+   - ✅ Garante que usuário sempre comece no topo ao recarregar ou navegar
+
+2. **Background Estático Moderno para Mobile em Páginas de Serviços**
+   - ✅ Criado componente `StaticBackground.tsx` com design moderno e minimalista
+   - ✅ Características: gradiente radial, grid sutil verde neon, pontos de brilho, vignette
+   - ✅ Performance otimizada (sem animações, apenas renderização estática)
+   - ✅ Criado componente `ServiceBackground.tsx` que alterna automaticamente:
+     - Desktop (≥ 768px): LetterGlitch (animado)
+     - Mobile (< 768px): StaticBackground (estático)
+   - ✅ Atualizadas todas as 8 páginas de serviços para usar ServiceBackground
+
+**Arquivos Criados:**
+- `src/views/components/layout/ScrollToTop.tsx` - Componente de scroll para topo
+- `src/views/components/animations/StaticBackground.tsx` - Background estático moderno
+- `src/views/components/animations/ServiceBackground.tsx` - Wrapper responsivo
+
+**Arquivos Modificados:**
+- `app/(routes)/layout.tsx` - Adicionado ScrollToTop
+- `src/views/components/layout/index.ts` - Export do ScrollToTop
+- `src/views/components/animations/index.ts` - Exports dos novos componentes
+- `app/(routes)/servicos/page.tsx` - Atualizado para ServiceBackground
+- `app/(routes)/servicos/desenvolvimento-web/page.tsx` - Atualizado para ServiceBackground
+- `app/(routes)/servicos/seo-otimizacao/page.tsx` - Atualizado para ServiceBackground
+- `app/(routes)/servicos/google-ad/page.tsx` - Atualizado para ServiceBackground
+- `app/(routes)/servicos/marketing-de-conteudo/page.tsx` - Atualizado para ServiceBackground
+- `app/(routes)/servicos/inteligencia-artificial/page.tsx` - Atualizado para ServiceBackground
+- `app/(routes)/servicos/ecommerce-completo/page.tsx` - Atualizado para ServiceBackground
+- `app/(routes)/servicos/consultoria-digital/page.tsx` - Atualizado para ServiceBackground
+
+**Benefícios:**
+- ✅ Melhor UX: usuário sempre começa no topo ao recarregar/navegar
+- ✅ Melhor performance em mobile: background estático ao invés de animado
+- ✅ Design moderno mantido: background estático com identidade visual Decyphra
+- ✅ Responsivo automático: alterna entre animado (desktop) e estático (mobile)
+
+**Status:** ✅ Implementado e testado | Build compilando com sucesso
