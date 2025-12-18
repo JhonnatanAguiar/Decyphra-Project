@@ -1,6 +1,6 @@
 import { prisma } from '@/lib/db/prisma'
-import type { ProjectListQuery } from '@/models/schemas'
-import type { ProjectListDTO } from '@/models/types'
+import type { ProjectListQuery, ProjectSlugParams } from '@/models/schemas'
+import type { ProjectListDTO, ProjectDetailDTO } from '@/models/types'
 
 /**
  * Project Service
@@ -66,5 +66,26 @@ export async function listProjects(query: ProjectListQuery = {}): Promise<Projec
     offset,
     hasMore: offset + projects.length < total,
   }
+}
+
+/**
+ * Busca projeto por slug
+ * 
+ * @param params - Params com slug
+ * @returns Detalhes do projeto ou null se não encontrado
+ */
+export async function getProjectBySlug(params: ProjectSlugParams): Promise<ProjectDetailDTO | null> {
+  const { slug } = params
+
+  const project = await prisma.project.findUnique({
+    where: { slug },
+  })
+
+  // Retornar null se não encontrado ou se estiver em draft
+  if (!project || project.status === 'draft') {
+    return null
+  }
+
+  return project
 }
 

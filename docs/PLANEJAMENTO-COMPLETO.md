@@ -510,17 +510,18 @@ light: {
 -#### 5.1 API Routes (Versionadas)
 - [x] GET `/api/v1/status` (status do site e API) - ✅ Concluído
 - [x] POST `/api/v1/contact` (formulário de contato) - ✅ Implementado (validação Zod, stub de processamento)
-- [ ] POST `/api/v1/newsletter` (newsletter)
-- [ ] GET `/api/v1/projects` (listar projetos)
-- [ ] GET `/api/v1/projects/[slug]` (detalhes)
+- [ ] POST `/api/v1/newsletter` (newsletter) - ⏸️ Standby (deixado para futuro)
+- [x] GET `/api/v1/projects` (listar projetos) - ✅ Concluído (filtros, paginação)
+- [x] GET `/api/v1/projects/[slug]` (detalhes) - ✅ Concluído
 - [ ] GET `/api/v1/testimonials` (depoimentos)
-- [ ] GET `/api/v1/services` (serviços)
+- [x] GET `/api/v1/services` (serviços) - ✅ Concluído (filtros, paginação)
 
 #### 5.2 Services
-- [ ] Contact Service
-- [ ] Email Service (Resend ou SendGrid)
-- [ ] Project Service
-- [ ] Newsletter Service
+- [x] Contact Service - ✅ Concluído (envio de email, persistência)
+- [x] Service Service - ✅ Concluído (listagem com filtros e paginação)
+- [x] Project Service - ✅ Concluído (listagem com filtros e paginação)
+- [ ] Email Service (Resend ou SendGrid) - ⏸️ Parcialmente implementado (via Contact Service)
+- [ ] Newsletter Service - ⏸️ Standby (deixado para futuro)
 
 #### 5.3 Validação
 - [ ] Schemas Zod para todas as APIs

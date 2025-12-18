@@ -2042,3 +2042,79 @@ src/
 ```
 
 **Status:** ✅ Estrutura MVC organizada e funcional | Pronto para implementar novas APIs
+
+---
+
+**18/12/2025 - Implementação GET /api/v1/services - Listagem de Serviços**
+
+**Contexto:** Implementação da primeira API de leitura (GET) seguindo a estrutura MVC organizada.
+
+**Implementação Realizada:**
+- ✅ Criado `service.service.ts` com função `listServices()`
+- ✅ Implementado filtros (active) e paginação (limit, offset)
+- ✅ Ordenação por `order` ASC e `createdAt` DESC
+- ✅ Retorna metadados de paginação (total, hasMore)
+- ✅ Criado `app/api/v1/services/route.ts` como controller
+- ✅ Validação de query params com Zod schema centralizado
+- ✅ Tratamento de erros padronizado
+- ✅ Headers de API versionada (`X-API-Version: v1`)
+
+**Arquivos Criados:**
+- `src/controllers/services/service.service.ts`
+- `app/api/v1/services/route.ts`
+
+**Arquivos Modificados:**
+- `src/controllers/services/index.ts` - Adicionado export do `listServices`
+
+**Status:** ✅ API implementada e funcional
+
+---
+
+**18/12/2025 - Implementação GET /api/v1/projects - Listagem de Projetos**
+
+**Contexto:** Implementação da segunda API de leitura (GET) para listagem de projetos.
+
+**Implementação Realizada:**
+- ✅ Criado `project.service.ts` com função `listProjects()`
+- ✅ Implementado filtros (category, featured, status) e paginação
+- ✅ Por padrão, retorna apenas projetos publicados
+- ✅ Ordenação por `order` ASC, `featured` DESC e `createdAt` DESC
+- ✅ Retorna metadados de paginação (total, hasMore)
+- ✅ Criado `app/api/v1/projects/route.ts` como controller
+- ✅ Validação de query params com Zod schema centralizado
+- ✅ Tratamento de erros padronizado
+- ✅ Headers de API versionada (`X-API-Version: v1`)
+
+**Arquivos Criados:**
+- `src/controllers/services/project.service.ts`
+- `app/api/v1/projects/route.ts`
+
+**Arquivos Modificados:**
+- `src/controllers/services/index.ts` - Adicionado export do `listProjects`
+
+**Status:** ✅ API implementada e funcional
+
+---
+
+**18/12/2025 - Implementação GET /api/v1/projects/[slug] - Detalhes de Projeto**
+
+**Contexto:** Implementação da API para buscar detalhes de um projeto específico por slug.
+
+**Implementação Realizada:**
+- ✅ Adicionada função `getProjectBySlug()` no `project.service.ts`
+- ✅ Busca projeto por slug no banco de dados
+- ✅ Retorna null se projeto não encontrado ou em draft
+- ✅ Criado `app/api/v1/projects/[slug]/route.ts` como controller
+- ✅ Validação de params com Zod schema (`projectSlugSchema`)
+- ✅ Retorna 404 se projeto não encontrado
+- ✅ Tratamento de erros padronizado
+- ✅ Headers de API versionada (`X-API-Version: v1`)
+
+**Arquivos Criados:**
+- `app/api/v1/projects/[slug]/route.ts`
+
+**Arquivos Modificados:**
+- `src/controllers/services/project.service.ts` - Adicionada função `getProjectBySlug()`
+- `src/controllers/services/index.ts` - Adicionado export do `getProjectBySlug`
+
+**Status:** ✅ API implementada e funcional
