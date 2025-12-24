@@ -1,0 +1,56 @@
+<svg width="280" height="100" viewBox="0 0 280 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gradiente suave para o fundo escuro -->
+    <radialGradient id="darkBgGradientHoriz" cx="50%" cy="50%" r="80%">
+      <stop offset="0%" stop-color="#01080E"/>
+      <stop offset="100%" stop-color="#000000"/>
+    </radialGradient>
+  </defs>
+  
+  <!-- Fundo escuro com gradiente suave (não pontilhado) -->
+  <rect width="280" height="100" fill="url(#darkBgGradientHoriz)" rx="8"/>
+  
+  <!-- Ícone (80x80 centralizado verticalmente, centro em 40,40) -->
+  <g transform="translate(0, 10)">
+    <!-- Aro externo - path exato do componente original (escala reduzida para 80x80) -->
+    <path
+      d="M40 2.5C23.76 2.5 2.5 23.76 2.5 40C2.5 56.24 23.76 77.5 40 77.5C56.24 77.5 77.5 56.24 77.5 40"
+      stroke="#00FF88"
+      stroke-width="4"
+      stroke-linecap="round"
+      fill="none"
+    />
+    
+    <!-- Aro interno - círculo completo para sombreamento suave -->
+    <circle
+      cx="40"
+      cy="40"
+      r="33"
+      stroke="#00FF88"
+      stroke-width="3.5"
+      fill="none"
+      opacity="0.5"
+    />
+    
+    <!-- Círculo central -->
+    <circle
+      cx="40"
+      cy="40"
+      r="12"
+      fill="#00FF88"
+    />
+  </g>
+  
+  <!-- Texto DECYPHRA - com espaço suficiente para não cortar -->
+  <text
+    x="95"
+    y="58"
+    font-family="Inter, system-ui, sans-serif"
+    font-size="32"
+    font-weight="700"
+    fill="#E6F0F3"
+    letter-spacing="0.08em"
+  >
+    DECYPHRA
+  </text>
+</svg>

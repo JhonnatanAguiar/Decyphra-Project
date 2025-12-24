@@ -4,7 +4,7 @@
  * Types TypeScript para entidades e DTOs de contato
  */
 
-import { ContactSubmission, ContactStatus } from '@prisma/client'
+import { ContactStatus } from '@prisma/client'
 
 /**
  * DTO para criação de contato

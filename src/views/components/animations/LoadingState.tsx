@@ -1,6 +1,5 @@
 'use client'
 
-import { HTMLAttributes } from 'react'
 import { motion, HTMLMotionProps } from 'framer-motion'
 import { cn } from '@/lib/utils/cn'
 import { DecyphraLogo } from '@/views/components/layout/DecyphraLogo'

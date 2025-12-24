@@ -221,6 +221,29 @@ light: {
 - **Fonte:** Inter (via Google Fonts)
 - **Fallback:** Montserrat, system-ui, sans-serif
 
+### Logotipo e Identidade Visual
+
+**Arquivos de Logotipo Criados:**
+- ✅ SVG do ícone (transparente e com fundo escuro)
+- ✅ SVG do logo horizontal (transparente e com fundo escuro)
+- ✅ SVG do logo vertical (transparente e com fundo escuro)
+- ✅ Script para gerar PNGs em diferentes tamanhos
+- ✅ Documentação completa dos logos (`public/logos/README.md`)
+
+**Formatos Disponíveis:**
+- **SVG:** Formatos vetoriais escaláveis (recomendado para web)
+- **PNG:** Formatos rasterizados para uso específico:
+  - Favicons (16x16, 32x32)
+  - Ícones padrão (512x512, 1024x1024)
+  - Fotos de perfil (400x400, 800x800)
+  - Capas de perfil (1200x630, 1500x500, 2048x1024)
+  - Logos horizontais e verticais em múltiplos tamanhos
+
+**Localização:** `public/logos/`
+**Geração de PNGs:** `node scripts/generate-logos-png.js` (requer `sharp`)
+
+**Documentação:** Ver `public/logos/README.md` para guia completo de uso.
+
 ### Componentes Base
 - Button (primary, secondary, ghost, dark)
 - Input, Textarea, Select
@@ -365,6 +388,14 @@ light: {
 - [x] useScroll (detecção de scroll e direção) - ✅ Concluído e testado
 - [x] useAnimation (IntersectionObserver) - ✅ Concluído e testado
 - [x] useForm (com react-hook-form e Zod) - ✅ Concluído e testado
+
+#### 2.5 Logotipos e Assets de Identidade Visual
+- [x] SVG do ícone (transparente e com fundo escuro) - ✅ Concluído
+- [x] SVG do logo horizontal (transparente e com fundo escuro) - ✅ Concluído
+- [x] SVG do logo vertical (transparente e com fundo escuro) - ✅ Concluído
+- [x] Script para gerar PNGs em diferentes tamanhos - ✅ Concluído
+- [x] Documentação completa dos logos - ✅ Concluído
+- [ ] Gerar arquivos PNG (executar script quando necessário) - ⏳ Opcional
 
 ---
 
@@ -1071,4 +1102,5 @@ enum UserRole {
 **Status:** Fases 1, 2, 3 e 4 concluídas e revisadas (100% completo cada). Fase 5: progresso inicial implementado.  
 **Deploy:** Site hospedado na Vercel, aguardando propagação DNS ✅  
 **Melhorias Recentes:** Scroll para topo no refresh e background estático mobile para serviços implementados (18/12/2025)  
-**Novo:** Mini-CRM e Painel Admin planejado (18/12/2025)
+**Novo:** Mini-CRM e Painel Admin planejado (18/12/2025)  
+**Assets:** Logotipos criados em múltiplos formatos e variações (18/12/2025) ✅

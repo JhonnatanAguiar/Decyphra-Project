@@ -27,7 +27,7 @@ export async function POST(req: Request) {
       let valid = false
       try {
         valid = secureCompare(Buffer.from(sigHeader, 'base64'), Buffer.from(expected, 'base64'))
-      } catch (e) {
+      } catch {
         valid = false
       }
 
@@ -60,7 +60,7 @@ export async function POST(req: Request) {
           try {
             const m: any = s.metadata
             return m && (m.id === messageId || String(m) === String(messageId))
-          } catch (e) {
+          } catch {
             return false
           }
         })
