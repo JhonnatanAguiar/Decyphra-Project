@@ -3030,4 +3030,44 @@ npm run a11y:axe         # Testes com axe-core (opcional)
 
 ---
 
+**26/12/2025 - Análise Profunda de Performance e Otimizações Adicionais (Fase 6.2 - Continuação)**
+
+**Contexto:** Investigação detalhada do LCP alto (27.1s) e JavaScript não utilizado (575 KiB).
+
+**Problemas Identificados:**
+- **JavaScript não utilizado:** 575 KiB no bundle principal (20.7% do código não usado)
+- **Múltiplos Card3D:** 11 instâncias renderizadas imediatamente (6 serviços + 3 projetos + 2 depoimentos)
+- **SpeedInsights bloqueante:** Script da Vercel carregado de forma síncrona
+- **Efeitos 3D desnecessários:** Todos os cards tinham tilt/border glow habilitados
+
+**Otimizações Implementadas:**
+
+1. **SpeedInsights Lazy Load** ✅
+   - SpeedInsights agora carrega via `dynamic import` com `ssr: false`
+   - **Impacto:** Remove bloqueio na renderização inicial
+
+2. **Otimização Card3D** ✅
+   - Cards de serviços: apenas primeiros 3 têm tilt habilitado (above the fold)
+   - Cards de projetos: apenas primeiros 2 têm tilt habilitado
+   - Cards de depoimentos: tilt e border glow desabilitados (não críticos)
+   - **Impacto:** Reduz significativamente o trabalho do main thread
+
+3. **Mantido: Otimizações Anteriores** ✅
+   - face-api.js condicional (só carrega quando necessário)
+   - GridScan lazy loaded
+   - Resource hints configurados
+
+**Arquivos Modificados:**
+- `app/layout.tsx` - SpeedInsights lazy loaded
+- `app/(routes)/HomePageClient.tsx` - Card3D otimizado (menos efeitos)
+
+**Impacto Esperado:**
+- **LCP:** Redução esperada (menos JavaScript bloqueante)
+- **TBT:** Redução esperada (menos trabalho no main thread)
+- **Bundle Size:** Redução esperada (SpeedInsights não bloqueia)
+
+**Status:** ✅ Otimizações implementadas | Próximo passo: nova auditoria para validar melhorias
+
+---
+
 **Última atualização:** 26/12/2025

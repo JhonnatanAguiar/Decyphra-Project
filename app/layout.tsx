@@ -1,7 +1,12 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import { SpeedInsights } from '@vercel/speed-insights/next'
+import dynamic from 'next/dynamic'
 import './globals.css'
+
+// Lazy load SpeedInsights para não bloquear renderização inicial
+const SpeedInsights = dynamic(() => import('@vercel/speed-insights/next').then(mod => ({ default: mod.SpeedInsights })), {
+  ssr: false,
+})
 
 const inter = Inter({ 
   subsets: ['latin'],

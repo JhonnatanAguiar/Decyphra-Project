@@ -202,7 +202,7 @@ export default function HomePageClient() {
                   <ScrollReveal key={service.id} direction="up" delay={index * 50}>
                     <Link href={`${ROUTES.services}/${service.slug}`} prefetch={false}>
                       <Card3D
-                        enableTilt={true}
+                        enableTilt={index < 3} // Apenas primeiros 3 têm tilt (above the fold)
                         enableParticles={false}
                         enableRipple={true}
                         enableBorderGlow={true}
@@ -406,7 +406,7 @@ export default function HomePageClient() {
                 <ScrollReveal key={project.id} direction="up" delay={index * 50}>
                   <Link href={`${ROUTES.portfolio}/${project.slug}`}>
                     <Card3D
-                      enableTilt={true}
+                      enableTilt={index < 2} // Apenas primeiros 2 têm tilt
                       enableParticles={false}
                       enableRipple={true}
                       enableBorderGlow={true}
@@ -471,10 +471,10 @@ export default function HomePageClient() {
               {featuredTestimonials.map((testimonial, index) => (
                 <ScrollReveal key={testimonial.id} direction="up" delay={index * 50}>
                   <Card3D
-                    enableTilt={true}
+                    enableTilt={false} // Depoimentos sem tilt (não crítico)
                     enableParticles={false}
                     enableRipple={true}
-                    enableBorderGlow={true}
+                    enableBorderGlow={false} // Sem border glow nos depoimentos
                     className="p-6"
                   >
                     <p className="text-light-200 mb-4 italic leading-relaxed">
