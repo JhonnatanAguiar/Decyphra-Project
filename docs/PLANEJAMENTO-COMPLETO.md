@@ -627,6 +627,7 @@ light: {
   - Scripts Node.js criados para funcionar na Vercel (Linux)
 
 #### 7.3 Monitoramento
+- [x] SpeedInsights da Vercel - ✅ Concluído (`@vercel/speed-insights` integrado no layout)
 - [ ] Configurar analytics (Google Analytics ou similar)
 - [ ] Error tracking (Sentry ou similar)
 - [ ] Uptime monitoring
