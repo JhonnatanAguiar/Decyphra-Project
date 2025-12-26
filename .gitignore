@@ -43,3 +43,15 @@ next-env.d.ts
 .idea/
 *.swp
 *.swo
+
+# Backup files
+*.backup
+*.bak
+*~
+*.tmp
+
+# Backup files
+*.backup
+*.bak
+*~
+*.tmp
