@@ -7,10 +7,9 @@ const inter = Inter({
   variable: '--font-inter',
 })
 
-export const metadata: Metadata = {
-  title: 'Decyphra - Agência de Marketing Digital e Desenvolvimento Web',
-  description: 'Transforme seu negócio digital. Desenvolvimento web, sistemas e APIs para pequenas e médias empresas.',
-}
+import { baseMetadata } from '@/lib/constants/metadata'
+
+export const metadata: Metadata = baseMetadata
 
 export default function RootLayout({
   children,
