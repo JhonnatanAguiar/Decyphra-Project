@@ -21,7 +21,7 @@ const nextConfig = {
     formats: ['image/avif', 'image/webp'], // AVIF primeiro (melhor compressão)
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-    minimumCacheTTL: 60, // Cache de 60 segundos para imagens otimizadas
+    minimumCacheTTL: 31536000, // Cache de 1 ano para imagens otimizadas (melhora performance)
     dangerouslyAllowSVG: true, // Permitir SVG (já usado nos logos)
     contentDispositionType: 'attachment',
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
@@ -29,6 +29,9 @@ const nextConfig = {
   experimental: {
     optimizePackageImports: ['framer-motion', 'lucide-react', 'gsap'],
   },
+  // Compressão automática (gzip/brotli) - Next.js já faz automaticamente
+  // poweredByHeader: false, // Removido - Next.js já não inclui mais este header por padrão
+  reactStrictMode: true,
   // Otimizações de bundle
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production' ? {

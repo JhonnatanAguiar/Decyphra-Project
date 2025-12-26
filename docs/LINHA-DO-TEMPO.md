@@ -2861,4 +2861,123 @@ npm run a11y:axe         # Testes com axe-core (opcional)
 
 ---
 
-**Última atualização:** 19/12/2025
+---
+
+**19/12/2025 - Documentação de Core Web Vitals e Guia de Testes (Fase 6.2 e 7.1 - Início)**
+
+**Contexto:** Finalização da documentação da Fase 6.2 e início da Fase 7.1 (Testes) com criação de guias e checklists.
+
+**Implementado:**
+
+1. **Documentação de Core Web Vitals** ✅
+   - Criado `docs/CORE-WEB-VITALS.md` com guia completo
+   - Explicação das 3 métricas principais (LCP, FID, CLS)
+   - Instruções de como medir (Lighthouse, PageSpeed Insights)
+   - Otimizações implementadas e pendentes
+   - Checklist de otimização
+   - Referências e ferramentas
+
+2. **Guia de Testes** ✅
+   - Criado `docs/TESTES.md` com estratégia de testes
+   - Estrutura de testes (Vitest já configurado)
+   - Como executar testes
+   - Testes implementados (integração do formulário de contato)
+   - Testes planejados (funcionalidade, componentes, API)
+   - Exemplos de código
+   - Referências
+
+3. **Checklist de Testes Manuais** ✅
+   - Criado `docs/TESTES-MANUAIS.md` com checklist completo
+   - Testes de navegação (menu, footer, links)
+   - Testes de páginas (todas as rotas)
+   - Testes de formulários (validação, envio)
+   - Testes de UI/UX (animações, interatividade)
+   - Testes de responsividade (mobile, tablet, desktop)
+   - Testes de navegadores (Chrome, Firefox, Safari, Edge)
+   - Testes de performance
+   - Testes de acessibilidade
+   - Testes de API
+   - Testes de erros
+   - Template de relatório de testes
+
+4. **Atualizações no Planejamento** ✅
+   - Fase 6.2: Core Web Vitals documentado
+   - Fase 7.1: Guias e checklists criados
+   - Progresso da Fase 7 atualizado para 20%
+   - Progresso total do projeto atualizado para ~83%
+
+**Arquivos Criados:**
+- `docs/CORE-WEB-VITALS.md` - Guia completo de Core Web Vitals
+- `docs/TESTES.md` - Estratégia e guia de testes
+- `docs/TESTES-MANUAIS.md` - Checklist completo de testes manuais
+
+**Arquivos Modificados:**
+- `docs/PLANEJAMENTO-COMPLETO.md` - Atualizado progresso das Fases 6.2 e 7.1
+- `docs/PERFORMANCE.md` - Adicionada referência ao guia de Core Web Vitals
+
+**Status:** ✅ Documentação completa criada | Checklists prontos para uso | Próximo passo: executar testes manuais ou implementar testes automatizados adicionais
+
+---
+
+---
+
+**26/12/2025 - Otimizações de Performance baseadas no PageSpeed Insights (Fase 6.2)**
+
+**Contexto:** Implementação de otimizações baseadas no diagnóstico do PageSpeed Insights para melhorar os scores de performance (mobile: 36, desktop: 57).
+
+**Implementado:**
+
+1. **Lazy Loading do GridScan** ✅
+   - GridScan (Three.js + postprocessing) agora carrega dinamicamente
+   - `dynamic import` com `ssr: false` para não bloquear renderização inicial
+   - Loading state com fallback para não causar layout shift
+   - **Impacto:** Reduz JavaScript inicial bloqueante, melhora LCP e FID
+
+2. **Resource Hints** ✅
+   - Preconnect para Google Fonts (fonts.googleapis.com e fonts.gstatic.com)
+   - DNS-prefetch para CDNs externos (worldvectorlogo, unsplash, simpleicons)
+   - Adicionado no `<head>` do layout raiz
+   - **Impacto:** Reduz tempo de conexão para recursos externos
+
+3. **Otimização de Cache de Imagens** ✅
+   - `minimumCacheTTL` aumentado de 60s para 31536000s (1 ano)
+   - Melhora performance em visitas subsequentes
+   - **Impacto:** Reduz requests desnecessários, melhora tempo de carregamento
+
+4. **Otimização de Fontes** ✅
+   - Adicionado `adjustFontFallback: true` na configuração da fonte Inter
+   - Melhora CLS (Cumulative Layout Shift) durante carregamento
+   - **Impacto:** Reduz layout shift, melhora métrica CLS
+
+5. **Otimização de Links (Prefetch)** ✅
+   - `prefetch={false}` adicionado em links não críticos na HomePage
+   - Links internos não críticos não são pré-carregados
+   - Reduz uso de largura de banda inicial
+   - **Impacto:** Melhora carregamento inicial da página
+
+6. **Configurações Next.js** ✅
+   - `reactStrictMode: true` garantido
+   - `compress: true` (já automático no Next.js, mas documentado)
+   - **Impacto:** Melhorias gerais de performance e desenvolvimento
+
+**Arquivos Modificados:**
+- `app/(routes)/HomePageClient.tsx` - Lazy loading GridScan, prefetch={false} em links
+- `app/layout.tsx` - Resource hints (preconnect, dns-prefetch), adjustFontFallback
+- `next.config.js` - Cache de imagens (1 ano), reactStrictMode
+
+**Impacto Esperado:**
+- **LCP (Largest Contentful Paint):** Melhoria esperada com lazy loading do GridScan
+- **FID (First Input Delay):** Melhoria esperada com redução de JavaScript inicial
+- **CLS (Cumulative Layout Shift):** Melhoria esperada com adjustFontFallback
+- **Performance Score:** Esperado aumento significativo (principalmente mobile)
+
+**Próximos Passos:**
+- Executar nova auditoria do PageSpeed Insights para medir melhorias
+- Monitorar Core Web Vitals após deploy
+- Considerar code splitting adicional se necessário
+
+**Status:** ✅ Otimizações críticas implementadas | Próximo passo: nova auditoria do PageSpeed Insights
+
+---
+
+**Última atualização:** 26/12/2025

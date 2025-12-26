@@ -1,7 +1,8 @@
 'use client'
 
+import dynamic from 'next/dynamic'
 import { Container, Section } from '@/views/components/layout'
-import { FadeIn, ScrollReveal, GridScan } from '@/views/components/animations'
+import { FadeIn, ScrollReveal } from '@/views/components/animations'
 import { Card3D } from '@/views/components/ui/Card3D'
 import { Button } from '@/views/components/ui/Button'
 import Link from 'next/link'
@@ -9,6 +10,12 @@ import { ROUTES } from '@/lib/constants/routes'
 import { getServiceIcon } from '@/lib/constants/icons'
 import Image from 'next/image'
 import { Zap } from 'lucide-react'
+
+// Lazy load GridScan (Three.js/postprocessing é pesado)
+const GridScan = dynamic(() => import('@/views/components/animations').then(mod => ({ default: mod.GridScan })), {
+  ssr: false,
+  loading: () => <div className="absolute inset-0 bg-dark-950" />
+})
 
 /**
  * Home Page Client Component
@@ -191,7 +198,7 @@ export default function HomePageClient() {
                 const ServiceIcon = getServiceIcon(service.slug)
                 return (
                   <ScrollReveal key={service.id} direction="up" delay={index * 50}>
-                    <Link href={`${ROUTES.services}/${service.slug}`}>
+                    <Link href={`${ROUTES.services}/${service.slug}`} prefetch={false}>
                       <Card3D
                         enableTilt={true}
                         enableParticles={false}
@@ -216,7 +223,7 @@ export default function HomePageClient() {
             </div>
 
             <div className="text-center mt-12">
-              <Link href={ROUTES.services}>
+              <Link href={ROUTES.services} prefetch={false}>
                 <Button variant="ghost" size="lg" enable3D={true}>
                   Ver Todos os Serviços
                 </Button>
@@ -330,7 +337,7 @@ export default function HomePageClient() {
               ))}
             </div>
             <div className="text-center">
-              <Link href={ROUTES.contact}>
+              <Link href={ROUTES.contact} prefetch={false}>
                 <Button variant="primary" size="lg" enable3D={true}>
                   Quero um site assim
                 </Button>
@@ -436,7 +443,7 @@ export default function HomePageClient() {
             </div>
 
             <div className="text-center mt-12">
-              <Link href={ROUTES.portfolio}>
+              <Link href={ROUTES.portfolio} prefetch={false}>
                 <Button variant="primary" size="lg" enable3D={true}>
                   Ver Portfólio Completo
                 </Button>
@@ -496,7 +503,7 @@ export default function HomePageClient() {
             </div>
 
             <div className="text-center mt-12">
-              <Link href={ROUTES.testimonials}>
+              <Link href={ROUTES.testimonials} prefetch={false}>
                 <Button variant="ghost" size="lg" enable3D={true}>
                   Ver Todos os Depoimentos
                 </Button>
@@ -518,12 +525,12 @@ export default function HomePageClient() {
                 Se você quer um site rápido, animado e feito sob medida, a gente te guia do diagnóstico ao lançamento (e além).
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href={ROUTES.contact}>
+                <Link href={ROUTES.contact} prefetch={false}>
                   <Button variant="primary" size="lg" enable3D={true}>
                     Solicitar orçamento
                   </Button>
                 </Link>
-                <Link href={ROUTES.services}>
+                <Link href={ROUTES.services} prefetch={false}>
                   <Button variant="ghost" size="lg" enable3D={true}>
                     Conhecer serviços
                   </Button>

@@ -583,10 +583,13 @@ light: {
 
 #### 6.2 Performance
 - [x] Lighthouse audit - ✅ Concluído (script criado: `npm run lighthouse`)
-- [x] Otimização de imagens - ✅ Concluído (AVIF/WebP, cache, CSP configurados)
-- [x] Font optimization - ✅ Concluído (display swap, preload configurados)
+- [x] Otimização de imagens - ✅ Concluído (AVIF/WebP, cache 1 ano, CSP configurados)
+- [x] Font optimization - ✅ Concluído (display swap, preload, adjustFontFallback configurados)
 - [x] Bundle analysis - ✅ Concluído (webpack-bundle-analyzer configurado: `npm run analyze`)
-- [ ] Core Web Vitals - ⏳ Pendente (requer auditoria inicial com Lighthouse)
+- [x] Lazy loading de componentes pesados - ✅ Concluído (GridScan com dynamic import, ssr: false)
+- [x] Resource hints - ✅ Concluído (preconnect e dns-prefetch para CDNs externos)
+- [x] Otimização de links - ✅ Concluído (prefetch={false} em links não críticos)
+- [ ] Core Web Vitals - ⏳ Pendente (documentação criada, otimizações aplicadas, requer nova auditoria)
 
 #### 6.3 Acessibilidade
 - [x] Navegação por teclado - ✅ Concluído (skip to main content, focus states)
@@ -601,14 +604,16 @@ light: {
 ---
 
 ### 🚢 Fase 7: Testes e Deploy
-**Status:** ✅ **DEPLOY CONCLUÍDO** (Deploy realizado, testes pendentes)
+**Status:** ⏳ **EM PROGRESSO** (Deploy concluído, testes em andamento - 20% completo)
 
 #### 7.1 Testes
-- [ ] Testes de funcionalidade
-- [ ] Testes de responsividade (mobile, tablet, desktop)
-- [ ] Testes de navegadores (Chrome, Firefox, Safari, Edge)
-- [ ] Testes de formulários
-- [ ] Testes de APIs
+- [x] Guia de testes criado (`docs/TESTES.md`) - ✅ Concluído
+- [x] Checklist de testes manuais criado (`docs/TESTES-MANUAIS.md`) - ✅ Concluído
+- [ ] Testes de funcionalidade - ⏳ Pendente (estrutura pronta, requer implementação)
+- [ ] Testes de responsividade (mobile, tablet, desktop) - ⏳ Pendente (checklist criado)
+- [ ] Testes de navegadores (Chrome, Firefox, Safari, Edge) - ⏳ Pendente (checklist criado)
+- [x] Testes de formulários - ✅ Parcial (teste de integração do formulário de contato existe, checklist manual criado)
+- [x] Testes de APIs - ✅ Parcial (teste de integração do formulário de contato existe, checklist manual criado)
 
 #### 7.2 Deploy
 - [x] Configurar Vercel - ✅ Concluído
@@ -721,9 +726,9 @@ npm run type-check   # Verifica tipos TypeScript
 | Fase 4: Dinâmicas | 100% | ✅ **Concluída** |
 | Fase 5: Backend | 90% | ✅ **Concluída** (newsletter em standby, refatorações aplicadas) |
 | Fase 6: SEO | 98% | ✅ **Quase Concluída** |
-| Fase 7: Deploy | 85% | ✅ **Deploy Concluído** |
+| Fase 7: Deploy | 90% | ⏳ **Em Progresso** (Deploy concluído, testes em andamento) |
 
-**Progresso Total:** ~82% completo
+**Progresso Total:** ~83% completo
 
 ---
 

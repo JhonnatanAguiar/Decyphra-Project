@@ -7,6 +7,7 @@ const inter = Inter({
   variable: '--font-inter',
   display: 'swap', // Evita FOIT (Flash of Invisible Text)
   preload: true, // Preload da fonte para melhor performance
+  adjustFontFallback: true, // Melhora CLS (Cumulative Layout Shift)
 })
 
 import { baseMetadata } from '@/lib/constants/metadata'
@@ -20,6 +21,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR" className={inter.variable}>
+      <head>
+        {/* Preconnect para recursos externos - melhora performance */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        <link rel="dns-prefetch" href="https://cdn.worldvectorlogo.com" />
+        <link rel="dns-prefetch" href="https://images.unsplash.com" />
+        <link rel="dns-prefetch" href="https://cdn.simpleicons.org" />
+      </head>
       <body className="antialiased">{children}</body>
     </html>
   )
