@@ -130,3 +130,37 @@ export const contactMetadata: Metadata = {
     description: 'Conte sobre seu projeto. A gente responde com direção.',
   },
 }
+
+/**
+ * Metadata para a Página de Portfólio
+ */
+export const portfolioMetadata: Metadata = {
+  title: 'Portfólio',
+  description: 'Conheça alguns dos nossos projetos capazes de transformar negócios e gerar resultados extraordinários para nossos clientes.',
+  openGraph: {
+    title: `Portfólio | ${siteName}`,
+    description: 'Conheça alguns dos nossos projetos capazes de transformar negócios e gerar resultados extraordinários para nossos clientes.',
+    url: `${siteUrl}/portfolio`,
+  },
+  twitter: {
+    title: `Portfólio | ${siteName}`,
+    description: 'Conheça alguns dos nossos projetos capazes de transformar negócios.',
+  },
+}
+
+/**
+ * Metadata para a Página de Depoimentos
+ */
+export const testimonialsMetadata: Metadata = {
+  title: 'Depoimentos',
+  description: 'Histórias reais de transformação digital e crescimento empresarial.',
+  openGraph: {
+    title: `Depoimentos | ${siteName}`,
+    description: 'Histórias reais de transformação digital e crescimento empresarial.',
+    url: `${siteUrl}/depoimentos`,
+  },
+  twitter: {
+    title: `Depoimentos | ${siteName}`,
+    description: 'Histórias reais de transformação digital e crescimento empresarial.',
+  },
+}

@@ -2,7 +2,7 @@
 
 > **Documento Central de Planejamento**  
 > Este arquivo consolida toda a documentação de planejamento do projeto.  
-> Última atualização: 18/12/2025
+> Última atualização: 19/12/2025
 
 ---
 
@@ -570,12 +570,14 @@ light: {
 ---
 
 ### 🔍 Fase 6: SEO e Otimizações
-**Status:** ⏳ Pendente
+**Status:** ⏳ **EM PROGRESSO** (40% completo)
 
 #### 6.1 SEO
-- [ ] Meta tags em todas as páginas
-- [ ] Open Graph tags
-- [ ] Twitter Card tags
+- [x] Meta tags em páginas principais - ✅ Concluído (Home, Serviços, Sobre, Contato)
+- [x] Open Graph tags - ✅ Concluído (páginas principais)
+- [x] Twitter Card tags - ✅ Concluído (páginas principais)
+- [x] Arquivo centralizado de metadata (`src/lib/constants/metadata.ts`) - ✅ Concluído
+- [ ] Meta tags nas demais páginas (Portfolio, Depoimentos, páginas individuais de serviços, Status)
 - [ ] Schema.org markup
 - [ ] Sitemap.xml
 - [ ] robots.txt
@@ -716,10 +718,10 @@ npm run type-check   # Verifica tipos TypeScript
 | Fase 3: Páginas | 100% | ✅ **Concluída** |
 | Fase 4: Dinâmicas | 100% | ✅ **Concluída** |
 | Fase 5: Backend | 90% | ✅ **Concluída** (newsletter em standby, refatorações aplicadas) |
-| Fase 6: SEO | 0% | ⏳ Pendente |
+| Fase 6: SEO | 40% | ⏳ **Em Progresso** |
 | Fase 7: Deploy | 85% | ✅ **Deploy Concluído** |
 
-**Progresso Total:** ~65% completo
+**Progresso Total:** ~68% completo
 
 ---
 
@@ -1105,6 +1107,7 @@ enum UserRole {
 - Atualização completa de conteúdo conforme nova metodologia (desenvolvimento em código) (19/12/2025) ✅
 - Footer completo com emails, newsletter e redes sociais (19/12/2025) ✅
 - Correções de UI: glow effects, ícones e imagens (19/12/2025) ✅
+- Implementação de metadata SEO nas páginas principais (Home, Serviços, Sobre, Contato) (19/12/2025) ✅
 - Melhorias visuais na página Desenvolvimento Web (cards, ícones, seções) (19/12/2025) ✅
 **Novo:** Mini-CRM e Painel Admin planejado (18/12/2025)  
 **Assets:** Logotipos criados em múltiplos formatos e variações (18/12/2025) ✅
