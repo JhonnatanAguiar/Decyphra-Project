@@ -162,7 +162,6 @@ export default function ContactPageClient() {
                         variant={errors.name ? 'error' : 'primary'}
                         showValidationIcon={!!watchedName}
                         isValid={!errors.name && !!watchedName && watchedName.length >= 3}
-                        value={watchedName}
                         {...register('name')}
                       />
                       {errors.name && (

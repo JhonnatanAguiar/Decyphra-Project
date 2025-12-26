@@ -49,9 +49,3 @@ next-env.d.ts
 *.bak
 *~
 *.tmp
-
-# Backup files
-*.backup
-*.bak
-*~
-*.tmp
