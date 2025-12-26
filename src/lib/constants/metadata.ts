@@ -164,3 +164,105 @@ export const testimonialsMetadata: Metadata = {
     description: 'Histórias reais de transformação digital e crescimento empresarial.',
   },
 }
+
+/**
+ * Metadata para as Páginas de Serviços Individuais
+ */
+
+export const desenvolvimentoWebMetadata: Metadata = {
+  title: 'Desenvolvimento Web',
+  description: 'Sites rápidos, animados e escaláveis — com total controle do design, performance e evolução. Sites e landing pages em código, com animações, performance e SEO desde a base.',
+  openGraph: {
+    title: `Desenvolvimento Web | ${siteName}`,
+    description: 'Sites rápidos, animados e escaláveis — com total controle do design, performance e evolução.',
+    url: `${siteUrl}/servicos/desenvolvimento-web`,
+  },
+  twitter: {
+    title: `Desenvolvimento Web | ${siteName}`,
+    description: 'Sites rápidos, animados e escaláveis — com total controle do design, performance e evolução.',
+  },
+}
+
+export const seoOtimizacaoMetadata: Metadata = {
+  title: 'SEO & Otimização',
+  description: 'SEO técnico + conteúdo orientado a intenção de busca. Visibilidade consistente e crescimento orgânico mensurável.',
+  openGraph: {
+    title: `SEO & Otimização | ${siteName}`,
+    description: 'SEO técnico + conteúdo orientado a intenção de busca. Visibilidade consistente e crescimento orgânico mensurável.',
+    url: `${siteUrl}/servicos/seo-otimizacao`,
+  },
+  twitter: {
+    title: `SEO & Otimização | ${siteName}`,
+    description: 'SEO técnico + conteúdo orientado a intenção de busca. Visibilidade consistente e crescimento orgânico.',
+  },
+}
+
+export const googleAdMetadata: Metadata = {
+  title: 'Google Ad',
+  description: 'Campanhas enxutas e otimizadas para ROI. Tracking bem feito, testes rápidos e escala com controle.',
+  openGraph: {
+    title: `Google Ad | ${siteName}`,
+    description: 'Campanhas enxutas e otimizadas para ROI. Tracking bem feito, testes rápidos e escala com controle.',
+    url: `${siteUrl}/servicos/google-ad`,
+  },
+  twitter: {
+    title: `Google Ad | ${siteName}`,
+    description: 'Campanhas enxutas e otimizadas para ROI. Tracking bem feito, testes rápidos e escala com controle.',
+  },
+}
+
+export const marketingConteudoMetadata: Metadata = {
+  title: 'Marketing de Conteúdo',
+  description: 'Conteúdo que educa, posiciona e converte — com estratégia, consistência e copy orientada a ação.',
+  openGraph: {
+    title: `Marketing de Conteúdo | ${siteName}`,
+    description: 'Conteúdo que educa, posiciona e converte — com estratégia, consistência e copy orientada a ação.',
+    url: `${siteUrl}/servicos/marketing-de-conteudo`,
+  },
+  twitter: {
+    title: `Marketing de Conteúdo | ${siteName}`,
+    description: 'Conteúdo que educa, posiciona e converte — com estratégia, consistência e copy orientada a ação.',
+  },
+}
+
+export const inteligenciaArtificialMetadata: Metadata = {
+  title: 'Inteligência Artificial',
+  description: 'Agentes e automações com IA para acelerar processos, melhorar atendimento e aumentar eficiência operacional.',
+  openGraph: {
+    title: `Inteligência Artificial | ${siteName}`,
+    description: 'Agentes e automações com IA para acelerar processos, melhorar atendimento e aumentar eficiência operacional.',
+    url: `${siteUrl}/servicos/inteligencia-artificial`,
+  },
+  twitter: {
+    title: `Inteligência Artificial | ${siteName}`,
+    description: 'Agentes e automações com IA para acelerar processos, melhorar atendimento e aumentar eficiência.',
+  },
+}
+
+export const ecommerceCompletoMetadata: Metadata = {
+  title: 'E-commerce Completo',
+  description: 'Lojas rápidas, escaláveis e personalizadas — do checkout ao catálogo, com integrações e foco em conversão.',
+  openGraph: {
+    title: `E-commerce Completo | ${siteName}`,
+    description: 'Lojas rápidas, escaláveis e personalizadas — do checkout ao catálogo, com integrações e foco em conversão.',
+    url: `${siteUrl}/servicos/ecommerce-completo`,
+  },
+  twitter: {
+    title: `E-commerce Completo | ${siteName}`,
+    description: 'Lojas rápidas, escaláveis e personalizadas — do checkout ao catálogo, com integrações e foco em conversão.',
+  },
+}
+
+export const consultoriaDigitalMetadata: Metadata = {
+  title: 'Consultoria Digital',
+  description: 'Direção técnica e estratégica para destravar decisões e organizar um plano de crescimento executável.',
+  openGraph: {
+    title: `Consultoria Digital | ${siteName}`,
+    description: 'Direção técnica e estratégica para destravar decisões e organizar um plano de crescimento executável.',
+    url: `${siteUrl}/servicos/consultoria-digital`,
+  },
+  twitter: {
+    title: `Consultoria Digital | ${siteName}`,
+    description: 'Direção técnica e estratégica para destravar decisões e organizar um plano de crescimento executável.',
+  },
+}
