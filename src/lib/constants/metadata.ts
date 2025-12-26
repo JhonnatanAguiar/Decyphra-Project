@@ -79,3 +79,20 @@ export const homeMetadata: Metadata = {
     description: 'Sites feitos em código, com controle total do resultado.',
   },
 }
+
+/**
+ * Metadata para a Página de Serviços
+ */
+export const servicesMetadata: Metadata = {
+  title: 'Serviços',
+  description: 'Soluções digitais completas — com desenvolvimento em código como padrão e uma metodologia acelerada por IA.',
+  openGraph: {
+    title: `Serviços | ${siteName}`,
+    description: 'Soluções digitais completas — com desenvolvimento em código como padrão e uma metodologia acelerada por IA.',
+    url: `${siteUrl}/servicos`,
+  },
+  twitter: {
+    title: `Serviços | ${siteName}`,
+    description: 'Soluções digitais completas — com desenvolvimento em código como padrão.',
+  },
+}
