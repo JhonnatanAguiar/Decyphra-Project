@@ -95,18 +95,27 @@ const Header = ({
   // Serviços será inserido como segundo item no menu
 
   return (
-    <header
-      className={cn(
-        'w-full z-50 transition-all duration-300',
-        sticky && 'sticky top-0',
-        variants[variant]
-      )}
-    >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 lg:h-20">
-          {/* Logo */}
-          <DecyphraLogo
-            layout="horizontal"
+    <>
+      {/* Skip to main content - Acessibilidade para navegação por teclado */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-primary-500 focus:text-dark-950 focus:rounded-lg focus:font-medium focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-dark-950"
+        aria-label="Pular para o conteúdo principal"
+      >
+        Pular para o conteúdo principal
+      </a>
+      <header
+        className={cn(
+          'w-full z-50 transition-all duration-300',
+          sticky && 'sticky top-0',
+          variants[variant]
+        )}
+      >
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16 lg:h-20">
+            {/* Logo */}
+            <DecyphraLogo
+              layout="horizontal"
             size="md"
             showText={true}
             linkToHome={true}
@@ -224,8 +233,12 @@ const Header = ({
             {/* Mobile Services Menu */}
             <div>
               <button
+                id="mobile-services-button"
                 onClick={() => setIsServicesMenuOpen(!isServicesMenuOpen)}
-                className="w-full flex items-center justify-between text-light-200 hover:text-primary-500 transition-colors font-medium py-2"
+                className="w-full flex items-center justify-between text-light-200 hover:text-primary-500 transition-colors font-medium py-2 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-dark-950 rounded"
+                aria-expanded={isServicesMenuOpen}
+                aria-controls="mobile-services-menu"
+                aria-label={isServicesMenuOpen ? 'Fechar menu de serviços' : 'Abrir menu de serviços'}
               >
                 Serviços
                 <svg
@@ -241,10 +254,13 @@ const Header = ({
                 </svg>
               </button>
               <div
+                id="mobile-services-menu"
                 className={cn(
                   'overflow-hidden transition-all duration-300 ease-in-out',
                   isServicesMenuOpen ? 'max-h-96 opacity-100 mt-2' : 'max-h-0 opacity-0'
                 )}
+                role="region"
+                aria-labelledby="mobile-services-button"
               >
                 <div className="pl-4 space-y-2 border-l-2 border-dark-800">
                   <Link
@@ -291,6 +307,7 @@ const Header = ({
         </div>
       </div>
     </header>
+    </>
   )
 }
 

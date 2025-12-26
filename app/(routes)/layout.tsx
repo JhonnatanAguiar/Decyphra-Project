@@ -22,7 +22,7 @@ export default function RoutesLayout({
     <>
       <ScrollToTop />
       <Header variant="default" sticky={true} />
-      <main>
+      <main id="main-content">
         <PageTransition>
           {children}
         </PageTransition>

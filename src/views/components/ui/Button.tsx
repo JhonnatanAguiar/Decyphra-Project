@@ -190,9 +190,13 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           sizes[size],
           button3DStyles,
           enable3D && 'backface-hidden',
+          // Acessibilidade: focus visible sempre visível
+          'focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-dark-950',
           className
         )}
         disabled={disabled || isLoading}
+        aria-disabled={disabled || isLoading}
+        aria-busy={isLoading}
         style={enable3D && !isMobile ? { 
           transformStyle: 'preserve-3d',
           backfaceVisibility: 'hidden' as const
@@ -200,7 +204,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         {...props}
       >
         {isLoading ? (
-          <span className="flex items-center gap-2">
+          <span className="flex items-center gap-2" aria-hidden="true">
             <span className="h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent" />
             <span>Carregando...</span>
           </span>

@@ -570,7 +570,7 @@ light: {
 ---
 
 ### 🔍 Fase 6: SEO e Otimizações
-**Status:** ⏳ **EM PROGRESSO** (85% completo)
+**Status:** ⏳ **EM PROGRESSO** (95% completo)
 
 #### 6.1 SEO
 - [x] Meta tags em todas as páginas - ✅ Concluído (Home, Serviços, Sobre, Contato, Portfolio, Depoimentos, Status, todas as 7 páginas de serviços individuais)
@@ -589,11 +589,12 @@ light: {
 - [ ] Core Web Vitals - ⏳ Pendente (requer auditoria inicial com Lighthouse)
 
 #### 6.3 Acessibilidade
-- [ ] Testes com screen reader
-- [ ] Contraste de cores
-- [ ] Navegação por teclado
-- [ ] ARIA labels
-- [ ] Alt texts
+- [x] Navegação por teclado - ✅ Concluído (skip to main content, focus states)
+- [x] Contraste de cores - ✅ Verificado (WCAG AA conforme design system)
+- [x] ARIA labels - ✅ Concluído (botões, menus, modais, toasts)
+- [x] Alt texts - ✅ Concluído (todas as imagens com alt descritivo)
+- [x] Guia de acessibilidade - ✅ Concluído (`docs/ACESSIBILIDADE.md`)
+- [ ] Testes com screen reader - ⏳ Pendente (requer testes manuais)
 
 ---
 
@@ -717,10 +718,10 @@ npm run type-check   # Verifica tipos TypeScript
 | Fase 3: Páginas | 100% | ✅ **Concluída** |
 | Fase 4: Dinâmicas | 100% | ✅ **Concluída** |
 | Fase 5: Backend | 90% | ✅ **Concluída** (newsletter em standby, refatorações aplicadas) |
-| Fase 6: SEO | 85% | ⏳ **Em Progresso** |
+| Fase 6: SEO | 95% | ⏳ **Em Progresso** |
 | Fase 7: Deploy | 85% | ✅ **Deploy Concluído** |
 
-**Progresso Total:** ~78% completo
+**Progresso Total:** ~80% completo
 
 ---
 
