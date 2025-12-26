@@ -266,3 +266,20 @@ export const consultoriaDigitalMetadata: Metadata = {
     description: 'Direção técnica e estratégica para destravar decisões e organizar um plano de crescimento executável.',
   },
 }
+
+/**
+ * Metadata para a Página de Status
+ */
+export const statusMetadata: Metadata = {
+  title: 'Status do Sistema',
+  description: 'Monitore o status em tempo real da nossa API, banco de dados e infraestrutura.',
+  openGraph: {
+    title: `Status do Sistema | ${siteName}`,
+    description: 'Monitore o status em tempo real da nossa API, banco de dados e infraestrutura.',
+    url: `${siteUrl}/status`,
+  },
+  twitter: {
+    title: `Status do Sistema | ${siteName}`,
+    description: 'Monitore o status em tempo real da nossa API, banco de dados e infraestrutura.',
+  },
+}
