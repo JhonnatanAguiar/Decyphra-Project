@@ -619,7 +619,7 @@ light: {
 - [ ] Testes de responsividade (mobile, tablet, desktop) - ⏳ Pendente (checklist criado)
 - [ ] Testes de navegadores (Chrome, Firefox, Safari, Edge) - ⏳ Pendente (checklist criado)
 - [x] Testes de formulários - ✅ Parcial (teste de integração do formulário de contato existe, checklist manual criado)
-- [x] Testes de APIs - ✅ Parcial (teste de integração do formulário de contato existe, checklist manual criado)
+- [x] Testes de APIs - ✅ Concluído (testes de integração para todos os endpoints GET implementados: status, projects, projects/[slug], services, testimonials)
 
 #### 7.2 Deploy
 - [x] Configurar Vercel - ✅ Concluído

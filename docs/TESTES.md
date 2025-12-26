@@ -78,6 +78,90 @@ npm run test -- contact
 npm run test tests/contact.integration.test.ts
 ```
 
+#### 2. **Status da API** ✅
+
+**Arquivo:** `tests/api-status.integration.test.ts`
+
+**O que testa:**
+- Retorno de status 200
+- Estrutura correta dos dados de status
+- Valores válidos (operational, degraded, down)
+- Tempos de resposta numéricos
+- Status de conexão do banco de dados (boolean)
+- Timestamp ISO válido
+
+**Como executar:**
+```bash
+npm run test tests/api-status.integration.test.ts
+```
+
+#### 3. **Listagem de Projetos** ✅
+
+**Arquivo:** `tests/api-projects.integration.test.ts`
+
+**O que testa:**
+- Retorno de status 200
+- Estrutura correta dos dados (projects, total, page, limit)
+- Campos obrigatórios nos projetos (id, title, slug, description)
+- Paginação (query params page e limit)
+- Busca (query param search)
+- Total count consistente com array de projetos
+
+**Como executar:**
+```bash
+npm run test tests/api-projects.integration.test.ts
+```
+
+#### 4. **Detalhes de Projeto** ✅
+
+**Arquivo:** `tests/api-projects-slug.integration.test.ts`
+
+**O que testa:**
+- Retorno 404 para slug inexistente
+- Retorno 200 para slug válido
+- Estrutura correta dos dados do projeto
+- Campos obrigatórios (id, title, slug, description)
+- Slug retornado corresponde ao solicitado
+
+**Como executar:**
+```bash
+npm run test tests/api-projects-slug.integration.test.ts
+```
+
+#### 5. **Listagem de Serviços** ✅
+
+**Arquivo:** `tests/api-services.integration.test.ts`
+
+**O que testa:**
+- Retorno de status 200
+- Estrutura correta dos dados (services, total, page, limit)
+- Campos obrigatórios nos serviços (id, title, slug, description)
+- Paginação (query params page e limit)
+- Busca (query param search)
+- Total count consistente com array de serviços
+
+**Como executar:**
+```bash
+npm run test tests/api-services.integration.test.ts
+```
+
+#### 6. **Listagem de Depoimentos** ✅
+
+**Arquivo:** `tests/api-testimonials.integration.test.ts`
+
+**O que testa:**
+- Retorno de status 200
+- Estrutura correta dos dados (testimonials, total, page, limit)
+- Campos obrigatórios nos depoimentos (id, name, message)
+- Paginação (query params page e limit)
+- Busca (query param search)
+- Total count consistente com array de depoimentos
+
+**Como executar:**
+```bash
+npm run test tests/api-testimonials.integration.test.ts
+```
+
 ---
 
 ## 📝 Testes Planejados
@@ -125,21 +209,21 @@ npm run test tests/contact.integration.test.ts
 
 ### Testes de API
 
-#### 1. **Endpoints de Leitura**
+#### 1. **Endpoints de Leitura** ✅
 
-- [ ] `GET /api/v1/status` retorna status correto
-- [ ] `GET /api/v1/projects` lista projetos
-- [ ] `GET /api/v1/projects/[slug]` retorna projeto específico
-- [ ] `GET /api/v1/services` lista serviços
-- [ ] `GET /api/v1/testimonials` lista depoimentos
-- [ ] Filtros e paginação funcionam
+- [x] `GET /api/v1/status` retorna status correto - ✅ Implementado
+- [x] `GET /api/v1/projects` lista projetos - ✅ Implementado
+- [x] `GET /api/v1/projects/[slug]` retorna projeto específico - ✅ Implementado
+- [x] `GET /api/v1/services` lista serviços - ✅ Implementado
+- [x] `GET /api/v1/testimonials` lista depoimentos - ✅ Implementado
+- [x] Filtros e paginação funcionam - ✅ Implementado (testado nos testes de listagem)
 
 #### 2. **Endpoints de Escrita**
 
-- [ ] `POST /api/v1/contact` valida dados
-- [ ] `POST /api/v1/contact` persiste no banco
-- [ ] `POST /api/v1/contact` envia email (quando configurado)
-- [ ] Erros são tratados apropriadamente
+- [x] `POST /api/v1/contact` valida dados - ✅ Implementado (contact.integration.test.ts)
+- [x] `POST /api/v1/contact` persiste no banco - ✅ Implementado (contact.integration.test.ts)
+- [ ] `POST /api/v1/contact` envia email (quando configurado) - ⏳ Pendente (requer configuração de email)
+- [x] Erros são tratados apropriadamente - ✅ Implementado (contact.integration.test.ts)
 
 ### Testes de Componentes
 
@@ -291,6 +375,10 @@ describe('Button', () => {
 
 **Testes Implementados:**
 - ✅ Testes de integração: Formulário de contato
+- ✅ Testes de integração: Status da API (`/api/v1/status`)
+- ✅ Testes de integração: Projetos (`/api/v1/projects` e `/api/v1/projects/[slug]`)
+- ✅ Testes de integração: Serviços (`/api/v1/services`)
+- ✅ Testes de integração: Depoimentos (`/api/v1/testimonials`)
 
 **Testes Pendentes:**
 - ⏳ Testes de funcionalidade (navegação, componentes)
@@ -299,4 +387,4 @@ describe('Button', () => {
 
 ---
 
-**Última atualização:** 19/12/2025
+**Última atualização:** 26/12/2025

@@ -3106,4 +3106,51 @@ npm run a11y:axe         # Testes com axe-core (opcional)
 
 ---
 
+**26/12/2025 - Implementação de Testes de Integração para APIs (Fase 7.1 - Continuação)**
+
+**Contexto:** Implementação de testes de integração para todos os endpoints GET da API conforme planejamento.
+
+**Testes Criados:**
+
+1. **GET /api/v1/status** ✅
+   - Arquivo: `tests/api-status.integration.test.ts`
+   - Testa: status 200, estrutura de dados, valores válidos, tempos de resposta, conexão do banco, timestamp ISO
+
+2. **GET /api/v1/projects** ✅
+   - Arquivo: `tests/api-projects.integration.test.ts`
+   - Testa: status 200, estrutura de dados, campos obrigatórios, paginação, busca, total count
+
+3. **GET /api/v1/projects/[slug]** ✅
+   - Arquivo: `tests/api-projects-slug.integration.test.ts`
+   - Testa: 404 para slug inexistente, 200 para slug válido, estrutura de dados, campos obrigatórios
+
+4. **GET /api/v1/services** ✅
+   - Arquivo: `tests/api-services.integration.test.ts`
+   - Testa: status 200, estrutura de dados, campos obrigatórios, paginação, busca, total count
+
+5. **GET /api/v1/testimonials** ✅
+   - Arquivo: `tests/api-testimonials.integration.test.ts`
+   - Testa: status 200, estrutura de dados, campos obrigatórios, paginação, busca, total count
+
+**Arquivos Modificados:**
+- `docs/TESTES.md` - Atualizado com todos os novos testes
+- `docs/PLANEJAMENTO-COMPLETO.md` - Status de testes de APIs atualizado para concluído
+
+**Arquivos Criados:**
+- `tests/api-status.integration.test.ts`
+- `tests/api-projects.integration.test.ts`
+- `tests/api-projects-slug.integration.test.ts`
+- `tests/api-services.integration.test.ts`
+- `tests/api-testimonials.integration.test.ts`
+
+**Padrão dos Testes:**
+- Todos seguem o mesmo padrão do teste de contato existente
+- Usam servidor de produção (`npm start`) em porta 4000
+- Testam estrutura de resposta, campos obrigatórios, query params
+- Incluem retry logic para aguardar servidor iniciar
+
+**Status:** ✅ Todos os testes de integração para endpoints GET implementados | Próximo passo: executar testes e verificar cobertura
+
+---
+
 **Última atualização:** 26/12/2025
