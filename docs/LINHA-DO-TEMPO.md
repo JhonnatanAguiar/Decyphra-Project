@@ -3153,4 +3153,99 @@ npm run a11y:axe         # Testes com axe-core (opcional)
 
 ---
 
+**26/12/2025 - Correção de Testes de Integração e Sistema de Lock File (Fase 7.1 - Continuação)**
+
+**Contexto:** Correção de problemas nos testes de integração relacionados a conflitos de build paralelo e estrutura de resposta da API.
+
+**Problemas Identificados e Corrigidos:**
+1. **Conflitos de Build Paralelo:**
+   - Múltiplos workers do Vitest tentando fazer build simultaneamente
+   - Race conditions ao limpar/criar diretório `.next`
+   - Build removido por outro processo durante execução
+
+2. **Estrutura de Resposta da API:**
+   - Testes esperavam `body.data.projects` mas API retorna `body.projects`
+   - Testes esperavam `body.page` mas API retorna `body.offset`
+   - Filtros incorretos nos testes (search vs category/active/featured)
+
+**Soluções Implementadas:**
+- ✅ Sistema de lock file (`.next/.build-lock`) para garantir apenas um build por vez
+- ✅ Verificação de build existente antes de fazer novo build
+- ✅ Reutilização de builds válidos entre testes
+- ✅ Limpeza automática de locks expirados (timeout de 5 minutos)
+- ✅ Correção de todas as expectativas dos testes para usar estrutura real da API:
+  - `body.projects/services/testimonials` (direto, sem wrapper `data`)
+  - `body.offset` e `body.limit` (em vez de `page`)
+  - Filtros corretos: `category` para projects, `active` para services, `featured` para testimonials
+- ✅ Configuração do Vitest com `singleFork: true` para evitar conflitos
+- ✅ Melhorias no cleanup de processos e logs informativos
+
+**Arquivos Modificados:**
+- `tests/setup-test-server.ts` - Sistema de lock file e reutilização de builds
+- `tests/api-projects.integration.test.ts` - Correções de estrutura e filtros
+- `tests/api-services.integration.test.ts` - Correções de estrutura e filtros
+- `tests/api-testimonials.integration.test.ts` - Correções de estrutura e filtros
+- `vitest.config.ts` - Configurado `singleFork: true`
+- `.gitignore` - Adicionado `.next/.build-lock`
+
+**Resultados:**
+- ✅ Todos os 29 testes passando (100% de sucesso)
+- ✅ Build otimizado: reutiliza builds existentes
+- ✅ Sem erros de conexão: servidor inicia corretamente
+- ✅ Execução mais rápida: build compartilhado entre testes
+
+**Status:** ✅ Testes de integração corrigidos e funcionando | Todos os 29 testes passando
+
+---
+
+**26/12/2025 - Implementação de Google Analytics 4 (Fase 7.3 - Monitoramento)**
+
+**Implementado:**
+- ✅ Instalado `@next/third-parties` para integração otimizada do GA4
+- ✅ Criado componente `GoogleAnalytics` com lazy loading para não bloquear renderização inicial
+- ✅ Criado utilitário de analytics (`src/lib/utils/analytics.ts`) com funções para:
+  - Track de page views automático
+  - Track de eventos customizados (cliques, formulários, downloads, links externos)
+  - Track específico para serviços e projetos
+- ✅ Integrado GA4 no `RootLayout` com lazy loading (ssr: false)
+- ✅ Adicionado preconnect para `www.googletagmanager.com` no head
+- ✅ Configurado para usar variável de ambiente `NEXT_PUBLIC_GA_MEASUREMENT_ID`
+- ✅ Track automático de mudanças de página com Next.js App Router
+- ✅ Componente só renderiza se a variável de ambiente estiver configurada
+
+**Detalhes Técnicos:**
+- Usa `@next/third-parties/google` do Next.js 14 para otimização automática
+- Componente lazy loaded para não impactar performance inicial
+- Hook `usePageTracking` rastreia mudanças de rota automaticamente
+- Utilitários TypeScript com type safety para eventos do GA4
+- Suporte a eventos customizados (buttons, forms, downloads, external links, etc.)
+
+**Arquivos Criados:**
+- `src/views/components/analytics/GoogleAnalytics.tsx` - Componente principal do GA4
+- `src/views/components/analytics/index.ts` - Export do componente
+- `src/lib/utils/analytics.ts` - Utilitários para tracking de eventos
+
+**Arquivos Modificados:**
+- `app/layout.tsx` - Adicionado componente GoogleAnalytics com lazy loading e preconnect
+- `docs/PLANEJAMENTO-COMPLETO.md` - Atualizado seção 7.3 Monitoramento e variáveis de ambiente
+
+**Configuração Necessária:**
+- Adicionar `NEXT_PUBLIC_GA_MEASUREMENT_ID="G-XXXXXXXXXX"` no `.env.local` e no Vercel
+- Obter o Measurement ID no Google Analytics 4 (Admin > Data Streams > Web)
+
+**Exemplo de Uso:**
+```typescript
+import { trackButtonClick, trackFormSubmit } from '@/lib/utils/analytics'
+
+// Track de clique em botão
+trackButtonClick('CTA Principal', 'hero-section')
+
+// Track de submissão de formulário
+trackFormSubmit('contact', true) // true = sucesso
+```
+
+**Status:** ✅ Google Analytics 4 implementado | Próximo passo: configurar Measurement ID em produção
+
+---
+
 **Última atualização:** 26/12/2025

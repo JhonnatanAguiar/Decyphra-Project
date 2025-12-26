@@ -634,7 +634,7 @@ light: {
 
 #### 7.3 Monitoramento
 - [x] SpeedInsights da Vercel - ✅ Concluído (`@vercel/speed-insights` integrado no layout)
-- [ ] Configurar analytics (Google Analytics ou similar)
+- [x] Google Analytics 4 (GA4) - ✅ Concluído (`@next/third-parties/google` integrado com lazy loading, utilitários para eventos customizados)
 - [ ] Error tracking (Sentry ou similar)
 - [ ] Uptime monitoring
 

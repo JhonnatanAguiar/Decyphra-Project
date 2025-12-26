@@ -8,6 +8,11 @@ const SpeedInsights = dynamic(() => import('@vercel/speed-insights/next').then(m
   ssr: false,
 })
 
+// Lazy load Google Analytics para não bloquear renderização inicial
+const GoogleAnalytics = dynamic(() => import('@/views/components/analytics/GoogleAnalytics'), {
+  ssr: false,
+})
+
 const inter = Inter({ 
   subsets: ['latin'],
   variable: '--font-inter',
@@ -34,10 +39,13 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://cdn.worldvectorlogo.com" />
         <link rel="dns-prefetch" href="https://images.unsplash.com" />
         <link rel="dns-prefetch" href="https://cdn.simpleicons.org" />
+        {/* Preconnect para Google Analytics */}
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
       </head>
       <body className="antialiased">
         {children}
         <SpeedInsights />
+        <GoogleAnalytics />
       </body>
     </html>
   )
