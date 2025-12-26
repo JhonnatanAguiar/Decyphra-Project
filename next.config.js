@@ -28,8 +28,8 @@ const nextConfig = {
   },
   experimental: {
     optimizePackageImports: ['framer-motion', 'lucide-react', 'gsap'],
-    // Otimizações adicionais para reduzir bundle
-    optimizeCss: true, // Otimização de CSS
+    // optimizeCss requer 'critters' que não está instalado
+    // optimizeCss: true, // Desabilitado temporariamente - requer 'critters' package
   },
   // Compressão automática (gzip/brotli) - Next.js já faz automaticamente
   // poweredByHeader: false, // Removido - Next.js já não inclui mais este header por padrão

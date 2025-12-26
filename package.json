@@ -18,7 +18,7 @@
         "postinstall": "prisma generate",
         "logos:generate": "node scripts/generate-logos-png.js",
         "lighthouse": "node scripts/lighthouse-audit.js",
-        "analyze": "ANALYZE=true next build",
+        "analyze": "node scripts/analyze.js",
         "a11y:test": "node scripts/a11y-test.js",
         "a11y:axe": "node scripts/a11y-axe-test.js"
     },
@@ -63,6 +63,7 @@
         "tailwindcss": "^3.4.0",
         "tsx": "^4.16.0",
         "typescript": "^5.5.0",
-        "vitest": "^1.6.1"
+        "vitest": "^1.6.1",
+        "webpack-bundle-analyzer": "^5.1.0"
     }
 }

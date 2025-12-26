@@ -592,6 +592,7 @@ light: {
 - [x] Otimização face-api.js - ✅ Concluído (só carrega quando enableWebcam=true)
 - [x] Otimização SpeedInsights - ✅ Concluído (lazy load para não bloquear renderização)
 - [x] Otimização Card3D - ✅ Concluído (redução de tilt/efeitos em cards below the fold)
+- [x] Script analyze multiplataforma - ✅ Concluído (funciona no Windows PowerShell)
 - [ ] Core Web Vitals - ⏳ Pendente (otimizações aplicadas, requer nova auditoria após deploy)
 
 #### 6.3 Acessibilidade
