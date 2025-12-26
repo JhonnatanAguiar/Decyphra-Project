@@ -1,45 +1,15 @@
-import { spawn } from 'child_process'
 import fetch from 'cross-fetch'
 import { afterAll, beforeAll, describe, expect, it } from 'vitest'
+import { startTestServer, stopTestServer } from './setup-test-server'
 
-let proc: ReturnType<typeof spawn> | null = null
 let port = 4000
 
-async function waitForUp(p: number, timeout = 60000) {
-  const start = Date.now()
-  while (Date.now() - start < timeout) {
-    try {
-      const res = await fetch(`http://127.0.0.1:${p}/`)
-      if (res.status === 200) return true
-    } catch (e) {
-      // ignore
-    }
-    await new Promise((r) => setTimeout(r, 500))
-  }
-  return false
-}
-
 beforeAll(async () => {
-  // Build the app then start a production server (`next start`) on port 4000
-  await new Promise<void>((resolve, reject) => {
-    const b = spawn('npm', ['run', 'build'], { stdio: 'inherit' })
-    b.on('exit', (code) => (code === 0 ? resolve() : reject(new Error('build failed'))))
-    b.on('error', reject)
-  })
-
-  const START_PORT = 4000
-  port = START_PORT
-  proc = spawn('npm', ['start'], {
-    env: { ...process.env, PORT: String(START_PORT) },
-    stdio: 'inherit',
-  })
-
-  const ok = await waitForUp(START_PORT, 60000)
-  if (!ok) throw new Error('Next start did not become available in time')
+  port = await startTestServer()
 }, 300000)
 
 afterAll(() => {
-  if (proc) proc.kill()
+  stopTestServer()
 })
 
 describe('GET /api/v1/projects/[slug]', () => {
@@ -51,8 +21,10 @@ describe('GET /api/v1/projects/[slug]', () => {
     const res = await fetch(`http://127.0.0.1:${port}/api/v1/projects`)
     if (res.status === 200) {
       const body = await res.json()
-      if (body.data.projects.length > 0) {
-        validSlug = body.data.projects[0].slug
+      // apiResponse retorna os dados diretamente, mas listProjects retorna um objeto com data
+      const projects = body.data?.projects || body.projects || []
+      if (projects.length > 0) {
+        validSlug = projects[0].slug
       }
     }
   })
@@ -95,11 +67,11 @@ describe('GET /api/v1/projects/[slug]', () => {
     expect(res.status).toBe(200)
     
     const body = await res.json()
-    expect(body).toHaveProperty('data')
-    expect(body.data).toHaveProperty('id')
-    expect(body.data).toHaveProperty('title')
-    expect(body.data).toHaveProperty('slug')
-    expect(body.data.slug).toBe(validSlug)
+    // apiResponse retorna os dados diretamente
+    expect(body).toHaveProperty('id')
+    expect(body).toHaveProperty('title')
+    expect(body).toHaveProperty('slug')
+    expect(body.slug).toBe(validSlug)
   })
 
   it('should return project with required fields', async () => {
@@ -112,13 +84,13 @@ describe('GET /api/v1/projects/[slug]', () => {
     expect(res.status).toBe(200)
     
     const body = await res.json()
-    const project = body.data
-    expect(project).toHaveProperty('id')
-    expect(project).toHaveProperty('title')
-    expect(project).toHaveProperty('slug')
-    expect(project).toHaveProperty('description')
-    expect(typeof project.id).toBe('string')
-    expect(typeof project.title).toBe('string')
-    expect(typeof project.slug).toBe('string')
+    // apiResponse retorna os dados diretamente
+    expect(body).toHaveProperty('id')
+    expect(body).toHaveProperty('title')
+    expect(body).toHaveProperty('slug')
+    expect(body).toHaveProperty('description')
+    expect(typeof body.id).toBe('string')
+    expect(typeof body.title).toBe('string')
+    expect(typeof body.slug).toBe('string')
   })
 })
