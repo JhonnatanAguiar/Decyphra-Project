@@ -593,6 +593,8 @@ light: {
 - [x] Otimização SpeedInsights - ✅ Concluído (lazy load para não bloquear renderização)
 - [x] Otimização Card3D - ✅ Concluído (redução de tilt/efeitos em cards below the fold)
 - [x] Script analyze multiplataforma - ✅ Concluído (funciona no Windows PowerShell)
+- [x] Otimização PageTransition - ✅ Concluído (não bloqueia primeira renderização)
+- [x] Remoção de ScrollReveal - ✅ Concluído (removido de seções below the fold)
 - [ ] Core Web Vitals - ⏳ Pendente (otimizações aplicadas, requer nova auditoria após deploy)
 
 #### 6.3 Acessibilidade

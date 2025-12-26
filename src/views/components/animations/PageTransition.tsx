@@ -122,8 +122,19 @@ const PageTransition = ({
   const [displayChildren, setDisplayChildren] = useState(children)
   const [isVisible, setIsVisible] = useState(false)
 
+  // Estado para rastrear se é a primeira renderização
+  const [isFirstMount, setIsFirstMount] = useState(true)
+
   useEffect(() => {
-    // Inicia transição - bloqueia interações
+    // Na primeira renderização, mostra conteúdo imediatamente sem transição
+    if (isFirstMount) {
+      setIsFirstMount(false)
+      setIsVisible(true)
+      setDisplayChildren(children)
+      return
+    }
+
+    // Em navegações subsequentes, aplica a transição
     setIsLoading(true)
     setIsVisible(false)
     
@@ -145,7 +156,7 @@ const PageTransition = ({
       clearTimeout(timer)
       document.body.style.overflow = ''
     }
-  }, [pathname, children])
+  }, [pathname, children, isFirstMount])
 
   return (
     <>

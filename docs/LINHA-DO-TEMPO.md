@@ -3070,4 +3070,40 @@ npm run a11y:axe         # Testes com axe-core (opcional)
 
 ---
 
+**26/12/2025 - Otimizações Agressivas de Performance (Fase 6.2 - Continuação)**
+
+**Contexto:** Análise detalhada do relatório Lighthouse (LCP: 27.1s, TBT: 3,127ms, JS não utilizado: 565 KiB).
+
+**Otimizações Implementadas:**
+
+1. **PageTransition Otimizado** ✅
+   - Não bloqueia renderização inicial (primeira renderização mostra conteúdo imediatamente)
+   - Transições aplicadas apenas em navegações subsequentes
+   - **Impacto:** Remove bloqueio de 800ms na primeira renderização
+
+2. **ScrollReveal Removido** ✅
+   - Removido de todas as seções below the fold
+   - Substituído por divs simples (sem animações bloqueantes)
+   - ScrollReveal lazy loaded quando necessário (mas não usado mais)
+   - **Impacto:** Reduz significativamente o JavaScript inicial e trabalho no main thread
+
+3. **Mantido: Otimizações Anteriores** ✅
+   - face-api.js condicional
+   - GridScan lazy loaded
+   - SpeedInsights lazy loaded
+   - Card3D otimizado (menos efeitos)
+
+**Arquivos Modificados:**
+- `src/views/components/animations/PageTransition.tsx` - Não bloqueia primeira renderização
+- `app/(routes)/HomePageClient.tsx` - ScrollReveal removido de seções below the fold
+
+**Impacto Esperado:**
+- **LCP:** Redução significativa esperada (remoção de bloqueio de 800ms + menos JS)
+- **TBT:** Redução esperada (menos animações e JavaScript sendo executado)
+- **Bundle Size:** Redução do JavaScript inicial (ScrollReveal removido)
+
+**Status:** ✅ Otimizações agressivas implementadas | Próximo passo: nova auditoria para validar melhorias
+
+---
+
 **Última atualização:** 26/12/2025

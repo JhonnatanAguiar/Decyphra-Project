@@ -2,7 +2,7 @@
 
 import dynamic from 'next/dynamic'
 import { Container, Section } from '@/views/components/layout'
-import { FadeIn, ScrollReveal } from '@/views/components/animations'
+import { FadeIn } from '@/views/components/animations'
 import { Card3D } from '@/views/components/ui/Card3D'
 import { Button } from '@/views/components/ui/Button'
 import Link from 'next/link'
@@ -17,6 +17,9 @@ const GridScan = dynamic(() => import('@/views/components/animations').then(mod 
   loading: () => <div className="absolute inset-0 bg-dark-950" />,
   // Prioridade baixa - carrega apenas quando necessário
 })
+
+// ScrollReveal removido para melhorar performance inicial
+// As animações foram simplificadas ou removidas das seções below the fold
 
 /**
  * Home Page Client Component
@@ -183,23 +186,21 @@ export default function HomePageClient() {
       {/* Seção de Serviços Preview */}
       <Section variant="default" spacing="lg">
         <Container size="lg">
-          <ScrollReveal direction="up" delay={0}>
-            <div className="text-center mb-12">
-              <h2 className="text-4xl md:text-5xl font-bold mb-4 text-light-50">
-                Nossos <span className="text-primary-500">Serviços</span>
-              </h2>
-              <p className="text-lg text-light-200 max-w-2xl mx-auto">
-                Do site institucional ao e-commerce: soluções completas com foco em conversão, performance e evolução contínua.
-              </p>
-            </div>
-          </ScrollReveal>
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-light-50">
+              Nossos <span className="text-primary-500">Serviços</span>
+            </h2>
+            <p className="text-lg text-light-200 max-w-2xl mx-auto">
+              Do site institucional ao e-commerce: soluções completas com foco em conversão, performance e evolução contínua.
+            </p>
+          </div>
 
-          <ScrollReveal direction="up" delay={100}>
+          <div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {services.map((service, index) => {
                 const ServiceIcon = getServiceIcon(service.slug)
                 return (
-                  <ScrollReveal key={service.id} direction="up" delay={index * 50}>
+                  <div key={service.id}>
                     <Link href={`${ROUTES.services}/${service.slug}`} prefetch={false}>
                       <Card3D
                         enableTilt={index < 3} // Apenas primeiros 3 têm tilt (above the fold)
@@ -219,7 +220,7 @@ export default function HomePageClient() {
                         </p>
                       </Card3D>
                     </Link>
-                  </ScrollReveal>
+                  </div>
                 )
               })}
             </div>
@@ -231,25 +232,23 @@ export default function HomePageClient() {
                 </Button>
               </Link>
             </div>
-          </ScrollReveal>
+          </div>
         </Container>
       </Section>
 
       {/* Seção: O que muda quando você faz em código */}
       <Section variant="dark" spacing="lg">
         <Container size="lg">
-          <ScrollReveal direction="up" delay={0}>
-            <div className="text-center mb-12">
-              <h2 className="text-4xl md:text-5xl font-bold mb-4 text-light-50">
-                O que muda quando você faz em código
-              </h2>
-              <p className="text-lg text-light-200 max-w-2xl mx-auto">
-                Mais performance, mais consistência visual, menos limitação. Um produto digital que você consegue evoluir sem remendos.
-              </p>
-            </div>
-          </ScrollReveal>
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-light-50">
+              O que muda quando você faz em código
+            </h2>
+            <p className="text-lg text-light-200 max-w-2xl mx-auto">
+              Mais performance, mais consistência visual, menos limitação. Um produto digital que você consegue evoluir sem remendos.
+            </p>
+          </div>
 
-          <ScrollReveal direction="up" delay={100}>
+          <div>
             <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
               {[
                 {
@@ -269,37 +268,33 @@ export default function HomePageClient() {
                   description: 'Agentes para ganhar tempo no repetitivo; revisão humana para manter padrão, qualidade e intenção.',
                 },
               ].map((item, index) => (
-                <ScrollReveal key={index} direction="up" delay={index * 100 + 200}>
-                  <div className="bg-dark-900/50 p-6 rounded-xl border border-primary-500/20">
-                    <h3 className="text-xl font-semibold mb-3 text-light-50">
-                      {item.title}
-                    </h3>
-                    <p className="text-light-300 leading-relaxed">
-                      {item.description}
-                    </p>
-                  </div>
-                </ScrollReveal>
+                <div key={index} className="bg-dark-900/50 p-6 rounded-xl border border-primary-500/20">
+                  <h3 className="text-xl font-semibold mb-3 text-light-50">
+                    {item.title}
+                  </h3>
+                  <p className="text-light-300 leading-relaxed">
+                    {item.description}
+                  </p>
+                </div>
               ))}
             </div>
-          </ScrollReveal>
+          </div>
         </Container>
       </Section>
 
       {/* Seção: Nosso Processo */}
       <Section variant="default" spacing="lg">
         <Container size="lg">
-          <ScrollReveal direction="up" delay={0}>
-            <div className="text-center mb-12">
-              <h2 className="text-4xl md:text-5xl font-bold mb-4 text-light-50">
-                Nosso <span className="text-primary-500">Processo</span>
-              </h2>
-              <p className="text-lg text-light-200 max-w-2xl mx-auto">
-                Um fluxo claro, rápido e transparente — para você acompanhar tudo sem ruído.
-              </p>
-            </div>
-          </ScrollReveal>
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-light-50">
+              Nosso <span className="text-primary-500">Processo</span>
+            </h2>
+            <p className="text-lg text-light-200 max-w-2xl mx-auto">
+              Um fluxo claro, rápido e transparente — para você acompanhar tudo sem ruído.
+            </p>
+          </div>
 
-          <ScrollReveal direction="up" delay={100}>
+          <div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto mb-12">
               {[
                 {
@@ -323,19 +318,17 @@ export default function HomePageClient() {
                   description: 'Deploy, métricas, ajustes finos e roadmap de melhorias contínuas para crescer com constância.',
                 },
               ].map((process, index) => (
-                <ScrollReveal key={index} direction="up" delay={index * 100 + 200}>
-                  <div className="text-center">
-                    <div className="w-16 h-16 bg-primary-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <span className="text-2xl font-bold text-primary-500">{process.step}</span>
-                    </div>
-                    <h3 className="text-xl font-semibold mb-2 text-light-50">
-                      {process.title}
-                    </h3>
-                    <p className="text-light-300 text-sm leading-relaxed">
-                      {process.description}
-                    </p>
+                <div key={index} className="text-center">
+                  <div className="w-16 h-16 bg-primary-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-2xl font-bold text-primary-500">{process.step}</span>
                   </div>
-                </ScrollReveal>
+                  <h3 className="text-xl font-semibold mb-2 text-light-50">
+                    {process.title}
+                  </h3>
+                  <p className="text-light-300 text-sm leading-relaxed">
+                    {process.description}
+                  </p>
+                </div>
               ))}
             </div>
             <div className="text-center">
@@ -345,65 +338,59 @@ export default function HomePageClient() {
                 </Button>
               </Link>
             </div>
-          </ScrollReveal>
+          </div>
         </Container>
       </Section>
 
       {/* Seção: Qualidade que dá para sentir */}
       <Section variant="dark" spacing="lg">
         <Container size="lg">
-          <ScrollReveal direction="up" delay={0}>
-            <div className="text-center mb-12">
-              <h2 className="text-4xl md:text-5xl font-bold mb-4 text-light-50">
-                Qualidade que dá para sentir
-              </h2>
-              <p className="text-lg text-light-200 max-w-2xl mx-auto">
-                Design, performance e clareza — tudo pensado para inspirar confiança e gerar ação.
-              </p>
-            </div>
-          </ScrollReveal>
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-light-50">
+              Qualidade que dá para sentir
+            </h2>
+            <p className="text-lg text-light-200 max-w-2xl mx-auto">
+              Design, performance e clareza — tudo pensado para inspirar confiança e gerar ação.
+            </p>
+          </div>
 
-          <ScrollReveal direction="up" delay={100}>
+          <div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
               {[
                 { label: 'Foco em performance', value: 'Core Web Vitals' },
                 { label: 'Entrega objetiva', value: 'Escopo claro' },
                 { label: 'Código escalável', value: 'Manutenção fácil' },
               ].map((metric, index) => (
-                <ScrollReveal key={index} direction="up" delay={index * 100 + 200}>
-                  <div className="text-center bg-dark-900/50 p-6 rounded-xl border border-primary-500/20">
-                    <div className="text-3xl font-bold text-primary-500 mb-2">
-                      {metric.value}
-                    </div>
-                    <div className="text-light-300 text-sm">
-                      {metric.label}
-                    </div>
+                <div key={index} className="text-center bg-dark-900/50 p-6 rounded-xl border border-primary-500/20">
+                  <div className="text-3xl font-bold text-primary-500 mb-2">
+                    {metric.value}
                   </div>
-                </ScrollReveal>
+                  <div className="text-light-300 text-sm">
+                    {metric.label}
+                  </div>
+                </div>
               ))}
             </div>
-          </ScrollReveal>
+          </div>
         </Container>
       </Section>
 
       {/* Seção de Projetos em Destaque */}
       <Section variant="default" spacing="lg">
         <Container size="lg">
-          <ScrollReveal direction="up" delay={0}>
-            <div className="text-center mb-12">
-              <h2 className="text-4xl md:text-5xl font-bold mb-4 text-light-50">
-                Projetos em <span className="text-primary-500">Destaque</span>
-              </h2>
-              <p className="text-lg text-light-200 max-w-2xl mx-auto">
-                Conheça alguns dos projetos que desenvolvemos
-              </p>
-            </div>
-          </ScrollReveal>
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-light-50">
+              Projetos em <span className="text-primary-500">Destaque</span>
+            </h2>
+            <p className="text-lg text-light-200 max-w-2xl mx-auto">
+              Conheça alguns dos projetos que desenvolvemos
+            </p>
+          </div>
 
-          <ScrollReveal direction="up" delay={100}>
+          <div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {featuredProjects.map((project, index) => (
-                <ScrollReveal key={project.id} direction="up" delay={index * 50}>
+                <div key={project.id}>
                   <Link href={`${ROUTES.portfolio}/${project.slug}`}>
                     <Card3D
                       enableTilt={index < 2} // Apenas primeiros 2 têm tilt
@@ -440,7 +427,7 @@ export default function HomePageClient() {
                       </div>
                     </Card3D>
                   </Link>
-                </ScrollReveal>
+                </div>
               ))}
             </div>
 
@@ -451,25 +438,23 @@ export default function HomePageClient() {
                 </Button>
               </Link>
             </div>
-          </ScrollReveal>
+          </div>
         </Container>
       </Section>
 
       {/* Seção de Depoimentos Preview */}
       <Section variant="dark" spacing="lg">
         <Container size="lg">
-          <ScrollReveal direction="up" delay={0}>
-            <div className="text-center mb-12">
-              <h2 className="text-4xl md:text-5xl font-bold mb-4 text-light-50">
-                O que nossos <span className="text-primary-500">clientes</span> dizem
-              </h2>
-            </div>
-          </ScrollReveal>
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-light-50">
+              O que nossos <span className="text-primary-500">clientes</span> dizem
+            </h2>
+          </div>
 
-          <ScrollReveal direction="up" delay={100}>
+          <div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
               {featuredTestimonials.map((testimonial, index) => (
-                <ScrollReveal key={testimonial.id} direction="up" delay={index * 50}>
+                <div key={testimonial.id}>
                   <Card3D
                     enableTilt={false} // Depoimentos sem tilt (não crítico)
                     enableParticles={false}
@@ -500,7 +485,7 @@ export default function HomePageClient() {
                       </div>
                     </div>
                   </Card3D>
-                </ScrollReveal>
+                </div>
               ))}
             </div>
 
@@ -511,35 +496,33 @@ export default function HomePageClient() {
                 </Button>
               </Link>
             </div>
-          </ScrollReveal>
+          </div>
         </Container>
       </Section>
 
       {/* CTA Section */}
       <Section variant="accent" spacing="lg">
         <Container size="lg">
-          <ScrollReveal direction="up" delay={0}>
-            <div className="text-center max-w-3xl mx-auto py-12">
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-light-50">
-                Vamos construir algo que pareça grande — e funcione melhor ainda.
-              </h2>
-              <p className="text-xl text-light-200 mb-8">
-                Se você quer um site rápido, animado e feito sob medida, a gente te guia do diagnóstico ao lançamento (e além).
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href={ROUTES.contact} prefetch={false}>
-                  <Button variant="primary" size="lg" enable3D={true}>
-                    Solicitar orçamento
-                  </Button>
-                </Link>
-                <Link href={ROUTES.services} prefetch={false}>
-                  <Button variant="ghost" size="lg" enable3D={true}>
-                    Conhecer serviços
-                  </Button>
-                </Link>
-              </div>
+          <div className="text-center max-w-3xl mx-auto py-12">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-light-50">
+              Vamos construir algo que pareça grande — e funcione melhor ainda.
+            </h2>
+            <p className="text-xl text-light-200 mb-8">
+              Se você quer um site rápido, animado e feito sob medida, a gente te guia do diagnóstico ao lançamento (e além).
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href={ROUTES.contact} prefetch={false}>
+                <Button variant="primary" size="lg" enable3D={true}>
+                  Solicitar orçamento
+                </Button>
+              </Link>
+              <Link href={ROUTES.services} prefetch={false}>
+                <Button variant="ghost" size="lg" enable3D={true}>
+                  Conhecer serviços
+                </Button>
+              </Link>
             </div>
-          </ScrollReveal>
+          </div>
         </Container>
       </Section>
     </>
