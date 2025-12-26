@@ -113,3 +113,20 @@ export const aboutMetadata: Metadata = {
     description: 'Somos uma agência digital que constrói produtos web em código.',
   },
 }
+
+/**
+ * Metadata para a Página de Contato
+ */
+export const contactMetadata: Metadata = {
+  title: 'Contato',
+  description: 'Conte sobre seu projeto. A gente responde com direção — não com enrolação.',
+  openGraph: {
+    title: `Contato | ${siteName}`,
+    description: 'Conte sobre seu projeto. A gente responde com direção — não com enrolação.',
+    url: `${siteUrl}/contato`,
+  },
+  twitter: {
+    title: `Contato | ${siteName}`,
+    description: 'Conte sobre seu projeto. A gente responde com direção.',
+  },
+}

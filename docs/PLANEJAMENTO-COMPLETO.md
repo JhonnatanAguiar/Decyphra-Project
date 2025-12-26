@@ -1,4 +1,4 @@
-# 📋 Planejamento Completo - Decyphra Website
+ # 📋 Planejamento Completo - Decyphra Website
 
 > **Documento Central de Planejamento**  
 > Este arquivo consolida toda a documentação de planejamento do projeto.  
