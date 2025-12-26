@@ -3002,36 +3002,31 @@ npm run a11y:axe         # Testes com axe-core (opcional)
    - Prevenção de carregamento desnecessário dos modelos de ML
    - **Impacto:** Reduz bundle inicial significativamente
 
-2. **Card3D Otimizado** ✅
-   - Substituição parcial de GSAP por CSS animations/transitions
-   - Partículas agora usam CSS keyframes ao invés de GSAP
-   - Ripple effect usa CSS transitions
-   - Hover effects otimizados com CSS
-   - **Impacto:** Reduz tempo de execução de JavaScript e melhora TBT
-
-3. **GridScan Configurado** ✅
+2. **GridScan Configurado** ✅
    - `enableWebcam={false}` explicitamente definido na HomePage
    - Garante que face-api.js não seja carregado
    - **Impacto:** Evita carregamento de recursos pesados
 
-4. **Next.js Config** ✅
+3. **Next.js Config** ✅
    - `optimizeCss: true` adicionado nas experimental features
    - Configurações de webpack otimizadas
    - **Impacto:** Melhorias gerais de bundle e CSS
 
 **Arquivos Modificados:**
 - `src/views/components/animations/GridScan.tsx` - face-api.js condicional
-- `src/views/components/ui/Card3D.tsx` - Redução de GSAP, preferência por CSS
 - `app/(routes)/HomePageClient.tsx` - enableWebcam={false} explícito
 - `next.config.js` - optimizeCss adicionado
 
-**Impacto Esperado:**
-- **LCP:** Redução significativa esperada (removendo 595 KiB de JS não utilizado)
-- **TBT:** Redução esperada com menos JavaScript sendo executado
-- **FID:** Melhoria esperada com menos blocking time
-- **Bundle Size:** Redução do JavaScript inicial
+**Nota sobre Card3D:**
+- Tentativa de substituir GSAP por CSS animations resultou em degradação de performance
+- Criação dinâmica de keyframes causava múltiplas manipulações do DOM
+- Decisão: manter GSAP original (já otimizado via `optimizePackageImports`)
 
-**Status:** ✅ Otimizações críticas implementadas | Próximo passo: nova auditoria após deploy
+**Impacto Esperado:**
+- **Bundle Size:** Redução do JavaScript inicial (face-api.js não carregado)
+- **Melhorias incrementais:** Otimizações focadas em remover código não utilizado
+
+**Status:** ✅ Otimizações críticas implementadas (face-api.js) | Próximo passo: análise mais profunda do JavaScript não utilizado
 
 ---
 

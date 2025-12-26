@@ -590,7 +590,6 @@ light: {
 - [x] Resource hints - ✅ Concluído (preconnect e dns-prefetch para CDNs externos)
 - [x] Otimização de links - ✅ Concluído (prefetch={false} em links não críticos)
 - [x] Otimização face-api.js - ✅ Concluído (só carrega quando enableWebcam=true)
-- [x] Otimização Card3D - ✅ Concluído (redução de uso de GSAP, preferência por CSS animations)
 - [ ] Core Web Vitals - ⏳ Pendente (otimizações aplicadas, requer nova auditoria após deploy)
 
 #### 6.3 Acessibilidade

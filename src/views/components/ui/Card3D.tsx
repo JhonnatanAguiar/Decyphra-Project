@@ -222,16 +222,16 @@ const Card3D = ({
   const clearAllParticles = useCallback(() => {
     timeoutsRef.current.forEach(clearTimeout)
     timeoutsRef.current = []
-    // Usar CSS transitions ao invés de GSAP para melhor performance (menos JavaScript)
     particlesRef.current.forEach((particle) => {
-      particle.style.transition = 'transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55), opacity 0.3s ease'
-      particle.style.transform = 'scale(0)'
-      particle.style.opacity = '0'
-      setTimeout(() => {
-        if (particle.parentNode) {
-          particle.parentNode.removeChild(particle)
-        }
-      }, 300)
+      gsap.to(particle, {
+        scale: 0,
+        opacity: 0,
+        duration: 0.3,
+        ease: 'back.in(1.7)',
+        onComplete: () => {
+          particle.parentNode?.removeChild(particle)
+        },
+      })
     })
     particlesRef.current = []
   }, [])
@@ -248,41 +248,28 @@ const Card3D = ({
         cardRef.current.appendChild(clone)
         particlesRef.current.push(clone)
         
-        // Usar CSS animations ao invés de GSAP para melhor performance
-        clone.style.transform = 'scale(0)'
-        clone.style.opacity = '0'
-        clone.style.transition = 'transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55), opacity 0.3s ease'
-        
-        // Trigger animation após um frame
-        requestAnimationFrame(() => {
-          clone.style.transform = 'scale(1)'
-          clone.style.opacity = '1'
+        // Usar GSAP otimizado (já está no bundle, não vale a pena criar keyframes dinamicamente)
+        gsap.fromTo(
+          clone,
+          { scale: 0, opacity: 0 },
+          { scale: 1, opacity: 1, duration: 0.3, ease: 'back.out(1.7)' }
+        )
+        gsap.to(clone, {
+          x: (Math.random() - 0.5) * 80,
+          y: (Math.random() - 0.5) * 80,
+          rotation: Math.random() * 360,
+          duration: 2 + Math.random() * 2,
+          ease: 'none',
+          repeat: -1,
+          yoyo: true,
         })
-        
-        // Animação contínua com CSS keyframes (melhor performance que GSAP)
-        const randomX = (Math.random() - 0.5) * 80
-        const randomY = (Math.random() - 0.5) * 80
-        const randomRotation = Math.random() * 360
-        clone.style.animation = `particleFloat${index} ${2 + Math.random() * 2}s ease-in-out infinite alternate`
-        
-        // Criar keyframes dinamicamente se ainda não existirem
-        if (!document.getElementById(`particle-keyframes-${index}`)) {
-          const style = document.createElement('style')
-          style.id = `particle-keyframes-${index}`
-          style.textContent = `
-            @keyframes particleFloat${index} {
-              0% {
-                transform: translate(0, 0) rotate(0deg);
-                opacity: 1;
-              }
-              100% {
-                transform: translate(${randomX}px, ${randomY}px) rotate(${randomRotation}deg);
-                opacity: 0.4;
-              }
-            }
-          `
-          document.head.appendChild(style)
-        }
+        gsap.to(clone, {
+          opacity: 0.4,
+          duration: 1.5,
+          ease: 'power2.inOut',
+          repeat: -1,
+          yoyo: true,
+        })
       }, index * 100)
       timeoutsRef.current.push(timeoutId)
     })
@@ -314,9 +301,7 @@ const Card3D = ({
       tiltY.current += (targetTiltY.current - tiltY.current) * tiltSmoothing
 
       // Aplicar transform diretamente no DOM (mais rápido que GSAP para animações contínuas)
-      // Incluir translateY para levitação no hover
-      const hoverY = isHoveredRef.current ? -8 : 0
-      element.style.transform = `perspective(1000px) rotateX(${tiltX.current}deg) rotateY(${tiltY.current}deg) translateY(${hoverY}px)`
+      element.style.transform = `perspective(1000px) rotateX(${tiltX.current}deg) rotateY(${tiltY.current}deg)`
       element.style.backfaceVisibility = 'hidden'
 
       animationFrameRef.current = requestAnimationFrame(animateTilt)
@@ -345,9 +330,12 @@ const Card3D = ({
         animateParticles()
       }
       if (enableTilt) {
-        // Usar CSS transitions ao invés de GSAP para melhor performance
-        element.style.transition = 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
-        element.style.setProperty('--hover-y', '-8px')
+        // Apenas levitação, sem rotação fixa para não conflitar com o tilt dinâmico
+        gsap.to(element, {
+          y: -8,
+          duration: 0.3,
+          ease: 'power2.out',
+        })
       }
     }
 
@@ -361,8 +349,12 @@ const Card3D = ({
         targetTiltX.current = 0
         targetTiltY.current = 0
 
-        // Levitação volta ao normal com CSS transition
-        element.style.setProperty('--hover-y', '0px')
+        // Levitação volta ao normal
+        gsap.to(element, {
+          y: 0,
+          duration: 0.3,
+          ease: 'power2.out',
+        })
       }
     }
 
@@ -417,20 +409,17 @@ const Card3D = ({
         z-index: 1000;
       `
       element.appendChild(ripple)
-      
-      // Usar CSS animations ao invés de GSAP para melhor performance
-      ripple.style.transform = 'scale(0)'
-      ripple.style.opacity = '1'
-      ripple.style.transition = 'transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.8s ease-out'
-      
-      requestAnimationFrame(() => {
-        ripple.style.transform = 'scale(1)'
-        ripple.style.opacity = '0'
-      })
-      
-      setTimeout(() => {
-        ripple.remove()
-      }, 800)
+      gsap.fromTo(
+        ripple,
+        { scale: 0, opacity: 1 },
+        {
+          scale: 1,
+          opacity: 0,
+          duration: 0.8,
+          ease: 'power2.out',
+          onComplete: () => ripple.remove(),
+        }
+      )
     }
 
     element.addEventListener('mouseenter', handleMouseEnter)
