@@ -162,7 +162,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       }
     }, [enable3D, isMobile, disabled, isLoading, tiltIntensity, tiltSmoothing, isHovered])
 
-    const baseStyles = 'inline-flex items-center justify-center rounded-lg font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-dark-950 disabled:opacity-50 disabled:cursor-not-allowed'
+    const baseStyles = 'inline-flex items-center justify-center font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-dark-950 disabled:opacity-50 disabled:cursor-not-allowed'
     
     const variants = {
       primary: 'bg-primary-500 text-dark-950 hover:bg-primary-400 hover:shadow-[0_0_25px_rgba(0,255,136,0.4)] hover:shadow-primary-500/50 focus:ring-primary-500',

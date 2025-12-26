@@ -8,6 +8,7 @@ import Link from 'next/link'
 import { ROUTES } from '@/lib/constants/routes'
 import { getServiceIcon } from '@/lib/constants/icons'
 import Image from 'next/image'
+import { Zap } from 'lucide-react'
 
 /**
  * Home Page Client Component
@@ -126,12 +127,15 @@ export default function HomePageClient() {
         <Container size="lg" className="relative z-10">
           <FadeIn direction="up" delay={0}>
             <div className="text-center max-w-4xl mx-auto py-20 lg:py-32">
-              <p className="text-sm text-primary-500 mb-4 font-medium tracking-wider uppercase">
-                Metodologia atualizada
-              </p>
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary-500 bg-gradient-to-r from-primary-500/30 to-dark-950/30 backdrop-blur-sm mb-4">
+                <Zap className="w-4 h-4 text-primary-500" />
+                <span className="text-sm text-primary-500 font-normal tracking-wider capitalize">
+                  Soluções Digitais Inovadoras
+                </span>
+              </div>
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-light-50 drop-shadow-[0_0_20px_rgba(0,255,136,0.5)]">
-                Sites feitos em código, com{' '}
-                <span className="text-primary-500 drop-shadow-[0_0_30px_rgba(0,255,136,0.8)]">controle total</span> do resultado
+                Transforme {' '}
+                <span className="text-primary-500 drop-shadow-[0_0_30px_rgba(0,255,136,0.8)]">Seu Negócio </span> Digital
               </h1>
               <p className="text-xl md:text-2xl text-light-200 mb-8 leading-relaxed drop-shadow-[0_0_15px_rgba(0,0,0,0.8)]">
                 Criamos experiências rápidas, animadas e sob medida — com performance, SEO e escalabilidade desde a base. IA acelera o processo; nossa revisão garante qualidade.
