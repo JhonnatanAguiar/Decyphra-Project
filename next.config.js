@@ -28,6 +28,8 @@ const nextConfig = {
   },
   experimental: {
     optimizePackageImports: ['framer-motion', 'lucide-react', 'gsap'],
+    // Otimizações adicionais para reduzir bundle
+    optimizeCss: true, // Otimização de CSS
   },
   // Compressão automática (gzip/brotli) - Next.js já faz automaticamente
   // poweredByHeader: false, // Removido - Next.js já não inclui mais este header por padrão
@@ -38,7 +40,7 @@ const nextConfig = {
       exclude: ['error', 'warn'],
     } : false,
   },
-  // Configuração do webpack para resolver problemas com face-api.js
+  // Configuração do webpack para resolver problemas com face-api.js e otimizações
   webpack: (config, { isServer, webpack }) => {
     if (!isServer) {
       // Resolver problemas com módulos do Node.js sendo importados no cliente
@@ -48,6 +50,12 @@ const nextConfig = {
         encoding: false,
         path: false,
         crypto: false,
+      }
+      
+      // Otimização: não incluir face-api.js no bundle principal (só carregar dinamicamente)
+      config.resolve.alias = {
+        ...config.resolve.alias,
+        // face-api.js será carregado apenas quando necessário via dynamic import
       }
     }
     

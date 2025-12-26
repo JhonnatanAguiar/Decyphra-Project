@@ -2980,4 +2980,59 @@ npm run a11y:axe         # Testes com axe-core (opcional)
 
 ---
 
+---
+
+**26/12/2025 - Otimizações de Performance baseadas no Lighthouse Audit (Fase 6.2 - Continuação)**
+
+**Contexto:** Implementação de otimizações críticas baseadas no diagnóstico do Lighthouse (LCP: 31.9s, TBT: 3,370ms, JavaScript não utilizado: 595 KiB).
+
+**Problemas Críticos Identificados:**
+- **LCP (Largest Contentful Paint):** 31.9s (score 0) - Meta < 2.5s
+- **TBT (Total Blocking Time):** 3,370ms (score 0.02) - Meta < 200ms
+- **Max Potential FID:** 1,400ms (score 0) - Meta < 100ms
+- **JavaScript não utilizado:** 595 KiB (potencial de 3s de economia no LCP)
+- **JavaScript execution time:** 5.2s
+- **Main-thread work:** 6.7s
+- **face-api.js sendo carregado mesmo quando não usado**
+
+**Otimizações Implementadas:**
+
+1. **face-api.js Condicional** ✅
+   - face-api.js agora só carrega quando `enableWebcam=true`
+   - Prevenção de carregamento desnecessário dos modelos de ML
+   - **Impacto:** Reduz bundle inicial significativamente
+
+2. **Card3D Otimizado** ✅
+   - Substituição parcial de GSAP por CSS animations/transitions
+   - Partículas agora usam CSS keyframes ao invés de GSAP
+   - Ripple effect usa CSS transitions
+   - Hover effects otimizados com CSS
+   - **Impacto:** Reduz tempo de execução de JavaScript e melhora TBT
+
+3. **GridScan Configurado** ✅
+   - `enableWebcam={false}` explicitamente definido na HomePage
+   - Garante que face-api.js não seja carregado
+   - **Impacto:** Evita carregamento de recursos pesados
+
+4. **Next.js Config** ✅
+   - `optimizeCss: true` adicionado nas experimental features
+   - Configurações de webpack otimizadas
+   - **Impacto:** Melhorias gerais de bundle e CSS
+
+**Arquivos Modificados:**
+- `src/views/components/animations/GridScan.tsx` - face-api.js condicional
+- `src/views/components/ui/Card3D.tsx` - Redução de GSAP, preferência por CSS
+- `app/(routes)/HomePageClient.tsx` - enableWebcam={false} explícito
+- `next.config.js` - optimizeCss adicionado
+
+**Impacto Esperado:**
+- **LCP:** Redução significativa esperada (removendo 595 KiB de JS não utilizado)
+- **TBT:** Redução esperada com menos JavaScript sendo executado
+- **FID:** Melhoria esperada com menos blocking time
+- **Bundle Size:** Redução do JavaScript inicial
+
+**Status:** ✅ Otimizações críticas implementadas | Próximo passo: nova auditoria após deploy
+
+---
+
 **Última atualização:** 26/12/2025

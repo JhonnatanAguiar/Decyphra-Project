@@ -677,7 +677,13 @@ export const GridScan = ({
     }
   }, [enableGyro, uiFaceActive])
 
+  // face-api.js só é carregado se enableWebcam estiver ativo
   useEffect(() => {
+    if (!enableWebcam) {
+      setModelsReady(false)
+      return
+    }
+    
     let canceled = false
     const load = async () => {
       try {
@@ -696,7 +702,7 @@ export const GridScan = ({
     return () => {
       canceled = true
     }
-  }, [modelsPath])
+  }, [modelsPath, enableWebcam])
 
   useEffect(() => {
     let stop = false

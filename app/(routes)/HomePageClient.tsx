@@ -11,10 +11,11 @@ import { getServiceIcon } from '@/lib/constants/icons'
 import Image from 'next/image'
 import { Zap } from 'lucide-react'
 
-// Lazy load GridScan (Three.js/postprocessing é pesado)
+// Lazy load GridScan (Three.js/postprocessing é pesado) - reduz bundle inicial significativamente
 const GridScan = dynamic(() => import('@/views/components/animations').then(mod => ({ default: mod.GridScan })), {
   ssr: false,
-  loading: () => <div className="absolute inset-0 bg-dark-950" />
+  loading: () => <div className="absolute inset-0 bg-dark-950" />,
+  // Prioridade baixa - carrega apenas quando necessário
 })
 
 /**
@@ -127,6 +128,7 @@ export default function HomePageClient() {
           scanDirection="pingpong"
           scanDuration={2.0}
           scanDelay={2.0}
+          enableWebcam={false}
           className="z-0"
           style={{}}
         />

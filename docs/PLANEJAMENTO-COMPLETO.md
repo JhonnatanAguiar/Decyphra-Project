@@ -589,7 +589,9 @@ light: {
 - [x] Lazy loading de componentes pesados - ✅ Concluído (GridScan com dynamic import, ssr: false)
 - [x] Resource hints - ✅ Concluído (preconnect e dns-prefetch para CDNs externos)
 - [x] Otimização de links - ✅ Concluído (prefetch={false} em links não críticos)
-- [ ] Core Web Vitals - ⏳ Pendente (documentação criada, otimizações aplicadas, requer nova auditoria)
+- [x] Otimização face-api.js - ✅ Concluído (só carrega quando enableWebcam=true)
+- [x] Otimização Card3D - ✅ Concluído (redução de uso de GSAP, preferência por CSS animations)
+- [ ] Core Web Vitals - ⏳ Pendente (otimizações aplicadas, requer nova auditoria após deploy)
 
 #### 6.3 Acessibilidade
 - [x] Navegação por teclado - ✅ Concluído (skip to main content, focus states)

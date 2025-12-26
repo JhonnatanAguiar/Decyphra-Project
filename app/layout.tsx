@@ -25,7 +25,7 @@ export default function RootLayout({
       <head>
         {/* Preconnect para recursos externos - melhora performance */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://cdn.worldvectorlogo.com" />
         <link rel="dns-prefetch" href="https://images.unsplash.com" />
         <link rel="dns-prefetch" href="https://cdn.simpleicons.org" />
