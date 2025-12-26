@@ -96,3 +96,20 @@ export const servicesMetadata: Metadata = {
     description: 'Soluções digitais completas — com desenvolvimento em código como padrão.',
   },
 }
+
+/**
+ * Metadata para a Página Sobre
+ */
+export const aboutMetadata: Metadata = {
+  title: 'Sobre',
+  description: 'Somos uma agência digital que constrói produtos web em código — com foco em performance, design e crescimento.',
+  openGraph: {
+    title: `Sobre | ${siteName}`,
+    description: 'Somos uma agência digital que constrói produtos web em código — com foco em performance, design e crescimento.',
+    url: `${siteUrl}/sobre`,
+  },
+  twitter: {
+    title: `Sobre | ${siteName}`,
+    description: 'Somos uma agência digital que constrói produtos web em código.',
+  },
+}
