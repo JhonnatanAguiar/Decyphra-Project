@@ -2361,4 +2361,113 @@ src/
 
 ---
 
+**19/12/2025 - Atualização Completa de Conteúdo e Correções de UI**
+
+**Contexto:** Atualização dos textos do site conforme nova metodologia (desenvolvimento em código como padrão) e correção de erros visuais identificados.
+
+**Correções de UI:**
+
+1. **Correção de Glow no Hero Section - E-commerce** ✅
+   - Adicionado efeito `drop-shadow` na palavra "Completo" do título
+   - Agora consistente com outras páginas de serviço
+   - Arquivo: `app/(routes)/servicos/ecommerce-completo/page.tsx`
+
+2. **Correção de Ícones - Hostinger e Loja Integrada** ✅
+   - Melhorado tratamento de imagens externas com `unoptimized={true}`
+   - Adicionado background e border para melhor visualização
+   - Configurado `next.config.js` para suportar `cdn.simpleicons.org`
+   - Arquivo: `app/(routes)/servicos/ecommerce-completo/page.tsx`, `next.config.js`
+
+3. **Correção de Imagens - Cards de Portfólio** ✅
+   - Adicionado tratamento de erro `onError` nos cards
+   - Adicionado background de fallback `bg-dark-900` caso imagem não carregue
+   - Aplicado em home page e página de portfólio
+   - Arquivos: `app/(routes)/page.tsx`, `app/(routes)/portfolio/page.tsx`
+
+**Atualização Completa de Conteúdo (copy.ts):**
+
+1. **Home Page** ✅
+   - Hero atualizado: "Metodologia atualizada" + novo copy
+   - Serviços atualizados com descrições do copy.ts
+   - Nova seção "O que muda quando você faz em código" (4 cards)
+   - Processo atualizado (Diagnóstico, Arquitetura & Design, Build em Código, Lançamento & Evolução)
+   - Nova seção "Qualidade que dá para sentir"
+   - CTA atualizado conforme novo copy
+   - Arquivo: `app/(routes)/page.tsx`
+
+2. **Página de Serviços** ✅
+   - Hero atualizado
+   - Descrições dos serviços alinhadas ao copy.ts
+   - Nova seção "Desenvolvimento em código, sem limitações"
+   - Processo atualizado (mesmo formato da home)
+   - Nova seção FAQ com 4 perguntas frequentes
+   - Arquivo: `app/(routes)/servicos/page.tsx`
+
+3. **Página Sobre** ✅
+   - Hero atualizado: "Sobre a Decyphra"
+   - Seção "Código como padrão" atualizada
+   - Seção "IA do jeito certo" com 3 cards (Agentes, Revisão humana, Entrega orientada)
+   - Nova seção "O que a gente valoriza" (Clareza, Qualidade, Evolução)
+   - CTA atualizado
+   - Arquivo: `app/(routes)/sobre/page.tsx`
+
+4. **Página de Contato** ✅
+   - Hero atualizado: "Contato" com novo subtitle
+   - Formulário com novos placeholders do copy.ts
+   - Campo "Telefone" renomeado para "WhatsApp"
+   - Nova sidebar "O que ajuda a gente a ser mais rápido"
+   - Arquivo: `app/(routes)/contato/page.tsx`
+
+5. **Página Desenvolvimento Web** ✅
+   - Hero simplificado: "Desenvolvimento Web" (sem subtítulo adicional)
+   - Stack tecnológica com cards visuais (6 cards: TypeScript, Tailwind, Framer Motion, Next.js, Prisma, Performance)
+   - Nova seção "Como trabalhamos" com 4 cards detalhados:
+     * Metodologia e Estratégia (MVC, Git, Zod)
+     * IA e Automação (Agentes, Revisão humana, Testes)
+     * Performance e Qualidade (Otimização, Code splitting, Core Web Vitals)
+     * Deploy e DevOps (Vercel/Netlify, Ambientes, Scripts)
+   - Cards "Por que isso é melhor" reformulados com ícones
+   - Seção "O que está incluído" com ícones apropriados
+   - Arquivo: `app/(routes)/servicos/desenvolvimento-web/page.tsx`
+
+6. **Página E-commerce Completo** ✅
+   - Hero atualizado
+   - Seção "E-commerce do jeito certo" atualizada
+   - Abordagens simplificadas (Shopify, Código próprio, Integrações)
+   - Seção "IA aplicada ao e-commerce" atualizada
+   - Feature grid atualizado
+   - CTA atualizado
+   - Correção de erro: removida duplicação da variável `includedServices`
+   - Arquivo: `app/(routes)/servicos/ecommerce-completo/page.tsx`
+
+7. **Footer Completo** ✅
+   - Estrutura reorganizada conforme design da imagem
+   - **Coluna 1**: Logo + descrição + Contato (3 emails, localização, horários)
+   - **Coluna 2**: "Nossos Serviços" (lista completa)
+   - **Coluna 3**: "Links Rápidos" (navegação)
+   - **Coluna 4**: "Fique por Dentro" (newsletter) + "Siga-nos" (redes sociais)
+   - Emails atualizados: `contato@decyphra.com.br`, `jhonnatan.aguiar@decyphra.com.br`, `richard.cruz@decyphra.com.br`
+   - Telefones removidos
+   - Ícones de redes sociais adicionados (Facebook, Instagram, LinkedIn, Twitter)
+   - Links legais adicionados (Política de Privacidade, Termos de Uso, Política de Cookies)
+   - Linha verde lateral direita adicionada
+   - Arquivo: `src/views/components/layout/Footer.tsx`
+
+**Melhorias Técnicas:**
+- Removidos imports não utilizados
+- Removidas variáveis não utilizadas
+- Corrigidas aspas não escapadas em JSX
+- Adicionados ícones necessários (Search, redes sociais)
+
+**Estatísticas:**
+- Total de arquivos modificados: 8
+- Páginas atualizadas: 6
+- Componentes atualizados: 1 (Footer)
+- Correções de bugs: 3
+- Novos textos implementados: ~100+ linhas
+
+**Status:** ✅ Conteúdo atualizado conforme nova metodologia | Footer completo e funcional | Erros visuais corrigidos | Site pronto para produção
+
+---
+
 **Última atualização:** 18/12/2025

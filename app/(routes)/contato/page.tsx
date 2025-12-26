@@ -123,10 +123,10 @@ export default function ContactPage() {
           <FadeIn direction="up" delay={0}>
             <div className="text-center py-12 lg:py-16">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-primary-500 drop-shadow-[0_0_30px_rgba(0,255,136,0.8)]">
-                Vamos Conversar?
+                Contato
               </h1>
               <p className="text-lg md:text-xl text-light-200 leading-relaxed max-w-3xl mx-auto drop-shadow-[0_0_15px_rgba(0,0,0,0.8)]">
-                Pronto para transformar seu negócio? Entre em contato conosco e receba um orçamento gratuito personalizado.
+                Conte sobre seu projeto. A gente responde com direção — não com enrolação.
               </p>
             </div>
           </FadeIn>
@@ -141,9 +141,12 @@ export default function ContactPage() {
             <div className="lg:col-span-2">
               <ScrollReveal direction="up" delay={0}>
                 {/* Título do Formulário */}
-                <h2 className="text-2xl md:text-3xl font-bold mb-8 text-light-50">
-                  Solicite Seu Orçamento Gratuito
+                <h2 className="text-2xl md:text-3xl font-bold mb-4 text-light-50">
+                  Fale com a Decyphra
                 </h2>
+                <p className="text-light-300 mb-8">
+                  Quanto mais contexto você mandar, mais precisa fica a nossa proposta.
+                </p>
 
                 {/* Formulário */}
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
@@ -190,12 +193,12 @@ export default function ContactPage() {
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
                       <label htmlFor="phone" className="block text-sm font-medium text-light-200 mb-2">
-                        Telefone
+                        WhatsApp
                       </label>
                       <Input
                         id="phone"
                         type="tel"
-                        placeholder="(19) 99999-9999"
+                        placeholder="(11) 99999-9999"
                         variant="primary"
                         {...register('phone')}
                       />
@@ -207,7 +210,7 @@ export default function ContactPage() {
                       <Input
                         id="company"
                         type="text"
-                        placeholder="Nome da sua empresa"
+                        placeholder="Nome da empresa (opcional)"
                         variant="primary"
                         {...register('company')}
                       />
@@ -217,7 +220,7 @@ export default function ContactPage() {
                   {/* Serviço de Interesse */}
                   <div>
                     <label htmlFor="service" className="block text-sm font-medium text-light-200 mb-2">
-                      Serviço de Interesse
+                      Serviço
                     </label>
                     <Select
                       id="service"
@@ -239,7 +242,7 @@ export default function ContactPage() {
                     </label>
                     <Textarea
                       id="message"
-                      placeholder="Conte-nos sobre seu projeto e objetivos..."
+                      placeholder="Me diga objetivo, prazo, referências e o que você quer que o site faça."
                       variant={errors.message ? 'error' : 'primary'}
                       size="lg"
                       rows={6}
@@ -267,7 +270,7 @@ export default function ContactPage() {
                       'Enviando...'
                     ) : (
                       <>
-                        Enviar Mensagem
+                        Enviar mensagem
                         <Send className="w-5 h-5 ml-2" />
                       </>
                     )}
@@ -276,10 +279,31 @@ export default function ContactPage() {
               </ScrollReveal>
             </div>
 
-            {/* Sidebar - Informações de Contato e Garantia */}
+            {/* Sidebar - Informações de Contato e Dicas */}
             <div className="lg:col-span-1 space-y-6">
-              {/* Informações de Contato */}
+              {/* O que ajuda */}
               <ScrollReveal direction="up" delay={100}>
+                <div className="bg-dark-900/50 rounded-lg border border-primary-500/20 p-6">
+                  <h3 className="text-xl font-semibold mb-6 text-light-50">
+                    O que ajuda a gente a ser mais rápido
+                  </h3>
+                  <ul className="space-y-3">
+                    {[
+                      'Link de referências (sites que você curte)',
+                      'Objetivo principal (vender, captar leads, autoridade)',
+                      'Prazo e urgência',
+                      'Se já tem logo/identidade e conteúdo',
+                    ].map((tip, index) => (
+                      <li key={index} className="flex items-start gap-3">
+                        <div className="w-2 h-2 rounded-full bg-primary-500 mt-2 flex-shrink-0" />
+                        <span className="text-light-300 leading-relaxed text-sm">{tip}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </ScrollReveal>
+              {/* Informações de Contato */}
+              <ScrollReveal direction="up" delay={200}>
                 <div className="bg-dark-900/50 rounded-lg border border-primary-500/20 p-6 lg:sticky lg:top-24">
                   <h3 className="text-xl font-semibold mb-6 text-light-50">
                     Informações de Contato
@@ -337,7 +361,7 @@ export default function ContactPage() {
               </ScrollReveal>
 
               {/* Garantia de Qualidade */}
-              <ScrollReveal direction="up" delay={200}>
+              <ScrollReveal direction="up" delay={300}>
                 <div className="bg-primary-500/5 rounded-lg border border-primary-500/30 p-6">
                   <div className="flex items-center gap-3 mb-6">
                     <CheckCircle className="w-6 h-6 text-primary-500 flex-shrink-0" />
@@ -357,7 +381,7 @@ export default function ContactPage() {
               </ScrollReveal>
 
               {/* Horário de Atendimento */}
-              <ScrollReveal direction="up" delay={300}>
+              <ScrollReveal direction="up" delay={400}>
                 <div className="bg-dark-900/50 rounded-lg border border-primary-500/20 p-6">
                   <div className="flex items-center gap-3 mb-6">
                     <Clock className="w-6 h-6 text-primary-500 flex-shrink-0" />

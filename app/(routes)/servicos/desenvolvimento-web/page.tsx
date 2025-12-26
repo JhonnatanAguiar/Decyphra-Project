@@ -5,7 +5,7 @@ import { FadeIn, ScrollReveal, ServiceBackground } from '@/views/components/anim
 import { Button } from '@/views/components/ui/Button'
 import Link from 'next/link'
 import { ROUTES } from '@/lib/constants/routes'
-import { Globe, Code, ShoppingCart, Settings, CheckCircle, ShoppingBag, Zap, Rocket, Monitor, Smartphone, Gauge, Shield } from 'lucide-react'
+import { Globe, Code, Settings, CheckCircle, Zap, Shield, Layers, GitBranch, Database, Cpu, Sparkles, FileCode, Rocket, Smartphone, Gauge, Palette, Workflow, GitCommit, Package, Search, Terminal, CheckCircle2 } from 'lucide-react'
 import { motion } from 'framer-motion'
 
 /**
@@ -15,50 +15,12 @@ import { motion } from 'framer-motion'
  */
 
 export default function DesenvolvimentoWebPage() {
-  const features = [
-    { name: 'WordPress', icon: Code },
-    { name: 'Shopify', icon: ShoppingCart },
-    { name: 'Site Personalizado', icon: Settings },
-    { name: 'E-commerce', icon: ShoppingCart },
-  ]
-
-  const platforms = [
-    {
-      title: 'WordPress',
-      icon: Code,
-      description: 'Trabalhamos com o CMS mais popular do mundo para criar sites profissionais, blogs, portfólios e landing pages otimizadas. Utilizamos temas leves, personalizados e plugins confiáveis, sempre focando em SEO, performance e segurança.',
-    },
-    {
-      title: 'Shopify',
-      icon: ShoppingCart,
-      description: 'Criamos e-commerces completos na plataforma Shopify, com design personalizado, integrações de pagamento, gestão de estoque e otimização para conversão. Ideal para lojas que querem escalar rapidamente.',
-    },
-    {
-      title: 'Site Personalizado',
-      icon: Settings,
-      description: 'Desenvolvemos sites do zero usando as tecnologias mais modernas (Next.js, React, TypeScript) quando você precisa de algo único, com funcionalidades específicas e total controle sobre cada detalhe.',
-    },
-    {
-      title: 'E-commerce',
-      icon: ShoppingBag,
-      description: 'Soluções completas de e-commerce com foco em conversão, experiência do usuário e gestão simplificada. Integramos métodos de pagamento, frete e sistemas de gestão para você vender online com eficiência.',
-    },
-  ]
-
-  const benefits = [
-    'Sites responsivos que funcionam perfeitamente em todos os dispositivos',
-    'Otimização para mecanismos de busca (SEO) integrada desde o início',
-    'Design moderno e profissional que representa sua marca',
-    'Performance otimizada para carregamento rápido',
-    'Suporte contínuo e manutenção após o lançamento',
-    'Segurança implementada em todas as camadas',
-  ]
-
-  const idealFor = [
-    { name: 'Empresas que precisam de presença online profissional', icon: Monitor },
-    { name: 'Negócios que querem vender online', icon: ShoppingCart },
-    { name: 'Profissionais que buscam portfólio digital', icon: Rocket },
-    { name: 'Startups que precisam de MVP rápido', icon: Zap },
+  const includedServices = [
+    'Site/Landing em código',
+    'SEO técnico base',
+    'Performance + responsivo',
+    'Integrações essenciais (formulário, WhatsApp, analytics, etc.)',
+    'Deploy e checklist de lançamento',
   ]
 
   return (
@@ -88,7 +50,7 @@ export default function DesenvolvimentoWebPage() {
                   Desenvolvimento <span className="text-primary-500 drop-shadow-[0_0_30px_rgba(0,255,136,0.8)]">Web</span>
                 </h1>
                 <p className="text-xl md:text-2xl lg:text-3xl text-light-200 leading-relaxed max-w-3xl drop-shadow-[0_0_15px_rgba(0,0,0,0.8)]">
-                  Site profissional em WordPress, Shopify e soluções personalizadas que convertem visitantes em clientes.
+                  Sites rápidos, animados e escaláveis — com total controle do design, performance e evolução.
                 </p>
               </div>
             </div>
@@ -102,120 +64,38 @@ export default function DesenvolvimentoWebPage() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Main Content */}
             <div className="lg:col-span-2 space-y-16">
-              {/* Seção: Desenvolvimento Web Personalizado */}
+              {/* Seção: Desenvolvimento Web personalizado */}
               <ScrollReveal direction="up" delay={0}>
                 <div>
                   <h2 className="text-3xl font-bold text-light-50 mb-4 flex items-center">
                     <Globe className="w-8 h-8 mr-3 text-primary-500" />
-                    Desenvolvimento Web Personalizado
+                    Desenvolvimento Web personalizado
                   </h2>
+                  <p className="text-lg text-light-200 leading-relaxed mb-4">
+                    Na Decyphra, seu site não nasce preso a tema ou plugin. Nós desenvolvemos em código, com uma base moderna e organizada, pronta para evoluir junto com o seu negócio.
+                  </p>
                   <p className="text-lg text-light-200 leading-relaxed">
-                    Na Decyphra, acreditamos que um site bem construído é mais do que uma vitrine — é o ponto de partida 
-                    para o sucesso digital do seu negócio. Por isso, desenvolvemos soluções web sob medida, combinando 
-                    tecnologia, design, performance e inteligência artificial para entregar sites que realmente funcionam.
+                    O resultado: performance real, SEO técnico sólido, visual consistente, e um site que dá para melhorar sem remendos.
                   </p>
                 </div>
               </ScrollReveal>
 
-              {/* Seção: Plataformas e Tecnologias */}
+              {/* Seção: Stack e padrões */}
               <ScrollReveal direction="up" delay={100}>
                 <div>
-                  <h3 className="text-2xl font-bold text-light-50 mb-8 flex items-center">
-                    <ShoppingBag className="w-6 h-6 mr-3 text-primary-500" />
-                    Plataformas e Tecnologias que Utilizamos
+                  <h3 className="text-2xl font-bold text-light-50 mb-6 flex items-center">
+                    <Layers className="w-6 h-6 mr-3 text-primary-500" />
+                    Stack e padrões que usamos
                   </h3>
-                  <div className="space-y-6">
-                    {platforms.map((platform, i) => {
-                      const IconComponent = platform.icon
-                      return (
-                        <motion.div
-                          key={i}
-                          initial={{ opacity: 0, y: 20 }}
-                          whileInView={{ opacity: 1, y: 0 }}
-                          transition={{ duration: 0.5, delay: i * 0.1 }}
-                          viewport={{ once: true, amount: 0.3 }}
-                          className="bg-dark-900/50 p-6 rounded-xl border border-primary-500/20 hover:border-primary-500/50 hover:shadow-lg hover:shadow-primary-500/10 transition-all duration-300"
-                        >
-                          <div className="flex items-start gap-4 mb-3">
-                            <div className="w-12 h-12 bg-primary-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                              <IconComponent className="w-6 h-6 text-primary-500" />
-                            </div>
-                            <h4 className="text-xl font-semibold text-light-50">{platform.title}</h4>
-                          </div>
-                          <p className="text-light-300 leading-relaxed">{platform.description}</p>
-                        </motion.div>
-                      )
-                    })}
-                  </div>
-                </div>
-              </ScrollReveal>
-
-              {/* Seção: Benefícios */}
-              <ScrollReveal direction="up" delay={200}>
-                <div className="grid lg:grid-cols-2 gap-8 items-start">
-                  <div>
-                    <h3 className="text-2xl font-bold text-light-50 mb-6">
-                      ✅ Por que escolher nosso desenvolvimento web?
-                    </h3>
-                    <ul className="space-y-4">
-                      {benefits.map((benefit, i) => (
-                        <motion.li
-                          key={i}
-                          initial={{ opacity: 0, x: -20 }}
-                          whileInView={{ opacity: 1, x: 0 }}
-                          transition={{ duration: 0.5, delay: i * 0.1 }}
-                          viewport={{ once: true }}
-                          className="flex items-start text-light-200"
-                        >
-                          <CheckCircle className="w-6 h-6 mr-3 text-primary-500 flex-shrink-0 mt-1" />
-                          <span>{benefit}</span>
-                        </motion.li>
-                      ))}
-                    </ul>
-                  </div>
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.7 }}
-                    viewport={{ once: true }}
-                    className="p-8 bg-gradient-to-br from-primary-500/10 to-transparent rounded-2xl border border-primary-500/20"
-                  >
-                    <h4 className="text-xl font-bold text-primary-500 mb-4">🚀 Nossa Abordagem</h4>
-                    <p className="text-light-200 leading-relaxed mb-4">
-                      Cada projeto é único. Analisamos seu negócio, público-alvo e objetivos para criar a solução 
-                      perfeita. Combinamos as melhores práticas de desenvolvimento com design moderno e estratégias 
-                      de conversão para entregar sites que geram resultados reais.
-                    </p>
-                    <div className="grid grid-cols-2 gap-4 mt-6">
-                      <div className="text-center">
-                        <Gauge className="w-8 h-8 mx-auto mb-2 text-primary-500" />
-                        <p className="text-sm text-light-300">Performance</p>
-                      </div>
-                      <div className="text-center">
-                        <Shield className="w-8 h-8 mx-auto mb-2 text-primary-500" />
-                        <p className="text-sm text-light-300">Segurança</p>
-                      </div>
-                      <div className="text-center">
-                        <Smartphone className="w-8 h-8 mx-auto mb-2 text-primary-500" />
-                        <p className="text-sm text-light-300">Responsivo</p>
-                      </div>
-                      <div className="text-center">
-                        <Zap className="w-8 h-8 mx-auto mb-2 text-primary-500" />
-                        <p className="text-sm text-light-300">Otimizado</p>
-                      </div>
-                    </div>
-                  </motion.div>
-                </div>
-              </ScrollReveal>
-
-              {/* Seção: Ideal para */}
-              <ScrollReveal direction="up" delay={300}>
-                <div>
-                  <h3 className="text-2xl font-bold text-light-50 mb-6 text-center">
-                    📌 Ideal para:
-                  </h3>
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    {idealFor.map((item, i) => {
+                  <div className="grid md:grid-cols-2 gap-4 mb-8">
+                    {[
+                      { icon: FileCode, title: 'TypeScript', desc: 'Previsibilidade e manutenção no código' },
+                      { icon: Palette, title: 'Tailwind CSS', desc: 'Componentes reutilizáveis e consistência' },
+                      { icon: Sparkles, title: 'Framer Motion', desc: 'Animações fluidas e microinterações' },
+                      { icon: GitBranch, title: 'Next.js App Router', desc: 'Arquitetura moderna e performance' },
+                      { icon: Database, title: 'Prisma + PostgreSQL', desc: 'Backend sólido e escalável' },
+                      { icon: Zap, title: 'Otimização de Performance', desc: 'Core Web Vitals em primeiro lugar' },
+                    ].map((item, i) => {
                       const IconComponent = item.icon
                       return (
                         <motion.div
@@ -224,10 +104,229 @@ export default function DesenvolvimentoWebPage() {
                           whileInView={{ opacity: 1, y: 0 }}
                           transition={{ duration: 0.5, delay: i * 0.1 }}
                           viewport={{ once: true }}
-                          className="bg-dark-900/60 p-4 rounded-lg text-center border border-transparent hover:border-primary-500/50 transition-colors"
+                          className="bg-dark-900/50 p-4 rounded-xl border border-primary-500/20 hover:border-primary-500/50 transition-colors"
                         >
-                          <IconComponent className="w-8 h-8 mx-auto mb-2 text-primary-500" />
-                          <span className="text-light-300 text-sm">{item.name}</span>
+                          <div className="flex items-start gap-3">
+                            <div className="w-10 h-10 bg-primary-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                              <IconComponent className="w-5 h-5 text-primary-500" />
+                            </div>
+                            <div>
+                              <h4 className="font-semibold text-light-50 mb-1">{item.title}</h4>
+                              <p className="text-light-300 text-sm">{item.desc}</p>
+                            </div>
+                          </div>
+                        </motion.div>
+                      )
+                    })}
+                  </div>
+                </div>
+              </ScrollReveal>
+
+              {/* Seção: Como trabalhamos */}
+              <ScrollReveal direction="up" delay={200}>
+                <div>
+                  <h3 className="text-2xl font-bold text-light-50 mb-6 flex items-center">
+                    <Workflow className="w-6 h-6 mr-3 text-primary-500" />
+                    Como trabalhamos
+                  </h3>
+                  <div className="space-y-6">
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5 }}
+                      viewport={{ once: true }}
+                      className="bg-gradient-to-br from-primary-500/10 to-transparent p-6 rounded-xl border border-primary-500/20"
+                    >
+                      <div className="flex items-start gap-4 mb-4">
+                        <div className="w-12 h-12 bg-primary-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                          <GitCommit className="w-6 h-6 text-primary-500" />
+                        </div>
+                        <div>
+                          <h4 className="text-xl font-semibold text-light-50 mb-2">Metodologia e Estratégia</h4>
+                          <ul className="space-y-2 text-light-300">
+                            <li className="flex items-start gap-2">
+                              <CheckCircle2 className="w-4 h-4 text-primary-500 flex-shrink-0 mt-0.5" />
+                              <span>Arquitetura baseada em componentes reutilizáveis (MVC adaptado)</span>
+                            </li>
+                            <li className="flex items-start gap-2">
+                              <CheckCircle2 className="w-4 h-4 text-primary-500 flex-shrink-0 mt-0.5" />
+                              <span>Separação clara entre Models, Views e Controllers</span>
+                            </li>
+                            <li className="flex items-start gap-2">
+                              <CheckCircle2 className="w-4 h-4 text-primary-500 flex-shrink-0 mt-0.5" />
+                              <span>Validação de dados com Zod em todas as camadas</span>
+                            </li>
+                            <li className="flex items-start gap-2">
+                              <CheckCircle2 className="w-4 h-4 text-primary-500 flex-shrink-0 mt-0.5" />
+                              <span>Versionamento Git com commits organizados e documentados</span>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </motion.div>
+
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: 0.1 }}
+                      viewport={{ once: true }}
+                      className="bg-dark-900/50 p-6 rounded-xl border border-primary-500/20"
+                    >
+                      <div className="flex items-start gap-4 mb-4">
+                        <div className="w-12 h-12 bg-primary-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                          <Cpu className="w-6 h-6 text-primary-500" />
+                        </div>
+                        <div>
+                          <h4 className="text-xl font-semibold text-light-50 mb-2">IA e Automação</h4>
+                          <ul className="space-y-2 text-light-300">
+                            <li className="flex items-start gap-2">
+                              <CheckCircle2 className="w-4 h-4 text-primary-500 flex-shrink-0 mt-0.5" />
+                              <span>Agentes de IA para scaffolding e refatoração assistida</span>
+                            </li>
+                            <li className="flex items-start gap-2">
+                              <CheckCircle2 className="w-4 h-4 text-primary-500 flex-shrink-0 mt-0.5" />
+                              <span>Revisão humana garantindo qualidade e padrões</span>
+                            </li>
+                            <li className="flex items-start gap-2">
+                              <CheckCircle2 className="w-4 h-4 text-primary-500 flex-shrink-0 mt-0.5" />
+                              <span>Automação de testes e validação de código</span>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </motion.div>
+
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: 0.2 }}
+                      viewport={{ once: true }}
+                      className="bg-dark-900/50 p-6 rounded-xl border border-primary-500/20"
+                    >
+                      <div className="flex items-start gap-4 mb-4">
+                        <div className="w-12 h-12 bg-primary-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                          <Gauge className="w-6 h-6 text-primary-500" />
+                        </div>
+                        <div>
+                          <h4 className="text-xl font-semibold text-light-50 mb-2">Performance e Qualidade</h4>
+                          <ul className="space-y-2 text-light-300">
+                            <li className="flex items-start gap-2">
+                              <CheckCircle2 className="w-4 h-4 text-primary-500 flex-shrink-0 mt-0.5" />
+                              <span>Otimização de imagens e assets desde o início</span>
+                            </li>
+                            <li className="flex items-start gap-2">
+                              <CheckCircle2 className="w-4 h-4 text-primary-500 flex-shrink-0 mt-0.5" />
+                              <span>Code splitting automático e lazy loading</span>
+                            </li>
+                            <li className="flex items-start gap-2">
+                              <CheckCircle2 className="w-4 h-4 text-primary-500 flex-shrink-0 mt-0.5" />
+                              <span>Foco em Core Web Vitals (LCP, FID, CLS)</span>
+                            </li>
+                            <li className="flex items-start gap-2">
+                              <CheckCircle2 className="w-4 h-4 text-primary-500 flex-shrink-0 mt-0.5" />
+                              <span>TypeScript strict mode para prevenir erros</span>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </motion.div>
+
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: 0.3 }}
+                      viewport={{ once: true }}
+                      className="bg-dark-900/50 p-6 rounded-xl border border-primary-500/20"
+                    >
+                      <div className="flex items-start gap-4 mb-4">
+                        <div className="w-12 h-12 bg-primary-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                          <Package className="w-6 h-6 text-primary-500" />
+                        </div>
+                        <div>
+                          <h4 className="text-xl font-semibold text-light-50 mb-2">Deploy e DevOps</h4>
+                          <ul className="space-y-2 text-light-300">
+                            <li className="flex items-start gap-2">
+                              <CheckCircle2 className="w-4 h-4 text-primary-500 flex-shrink-0 mt-0.5" />
+                              <span>Deploy automatizado com Vercel/Netlify</span>
+                            </li>
+                            <li className="flex items-start gap-2">
+                              <CheckCircle2 className="w-4 h-4 text-primary-500 flex-shrink-0 mt-0.5" />
+                              <span>Ambientes de staging e produção separados</span>
+                            </li>
+                            <li className="flex items-start gap-2">
+                              <CheckCircle2 className="w-4 h-4 text-primary-500 flex-shrink-0 mt-0.5" />
+                              <span>Scripts customizados para build e deploy</span>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </motion.div>
+                  </div>
+                </div>
+              </ScrollReveal>
+
+              {/* Seção: Por que isso é melhor */}
+              <ScrollReveal direction="up" delay={400}>
+                <div>
+                  <h3 className="text-2xl font-bold text-light-50 mb-6 flex items-center">
+                    <Rocket className="w-6 h-6 mr-3 text-primary-500" />
+                    Por que isso é melhor do que um &quot;site padrão&quot;
+                  </h3>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    {[
+                      { icon: Palette, title: 'Visual sob medida', desc: 'Sem cara de template, identidade única' },
+                      { icon: Gauge, title: 'Performance real', desc: 'Core Web Vitals como prioridade' },
+                      { icon: GitBranch, title: 'Evolução fácil', desc: 'Novas páginas, integrações e features' },
+                      { icon: Shield, title: 'Código limpo', desc: 'Sem "gambiarras" e retrabalho futuro' },
+                    ].map((item, i) => {
+                      const IconComponent = item.icon
+                      return (
+                        <motion.div
+                          key={i}
+                          initial={{ opacity: 0, y: 20 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          transition={{ duration: 0.5, delay: i * 0.1 }}
+                          viewport={{ once: true }}
+                          className="bg-dark-900/50 p-5 rounded-xl border border-primary-500/20 hover:border-primary-500/50 transition-colors"
+                        >
+                          <div className="flex items-start gap-3">
+                            <div className="w-10 h-10 bg-primary-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                              <IconComponent className="w-5 h-5 text-primary-500" />
+                            </div>
+                            <div>
+                              <h4 className="font-semibold text-light-50 mb-1">{item.title}</h4>
+                              <p className="text-light-300 text-sm">{item.desc}</p>
+                            </div>
+                          </div>
+                        </motion.div>
+                      )
+                    })}
+                  </div>
+                </div>
+              </ScrollReveal>
+
+              {/* Seção: O que está incluído */}
+              <ScrollReveal direction="up" delay={500}>
+                <div>
+                  <h3 className="text-2xl font-bold text-light-50 mb-6 flex items-center">
+                    <CheckCircle2 className="w-6 h-6 mr-3 text-primary-500" />
+                    O que está incluído
+                  </h3>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    {includedServices.map((item, i) => {
+                      const icons = [FileCode, Search, Smartphone, Terminal, Rocket]
+                      const IconComponent = icons[i] || CheckCircle
+                      return (
+                        <motion.div
+                          key={i}
+                          initial={{ opacity: 0, x: -20 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          transition={{ duration: 0.5, delay: i * 0.1 }}
+                          viewport={{ once: true }}
+                          className="bg-dark-900/50 p-4 rounded-lg border border-primary-500/20 flex items-center gap-3"
+                        >
+                          <IconComponent className="w-5 h-5 text-primary-500 flex-shrink-0" />
+                          <span className="text-light-200">{item}</span>
                         </motion.div>
                       )
                     })}
@@ -241,22 +340,32 @@ export default function DesenvolvimentoWebPage() {
               <ScrollReveal direction="up" delay={100}>
                 <div className="bg-dark-900 rounded-lg border border-dark-800 p-6 sticky top-24">
                   <h3 className="text-xl font-semibold mb-6 text-light-50">
-                    O que está incluído?
+                    Principais recursos
                   </h3>
                   <ul className="space-y-4 mb-6">
-                    {features.map((feature, index) => {
-                      const IconComponent = feature.icon
+                    {[
+                      { name: 'Código sob medida', desc: 'Liberdade total para o visual e a estrutura.', icon: Code },
+                      { name: 'TypeScript', desc: 'Manutenção fácil e menos bugs no longo prazo.', icon: Settings },
+                      { name: 'Tailwind + UI', desc: 'Componentes reutilizáveis e consistência visual.', icon: Globe },
+                      { name: 'Motion & Interações', desc: 'Animações e microinterações que elevam a experiência.', icon: Zap },
+                    ].map((item, index) => {
+                      const IconComponent = item.icon
                       return (
-                        <li key={index} className="flex items-center gap-3">
-                          <IconComponent className="w-5 h-5 text-primary-500 flex-shrink-0" strokeWidth={2} />
-                          <span className="text-light-200">{feature.name}</span>
+                        <li key={index} className="flex flex-col gap-2">
+                          <div className="flex items-center gap-3">
+                            <IconComponent className="w-5 h-5 text-primary-500 flex-shrink-0" strokeWidth={2} />
+                            <span className="text-light-200 font-semibold">{item.name}</span>
+                          </div>
+                          <p className="text-light-300 text-sm ml-8">
+                            {item.desc}
+                          </p>
                         </li>
                       )
                     })}
                   </ul>
                   <Link href={ROUTES.contact} className="w-full">
                     <Button variant="primary" size="md" enable3D={true} className="w-full">
-                      Solicitar Orçamento
+                      Quero um orçamento
                     </Button>
                   </Link>
                 </div>
@@ -271,9 +380,15 @@ export default function DesenvolvimentoWebPage() {
         <Container size="lg">
           <ScrollReveal direction="up" delay={0}>
             <div className="text-center max-w-3xl mx-auto py-12">
+              <h3 className="text-3xl font-bold mb-4 text-light-50">
+                Pronto para um site que parece caro (e funciona melhor ainda)?
+              </h3>
+              <p className="text-lg text-light-200 mb-8">
+                Conte o que você quer construir e a gente propõe o caminho mais eficiente.
+              </p>
               <Link href={ROUTES.contact}>
                 <Button variant="primary" size="lg" enable3D={true}>
-                  Pronto para ter um site que representa seu negócio?
+                  Falar com a Decyphra
                 </Button>
               </Link>
             </div>

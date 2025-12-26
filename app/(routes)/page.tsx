@@ -22,37 +22,37 @@ export default function HomePage() {
       id: 1,
       title: 'Desenvolvimento Web',
       slug: 'desenvolvimento-web',
-      description: 'Site profissional em WordPress, Shopify e soluções personalizadas que convertem visitantes em clientes.',
+      description: 'Sites e landing pages em código, com animações, performance e SEO desde a base. Total liberdade visual e evolutiva.',
     },
     {
       id: 2,
       title: 'SEO & Otimização',
       slug: 'seo-otimizacao',
-      description: 'Posicionamento estratégico no Google para aumentar sua visibilidade e atrair mais clientes qualificados.',
+      description: 'SEO técnico + conteúdo orientado a intenção de busca. Visibilidade consistente e crescimento orgânico mensurável.',
     },
     {
       id: 3,
       title: 'Google Ad',
       slug: 'google-ad',
-      description: 'Campanhas publicitárias otimizadas que geram resultados imediatos e maximizam seu retorno sobre investimento.',
+      description: 'Campanhas enxutas e otimizadas para ROI. Tracking bem feito, testes rápidos e escala com controle.',
     },
     {
       id: 4,
       title: 'Marketing de Conteúdo',
       slug: 'marketing-de-conteudo',
-      description: 'Estratégias de conteúdo que engajam sua audiência e fortalecem a autoridade da sua marca no mercado.',
+      description: 'Conteúdo que educa, posiciona e converte — com estratégia, consistência e copy orientada a ação.',
     },
     {
       id: 5,
       title: 'Inteligência Artificial',
       slug: 'inteligencia-artificial',
-      description: 'Implementação de IA para automação, chatbots e otimização de processos que aumentam a eficiência.',
+      description: 'Agentes e automações com IA para acelerar processos, melhorar atendimento e aumentar eficiência operacional.',
     },
     {
       id: 6,
       title: 'E-commerce Completo',
       slug: 'ecommerce-completo',
-      description: 'Lojas virtuais completas com Shopify, WooCommerce e código próprio, com foco em conversão e gestão autônoma.',
+      description: 'Lojas rápidas, escaláveis e personalizadas — do checkout ao catálogo, com integrações e foco em conversão.',
     },
   ]
 
@@ -126,26 +126,42 @@ export default function HomePage() {
         <Container size="lg" className="relative z-10">
           <FadeIn direction="up" delay={0}>
             <div className="text-center max-w-4xl mx-auto py-20 lg:py-32">
+              <p className="text-sm text-primary-500 mb-4 font-medium tracking-wider uppercase">
+                Metodologia atualizada
+              </p>
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-light-50 drop-shadow-[0_0_20px_rgba(0,255,136,0.5)]">
-                Transforme seu{' '}
-                <span className="text-primary-500 drop-shadow-[0_0_30px_rgba(0,255,136,0.8)]">negócio digital</span>
+                Sites feitos em código, com{' '}
+                <span className="text-primary-500 drop-shadow-[0_0_30px_rgba(0,255,136,0.8)]">controle total</span> do resultado
               </h1>
               <p className="text-xl md:text-2xl text-light-200 mb-8 leading-relaxed drop-shadow-[0_0_15px_rgba(0,0,0,0.8)]">
-                Desenvolvimento web, sistemas e APIs para pequenas e médias empresas.
-                Soluções que impulsionam resultados.
+                Criamos experiências rápidas, animadas e sob medida — com performance, SEO e escalabilidade desde a base. IA acelera o processo; nossa revisão garante qualidade.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
                 <Link href={ROUTES.contact}>
                   <Button variant="primary" size="lg" enable3D={true}>
-                    Fale Conosco
+                    Fale com a gente
                   </Button>
                 </Link>
-                <Link href={ROUTES.portfolio}>
+                <Link href={ROUTES.services}>
                   <Button variant="ghost" size="lg" enable3D={true}>
-                    Ver Portfólio
+                    Ver serviços
                   </Button>
                 </Link>
               </div>
+              <ul className="flex flex-col sm:flex-row gap-4 justify-center text-light-300 text-sm">
+                <li className="flex items-center justify-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary-500"></span>
+                  Visual sob medida (sem cara de template)
+                </li>
+                <li className="flex items-center justify-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary-500"></span>
+                  TypeScript + Tailwind + Motion
+                </li>
+                <li className="flex items-center justify-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary-500"></span>
+                  Entrega rápida com agentes de IA e revisão humana
+                </li>
+              </ul>
             </div>
           </FadeIn>
         </Container>
@@ -160,7 +176,7 @@ export default function HomePage() {
                 Nossos <span className="text-primary-500">Serviços</span>
               </h2>
               <p className="text-lg text-light-200 max-w-2xl mx-auto">
-                Oferecemos soluções completas para transformar sua presença digital
+                Do site institucional ao e-commerce: soluções completas com foco em conversão, performance e evolução contínua.
               </p>
             </div>
           </ScrollReveal>
@@ -206,24 +222,148 @@ export default function HomePage() {
         </Container>
       </Section>
 
-      {/* Seção de Estatísticas */}
+      {/* Seção: O que muda quando você faz em código */}
       <Section variant="dark" spacing="lg">
         <Container size="lg">
           <ScrollReveal direction="up" delay={0}>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl md:text-5xl font-bold mb-4 text-light-50">
+                O que muda quando você faz em código
+              </h2>
+              <p className="text-lg text-light-200 max-w-2xl mx-auto">
+                Mais performance, mais consistência visual, menos limitação. Um produto digital que você consegue evoluir sem remendos.
+              </p>
+            </div>
+          </ScrollReveal>
+
+          <ScrollReveal direction="up" delay={100}>
+            <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
               {[
-                { number: '100+', label: 'Projetos Entregues' },
-                { number: '50+', label: 'Clientes Satisfeitos' },
-                { number: '5+', label: 'Anos de Experiência' },
-                { number: '24/7', label: 'Suporte Disponível' },
-              ].map((stat, index) => (
-                <ScrollReveal key={index} direction="up" delay={index * 100}>
+                {
+                  title: 'Controle total do design',
+                  description: 'Componentes sob medida, identidade consistente e liberdade criativa real — sem ficar preso a temas.',
+                },
+                {
+                  title: 'Performance de verdade',
+                  description: 'Arquitetura moderna, carregamento rápido e foco em Core Web Vitals desde o início.',
+                },
+                {
+                  title: 'Evolução simples',
+                  description: 'Adicionar páginas, integrações e melhorias não vira dor de cabeça: o projeto nasce escalável.',
+                },
+                {
+                  title: 'IA como acelerador, não atalho',
+                  description: 'Agentes para ganhar tempo no repetitivo; revisão humana para manter padrão, qualidade e intenção.',
+                },
+              ].map((item, index) => (
+                <ScrollReveal key={index} direction="up" delay={index * 100 + 200}>
+                  <div className="bg-dark-900/50 p-6 rounded-xl border border-primary-500/20">
+                    <h3 className="text-xl font-semibold mb-3 text-light-50">
+                      {item.title}
+                    </h3>
+                    <p className="text-light-300 leading-relaxed">
+                      {item.description}
+                    </p>
+                  </div>
+                </ScrollReveal>
+              ))}
+            </div>
+          </ScrollReveal>
+        </Container>
+      </Section>
+
+      {/* Seção: Nosso Processo */}
+      <Section variant="default" spacing="lg">
+        <Container size="lg">
+          <ScrollReveal direction="up" delay={0}>
+            <div className="text-center mb-12">
+              <h2 className="text-4xl md:text-5xl font-bold mb-4 text-light-50">
+                Nosso <span className="text-primary-500">Processo</span>
+              </h2>
+              <p className="text-lg text-light-200 max-w-2xl mx-auto">
+                Um fluxo claro, rápido e transparente — para você acompanhar tudo sem ruído.
+              </p>
+            </div>
+          </ScrollReveal>
+
+          <ScrollReveal direction="up" delay={100}>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto mb-12">
+              {[
+                {
+                  step: '01',
+                  title: 'Diagnóstico',
+                  description: 'Entendemos objetivos, público, referências e metas (conversão, aquisição, autoridade).',
+                },
+                {
+                  step: '02',
+                  title: 'Arquitetura & Design',
+                  description: 'Estrutura do site, conteúdo, UI e base de SEO/track para medir o que importa.',
+                },
+                {
+                  step: '03',
+                  title: 'Build em Código',
+                  description: 'Implementação em TypeScript + Tailwind + Motion. IA acelera; revisão humana garante qualidade.',
+                },
+                {
+                  step: '04',
+                  title: 'Lançamento & Evolução',
+                  description: 'Deploy, métricas, ajustes finos e roadmap de melhorias contínuas para crescer com constância.',
+                },
+              ].map((process, index) => (
+                <ScrollReveal key={index} direction="up" delay={index * 100 + 200}>
                   <div className="text-center">
-                    <div className="text-4xl md:text-5xl font-bold text-primary-500 mb-2">
-                      {stat.number}
+                    <div className="w-16 h-16 bg-primary-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <span className="text-2xl font-bold text-primary-500">{process.step}</span>
                     </div>
-                    <div className="text-light-300 text-sm md:text-base">
-                      {stat.label}
+                    <h3 className="text-xl font-semibold mb-2 text-light-50">
+                      {process.title}
+                    </h3>
+                    <p className="text-light-300 text-sm leading-relaxed">
+                      {process.description}
+                    </p>
+                  </div>
+                </ScrollReveal>
+              ))}
+            </div>
+            <div className="text-center">
+              <Link href={ROUTES.contact}>
+                <Button variant="primary" size="lg" enable3D={true}>
+                  Quero um site assim
+                </Button>
+              </Link>
+            </div>
+          </ScrollReveal>
+        </Container>
+      </Section>
+
+      {/* Seção: Qualidade que dá para sentir */}
+      <Section variant="dark" spacing="lg">
+        <Container size="lg">
+          <ScrollReveal direction="up" delay={0}>
+            <div className="text-center mb-12">
+              <h2 className="text-4xl md:text-5xl font-bold mb-4 text-light-50">
+                Qualidade que dá para sentir
+              </h2>
+              <p className="text-lg text-light-200 max-w-2xl mx-auto">
+                Design, performance e clareza — tudo pensado para inspirar confiança e gerar ação.
+              </p>
+            </div>
+          </ScrollReveal>
+
+          <ScrollReveal direction="up" delay={100}>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+              {[
+                { label: 'Foco em performance', value: 'Core Web Vitals' },
+                { label: 'Entrega objetiva', value: 'Escopo claro' },
+                { label: 'Código escalável', value: 'Manutenção fácil' },
+              ].map((metric, index) => (
+                <ScrollReveal key={index} direction="up" delay={index * 100 + 200}>
+                  <div className="text-center bg-dark-900/50 p-6 rounded-xl border border-primary-500/20">
+                    <div className="text-3xl font-bold text-primary-500 mb-2">
+                      {metric.value}
+                    </div>
+                    <div className="text-light-300 text-sm">
+                      {metric.label}
                     </div>
                   </div>
                 </ScrollReveal>
@@ -259,7 +399,7 @@ export default function HomePage() {
                       enableBorderGlow={true}
                       className="overflow-hidden"
                     >
-                      <div className="relative aspect-video">
+                      <div className="relative aspect-video bg-dark-900 overflow-hidden">
                         <Image
                           src={project.image}
                           alt={project.title}
@@ -267,6 +407,11 @@ export default function HomePage() {
                           className="object-cover"
                           loading="lazy"
                           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                          onError={(e) => {
+                            // Fallback para cor de fundo se imagem não carregar
+                            const target = e.target as HTMLImageElement
+                            target.style.display = 'none'
+                          }}
                         />
                       </div>
                       <div className="p-6">
@@ -363,20 +508,20 @@ export default function HomePage() {
           <ScrollReveal direction="up" delay={0}>
             <div className="text-center max-w-3xl mx-auto py-12">
               <h2 className="text-4xl md:text-5xl font-bold mb-6 text-light-50">
-                Pronto para transformar seu negócio?
+                Vamos construir algo que pareça grande — e funcione melhor ainda.
               </h2>
               <p className="text-xl text-light-200 mb-8">
-                Entre em contato e descubra como podemos ajudar você a alcançar seus objetivos
+                Se você quer um site rápido, animado e feito sob medida, a gente te guia do diagnóstico ao lançamento (e além).
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href={ROUTES.contact}>
                   <Button variant="primary" size="lg" enable3D={true}>
-                    Fale Conosco Agora
+                    Solicitar orçamento
                   </Button>
                 </Link>
                 <Link href={ROUTES.services}>
                   <Button variant="ghost" size="lg" enable3D={true}>
-                    Conheça Nossos Serviços
+                    Conhecer serviços
                   </Button>
                 </Link>
               </div>

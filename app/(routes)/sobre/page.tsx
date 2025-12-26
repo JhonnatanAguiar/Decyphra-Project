@@ -6,7 +6,7 @@ import { Card3D } from '@/views/components/ui/Card3D'
 import { Button } from '@/views/components/ui/Button'
 import Link from 'next/link'
 import { ROUTES } from '@/lib/constants/routes'
-import { Users, Cpu, Code, Zap, ArrowRight } from 'lucide-react'
+import { Users, Code, Zap, ArrowRight } from 'lucide-react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 
@@ -71,14 +71,13 @@ export default function AboutPage() {
               variants={itemVariants}
               className="text-5xl lg:text-7xl font-bold mb-4 text-light-50 drop-shadow-[0_0_20px_rgba(0,255,136,0.5)]"
             >
-              <span className="text-primary-500 drop-shadow-[0_0_30px_rgba(0,255,136,0.8)]">Decifrando</span> o Digital
+              Sobre a <span className="text-primary-500 drop-shadow-[0_0_30px_rgba(0,255,136,0.8)]">Decyphra</span>
             </motion.h1>
             <motion.p
               variants={itemVariants}
               className="text-xl text-light-200 max-w-3xl mx-auto drop-shadow-[0_0_15px_rgba(0,0,0,0.8)]"
             >
-              Somos uma dupla de desenvolvedores que transforma ideias em presença digital. 
-              Combinamos código, design e IA para criar sites que impulsionam negócios reais.
+              Somos uma agência digital que constrói produtos web em código — com foco em performance, design e crescimento.
             </motion.p>
           </motion.div>
         </Container>
@@ -118,25 +117,19 @@ export default function AboutPage() {
                   variants={itemVariants}
                   className="text-3xl font-bold text-light-50"
                 >
-                  Nossa Missão
+                  Código como padrão
                 </motion.h2>
                 <motion.p
                   variants={itemVariants}
                   className="text-lg text-light-200 leading-relaxed"
                 >
-                  A Decyphra é uma agência de marketing digital e desenvolvimento web especializada 
-                  em criar soluções acessíveis, eficientes e personalizadas para microempreendedores, 
-                  negócios locais, digitais e pequenas e médias empresas que buscam crescer com 
-                  presença forte e profissional na internet.
+                  Hoje, nosso fluxo é 100% baseado em desenvolvimento em código, com tecnologias modernas e um processo acelerado por agentes de IA.
                 </motion.p>
                 <motion.p
                   variants={itemVariants}
                   className="text-lg text-light-200 leading-relaxed"
                 >
-                  Somos uma agência recente, fundada e gerenciada por dois desenvolvedores, apaixonados 
-                  por tecnologia, automação e inteligência artificial. Atuamos com foco total em qualidade, 
-                  agilidade e comprometimento, mesmo com equipes reduzidas, entregando resultados que 
-                  combinam estratégia, design e performance.
+                  Isso nos permite criar experiências realmente personalizadas, rápidas e profissionais — sem ficar preso a limitações de tema, plugins ou plataformas.
                 </motion.p>
               </motion.div>
             </div>
@@ -153,12 +146,10 @@ export default function AboutPage() {
                 className="text-center mb-12"
               >
                 <h2 className="text-4xl font-bold text-light-50 mb-4">
-                  Nossa Abordagem Flexível
+                  IA do jeito certo
                 </h2>
                 <p className="text-lg text-light-200 max-w-3xl mx-auto">
-                  Essa flexibilidade nos permite atender a uma ampla variedade de projetos — de uma 
-                  simples landing page a sistemas web personalizados — sempre com eficiência técnica 
-                  e foco em resultado.
+                  IA não é &quot;deixar a máquina fazer tudo&quot;. É acelerar o que é repetitivo e aumentar qualidade com validação humana.
                 </p>
               </motion.div>
               <div className="grid md:grid-cols-3 gap-8 text-center">
@@ -172,11 +163,10 @@ export default function AboutPage() {
                   >
                     <Zap className="w-10 h-10 mx-auto mb-4 text-primary-500" />
                     <h3 className="text-xl font-bold text-light-50 mb-2">
-                      Ferramentas Populares
+                      Agentes para velocidade
                     </h3>
                     <p className="text-light-300">
-                      Utilizamos desde ferramentas populares como o WordPress, até construtores com 
-                      inteligência artificial como o Horizon da Hostinger.
+                      Automação de tarefas repetitivas, scaffolding, refactors assistidos e criação de variações com consistência.
                     </p>
                   </Card3D>
                 </ScrollReveal>
@@ -188,13 +178,12 @@ export default function AboutPage() {
                     enableBorderGlow={true}
                     className="p-8"
                   >
-                    <Code className="w-10 h-10 mx-auto mb-4 text-primary-500" />
+                    <Users className="w-10 h-10 mx-auto mb-4 text-primary-500" />
                     <h3 className="text-xl font-bold text-light-50 mb-2">
-                      Código Sob Medida
+                      Revisão humana para padrão
                     </h3>
                     <p className="text-light-300">
-                      Desenvolvemos sites e soluções totalmente do zero com código próprio, quando 
-                      necessário, para projetos únicos e personalizados.
+                      Validação técnica, critérios de qualidade, acessibilidade, UX e coerência de marca.
                     </p>
                   </Card3D>
                 </ScrollReveal>
@@ -206,15 +195,12 @@ export default function AboutPage() {
                     enableBorderGlow={true}
                     className="p-8"
                   >
-                    <Cpu className="w-10 h-10 mx-auto mb-4 text-primary-500" />
+                    <Code className="w-10 h-10 mx-auto mb-4 text-primary-500" />
                     <h3 className="text-xl font-bold text-light-50 mb-2">
-                      Potencializado por IA
+                      Entrega orientada a resultado
                     </h3>
                     <p className="text-light-300">
-                      Nossa principal vantagem? Dominamos o uso de IA em todas as etapas, desde a 
-                      criação de conteúdo, automação de tarefas repetitivas, SEO, design assistido, 
-                      até programação. Isso nos permite oferecer soluções modernas, escaláveis e 
-                      acessíveis, sem abrir mão da personalização e do toque humano.
+                      Não é só estética: estrutura de conversão, métricas e melhoria contínua.
                     </p>
                   </Card3D>
                 </ScrollReveal>
@@ -222,8 +208,58 @@ export default function AboutPage() {
             </div>
           </ScrollReveal>
 
-          {/* CTA Section */}
+          {/* Seção: O que a gente valoriza */}
           <ScrollReveal direction="up" delay={200}>
+            <div className="mb-16">
+              <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: 'easeOut' }}
+                viewport={{ once: true, amount: 0.5 }}
+                className="text-center mb-12"
+              >
+                <h2 className="text-4xl font-bold text-light-50 mb-4">
+                  O que a gente valoriza
+                </h2>
+              </motion.div>
+              <div className="grid md:grid-cols-3 gap-8">
+                {[
+                  {
+                    title: 'Clareza',
+                    description: 'Processo transparente, escopo objetivo e comunicação direta.',
+                  },
+                  {
+                    title: 'Qualidade',
+                    description: 'Código limpo, performance real e atenção a detalhes que fazem diferença.',
+                  },
+                  {
+                    title: 'Evolução',
+                    description: 'Sites que crescem com o negócio, com base escalável e fácil de manter.',
+                  },
+                ].map((value, index) => (
+                  <ScrollReveal key={index} direction="up" delay={index * 100 + 300}>
+                    <Card3D
+                      enableTilt={true}
+                      enableParticles={false}
+                      enableRipple={true}
+                      enableBorderGlow={true}
+                      className="p-8 h-full"
+                    >
+                      <h3 className="text-xl font-bold text-light-50 mb-3">
+                        {value.title}
+                      </h3>
+                      <p className="text-light-300 leading-relaxed">
+                        {value.description}
+                      </p>
+                    </Card3D>
+                  </ScrollReveal>
+                ))}
+              </div>
+            </div>
+          </ScrollReveal>
+
+          {/* CTA Section */}
+          <ScrollReveal direction="up" delay={300}>
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -232,17 +268,14 @@ export default function AboutPage() {
               className="bg-primary-500/10 border border-primary-500/20 rounded-2xl p-10 text-center max-w-4xl mx-auto mt-16"
             >
               <h3 className="text-2xl font-bold text-light-50 mb-4">
-                Pronto para transformar seu negócio?
+                Vamos tirar seu projeto do papel
               </h3>
               <p className="text-lg text-light-200 mb-6">
-                Na Decyphra, cada projeto é tratado como único. Trabalhamos de forma transparente, 
-                com comunicação direta e foco total no seu sucesso. Se você precisa lançar ou 
-                fortalecer sua presença digital, com quem entende de tecnologia e entrega com 
-                agilidade, conte com a Decyphra.
+                Se você quer um site vivo, moderno e sob medida, manda uma mensagem. A gente responde rápido e com direção.
               </p>
               <Link href={ROUTES.contact}>
                 <Button variant="primary" size="lg" enable3D={true} className="font-bold">
-                  Solicite um Orçamento
+                  Fale com a gente
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
               </Link>

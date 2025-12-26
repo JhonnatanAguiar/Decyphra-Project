@@ -162,7 +162,7 @@ export default function PortfolioPage() {
                     className="overflow-hidden group"
                   >
                     {/* Imagem do Projeto */}
-                    <div className="relative h-48 overflow-hidden">
+                    <div className="relative h-48 overflow-hidden bg-dark-900">
                       <Image
                         src={project.image}
                         alt={project.title}
@@ -170,6 +170,13 @@ export default function PortfolioPage() {
                         className="object-cover group-hover:scale-110 transition-transform duration-500"
                         loading="lazy"
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        onError={(e) => {
+                          // Fallback para cor de fundo se imagem não carregar
+                          const target = e.target as HTMLImageElement
+                          if (target.parentElement) {
+                            target.style.display = 'none'
+                          }
+                        }}
                       />
                       {/* Tag de Categoria */}
                       <div className="absolute bottom-4 left-4 z-10">

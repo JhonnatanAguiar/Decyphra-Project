@@ -23,57 +23,57 @@ export default function ServicesPage() {
       id: 1,
       title: 'Desenvolvimento Web',
       slug: 'desenvolvimento-web',
-      description: 'Site profissional em WordPress, Shopify e soluções personalizadas que convertem visitantes em clientes.',
-      longDescription: 'Desenvolvemos sites e aplicações web utilizando as tecnologias mais modernas do mercado. Nossas soluções são responsivas, rápidas e otimizadas para SEO.',
-      features: ['WordPress', 'Shopify', 'Site Personalizado', 'E-commerce'],
+      description: 'Sites e landing pages em código, com animações, performance e SEO desde a base. Total liberdade visual e evolutiva.',
+      longDescription: 'Sites e landing pages em código, com animações, performance e SEO desde a base. Total liberdade visual e evolutiva.',
+      features: ['TypeScript', 'Tailwind', 'Motion', 'SEO técnico'],
     },
     {
       id: 2,
       title: 'SEO & Otimização',
       slug: 'seo-otimizacao',
-      description: 'Posicionamento estratégico no Google para aumentar sua visibilidade e atrair mais clientes qualificados.',
-      longDescription: 'Trabalhamos com técnicas avançadas de SEO técnico, pesquisa de palavras-chave estratégicas, construção de links de qualidade e análise constante de dados.',
-      features: ['SEO Técnico', 'Palavra-chave', 'Link Building', 'Analytics'],
+      description: 'SEO técnico + conteúdo orientado a intenção de busca. Visibilidade consistente e crescimento orgânico mensurável.',
+      longDescription: 'SEO técnico + conteúdo orientado a intenção de busca. Visibilidade consistente e crescimento orgânico mensurável.',
+      features: ['SEO Técnico', 'Conteúdo', 'Análise', 'Otimização'],
     },
     {
       id: 3,
       title: 'Google Ad',
       slug: 'google-ad',
-      description: 'Campanhas publicitárias otimizadas que geram resultados imediatos e maximizam seu retorno sobre investimento.',
-      longDescription: 'Criamos e gerenciamos campanhas publicitárias no Google que geram resultados imediatos e maximizam seu retorno sobre investimento.',
-      features: ['Campanhas de Pesquisa', 'Rede de Display', 'Google Shopping', 'Remarketing'],
+      description: 'Campanhas enxutas e otimizadas para ROI. Tracking bem feito, testes rápidos e escala com controle.',
+      longDescription: 'Campanhas enxutas e otimizadas para ROI. Tracking bem feito, testes rápidos e escala com controle.',
+      features: ['Campanhas', 'Tracking', 'Testes', 'ROI'],
     },
     {
       id: 4,
       title: 'Marketing de Conteúdo',
       slug: 'marketing-de-conteudo',
-      description: 'Estratégias de conteúdo que engajam sua audiência e fortalecem a autoridade da sua marca no mercado.',
-      longDescription: 'Desenvolvemos estratégias de conteúdo que engajam sua audiência e fortalecem a autoridade da sua marca no mercado.',
-      features: ['Blog Post', 'Social Media', 'E-mail Marketing', 'Copywriting'],
+      description: 'Conteúdo que educa, posiciona e converte — com estratégia, consistência e copy orientada a ação.',
+      longDescription: 'Conteúdo que educa, posiciona e converte — com estratégia, consistência e copy orientada a ação.',
+      features: ['Estratégia', 'Conteúdo', 'Copy', 'Consistência'],
     },
     {
       id: 5,
       title: 'Inteligência Artificial',
       slug: 'inteligencia-artificial',
-      description: 'Implementação de IA para automação, chatbots e otimização de processos que aumentam a eficiência.',
-      longDescription: 'Implementamos soluções de inteligência artificial para automação, chatbots e otimização de processos que aumentam a eficiência do seu negócio.',
-      features: ['Chatbot', 'Automação', 'Análise Preditiva', 'Personalização'],
+      description: 'Agentes e automações com IA para acelerar processos, melhorar atendimento e aumentar eficiência operacional.',
+      longDescription: 'Agentes e automações com IA para acelerar processos, melhorar atendimento e aumentar eficiência operacional.',
+      features: ['Automação', 'Chatbots', 'Agentes', 'Otimização'],
     },
     {
       id: 6,
       title: 'E-commerce Completo',
       slug: 'ecommerce-completo',
-      description: 'Lojas virtuais completas com Shopify, WooCommerce e código próprio, com foco em conversão e gestão autônoma.',
-      longDescription: 'Criamos e-commerces completos com Shopify, WooCommerce e código próprio, com foco em conversão e gestão autônoma.',
-      features: ['Shopify', 'WooCommerce', 'Pagamentos & Frete', 'SEO para E-commerce'],
+      description: 'Lojas rápidas, escaláveis e personalizadas — do checkout ao catálogo, com integrações e foco em conversão.',
+      longDescription: 'Lojas rápidas, escaláveis e personalizadas — do checkout ao catálogo, com integrações e foco em conversão.',
+      features: ['Shopify', 'Código próprio', 'Checkout', 'Integrações'],
     },
     {
       id: 7,
       title: 'Consultoria Digital',
       slug: 'consultoria-digital',
-      description: 'Direcionamento estratégico para micro e pequenos negócios que buscam clareza, estruturação e crescimento digital.',
-      longDescription: 'Oferecemos consultoria digital estratégica para micro e pequenos negócios que buscam clareza, estruturação e crescimento digital.',
-      features: ['Diagnóstico Digital', 'Plano de Ação', 'Validação de Projeto', 'Apoio Técnico'],
+      description: 'Direção técnica e estratégica para destravar decisões e organizar um plano de crescimento executável.',
+      longDescription: 'Direção técnica e estratégica para destravar decisões e organizar um plano de crescimento executável.',
+      features: ['Diagnóstico', 'Plano', 'Estratégia', 'Apoio'],
     },
   ]
 
@@ -94,10 +94,10 @@ export default function ServicesPage() {
           <FadeIn direction="up" delay={0}>
             <div className="text-center max-w-3xl mx-auto py-16 lg:py-24">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-light-50 drop-shadow-[0_0_20px_rgba(0,255,136,0.5)]">
-                Nossos <span className="text-primary-500 drop-shadow-[0_0_30px_rgba(0,255,136,0.8)]">Serviços</span>
+                <span className="text-primary-500 drop-shadow-[0_0_30px_rgba(0,255,136,0.8)]">Serviços</span>
               </h1>
               <p className="text-xl md:text-2xl text-light-200 leading-relaxed drop-shadow-[0_0_15px_rgba(0,0,0,0.8)]">
-                Soluções completas em desenvolvimento web, sistemas e APIs para transformar seu negócio digital
+                Soluções digitais completas — com desenvolvimento em código como padrão e uma metodologia acelerada por IA.
               </p>
             </div>
           </FadeIn>
@@ -108,6 +108,17 @@ export default function ServicesPage() {
       <Section variant="default" spacing="lg">
         <Container size="lg">
           <ScrollReveal direction="up" delay={0}>
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-light-50">
+                O que entregamos
+              </h2>
+              <p className="text-lg text-light-200 max-w-2xl mx-auto">
+                Escolha o serviço ou combine como um pacote completo.
+              </p>
+            </div>
+          </ScrollReveal>
+
+          <ScrollReveal direction="up" delay={100}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {services.map((service, index) => (
                 <ScrollReveal key={service.id} direction="up" delay={index * 100}>
@@ -164,16 +175,49 @@ export default function ServicesPage() {
         </Container>
       </Section>
 
-      {/* Seção de Processo */}
+      {/* Seção: Desenvolvimento em código */}
       <Section variant="dark" spacing="lg">
+        <Container size="lg">
+          <ScrollReveal direction="up" delay={0}>
+            <div className="text-center mb-12 max-w-3xl mx-auto">
+              <h2 className="text-4xl md:text-5xl font-bold mb-4 text-light-50">
+                Desenvolvimento em código, sem limitações
+              </h2>
+              <p className="text-lg text-light-200 leading-relaxed">
+                O seu site não precisa nascer preso a plugin, tema ou gambiarra. A gente constrói uma base moderna, pronta para evoluir.
+              </p>
+            </div>
+          </ScrollReveal>
+
+          <ScrollReveal direction="up" delay={100}>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto mb-12">
+              {[
+                'TypeScript para previsibilidade',
+                'Tailwind + componentes reutilizáveis',
+                'Motion/animações para sites vivos',
+                'SEO técnico e performance desde a base',
+              ].map((bullet, index) => (
+                <ScrollReveal key={index} direction="up" delay={index * 100 + 200}>
+                  <div className="bg-dark-900/50 p-6 rounded-xl border border-primary-500/20 text-center">
+                    <p className="text-light-300 leading-relaxed">{bullet}</p>
+                  </div>
+                </ScrollReveal>
+              ))}
+            </div>
+          </ScrollReveal>
+        </Container>
+      </Section>
+
+      {/* Seção: Como trabalhamos */}
+      <Section variant="default" spacing="lg">
         <Container size="lg">
           <ScrollReveal direction="up" delay={0}>
             <div className="text-center mb-12">
               <h2 className="text-4xl md:text-5xl font-bold mb-4 text-light-50">
-                Nosso <span className="text-primary-500">Processo</span>
+                Como trabalhamos
               </h2>
               <p className="text-lg text-light-200 max-w-2xl mx-auto">
-                Trabalhamos de forma organizada e transparente para entregar os melhores resultados
+                Você entende o que está sendo feito, por que está sendo feito, e como isso move o seu negócio.
               </p>
             </div>
           </ScrollReveal>
@@ -183,23 +227,23 @@ export default function ServicesPage() {
               {[
                 {
                   step: '01',
-                  title: 'Descoberta',
-                  description: 'Entendemos suas necessidades e objetivos',
+                  title: 'Diagnóstico',
+                  description: 'Entendemos objetivos, público, referências e metas (conversão, aquisição, autoridade).',
                 },
                 {
                   step: '02',
-                  title: 'Planejamento',
-                  description: 'Criamos um plano detalhado e personalizado',
+                  title: 'Arquitetura & Design',
+                  description: 'Estrutura do site, conteúdo, UI e base de SEO/track para medir o que importa.',
                 },
                 {
                   step: '03',
-                  title: 'Desenvolvimento',
-                  description: 'Desenvolvemos a solução com qualidade e agilidade',
+                  title: 'Build em Código',
+                  description: 'Implementação em TypeScript + Tailwind + Motion. IA acelera; revisão humana garante qualidade.',
                 },
                 {
                   step: '04',
-                  title: 'Entrega',
-                  description: 'Entregamos e damos suporte contínuo',
+                  title: 'Lançamento & Evolução',
+                  description: 'Deploy, métricas, ajustes finos e roadmap de melhorias contínuas para crescer com constância.',
                 },
               ].map((process, index) => (
                 <ScrollReveal key={index} direction="up" delay={index * 100 + 200}>
@@ -210,8 +254,55 @@ export default function ServicesPage() {
                     <h3 className="text-xl font-semibold mb-2 text-light-50">
                       {process.title}
                     </h3>
-                    <p className="text-light-300 text-sm">
+                    <p className="text-light-300 text-sm leading-relaxed">
                       {process.description}
+                    </p>
+                  </div>
+                </ScrollReveal>
+              ))}
+            </div>
+          </ScrollReveal>
+        </Container>
+      </Section>
+
+      {/* Seção: FAQ */}
+      <Section variant="dark" spacing="lg">
+        <Container size="lg">
+          <ScrollReveal direction="up" delay={0}>
+            <div className="text-center mb-12">
+              <h2 className="text-4xl md:text-5xl font-bold mb-4 text-light-50">
+                Perguntas frequentes
+              </h2>
+            </div>
+          </ScrollReveal>
+
+          <ScrollReveal direction="up" delay={100}>
+            <div className="max-w-3xl mx-auto space-y-6">
+              {[
+                {
+                  q: 'Vocês ainda fazem WordPress?',
+                  a: 'Nosso padrão hoje é desenvolvimento em código. Em casos específicos (ex.: migração, legado ou necessidade do cliente), podemos avaliar alternativas — mas a proposta principal é entregar liberdade, performance e escalabilidade via código.',
+                },
+                {
+                  q: 'Vocês entregam acesso para editar conteúdo?',
+                  a: 'Sim. Podemos integrar um CMS moderno (headless) ou um painel simples sob medida para você editar textos, páginas e imagens sem depender de dev no dia a dia.',
+                },
+                {
+                  q: 'Quanto tempo leva?',
+                  a: 'Depende do escopo. Landing pages e sites institucionais enxutos podem ser bem rápidos. Projetos maiores (múltiplas páginas, integrações, e-commerce) exigem mais etapas de validação e QA.',
+                },
+                {
+                  q: 'O site fica pronto para SEO?',
+                  a: 'Sim. A base inclui SEO técnico (estrutura, meta, semântica, performance). Se você quiser crescer organicamente, recomendamos um plano contínuo de conteúdo + otimização.',
+                },
+              ].map((faq, index) => (
+                <ScrollReveal key={index} direction="up" delay={index * 100 + 200}>
+                  <div className="bg-dark-900/50 p-6 rounded-xl border border-primary-500/20">
+                    <h3 className="text-xl font-semibold mb-3 text-light-50">
+                      {faq.q}
+                    </h3>
+                    <p className="text-light-300 leading-relaxed">
+                      {faq.a}
                     </p>
                   </div>
                 </ScrollReveal>
@@ -226,24 +317,11 @@ export default function ServicesPage() {
         <Container size="lg">
           <ScrollReveal direction="up" delay={0}>
             <div className="text-center max-w-3xl mx-auto py-12">
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-light-50">
-                Pronto para começar seu projeto?
-              </h2>
-              <p className="text-xl text-light-200 mb-8">
-                Entre em contato e vamos conversar sobre como podemos ajudar você
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href={ROUTES.contact}>
-                  <Button variant="primary" size="lg" enable3D={true}>
-                    Fale Conosco
-                  </Button>
-                </Link>
-                <Link href={ROUTES.portfolio}>
-                  <Button variant="ghost" size="lg" enable3D={true}>
-                    Ver Portfólio
-                  </Button>
-                </Link>
-              </div>
+              <Link href={ROUTES.contact}>
+                <Button variant="primary" size="lg" enable3D={true}>
+                  Falar com a Decyphra
+                </Button>
+              </Link>
             </div>
           </ScrollReveal>
         </Container>

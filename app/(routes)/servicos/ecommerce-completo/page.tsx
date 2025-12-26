@@ -5,7 +5,7 @@ import { FadeIn, ScrollReveal, ServiceBackground } from '@/views/components/anim
 import { Button } from '@/views/components/ui/Button'
 import Link from 'next/link'
 import { ROUTES } from '@/lib/constants/routes'
-import { ShoppingCart, Settings, PackageCheck, CheckCircle, CreditCard, Truck, Monitor, Users, PencilRuler, Bot, Check, Code } from 'lucide-react'
+import { ShoppingCart, Settings, CheckCircle, CreditCard, Bot, Check, Code } from 'lucide-react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 
@@ -16,66 +16,49 @@ import Image from 'next/image'
  */
 
 export default function EcommerceCompletoPage() {
-  const features = [
-    { name: 'WooCommerce', icon: ShoppingCart },
-    { name: 'Pagamentos & Frete', icon: CreditCard },
-    { name: 'SEO para E-commerce', icon: CheckCircle },
-  ]
-
   const platforms = [
     {
-      name: 'Shopify',
-      text: 'Ideal para quem deseja uma loja estável, segura e fácil de gerenciar. Personalizamos temas, otimizamos a navegação e integramos apps para aumentar conversões.',
+      name: 'Shopify (custom + otimização)',
+      text: 'Estabilidade + gestão simples.',
       icon: 'https://cdn.worldvectorlogo.com/logos/shopify.svg',
       isImage: true,
     },
     {
-      name: 'WooCommerce (WordPress)',
-      text: 'Flexibilidade total para quem busca liberdade de personalização, integração com blogs e melhor controle sobre SEO. Ótima opção para unir conteúdo e vendas.',
-      icon: 'https://cdn.worldvectorlogo.com/logos/woocommerce.svg',
-      isImage: true,
-    },
-    {
-      name: 'Hostinger e Loja Integrada',
-      text: 'Para quem busca agilidade, simplicidade e baixo custo inicial. Criamos lojas que vendem, mesmo com recursos mais enxutos, mantendo design profissional.',
-      icon: 'https://cdn.worldvectorlogo.com/logos/hostinger-1.svg',
-      isImage: true,
-    },
-    {
-      name: 'Código Próprio',
-      text: 'Desenvolvemos e-commerces totalmente customizados com HTML, CSS, JavaScript e integrações com APIs, gateways de pagamento e sistemas de gestão.',
+      name: 'E-commerce em código (sob medida)',
+      text: 'Experiência única, performance máxima, integrações específicas.',
       icon: Code,
+      isImage: false,
+    },
+    {
+      name: 'Integrações',
+      text: 'Pagamento, frete, ERP, automações e CRM.',
+      icon: Settings,
       isImage: false,
     },
   ]
 
-  const includedServices = [
-    { name: 'Configuração Completa', icon: Settings },
-    { name: 'Cadastro de Produtos', icon: PackageCheck },
-    { name: 'Otimização para SEO', icon: CheckCircle },
-    { name: 'Meios de Pagamento', icon: CreditCard },
-    { name: 'Integração de Frete', icon: Truck },
-    { name: 'Design Responsivo', icon: Monitor },
-    { name: 'Treinamento', icon: Users },
-    { name: 'Suporte Pós-Lançamento', icon: PencilRuler },
-  ]
-
-  const idealFor = [
-    'Marcas iniciantes',
-    'Lojas físicas',
-    'Pequenos negócios',
-    'Criadores independentes',
-    'Dropshipping',
-    'E-commerces em reestruturação',
-  ]
-
   const iaPoints = [
-    'Criação de descrições de produtos otimizadas',
-    'Geração de títulos e textos persuasivos',
-    'Sugestões de layout e UX',
-    'Análise de concorrência e diferenciais',
-    'Organização de categorias e estrutura',
-    'Automação de tarefas e testes A/B',
+    'Aceleração de catalogação e padronização de conteúdo (com revisão)',
+    'Otimização de páginas para SEO (categorias, coleções, produtos)',
+    'Apoio a testes e melhorias contínuas de conversão (CRO)',
+    'Automação de fluxos (atendimento, recuperação, segmentação)',
+  ]
+
+  const includedServices = [
+    'Setup da loja + catálogo',
+    'Checkout e integrações',
+    'SEO e performance',
+    'CRO básico (melhorias de conversão)',
+    'Suporte pós-lançamento (opcional)',
+  ]
+
+  const featureGrid = [
+    { title: 'Checkout confiável', description: 'Fluxo de compra claro e sem atrito.' },
+    { title: 'Integrações', description: 'Pagamentos, frete, ERP e automações.' },
+    { title: 'SEO de catálogo', description: 'Estrutura e otimização para produtos e categorias.' },
+    { title: 'Performance', description: 'Loja rápida para converter mais e ranquear melhor.' },
+    { title: 'CRO', description: 'Ajustes contínuos para aumentar taxa de conversão.' },
+    { title: 'Escalabilidade', description: 'Base pronta para crescer em produtos e tráfego.' },
   ]
 
   return (
@@ -101,11 +84,11 @@ export default function EcommerceCompletoPage() {
               </div>
               {/* Título e Mensagem */}
               <div className="flex-1">
-                <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-light-50 leading-tight">
-                  E-commerce <span className="text-primary-500">Completo</span>
+                <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-light-50 leading-tight drop-shadow-[0_0_20px_rgba(0,255,136,0.5)]">
+                  E-commerce <span className="text-primary-500 drop-shadow-[0_0_30px_rgba(0,255,136,0.8)]">Completo</span>
                 </h1>
                 <p className="text-xl md:text-2xl lg:text-3xl text-light-200 leading-relaxed max-w-3xl">
-                  Loja online profissional e pronta para vender, com todas as funcionalidades necessárias para seu negócio crescer.
+                  Loja rápida, escalável e personalizada — com integrações e foco em conversão.
                 </p>
               </div>
             </div>
@@ -119,26 +102,27 @@ export default function EcommerceCompletoPage() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Main Content */}
             <div className="lg:col-span-2 space-y-16">
-              {/* Seção: E-commerce Completo */}
+              {/* Seção: E-commerce do jeito certo */}
               <ScrollReveal direction="up" delay={0}>
                 <div>
                   <h2 className="text-3xl font-bold text-light-50 mb-4 flex items-center">
                     <ShoppingCart className="w-8 h-8 mr-3 text-primary-500" />
-                    E-commerce Completo e Pronto para Vender
+                    E-commerce do jeito certo
                   </h2>
+                  <p className="text-lg text-light-200 leading-relaxed mb-4">
+                    Criamos lojas com uma base moderna, priorizando velocidade, UX, SEO de catálogo e conversão.
+                  </p>
                   <p className="text-lg text-light-200 leading-relaxed">
-                    Desenvolvemos e-commerces em plataformas consolidadas como Shopify, WordPress (WooCommerce), 
-                    Hostinger Store Builder, Loja Integrada, ou através de código personalizado — tudo adaptado 
-                    ao seu nicho, público e objetivo.
+                    Quando faz sentido, usamos plataformas consolidadas; quando o projeto pede liberdade total, construímos em código.
                   </p>
                 </div>
               </ScrollReveal>
 
-              {/* Seção: Plataformas e Tecnologias */}
+              {/* Seção: Abordagens */}
               <ScrollReveal direction="up" delay={100}>
                 <div>
                   <h3 className="text-2xl font-bold text-light-50 mb-6">
-                    🧰 Plataformas e Tecnologias que Utilizamos
+                    Abordagens que trabalhamos
                   </h3>
                   <div className="space-y-6">
                     {platforms.map((platform, i) => (
@@ -152,19 +136,20 @@ export default function EcommerceCompletoPage() {
                       >
                         <div className="flex-shrink-0 flex items-center gap-4">
                           {platform.isImage ? (
-                            <div className="w-10 h-10 relative">
+                            <div className="w-10 h-10 relative flex items-center justify-center bg-dark-800/50 rounded-lg border border-dark-700">
                               <Image
                                 src={platform.icon as string}
                                 alt={`${platform.name} logo`}
                                 width={40}
                                 height={40}
-                                className="object-contain"
+                                className="object-contain w-full h-full p-1.5"
                                 loading="lazy"
+                                unoptimized={true}
                               />
                             </div>
                           ) : (
                             typeof platform.icon !== 'string' && (
-                              <platform.icon className="w-10 h-10 text-primary-500" />
+                              <platform.icon className="w-10 h-10 text-primary-500 flex-shrink-0" />
                             )
                           )}
                           <h4 className="text-xl font-semibold text-light-50 sm:hidden">{platform.name}</h4>
@@ -179,17 +164,14 @@ export default function EcommerceCompletoPage() {
                 </div>
               </ScrollReveal>
 
-              {/* Seção: Como usamos IA para E-commerce */}
+              {/* Seção: IA aplicada ao e-commerce */}
               <ScrollReveal direction="up" delay={200}>
                 <div>
                   <h3 className="text-2xl font-bold text-light-50 mb-4 flex items-center">
                     <Bot className="w-7 h-7 mr-3 text-primary-500" />
-                    Como usamos IA para E-commerce
+                    IA aplicada ao e-commerce
                   </h3>
-                  <p className="text-lg text-light-200 leading-relaxed mb-4">
-                    Com IA, conseguimos acelerar o processo de criação da loja e deixá-la mais inteligente desde o lançamento.
-                  </p>
-                  <ul className="space-y-2 text-light-300 grid md:grid-cols-2 gap-x-6 gap-y-2">
+                  <ul className="space-y-3 text-light-300">
                     {iaPoints.map((item, i) => (
                       <motion.li
                         key={i}
@@ -197,9 +179,9 @@ export default function EcommerceCompletoPage() {
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.5, delay: i * 0.1 }}
                         viewport={{ once: true }}
-                        className="flex items-center"
+                        className="flex items-start bg-dark-900/50 p-4 rounded-lg border border-primary-500/20"
                       >
-                        <Check className="w-5 h-5 mr-2 text-primary-500 flex-shrink-0" />
+                        <Check className="w-5 h-5 mr-3 text-primary-500 flex-shrink-0 mt-0.5" />
                         <span>{item}</span>
                       </motion.li>
                     ))}
@@ -207,53 +189,27 @@ export default function EcommerceCompletoPage() {
                 </div>
               </ScrollReveal>
 
-              {/* Seção: O que está incluso */}
+              {/* Seção: O que está incluído */}
               <ScrollReveal direction="up" delay={300}>
                 <div>
                   <h3 className="text-2xl font-bold text-light-50 mb-6">
-                    ✅ O que está incluso no nosso serviço de E-commerce
+                    O que está incluído
                   </h3>
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    {includedServices.map((item, i) => {
-                      const IconComponent = item.icon
-                      return (
-                        <motion.div
-                          key={i}
-                          initial={{ opacity: 0, scale: 0.9 }}
-                          whileInView={{ opacity: 1, scale: 1 }}
-                          transition={{ duration: 0.5, delay: i * 0.1 }}
-                          viewport={{ once: true }}
-                          className="bg-dark-900/60 p-4 rounded-lg text-center border border-transparent hover:border-primary-500/50 transition-colors"
-                        >
-                          <IconComponent className="w-8 h-8 mx-auto mb-2 text-primary-500" />
-                          <span className="text-light-300 text-sm">{item.name}</span>
-                        </motion.div>
-                      )
-                    })}
-                  </div>
-                </div>
-              </ScrollReveal>
-
-              {/* Seção: Ideal para */}
-              <ScrollReveal direction="up" delay={400}>
-                <div>
-                  <h3 className="text-2xl font-bold text-light-50 mb-6 text-center">
-                    📌 Ideal para:
-                  </h3>
-                  <div className="flex flex-wrap gap-3 justify-center">
-                    {idealFor.map((item, i) => (
-                      <motion.span
+                  <ul className="space-y-3">
+                    {includedServices.map((item, i) => (
+                      <motion.li
                         key={i}
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.3, delay: i * 0.05 }}
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.5, delay: i * 0.1 }}
                         viewport={{ once: true }}
-                        className="bg-primary-500/10 text-primary-500 py-2 px-4 rounded-full text-sm font-semibold"
+                        className="flex items-start text-light-200"
                       >
-                        {item}
-                      </motion.span>
+                        <CheckCircle className="w-5 h-5 mr-3 text-primary-500 flex-shrink-0 mt-0.5" />
+                        <span>{item}</span>
+                      </motion.li>
                     ))}
-                  </div>
+                  </ul>
                 </div>
               </ScrollReveal>
             </div>
@@ -263,22 +219,19 @@ export default function EcommerceCompletoPage() {
               <ScrollReveal direction="up" delay={100}>
                 <div className="bg-dark-900 rounded-lg border border-dark-800 p-6 sticky top-24">
                   <h3 className="text-xl font-semibold mb-6 text-light-50">
-                    O que está incluído?
+                    Principais recursos
                   </h3>
-                  <ul className="space-y-4 mb-6">
-                    {features.map((feature, index) => {
-                      const IconComponent = feature.icon
-                      return (
-                        <li key={index} className="flex items-center gap-3">
-                          <IconComponent className="w-5 h-5 text-primary-500 flex-shrink-0" strokeWidth={2} />
-                          <span className="text-light-200">{feature.name}</span>
-                        </li>
-                      )
-                    })}
-                  </ul>
+                  <div className="space-y-4 mb-6">
+                    {featureGrid.map((feature, index) => (
+                      <div key={index} className="bg-dark-800/50 p-4 rounded-lg border border-primary-500/20">
+                        <h4 className="font-semibold text-light-50 mb-1">{feature.title}</h4>
+                        <p className="text-light-300 text-sm">{feature.description}</p>
+                      </div>
+                    ))}
+                  </div>
                   <Link href={ROUTES.contact} className="w-full">
                     <Button variant="primary" size="md" enable3D={true} className="w-full">
-                      Solicitar Orçamento
+                      Quero vender mais
                     </Button>
                   </Link>
                 </div>
@@ -293,9 +246,15 @@ export default function EcommerceCompletoPage() {
         <Container size="lg">
           <ScrollReveal direction="up" delay={0}>
             <div className="text-center max-w-3xl mx-auto py-12">
+              <h3 className="text-3xl font-bold mb-4 text-light-50">
+                Vamos montar um e-commerce pronto para escalar
+              </h3>
+              <p className="text-lg text-light-200 mb-8">
+                A gente desenha a melhor arquitetura e constrói a loja com foco em performance e conversão.
+              </p>
               <Link href={ROUTES.contact}>
                 <Button variant="primary" size="lg" enable3D={true}>
-                  Pronto para vender com uma loja profissional?
+                  Solicitar proposta
                 </Button>
               </Link>
             </div>
