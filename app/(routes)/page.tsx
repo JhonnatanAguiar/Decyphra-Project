@@ -1,5 +1,7 @@
 import type { Metadata } from 'next'
 import { baseMetadata, homeMetadata } from '@/lib/constants/metadata'
+import { generateOrganizationSchema, generateWebSiteSchema } from '@/lib/utils/schema'
+import { JsonLd } from '@/views/components/seo/JsonLd'
 import HomePageClient from './HomePageClient'
 
 /**
@@ -21,5 +23,14 @@ export const metadata: Metadata = {
 }
 
 export default function HomePage() {
-  return <HomePageClient />
+  const organizationSchema = generateOrganizationSchema()
+  const webSiteSchema = generateWebSiteSchema()
+
+  return (
+    <>
+      <JsonLd data={organizationSchema} />
+      <JsonLd data={webSiteSchema} />
+      <HomePageClient />
+    </>
+  )
 }
