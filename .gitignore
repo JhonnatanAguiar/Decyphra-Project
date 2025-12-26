@@ -56,3 +56,6 @@ next-env.d.ts
 
 # Bundle analyzer
 .next/analyze/
+
+# Acessibility test reports
+.a11y-reports/

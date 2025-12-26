@@ -18,7 +18,9 @@
         "postinstall": "prisma generate",
         "logos:generate": "node scripts/generate-logos-png.js",
         "lighthouse": "node scripts/lighthouse-audit.js",
-        "analyze": "ANALYZE=true next build"
+        "analyze": "ANALYZE=true next build",
+        "a11y:test": "node scripts/a11y-test.js",
+        "a11y:axe": "node scripts/a11y-axe-test.js"
     },
     "dependencies": {
         "@hookform/resolvers": "^3.9.0",

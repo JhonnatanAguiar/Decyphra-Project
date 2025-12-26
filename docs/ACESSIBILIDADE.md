@@ -263,9 +263,26 @@ className="focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-off
 - ✅ Alt texts
 
 ### Áreas para Melhoria
-- ⏳ Testes regulares com screen readers
-- ⏳ Validação automática em CI/CD
-- ⏳ Documentação de padrões para novos desenvolvedores
+- ✅ Testes automatizados implementados (`npm run a11y:test`)
+- ⏳ Testes regulares com screen readers (guia disponível)
+- ⏳ Validação automática em CI/CD (futuro)
+
+---
+
+## 🧪 Testes de Acessibilidade
+
+Veja o guia completo em [`docs/A11Y-TESTES.md`](./A11Y-TESTES.md) para:
+- Testes automatizados (Lighthouse, Pa11y, axe-core)
+- Checklist de testes manuais com screen readers
+- Comandos do NVDA e VoiceOver
+- Template de relatório de testes
+
+**Executar testes:**
+```bash
+npm run a11y:test      # Testes automatizados com Pa11y
+npm run lighthouse     # Lighthouse (inclui acessibilidade)
+npm run a11y:axe       # Testes com axe-core (opcional)
+```
 
 ---
 

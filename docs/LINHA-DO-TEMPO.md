@@ -2769,4 +2769,96 @@ npm run analyze  # Executar análise de bundle
 
 ---
 
+---
+
+**19/12/2025 - Scripts e Guia de Testes de Acessibilidade (Fase 6.3 - Finalização)**
+
+**Contexto:** Finalização da Fase 6.3 com criação de scripts automatizados e guia completo de testes de acessibilidade.
+
+**Implementado:**
+
+1. **Script de Testes Automatizados com Pa11y** ✅
+   - Criado `scripts/a11y-test.js` para testes automatizados
+   - Testa múltiplas páginas automaticamente (Home, Serviços, Portfolio, Sobre, Depoimentos, Contato, Desenvolvimento Web)
+   - Gera relatórios JSON e HTML para cada página
+   - Resumo consolidado com total de problemas encontrados
+   - **Uso:** `npm run a11y:test`
+   - **Output:** Relatórios em `.a11y-reports/`
+
+2. **Script de Testes com axe-core** ✅
+   - Criado `scripts/a11y-axe-test.js` para testes usando axe-core
+   - Testa conformidade WCAG2A e WCAG2AA
+   - Gera relatórios detalhados com violações
+   - **Uso:** `npm run a11y:axe` (requer instalação de dependências)
+   - **Output:** Relatórios JSON em `.a11y-reports/`
+
+3. **Guia Completo de Testes de Acessibilidade** ✅
+   - Criado `docs/A11Y-TESTES.md` com guia detalhado
+   - Instruções para testes automatizados (Lighthouse, Pa11y, axe-core)
+   - Checklist completo de testes manuais com screen readers
+   - Comandos do NVDA e VoiceOver
+   - Template de relatório de testes
+   - Ferramentas adicionais recomendadas
+   - Critérios de sucesso
+
+4. **Scripts Adicionados ao package.json** ✅
+   - `npm run a11y:test` - Testes com Pa11y
+   - `npm run a11y:axe` - Testes com axe-core
+   - `npm run lighthouse` - Já existente (inclui auditoria de acessibilidade)
+
+5. **Gitignore Atualizado** ✅
+   - Adicionado `.a11y-reports/` para relatórios de testes
+
+**Como Usar:**
+
+```bash
+# 1. Inicie o servidor
+npm run dev
+
+# 2. Execute testes automatizados
+npm run a11y:test        # Testes com Pa11y (WCAG2AA)
+npm run lighthouse       # Lighthouse (inclui acessibilidade)
+npm run a11y:axe         # Testes com axe-core (opcional)
+
+# 3. Para testes manuais, siga o guia:
+# docs/A11Y-TESTES.md
+```
+
+**Testes Disponíveis:**
+
+1. **Lighthouse** (já configurado)
+   - Auditoria completa incluindo acessibilidade
+   - Score de 0-100
+   - Recomendações detalhadas
+
+2. **Pa11y** (novo)
+   - Testes WCAG2AA
+   - Múltiplas páginas automaticamente
+   - Relatórios JSON e HTML
+
+3. **axe-core** (opcional)
+   - Testes WCAG2A e WCAG2AA
+   - Detalhes de violações
+   - Requer instalação: `npm install --save-dev @axe-core/cli puppeteer`
+
+**Testes Manuais:**
+
+- Checklist completo em `docs/A11Y-TESTES.md`
+- Instruções para NVDA, JAWS, VoiceOver
+- Comandos de navegação por teclado
+- Template de relatório
+
+**Arquivos Criados:**
+- `scripts/a11y-test.js` - Script de testes com Pa11y
+- `scripts/a11y-axe-test.js` - Script de testes com axe-core
+- `docs/A11Y-TESTES.md` - Guia completo de testes
+
+**Arquivos Modificados:**
+- `package.json` - Scripts `a11y:test` e `a11y:axe` adicionados
+- `.gitignore` - Diretório `.a11y-reports/` adicionado
+
+**Status:** ✅ Ferramentas de teste criadas | Guia completo disponível | Próximo passo: executar testes quando servidor estiver rodando
+
+---
+
 **Última atualização:** 19/12/2025
