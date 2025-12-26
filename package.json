@@ -16,7 +16,9 @@
         "db:studio": "npx dotenv-cli -e .env.local -- prisma studio",
         "db:generate": "prisma generate",
         "postinstall": "prisma generate",
-        "logos:generate": "node scripts/generate-logos-png.js"
+        "logos:generate": "node scripts/generate-logos-png.js",
+        "lighthouse": "node scripts/lighthouse-audit.js",
+        "analyze": "ANALYZE=true next build"
     },
     "dependencies": {
         "@hookform/resolvers": "^3.9.0",

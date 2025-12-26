@@ -49,3 +49,10 @@ next-env.d.ts
 *.bak
 *~
 *.tmp
+
+# Lighthouse reports
+.lighthouse/
+*.lighthouse.html
+
+# Bundle analyzer
+.next/analyze/

@@ -5,6 +5,8 @@ import './globals.css'
 const inter = Inter({ 
   subsets: ['latin'],
   variable: '--font-inter',
+  display: 'swap', // Evita FOIT (Flash of Invisible Text)
+  preload: true, // Preload da fonte para melhor performance
 })
 
 import { baseMetadata } from '@/lib/constants/metadata'
