@@ -1,5 +1,8 @@
 'use client'
 
+import { useEffect } from 'react'
+import * as Sentry from '@sentry/nextjs'
+
 export default function Error({
   error,
   reset,
@@ -7,6 +10,18 @@ export default function Error({
   error: Error & { digest?: string }
   reset: () => void
 }) {
+  useEffect(() => {
+    // Reportar erro ao Sentry
+    if (process.env.NEXT_PUBLIC_SENTRY_DSN) {
+      Sentry.captureException(error)
+    }
+    
+    // Log no console em desenvolvimento
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Error Boundary:', error)
+    }
+  }, [error])
+
   return (
     <div className="min-h-screen bg-dark-950 flex items-center justify-center">
       <div className="text-center">

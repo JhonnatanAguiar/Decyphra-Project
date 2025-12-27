@@ -1,5 +1,10 @@
+// Importar configuração do Sentry
+const { withSentryConfig } = require('@sentry/nextjs')
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Habilitar instrumentation para Sentry
+  instrumentationHook: true,
   images: {
     remotePatterns: [
       {
@@ -84,4 +89,25 @@ const nextConfig = {
   // Dynamic imports para componentes pesados
 }
 
-module.exports = nextConfig
+// Configuração do Sentry
+const sentryWebpackPluginOptions = {
+  // Silenciar durante build (evita poluir logs)
+  silent: true,
+  
+  // Org e projeto do Sentry (configurar via variáveis de ambiente)
+  org: process.env.SENTRY_ORG,
+  project: process.env.SENTRY_PROJECT,
+  
+  // Upload de source maps apenas em produção
+  dryRun: process.env.NODE_ENV !== 'production' || !process.env.SENTRY_AUTH_TOKEN,
+  
+  // Configurações de source maps
+  widenClientFileUpload: true,
+  hideSourceMaps: true,
+  disableLogger: true,
+}
+
+// Exportar com ou sem Sentry dependendo se está configurado
+module.exports = process.env.SENTRY_AUTH_TOKEN 
+  ? withSentryConfig(nextConfig, sentryWebpackPluginOptions)
+  : nextConfig

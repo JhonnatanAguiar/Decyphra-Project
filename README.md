@@ -226,6 +226,7 @@ Veja o roadmap completo com checklists atualizados em [PLANEJAMENTO-COMPLETO.md]
 ### 🚀 Deploy e Manutenção
 - **[DEPLOY.md](./docs/DEPLOY.md)** - Guia completo de deploy na Vercel e outras plataformas
 - **[MANUTENCAO.md](./docs/MANUTENCAO.md)** - Guia de manutenção, atualizações e troubleshooting
+- **[MONITORAMENTO.md](./docs/MONITORAMENTO.md)** - Guia completo de monitoramento (Speed Insights, GA4, Sentry, Uptime)
 
 ### 🧪 Testes
 - **[TESTES.md](./docs/TESTES.md)** - Estratégia e guia de testes

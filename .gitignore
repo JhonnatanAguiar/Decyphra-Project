@@ -60,3 +60,6 @@ next-env.d.ts
 
 # Acessibility test reports
 .a11y-reports/
+
+# Sentry Config File
+.env.sentry-build-plugin

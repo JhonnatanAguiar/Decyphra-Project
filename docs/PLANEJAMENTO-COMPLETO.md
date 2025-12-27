@@ -610,7 +610,7 @@ light: {
 ---
 
 ### 🚢 Fase 7: Testes e Deploy
-**Status:** ⏳ **EM PROGRESSO** (Deploy concluído, monitoramento e documentação em andamento - 80% completo)
+**Status:** ⏳ **QUASE CONCLUÍDA** (Deploy e monitoramento concluídos, alguns testes manuais pendentes - 90% completo)
 
 #### 7.1 Testes
 - [x] Guia de testes criado (`docs/TESTES.md`) - ✅ Concluído
@@ -635,8 +635,8 @@ light: {
 #### 7.3 Monitoramento
 - [x] SpeedInsights da Vercel - ✅ Concluído (`@vercel/speed-insights` integrado no layout)
 - [x] Google Analytics 4 (GA4) - ✅ Concluído (`@next/third-parties/google` integrado com lazy loading, utilitários para eventos customizados)
-- [ ] Error tracking (Sentry ou similar)
-- [ ] Uptime monitoring
+- [x] Error tracking (Sentry) - ✅ Concluído (`@sentry/nextjs` configurado com client/server/edge configs, error boundary integrado, requer DSN para ativar)
+- [x] Uptime monitoring - ✅ Documentado (`docs/MONITORAMENTO.md` com guia completo de serviços e configuração)
 
 #### 7.4 Documentação Final
 - [x] README.md completo - ✅ Concluído (atualizado com informações completas, scripts, status atual)
@@ -701,6 +701,13 @@ EMAIL_FROM="noreply@decyphra.com.br"
 EMAIL_TO="jhonnatanaguiar@decyphra.com.br"
 RESEND_API_KEY="re_xxxxxxxxxxxxxxxxxxxxx"
 RESEND_WEBHOOK_SECRET="whsec_xxxxxxxxxxxxxxxxxxxxx"
+
+# Sentry (Error Tracking) - Opcional
+NEXT_PUBLIC_SENTRY_DSN="https://xxx@xxx.ingest.sentry.io/xxx"
+SENTRY_DSN="https://xxx@xxx.ingest.sentry.io/xxx"
+SENTRY_ORG="sua-org"
+SENTRY_PROJECT="decyphra-website"
+SENTRY_AUTH_TOKEN="sentry_auth_token"
 ```
 
 ### Scripts Disponíveis
