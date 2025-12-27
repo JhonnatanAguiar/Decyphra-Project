@@ -168,28 +168,76 @@ npm run db:studio    # Abre Prisma Studio (lê .env.local)
 npm run db:generate  # Gera Prisma Client
 npm run test:connection # Testa conexão com banco
 
+# Testes
+npm run test         # Executa testes (Vitest)
+
 # Qualidade
 npm run lint         # Executa ESLint
 npm run type-check   # Verifica tipos TypeScript
+
+# Performance e Análise
+npm run lighthouse   # Auditoria Lighthouse (performance, a11y, SEO)
+npm run analyze      # Análise de bundle size (webpack-bundle-analyzer)
+npm run a11y:test    # Testes de acessibilidade (pa11y)
+npm run a11y:axe     # Testes de acessibilidade (axe-core)
 ```
 
 ## 🚢 Deploy
 
-### Vercel (Recomendado)
+O projeto está configurado e em produção na **Vercel**.
 
-1. Conectar repositório GitHub
-2. Configurar variáveis de ambiente
-3. Deploy automático
+### Deploy Atual
 
-### Outras Plataformas
+- **URL de Produção:** [decyphra.com.br](https://decyphra.com.br)
+- **Plataforma:** Vercel
+- **Banco de Dados:** Neon PostgreSQL
+- **Monitoramento:** Vercel SpeedInsights + Google Analytics 4
 
-O projeto está preparado para migração fácil. Veja documentação de deploy em cada plataforma.
+### Documentação Completa
+
+Veja o **[Guia de Deploy](./docs/DEPLOY.md)** para:
+- Instruções detalhadas de deploy
+- Configuração de variáveis de ambiente
+- Configuração de domínio
+- Troubleshooting
+
+### Variáveis de Ambiente Necessárias
+
+```env
+DATABASE_URL="postgresql://..."
+NEXT_PUBLIC_SITE_URL="https://decyphra.com.br"
+NEXT_PUBLIC_SITE_NAME="Decyphra"
+NEXT_PUBLIC_GA_MEASUREMENT_ID="G-..." # Opcional
+```
 
 ## 📈 Roadmap e Progresso
 
 Veja o roadmap completo com checklists atualizados em [PLANEJAMENTO-COMPLETO.md](./docs/PLANEJAMENTO-COMPLETO.md)
 
-**Status Atual:** Fase 1 em progresso (85% completo)
+**Status Atual:** 
+- ✅ Fases 0-6: Concluídas (100%)
+- ⏳ Fase 7: Em progresso (75% completo)
+  - ✅ Deploy: 100%
+  - ✅ Monitoramento: 66% (SpeedInsights e Google Analytics configurados)
+  - ⏳ Documentação Final: Em andamento
+
+## 📚 Documentação Adicional
+
+### 🚀 Deploy e Manutenção
+- **[DEPLOY.md](./docs/DEPLOY.md)** - Guia completo de deploy na Vercel e outras plataformas
+- **[MANUTENCAO.md](./docs/MANUTENCAO.md)** - Guia de manutenção, atualizações e troubleshooting
+
+### 🧪 Testes
+- **[TESTES.md](./docs/TESTES.md)** - Estratégia e guia de testes
+- **[TESTES-MANUAIS.md](./docs/TESTES-MANUAIS.md)** - Checklist de testes manuais
+
+### ♿ Acessibilidade
+- **[ACESSIBILIDADE.md](./docs/ACESSIBILIDADE.md)** - Guia completo de acessibilidade
+- **[A11Y-TESTES.md](./docs/A11Y-TESTES.md)** - Como executar testes de acessibilidade
+
+### ⚡ Performance
+- **[PERFORMANCE.md](./docs/PERFORMANCE.md)** - Otimizações e ferramentas de análise
+- **[CORE-WEB-VITALS.md](./docs/CORE-WEB-VITALS.md)** - Métricas Core Web Vitals
 
 ## 🤝 Contribuindo
 

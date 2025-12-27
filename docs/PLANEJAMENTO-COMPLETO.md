@@ -610,7 +610,7 @@ light: {
 ---
 
 ### 🚢 Fase 7: Testes e Deploy
-**Status:** ⏳ **EM PROGRESSO** (Deploy concluído, testes em andamento - 20% completo)
+**Status:** ⏳ **EM PROGRESSO** (Deploy concluído, monitoramento e documentação em andamento - 80% completo)
 
 #### 7.1 Testes
 - [x] Guia de testes criado (`docs/TESTES.md`) - ✅ Concluído
@@ -639,9 +639,9 @@ light: {
 - [ ] Uptime monitoring
 
 #### 7.4 Documentação Final
-- [ ] README.md completo
-- [ ] Documentação de deploy
-- [ ] Guia de manutenção
+- [x] README.md completo - ✅ Concluído (atualizado com informações completas, scripts, status atual)
+- [x] Documentação de deploy - ✅ Concluído (`docs/DEPLOY.md` com guia completo para Vercel e outras plataformas)
+- [x] Guia de manutenção - ✅ Concluído (`docs/MANUTENCAO.md` com tarefas periódicas, troubleshooting e boas práticas)
 
 ---
 
@@ -685,18 +685,22 @@ light: {
 ### Variáveis de Ambiente (`.env.local`)
 
 ```env
-# Database (Neon)
+# Database (Neon) - Obrigatório
 DATABASE_URL="postgresql://user:password@host/database?sslmode=require"
 
-# Next.js
+# Next.js (Públicas) - Obrigatório
 NEXT_PUBLIC_SITE_URL="https://decyphra.com.br"
 NEXT_PUBLIC_SITE_NAME="Decyphra"
 NEXT_PUBLIC_API_VERSION="v1"
 
-# Email (Futuro - Fase 5)
+# Google Analytics 4 - Opcional
+NEXT_PUBLIC_GA_MEASUREMENT_ID="G-XXXXXXXXXX"
+
+# Email (Resend) - Opcional
 EMAIL_FROM="noreply@decyphra.com.br"
 EMAIL_TO="jhonnatanaguiar@decyphra.com.br"
-RESEND_API_KEY=""
+RESEND_API_KEY="re_xxxxxxxxxxxxxxxxxxxxx"
+RESEND_WEBHOOK_SECRET="whsec_xxxxxxxxxxxxxxxxxxxxx"
 ```
 
 ### Scripts Disponíveis
