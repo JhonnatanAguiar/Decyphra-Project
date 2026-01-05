@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import dynamic from 'next/dynamic'
+import { Analytics } from '@vercel/analytics/next'
 import * as Sentry from '@sentry/nextjs'
 import './globals.css'
 
@@ -64,6 +65,7 @@ export default function RootLayout({
         {children}
         <SpeedInsights />
         <GoogleAnalytics />
+        <Analytics />
       </body>
     </html>
   )
