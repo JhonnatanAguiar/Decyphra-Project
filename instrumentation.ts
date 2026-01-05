@@ -5,14 +5,16 @@
  * Usado para inicializar ferramentas de monitoramento como Sentry
  */
 
+import * as Sentry from '@sentry/nextjs'
+
 export async function register() {
   if (process.env.NEXT_RUNTIME === 'nodejs') {
-    // Inicializar Sentry apenas no servidor Node.js
     await import('./sentry.server.config')
   }
-  
+
   if (process.env.NEXT_RUNTIME === 'edge') {
-    // Se precisar de suporte para Edge Runtime no futuro
-    // await import('./sentry.edge.config')
+    await import('./sentry.edge.config')
   }
 }
+
+export const onRequestError = Sentry.captureRequestError

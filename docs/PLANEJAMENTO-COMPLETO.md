@@ -610,7 +610,9 @@ light: {
 ---
 
 ### 🚢 Fase 7: Testes e Deploy
-**Status:** ⏳ **QUASE CONCLUÍDA** (Deploy e monitoramento concluídos, alguns testes manuais pendentes - 90% completo)
+**Status:** ⏳ **QUASE CONCLUÍDA** (Deploy, monitoramento e documentação 100% completos, testes manuais pendentes - 95% completo)
+
+**Ver também:** `docs/STATUS-FINAL.md` para resumo detalhado do que falta.
 
 #### 7.1 Testes
 - [x] Guia de testes criado (`docs/TESTES.md`) - ✅ Concluído
@@ -744,9 +746,13 @@ npm run type-check   # Verifica tipos TypeScript
 | Fase 4: Dinâmicas | 100% | ✅ **Concluída** |
 | Fase 5: Backend | 90% | ✅ **Concluída** (newsletter em standby, refatorações aplicadas) |
 | Fase 6: SEO | 98% | ✅ **Quase Concluída** |
-| Fase 7: Deploy | 90% | ⏳ **Em Progresso** (Deploy concluído, testes em andamento) |
+| Fase 7: Deploy | 95% | ⏳ **Quase Concluída** (Deploy, monitoramento e documentação 100%, testes manuais pendentes) |
 
-**Progresso Total:** ~83% completo
+**Progresso Total:** ~97% completo
+
+**Status:** ✅ **Pronto para Produção** | ⏳ **97% Completo**
+
+Para ver o status detalhado do que falta, consulte: `docs/STATUS-FINAL.md`
 
 ---
 

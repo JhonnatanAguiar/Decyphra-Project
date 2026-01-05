@@ -53,7 +53,7 @@ export default function Page() {
           <a
             target="_blank"
             rel="noopener"
-            href="https://decyphra.sentry.io/issues/?project=4510604550012928"
+            href="https://decyphra.sentry.io/issues/?project=4510659882778624"
           >
             Issues Page
           </a>

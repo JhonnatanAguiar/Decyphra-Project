@@ -19,7 +19,7 @@ declare global {
  * Obtém o Measurement ID do Google Analytics
  */
 function getGAId(): string {
-  return process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || 'G-T5BVFVHYYY'
+  return process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || ''
 }
 
 /**

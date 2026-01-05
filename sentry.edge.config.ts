@@ -1,18 +1,19 @@
-/**
- * Sentry Edge Configuration
- * 
- * Configuração do Sentry para Edge Runtime (Middlewares, Edge Functions)
- * Atualmente não utilizado, mas configurado para uso futuro
- */
+// This file configures the initialization of Sentry for edge features (middleware, edge routes, and so on).
+// The config you add here will be used whenever one of the edge features is loaded.
+// Note that this config is unrelated to the Vercel Edge Runtime and is also required when running locally.
+// https://docs.sentry.io/platforms/javascript/guides/nextjs/
 
-import * as Sentry from '@sentry/nextjs'
+import * as Sentry from "@sentry/nextjs";
 
 Sentry.init({
   dsn: process.env.NEXT_PUBLIC_SENTRY_DSN,
-  
-  tracesSampleRate: 0.1,
-  
+
+  // Performance Monitoring - 10% em produção, 100% em desenvolvimento
+  tracesSampleRate: process.env.NODE_ENV === 'production' ? 0.1 : 1.0,
+
+  // Ambiente
   environment: process.env.NODE_ENV || 'development',
-  
+
+  // Apenas capturar erros em produção quando DSN estiver configurado
   enabled: process.env.NODE_ENV === 'production' && !!process.env.NEXT_PUBLIC_SENTRY_DSN,
-})
+});

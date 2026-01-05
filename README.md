@@ -214,12 +214,17 @@ NEXT_PUBLIC_GA_MEASUREMENT_ID="G-..." # Opcional
 
 Veja o roadmap completo com checklists atualizados em [PLANEJAMENTO-COMPLETO.md](./docs/PLANEJAMENTO-COMPLETO.md)
 
+Para status detalhado do que falta, consulte: [STATUS-FINAL.md](./docs/STATUS-FINAL.md)
+
 **Status Atual:** 
 - ✅ Fases 0-6: Concluídas (100%)
-- ⏳ Fase 7: Em progresso (75% completo)
+- ⏳ Fase 7: Quase concluída (95% completo)
   - ✅ Deploy: 100%
-  - ✅ Monitoramento: 66% (SpeedInsights e Google Analytics configurados)
-  - ⏳ Documentação Final: Em andamento
+  - ✅ Monitoramento: 100% (SpeedInsights, GA4, Sentry configurados)
+  - ✅ Documentação Final: 100%
+  - ⏳ Testes Manuais: Pendentes (checklists criados)
+
+**Ver:** [`docs/STATUS-FINAL.md`](./docs/STATUS-FINAL.md) para detalhes do que falta
 
 ## 📚 Documentação Adicional
 

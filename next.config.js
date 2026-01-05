@@ -89,25 +89,30 @@ const nextConfig = {
   // Dynamic imports para componentes pesados
 }
 
-// Configuração do Sentry
-const sentryWebpackPluginOptions = {
-  // Silenciar durante build (evita poluir logs)
-  silent: true,
+// Configuração do Sentry (usando valores do wizard ou variáveis de ambiente)
+const sentryConfig = {
+  org: process.env.SENTRY_ORG || "decyphra",
+  project: process.env.SENTRY_PROJECT || "decyphra-project",
   
-  // Org e projeto do Sentry (configurar via variáveis de ambiente)
-  org: process.env.SENTRY_ORG,
-  project: process.env.SENTRY_PROJECT,
+  // Only print logs for uploading source maps in CI
+  silent: !process.env.CI,
   
-  // Upload de source maps apenas em produção
-  dryRun: process.env.NODE_ENV !== 'production' || !process.env.SENTRY_AUTH_TOKEN,
-  
-  // Configurações de source maps
+  // Upload a larger set of source maps for prettier stack traces
   widenClientFileUpload: true,
-  hideSourceMaps: true,
-  disableLogger: true,
+  
+  // Route browser requests to Sentry through a Next.js rewrite to circumvent ad-blockers
+  tunnelRoute: "/monitoring",
+  
+  webpack: {
+    // Enables automatic instrumentation of Vercel Cron Monitors
+    automaticVercelMonitors: true,
+    
+    // Tree-shaking options for reducing bundle size
+    treeshake: {
+      removeDebugLogging: true,
+    },
+  },
 }
 
-// Exportar com ou sem Sentry dependendo se está configurado
-module.exports = process.env.SENTRY_AUTH_TOKEN 
-  ? withSentryConfig(nextConfig, sentryWebpackPluginOptions)
-  : nextConfig
+// Exportar com Sentry configurado
+module.exports = withSentryConfig(nextConfig, sentryConfig)

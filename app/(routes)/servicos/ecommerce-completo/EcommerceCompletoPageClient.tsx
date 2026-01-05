@@ -5,7 +5,7 @@ import { FadeIn, ScrollReveal, ServiceBackground } from '@/views/components/anim
 import { Button } from '@/views/components/ui/Button'
 import Link from 'next/link'
 import { ROUTES } from '@/lib/constants/routes'
-import { ShoppingCart, Settings, CheckCircle, CreditCard, Bot, Check, Code } from 'lucide-react'
+import { ShoppingCart, Settings, CheckCircle, Bot, Check, Code } from 'lucide-react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 
