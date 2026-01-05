@@ -14,6 +14,11 @@ const GoogleAnalytics = dynamic(() => import('@/views/components/analytics/Googl
   ssr: false,
 })
 
+// Lazy load Vercel Analytics para não bloquear renderização inicial
+const Analytics = dynamic(() => import('@vercel/analytics/react').then(mod => ({ default: mod.Analytics })), {
+  ssr: false,
+})
+
 const inter = Inter({ 
   subsets: ['latin'],
   variable: '--font-inter',
@@ -64,6 +69,7 @@ export default function RootLayout({
         {children}
         <SpeedInsights />
         <GoogleAnalytics />
+        <Analytics />
       </body>
     </html>
   )
