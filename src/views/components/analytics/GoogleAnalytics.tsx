@@ -30,8 +30,8 @@ function usePageTracking() {
   const searchParams = useSearchParams()
 
   useEffect(() => {
-    // ID do GA (variável de ambiente ou padrão)
-    const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || 'G-T5BVFVHYYY'
+    // Só track se GA estiver configurado
+    if (!process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID) return
     
     // Construir URL completa
     const url = pathname + (searchParams?.toString() ? `?${searchParams.toString()}` : '')
@@ -46,8 +46,12 @@ function usePageTracking() {
 }
 
 export default function GoogleAnalytics() {
-  // Usa variável de ambiente ou ID padrão
-  const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || 'G-T5BVFVHYYY'
+  // Só renderizar se o measurement ID estiver configurado
+  const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID
+
+  if (!gaId) {
+    return null
+  }
 
   return (
     <>

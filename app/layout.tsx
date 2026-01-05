@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import dynamic from 'next/dynamic'
+import * as Sentry from '@sentry/nextjs'
 import './globals.css'
 
 // Lazy load SpeedInsights para não bloquear renderização inicial
@@ -23,7 +24,24 @@ const inter = Inter({
 
 import { baseMetadata } from '@/lib/constants/metadata'
 
-export const metadata: Metadata = baseMetadata
+// Generate metadata com trace data do Sentry
+export function generateMetadata(): Metadata {
+  const traceData = Sentry.getTraceData()
+  const otherMetadata: Record<string, string> = {}
+  
+  // Adicionar trace data do Sentry apenas se existir
+  if (traceData['sentry-trace']) {
+    otherMetadata['sentry-trace'] = traceData['sentry-trace']
+  }
+  if (traceData.baggage) {
+    otherMetadata.baggage = traceData.baggage
+  }
+  
+  return {
+    ...baseMetadata,
+    ...(Object.keys(otherMetadata).length > 0 && { other: otherMetadata }),
+  }
+}
 
 export default function RootLayout({
   children,

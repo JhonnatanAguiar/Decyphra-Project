@@ -453,7 +453,7 @@ export default function HomePageClient() {
 
           <div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-              {featuredTestimonials.map((testimonial, index) => (
+              {featuredTestimonials.map((testimonial) => (
                 <div key={testimonial.id}>
                   <Card3D
                     enableTilt={false} // Depoimentos sem tilt (não crítico)
