@@ -82,7 +82,7 @@ export default function HomePageClient() {
       slug: 'clinica-medica-digital',
       title: 'Clínica Médica Digital',
       description: 'Site responsivo com sistema de agendamento online e estratégia SEO que triplicou os agendamentos.',
-      image: 'https://images.unsplash.com/photo-1631815588090-d4bfec5f4d69?w=800&h=600&fit=crop',
+      image: '/images/clinica-medica.png',
     },
     {
       id: 3,
@@ -357,12 +357,12 @@ export default function HomePageClient() {
           <div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
               {[
-                { label: 'Foco em performance', value: 'Core Web Vitals' },
-                { label: 'Entrega objetiva', value: 'Escopo claro' },
-                { label: 'Código escalável', value: 'Manutenção fácil' },
+                { label: 'Foco em performance', value: 'Core Web\nVitals' },
+                { label: 'Entrega objetiva', value: 'Escopo\nclaro' },
+                { label: 'Código escalável', value: 'Manutenção\nfácil' },
               ].map((metric, index) => (
                 <div key={index} className="text-center bg-dark-900/50 p-6 rounded-xl border border-primary-500/20">
-                  <div className="text-3xl font-bold text-primary-500 mb-2">
+                  <div className="text-3xl font-bold text-primary-500 mb-2 whitespace-pre-line">
                     {metric.value}
                   </div>
                   <div className="text-light-300 text-sm">

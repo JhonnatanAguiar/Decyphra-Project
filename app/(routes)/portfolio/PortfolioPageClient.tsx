@@ -45,7 +45,7 @@ const projects = [
       'Posição #1 no Google',
       'Design confiável',
     ],
-    image: 'https://images.unsplash.com/photo-1631815588090-d4bfec5f4d69?w=800&h=600&fit=crop',
+    image: '/images/clinica-medica.png',
   },
   {
     id: 3,

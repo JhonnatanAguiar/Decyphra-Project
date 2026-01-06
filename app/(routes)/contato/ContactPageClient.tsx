@@ -6,8 +6,7 @@ import { FadeIn, ScrollReveal, Waves } from '@/views/components/animations'
 import { Input, Textarea, Select, Button, Toast } from '@/views/components/ui'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Mail, Phone, MapPin, Send, CheckCircle, Clock } from 'lucide-react'
-import { CONTACT_INFO } from '@/lib/constants/site'
+import { Mail, MapPin, Send, CheckCircle, Clock } from 'lucide-react'
 import { API_ROUTES } from '@/lib/constants/routes'
 import { contactSchema, type ContactInput } from '@/models/schemas'
 
@@ -41,8 +40,8 @@ const qualityGuarantees = [
 
 // Horários de atendimento
 const businessHours = [
-  { day: 'Segunda a Sexta', hours: '09:00 - 18:00' },
-  { day: 'Sábado', hours: '09:00 - 13:00' },
+  { day: 'Segunda a Sexta', hours: '09:00 - 17:00' },
+  { day: 'Sábado', hours: 'Fechado' },
   { day: 'Domingo', hours: 'Fechado' },
 ]
 
@@ -307,39 +306,32 @@ export default function ContactPageClient() {
                     Informações de Contato
                   </h3>
                   <div className="space-y-6">
-                    {/* E-mail */}
+                    {/* E-mails */}
                     <div className="flex items-start gap-3">
                       <div className="w-10 h-10 bg-primary-500/10 rounded-lg flex items-center justify-center flex-shrink-0 border border-primary-500/20">
                         <Mail className="w-5 h-5 text-primary-500" />
                       </div>
                       <div>
                         <p className="text-sm text-light-300 mb-1">E-mail</p>
-                        <a
-                          href={`mailto:${CONTACT_INFO.email}`}
-                          className="text-light-50 hover:text-primary-500 transition-colors break-all"
-                        >
-                          {CONTACT_INFO.email}
-                        </a>
-                      </div>
-                    </div>
-
-                    {/* Telefones */}
-                    <div className="flex items-start gap-3">
-                      <div className="w-10 h-10 bg-primary-500/10 rounded-lg flex items-center justify-center flex-shrink-0 border border-primary-500/20">
-                        <Phone className="w-5 h-5 text-primary-500" />
-                      </div>
-                      <div>
-                        <p className="text-sm text-light-300 mb-1">Telefone</p>
                         <div className="space-y-1">
-                          {CONTACT_INFO.phones.map((phone, index) => (
-                            <a
-                              key={index}
-                              href={`tel:${phone.replace(/\s/g, '')}`}
-                              className="block text-light-50 hover:text-primary-500 transition-colors"
-                            >
-                              {phone}
-                            </a>
-                          ))}
+                          <a
+                            href="mailto:contato@decyphra.com.br"
+                            className="block text-light-50 hover:text-primary-500 transition-colors break-all text-sm"
+                          >
+                            contato@decyphra.com.br
+                          </a>
+                          <a
+                            href="mailto:jhonnatan.aguiar@decyphra.com.br"
+                            className="block text-light-50 hover:text-primary-500 transition-colors break-all text-sm"
+                          >
+                            jhonnatan.aguiar@decyphra.com.br
+                          </a>
+                          <a
+                            href="mailto:richard.cruz@decyphra.com.br"
+                            className="block text-light-50 hover:text-primary-500 transition-colors break-all text-sm"
+                          >
+                            richard.cruz@decyphra.com.br
+                          </a>
                         </div>
                       </div>
                     </div>
