@@ -43,15 +43,15 @@ function getBaseEmailTemplate(content: string): string {
           
           <!-- Footer -->
           <tr>
-            <td style="background-color: #01080E; padding: 30px 40px; text-align: center; border-top: 1px solid rgba(0, 255, 136, 0.1);">
+            <td style="background-color: #01080E; padding: 30px 40px; text-align: center; border-top: 1px solid rgba(0, 255, 136, 0.2);">
               <p style="margin: 0 0 12px; color: #E6F0F3; font-size: 14px; line-height: 1.6;">
-                <strong style="color: #00FF88;">Decyphra</strong><br>
-                Agência de Marketing Digital e Desenvolvimento Web
+                <strong style="color: #00FF88; font-weight: 600;">Decyphra</strong><br>
+                <span style="color: #CCCCCC;">Agência de Marketing Digital e Desenvolvimento Web</span>
               </p>
-              <p style="margin: 0 0 8px; color: #999999; font-size: 12px;">
-                <a href="https://decyphra.com.br" style="color: #00FF88; text-decoration: none;">decyphra.com.br</a>
+              <p style="margin: 0 0 12px; color: #999999; font-size: 12px;">
+                <a href="https://decyphra.com.br" style="color: #00FF88; text-decoration: none; font-weight: 500;">decyphra.com.br</a>
               </p>
-              <p style="margin: 0; color: #666666; font-size: 11px; line-height: 1.5;">
+              <p style="margin: 0; color: #AAAAAA; font-size: 11px; line-height: 1.5;">
                 Este é um e-mail automático. Por favor, não responda diretamente a esta mensagem.
               </p>
             </td>
@@ -85,14 +85,14 @@ export function getConfirmationEmailTemplate(name: string): string {
       sua necessidade e como podemos ajudar a transformar sua presença digital.
     </p>
     
-    <div style="margin: 32px 0; padding: 24px; background-color: rgba(0, 255, 136, 0.05); border-left: 3px solid #00FF88; border-radius: 4px;">
-      <p style="margin: 0; color: #00FF88; font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px;">
+    <div style="margin: 32px 0; padding: 24px; background-color: rgba(0, 255, 136, 0.1); border-left: 3px solid #00FF88; border-radius: 4px;">
+      <p style="margin: 0; color: #00FF88; font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px;">
         O que esperar:
       </p>
       <ul style="margin: 0; padding-left: 20px; color: #E6F0F3; font-size: 14px; line-height: 1.8;">
-        <li>Resposta em até 24 horas úteis</li>
-        <li>Análise personalizada do seu projeto</li>
-        <li>Proposta sob medida para sua necessidade</li>
+        <li style="color: #E6F0F3; margin-bottom: 6px;">Resposta em até 24 horas úteis</li>
+        <li style="color: #E6F0F3; margin-bottom: 6px;">Análise personalizada do seu projeto</li>
+        <li style="color: #E6F0F3; margin-bottom: 6px;">Proposta sob medida para sua necessidade</li>
       </ul>
     </div>
     
@@ -124,48 +124,48 @@ export function getInternalNotificationTemplate(data: {
     
     <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin-bottom: 32px;">
       <tr>
-        <td style="padding: 12px 0; border-bottom: 1px solid rgba(0, 255, 136, 0.1);">
-          <strong style="color: #00FF88; font-size: 14px; display: inline-block; width: 100px;">Nome:</strong>
-          <span style="color: #E6F0F3; font-size: 14px;">${escapeHtml(data.name)}</span>
+        <td style="padding: 12px 0; border-bottom: 1px solid rgba(0, 255, 136, 0.2);">
+          <strong style="color: #00FF88; font-size: 14px; display: inline-block; width: 120px; vertical-align: top;">Nome:</strong>
+          <span style="color: #E6F0F3; font-size: 14px; font-weight: 500;">${escapeHtml(data.name)}</span>
         </td>
       </tr>
       <tr>
-        <td style="padding: 12px 0; border-bottom: 1px solid rgba(0, 255, 136, 0.1);">
-          <strong style="color: #00FF88; font-size: 14px; display: inline-block; width: 100px;">E-mail:</strong>
-          <a href="mailto:${escapeHtml(data.email)}" style="color: #00FF88; font-size: 14px; text-decoration: none;">${escapeHtml(data.email)}</a>
+        <td style="padding: 12px 0; border-bottom: 1px solid rgba(0, 255, 136, 0.2);">
+          <strong style="color: #00FF88; font-size: 14px; display: inline-block; width: 120px; vertical-align: top;">E-mail:</strong>
+          <a href="mailto:${escapeHtml(data.email)}" style="color: #00FF88; font-size: 14px; text-decoration: none; font-weight: 500;">${escapeHtml(data.email)}</a>
         </td>
       </tr>
       ${data.phone ? `
       <tr>
-        <td style="padding: 12px 0; border-bottom: 1px solid rgba(0, 255, 136, 0.1);">
-          <strong style="color: #00FF88; font-size: 14px; display: inline-block; width: 100px;">Telefone:</strong>
-          <a href="tel:${escapeHtml(data.phone)}" style="color: #E6F0F3; font-size: 14px; text-decoration: none;">${escapeHtml(data.phone)}</a>
+        <td style="padding: 12px 0; border-bottom: 1px solid rgba(0, 255, 136, 0.2);">
+          <strong style="color: #00FF88; font-size: 14px; display: inline-block; width: 120px; vertical-align: top;">Telefone:</strong>
+          <a href="tel:${escapeHtml(data.phone)}" style="color: #E6F0F3; font-size: 14px; text-decoration: none; font-weight: 500;">${escapeHtml(data.phone)}</a>
         </td>
       </tr>
       ` : ''}
       ${data.company ? `
       <tr>
-        <td style="padding: 12px 0; border-bottom: 1px solid rgba(0, 255, 136, 0.1);">
-          <strong style="color: #00FF88; font-size: 14px; display: inline-block; width: 100px;">Empresa:</strong>
-          <span style="color: #E6F0F3; font-size: 14px;">${escapeHtml(data.company)}</span>
+        <td style="padding: 12px 0; border-bottom: 1px solid rgba(0, 255, 136, 0.2);">
+          <strong style="color: #00FF88; font-size: 14px; display: inline-block; width: 120px; vertical-align: top;">Empresa:</strong>
+          <span style="color: #E6F0F3; font-size: 14px; font-weight: 500;">${escapeHtml(data.company)}</span>
         </td>
       </tr>
       ` : ''}
       ${data.service ? `
       <tr>
-        <td style="padding: 12px 0; border-bottom: 1px solid rgba(0, 255, 136, 0.1);">
-          <strong style="color: #00FF88; font-size: 14px; display: inline-block; width: 100px;">Serviço:</strong>
-          <span style="color: #E6F0F3; font-size: 14px;">${escapeHtml(data.service)}</span>
+        <td style="padding: 12px 0; border-bottom: 1px solid rgba(0, 255, 136, 0.2);">
+          <strong style="color: #00FF88; font-size: 14px; display: inline-block; width: 120px; vertical-align: top;">Serviço:</strong>
+          <span style="color: #E6F0F3; font-size: 14px; font-weight: 500;">${escapeHtml(data.service)}</span>
         </td>
       </tr>
       ` : ''}
     </table>
     
-    <div style="margin: 32px 0; padding: 24px; background-color: rgba(0, 255, 136, 0.05); border-left: 3px solid #00FF88; border-radius: 4px;">
-      <p style="margin: 0 0 12px; color: #00FF88; font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">
+    <div style="margin: 32px 0; padding: 24px; background-color: rgba(0, 255, 136, 0.1); border-left: 3px solid #00FF88; border-radius: 4px;">
+      <p style="margin: 0 0 16px; color: #00FF88; font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">
         Mensagem:
       </p>
-      <p style="margin: 0; color: #E6F0F3; font-size: 14px; line-height: 1.8; white-space: pre-wrap;">
+      <p style="margin: 0; color: #E6F0F3; font-size: 14px; line-height: 1.8; white-space: pre-wrap; font-weight: 400;">
 ${escapeHtml(data.message)}
       </p>
     </div>
