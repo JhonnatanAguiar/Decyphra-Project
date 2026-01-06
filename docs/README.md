@@ -89,7 +89,8 @@ Define:
 3. **Problemas?** → Veja [LINHA-DO-TEMPO.md](./LINHA-DO-TEMPO.md) ou [REVISOES.md](./REVISOES.md)
 4. **Revisões?** → Veja [REVISOES.md](./REVISOES.md)
 5. **Configurar Git?** → Veja [GUIA-GIT.md](./GUIA-GIT.md)
-6. **Acompanhar Progresso?** → Veja checklists em [PLANEJAMENTO-COMPLETO.md](./PLANEJAMENTO-COMPLETO.md)
+6. **Configurar E-mails?** → Veja [EMAILS-RESEND-ZOHO.md](./EMAILS-RESEND-ZOHO.md)
+7. **Acompanhar Progresso?** → Veja checklists em [PLANEJAMENTO-COMPLETO.md](./PLANEJAMENTO-COMPLETO.md)
 
 ---
 

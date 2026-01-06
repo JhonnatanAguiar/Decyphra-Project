@@ -201,6 +201,12 @@ Veja o **[Guia de Deploy](./docs/DEPLOY.md)** para:
 - Configuração de domínio
 - Troubleshooting
 
+Veja o **[Guia de E-mails (Resend vs Zoho)](./docs/EMAILS-RESEND-ZOHO.md)** para:
+- Diferenças entre e-mails transacionais e corporativos
+- Como configurar Resend e Zoho
+- Integração completa passo a passo
+- Boas práticas
+
 ### Variáveis de Ambiente Necessárias
 
 ```env
