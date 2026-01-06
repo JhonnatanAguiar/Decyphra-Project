@@ -16,10 +16,11 @@ export function generateOrganizationSchema() {
     url: SITE_CONFIG.url,
     logo: `${SITE_CONFIG.url}/logos/logo-horizontal.svg`,
     sameAs: [
-      // Adicionar URLs das redes sociais quando disponíveis
-      // 'https://www.facebook.com/decyphra',
-      // 'https://www.instagram.com/decyphra',
-      // 'https://www.linkedin.com/company/decyphra',
+      // Redes sociais (atualizar quando disponíveis)
+      'https://facebook.com/decyphra',
+      'https://instagram.com/decyphra',
+      'https://linkedin.com/company/decyphra',
+      'https://twitter.com/decyphra',
     ],
     contactPoint: {
       '@type': 'ContactPoint',

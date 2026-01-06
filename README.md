@@ -213,7 +213,10 @@ Veja o **[Guia de E-mails (Resend vs Zoho)](./docs/EMAILS-RESEND-ZOHO.md)** para
 DATABASE_URL="postgresql://..."
 NEXT_PUBLIC_SITE_URL="https://decyphra.com.br"
 NEXT_PUBLIC_SITE_NAME="Decyphra"
-NEXT_PUBLIC_GA_MEASUREMENT_ID="G-..." # Opcional
+NEXT_PUBLIC_GA_MEASUREMENT_ID="G-..." # Opcional (Google Analytics)
+RESEND_API_KEY="re_..." # Opcional (E-mails transacionais)
+EMAIL_FROM="noreply@decyphra.com.br" # Opcional (E-mail remetente)
+EMAIL_TO="contato@decyphra.com.br" # Opcional (E-mail destinatário)
 ```
 
 ## 📈 Roadmap e Progresso

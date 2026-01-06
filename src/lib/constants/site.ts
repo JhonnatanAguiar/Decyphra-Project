@@ -10,7 +10,7 @@ export const SITE_CONFIG = {
 } as const
 
 export const CONTACT_INFO = {
-  email: 'jhonnatanaguiar@decyphra.com.br',
+  email: 'contato@decyphra.com.br',
   phones: [
     '+55 (19) 9 9432-3750',
     '+55 (19) 9 8990-1716',

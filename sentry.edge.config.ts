@@ -6,7 +6,7 @@
 import * as Sentry from "@sentry/nextjs";
 
 Sentry.init({
-  dsn: process.env.NEXT_PUBLIC_SENTRY_DSN,
+  dsn: process.env.SENTRY_DSN,
 
   // Performance Monitoring - 10% em produção, 100% em desenvolvimento
   tracesSampleRate: process.env.NODE_ENV === 'production' ? 0.1 : 1.0,
@@ -15,5 +15,5 @@ Sentry.init({
   environment: process.env.NODE_ENV || 'development',
 
   // Apenas capturar erros em produção quando DSN estiver configurado
-  enabled: process.env.NODE_ENV === 'production' && !!process.env.NEXT_PUBLIC_SENTRY_DSN,
+  enabled: process.env.NODE_ENV === 'production' && !!process.env.SENTRY_DSN,
 });
