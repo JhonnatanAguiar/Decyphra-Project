@@ -657,7 +657,7 @@ light: {
 - [x] Criar página de Política de Privacidade (`/privacidade`)
 - [x] Criar página de Termos de Uso (`/termos`)
 - [x] Criar página de Política de Cookies (`/cookies`)
-- [ ] Atualizar links no Footer para apontar para as novas páginas
+- [x] Atualizar links no Footer para apontar para as novas páginas
 - [x] Adicionar metadata e SEO para cada página legal
 
 #### 8.2 Configuração de Cookies
