@@ -283,3 +283,54 @@ export const statusMetadata: Metadata = {
     description: 'Monitore o status em tempo real da nossa API, banco de dados e infraestrutura.',
   },
 }
+
+/**
+ * Metadata para a Página de Política de Privacidade
+ */
+export const privacyMetadata: Metadata = {
+  title: 'Política de Privacidade',
+  description: 'Política de Privacidade da Decyphra. Informações sobre como coletamos, usamos e protegemos seus dados pessoais em conformidade com a LGPD.',
+  openGraph: {
+    title: `Política de Privacidade | ${siteName}`,
+    description: 'Política de Privacidade da Decyphra. Informações sobre como coletamos, usamos e protegemos seus dados pessoais.',
+    url: `${siteUrl}/privacidade`,
+  },
+  twitter: {
+    title: `Política de Privacidade | ${siteName}`,
+    description: 'Política de Privacidade da Decyphra em conformidade com a LGPD.',
+  },
+}
+
+/**
+ * Metadata para a Página de Termos de Uso
+ */
+export const termsMetadata: Metadata = {
+  title: 'Termos de Uso',
+  description: 'Termos de Uso do site da Decyphra. Regras e condições para utilização de nossos serviços e plataforma.',
+  openGraph: {
+    title: `Termos de Uso | ${siteName}`,
+    description: 'Termos de Uso do site da Decyphra. Regras e condições para utilização de nossos serviços.',
+    url: `${siteUrl}/termos`,
+  },
+  twitter: {
+    title: `Termos de Uso | ${siteName}`,
+    description: 'Termos de Uso do site da Decyphra.',
+  },
+}
+
+/**
+ * Metadata para a Página de Política de Cookies
+ */
+export const cookiesMetadata: Metadata = {
+  title: 'Política de Cookies',
+  description: 'Política de Cookies da Decyphra. Informações sobre como utilizamos cookies e tecnologias similares em nosso site.',
+  openGraph: {
+    title: `Política de Cookies | ${siteName}`,
+    description: 'Política de Cookies da Decyphra. Informações sobre como utilizamos cookies em nosso site.',
+    url: `${siteUrl}/cookies`,
+  },
+  twitter: {
+    title: `Política de Cookies | ${siteName}`,
+    description: 'Política de Cookies da Decyphra.',
+  },
+}
