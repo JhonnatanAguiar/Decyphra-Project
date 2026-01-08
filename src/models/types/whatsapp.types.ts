@@ -11,8 +11,18 @@ export type WhatsAppResult = {
   ok: boolean
   provider: 'twilio' | 'log'
   providerResult?: {
-    sid?: string
-    status?: string
+    confirmation?: {
+      sid?: string
+      status?: string
+      to?: string
+      from?: string
+    } | null
+    notification?: {
+      sid?: string
+      status?: string
+      to?: string
+      from?: string
+    } | null
   }
   error?: string
 }

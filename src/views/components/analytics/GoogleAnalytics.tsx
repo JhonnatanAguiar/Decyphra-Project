@@ -71,6 +71,8 @@ export default function GoogleAnalytics() {
 
   // Ouvir eventos de atualização de consentimento
   useEffect(() => {
+    if (typeof window === 'undefined') return
+
     const handleConsentUpdate = () => {
       configureGAConsent()
     }

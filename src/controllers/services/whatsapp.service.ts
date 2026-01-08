@@ -113,10 +113,7 @@ async function sendInternalNotification(payload: WhatsAppInput): Promise<unknown
 export async function sendWhatsAppMessage(payload: WhatsAppInput): Promise<WhatsAppResult> {
   try {
     const via = process.env.TWILIO_ACCOUNT_SID && process.env.TWILIO_AUTH_TOKEN ? 'twilio' : 'log'
-    let providerResult: {
-      confirmation?: unknown
-      notification?: unknown
-    } | null = null
+    let providerResult: WhatsAppResult['providerResult'] = undefined
 
     if (via === 'twilio') {
       // Enviar ambos as mensagens em paralelo
@@ -126,8 +123,12 @@ export async function sendWhatsAppMessage(payload: WhatsAppInput): Promise<Whats
       ])
 
       providerResult = {
-        confirmation: confirmationResult.status === 'fulfilled' ? confirmationResult.value : null,
-        notification: notificationResult.status === 'fulfilled' ? notificationResult.value : null,
+        confirmation: confirmationResult.status === 'fulfilled' 
+          ? (confirmationResult.value as { sid?: string; status?: string; to?: string; from?: string })
+          : null,
+        notification: notificationResult.status === 'fulfilled'
+          ? (notificationResult.value as { sid?: string; status?: string; to?: string; from?: string })
+          : null,
       }
 
       // Log de erros se houver
@@ -152,7 +153,7 @@ export async function sendWhatsAppMessage(payload: WhatsAppInput): Promise<Whats
     return {
       ok: true,
       provider: via,
-      providerResult: providerResult as WhatsAppResult['providerResult'],
+      providerResult,
     }
   } catch (err) {
     // eslint-disable-next-line no-console
