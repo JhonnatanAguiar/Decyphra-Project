@@ -177,9 +177,10 @@ Documento resumindo o status atual do projeto e o que falta para finalização c
 **Status:** ⏳ **PLANEJADAS** (Para desenvolvimento futuro)
 
 ### Funcionalidades Avançadas:
-- ⏳ Páginas Legais (Privacidade, Termos, Cookies)
-- ⏳ Sistema de Gerenciamento de Cookies
-- ⏳ Integração WhatsApp
+- ✅ Páginas Legais (Privacidade, Termos, Cookies) - 100%
+- ✅ Sistema de Gerenciamento de Cookies - 100%
+- ✅ Integração WhatsApp - 100% (implementado, aguardando número oficial para configuração)
+- ⏳ Chatbot (Site e WhatsApp)
 - ⏳ Mini-CRM
 - ⏳ Painel Admin
 - ⏳ Modelos de Sites Profissionais

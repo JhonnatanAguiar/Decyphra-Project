@@ -683,6 +683,7 @@ light: {
 - [x] Criar service para WhatsApp (`src/controllers/services/whatsapp.service.ts`)
 - [x] Adicionar validação e tratamento de erros
 - [x] Configurar variáveis de ambiente (API keys, números, etc.)
+- [ ] ⚠️ **Configuração pendente:** Aguardando número de telefone oficial da Decyphra para configuração final
 
 #### 8.5 Mini-CRM
 - [ ] Definir estrutura de dados do CRM
@@ -742,6 +743,31 @@ light: {
 - [ ] Criar componente de formulário de newsletter no site
 - [ ] Adicionar página de gerenciamento de newsletter (admin)
 - [ ] Implementar funcionalidade de desinscrição
+
+#### 8.9 Chatbot
+- [ ] Definir plataforma/ferramenta de chatbot (Dialogflow, ChatGPT API, ou solução customizada)
+- [ ] Criar estrutura de base de conhecimento/intenções para o chatbot
+- [ ] Implementar chatbot no site:
+  - [ ] Componente de chat flutuante/botão de chat
+  - [ ] Interface de conversa (mensagens, histórico)
+  - [ ] Integração com API de chatbot escolhida
+  - [ ] Tratamento de erros e fallbacks
+  - [ ] Design consistente com identidade visual da Decyphra
+- [ ] Implementar chatbot no WhatsApp da Decyphra:
+  - [ ] Integração com Twilio WhatsApp API
+  - [ ] Webhook para receber mensagens do WhatsApp
+  - [ ] Processamento de mensagens e respostas automáticas
+  - [ ] Transferência para atendimento humano quando necessário
+- [ ] Criar fluxos de conversa principais:
+  - [ ] Apresentação e saudação
+  - [ ] Informações sobre serviços
+  - [ ] Informações sobre portfólio
+  - [ ] Solicitação de orçamento
+  - [ ] Dúvidas frequentes (FAQ)
+  - [ ] Agendamento de consulta/reunião
+- [ ] Adicionar persistência de conversas (opcional, para análise)
+- [ ] Implementar analytics e métricas do chatbot
+- [ ] Criar painel de gerenciamento para treinar e ajustar respostas (admin)
 
 ---
 
