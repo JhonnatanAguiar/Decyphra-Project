@@ -656,7 +656,7 @@ light: {
 #### 8.1 Páginas Legais
 - [x] Criar página de Política de Privacidade (`/privacidade`)
 - [x] Criar página de Termos de Uso (`/termos`)
-- [ ] Criar página de Política de Cookies (`/cookies`)
+- [x] Criar página de Política de Cookies (`/cookies`)
 - [ ] Atualizar links no Footer para apontar para as novas páginas
 - [x] Adicionar metadata e SEO para cada página legal
 
