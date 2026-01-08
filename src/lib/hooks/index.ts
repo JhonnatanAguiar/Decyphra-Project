@@ -14,3 +14,5 @@ export { useForm } from './useForm'
 export type { UseFormOptions } from './useForm'
 
 export { useCookieConsent } from './useCookieConsent'
+export { useToast } from './useToast'
+export type { ToastVariant, ToastMessage } from './useToast'

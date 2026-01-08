@@ -33,3 +33,23 @@ export {
 // WhatsApp
 export { whatsappSchema, type WhatsAppInput } from './whatsapp.schema'
 
+// CRM
+export {
+  leadSchema,
+  updateLeadSchema,
+  clientSchema,
+  updateClientSchema,
+  interactionSchema,
+  leadListQuerySchema,
+  clientListQuerySchema,
+  interactionListQuerySchema,
+  type LeadInput,
+  type UpdateLeadInput,
+  type ClientInput,
+  type UpdateClientInput,
+  type InteractionInput,
+  type LeadListQuery,
+  type ClientListQuery,
+  type InteractionListQuery,
+} from './crm.schema'
+

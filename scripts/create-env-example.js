@@ -58,6 +58,15 @@ NEXT_PUBLIC_SITE_NAME="Decyphra"
 
 # Versão da API
 NEXT_PUBLIC_API_VERSION="v1"
+
+# ============================================
+# CONFIGURAÇÃO DO ADMIN (PAINEL ADMINISTRATIVO)
+# ============================================
+# E-mail do administrador
+ADMIN_EMAIL="admin@decyphra.com.br"
+
+# Senha do administrador (ALTERE EM PRODUÇÃO!)
+ADMIN_PASSWORD="admin123"
 `
 
 if (fs.existsSync(envExamplePath)) {

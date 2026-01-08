@@ -110,6 +110,7 @@ model ContactSubmission {
   createdAt DateTime          @default(now())
   updatedAt DateTime          @updatedAt
   emailEvents EmailEvent[]
+  lead      Lead?             // Relação opcional com Lead (criado automaticamente)
 
   @@index([email])
   @@index([status])
@@ -157,4 +158,131 @@ model EmailEvent {
 
   @@index([messageId])
   @@map("email_events")
+}
+
+// ============================================
+// CRM - LEADS
+// ============================================
+
+model Lead {
+  id              String        @id @default(uuid())
+  name            String
+  email           String
+  phone           String?
+  company         String?
+  service         String?       // Tipo de serviço de interesse
+  source          String?       // Origem do lead (formulário, site, referência, etc.)
+  status          LeadStatus    @default(new)
+  score           Int           @default(0) // Score do lead (0-100)
+  notes           String?       @db.Text
+  metadata        Json?         // Dados extras
+  contactSubmissionId String?   @unique // Relação opcional com ContactSubmission
+  contactSubmission ContactSubmission? @relation(fields: [contactSubmissionId], references: [id], onDelete: SetNull)
+  interactions    Interaction[]
+  convertedToClient Client?     @relation("LeadToClient") // Cliente convertido (relação reversa)
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+
+  @@index([email])
+  @@index([status])
+  @@index([source])
+  @@index([createdAt])
+  @@map("leads")
+}
+
+enum LeadStatus {
+  new           // Novo lead
+  contacted     // Contatado
+  qualified     // Qualificado
+  proposal      // Proposta enviada
+  negotiation   // Em negociação
+  won           // Convertido (vira Client)
+  lost          // Perdido
+  archived      // Arquivado
+}
+
+// ============================================
+// CRM - CLIENTES
+// ============================================
+
+model Client {
+  id              String        @id @default(uuid())
+  name            String
+  email           String
+  phone           String?
+  company         String?
+  cnpj            String?       // CNPJ da empresa (se aplicável)
+  address         String?       @db.Text
+  city            String?
+  state           String?
+  zipCode         String?
+  status          ClientStatus  @default(active)
+  segment         String?       // Segmento do cliente
+  notes           String?       @db.Text
+  metadata        Json?         // Dados extras
+  convertedFromLeadId String?   @unique // Lead original (se convertido)
+  convertedFromLead Lead?       @relation("LeadToClient", fields: [convertedFromLeadId], references: [id], onDelete: SetNull)
+  interactions    Interaction[]
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+
+  @@index([email])
+  @@index([status])
+  @@index([company])
+  @@index([createdAt])
+  @@map("clients")
+}
+
+enum ClientStatus {
+  active      // Cliente ativo
+  inactive    // Cliente inativo
+  suspended   // Suspenso
+  archived    // Arquivado
+}
+
+// ============================================
+// CRM - INTERAÇÕES
+// ============================================
+
+model Interaction {
+  id          String          @id @default(uuid())
+  type        InteractionType
+  subject     String?
+  description String          @db.Text
+  channel     InteractionChannel
+  leadId      String?         // Relação opcional com Lead
+  lead        Lead?           @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  clientId    String?         // Relação opcional com Client
+  client      Client?         @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  metadata    Json?           // Dados extras (duração, participantes, etc.)
+  createdAt   DateTime        @default(now())
+  createdBy   String?         // ID do usuário que criou (quando tiver autenticação)
+
+  @@index([leadId])
+  @@index([clientId])
+  @@index([type])
+  @@index([channel])
+  @@index([createdAt])
+  @@map("interactions")
+}
+
+enum InteractionType {
+  call           // Chamada telefônica
+  email          // E-mail
+  whatsapp       // WhatsApp
+  meeting        // Reunião
+  proposal       // Proposta enviada
+  follow_up      // Follow-up
+  note           // Nota/anotação
+  other          // Outro
+}
+
+enum InteractionChannel {
+  phone       // Telefone
+  email       // E-mail
+  whatsapp    // WhatsApp
+  video_call  // Videoconferência
+  in_person   // Presencial
+  system      // Sistema/plataforma
+  other       // Outro
 }

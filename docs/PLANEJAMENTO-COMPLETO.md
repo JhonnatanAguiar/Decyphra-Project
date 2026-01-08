@@ -686,24 +686,41 @@ light: {
 - [ ] ⚠️ **Configuração pendente:** Aguardando número de telefone oficial da Decyphra para configuração final
 
 #### 8.5 Mini-CRM
-- [ ] Definir estrutura de dados do CRM
-- [ ] Criar schema Prisma para CRM (clientes, leads, interações, etc.)
-- [ ] Criar migrations do banco de dados
-- [ ] Criar API endpoints para CRM:
-  - [ ] GET/POST `/api/v1/crm/leads`
-  - [ ] GET/PUT/DELETE `/api/v1/crm/leads/[id]`
-  - [ ] GET/POST `/api/v1/crm/clients`
-  - [ ] GET/PUT/DELETE `/api/v1/crm/clients/[id]`
-  - [ ] GET/POST `/api/v1/crm/interactions`
-- [ ] Criar services para CRM (`src/controllers/services/crm.service.ts`)
-- [ ] Implementar integração com formulário de contato (cria lead automaticamente)
-- [ ] Criar validações e schemas Zod para CRM
+
+**Status:** ✅ **CONCLUÍDO** (Migration pendente - requer DATABASE_URL)
+
+**Objetivo:** Criar um sistema de CRM (Customer Relationship Management) básico para gerenciar leads, clientes e interações.
+
+**Tarefas:**
+- [x] Definir estrutura de dados do CRM
+- [x] Criar schema Prisma para CRM (Lead, Client, Interaction com enums)
+- [ ] ⚠️ **Migration pendente:** Executar `npx prisma migrate dev --name add_crm_models` quando DATABASE_URL estiver configurado
+- [x] Criar API endpoints para CRM:
+  - [x] GET/POST `/api/v1/crm/leads`
+  - [x] GET/PUT/DELETE `/api/v1/crm/leads/[id]`
+  - [x] POST `/api/v1/crm/leads/[id]/convert` (converter lead em cliente)
+  - [x] GET/POST `/api/v1/crm/clients`
+  - [x] GET/PUT/DELETE `/api/v1/crm/clients/[id]`
+  - [x] GET/POST `/api/v1/crm/interactions`
+  - [x] GET `/api/v1/crm/interactions/[id]`
+- [x] Criar services para CRM (`src/controllers/services/crm.service.ts`) com funções CRUD completas
+- [x] Implementar integração com formulário de contato (cria lead automaticamente)
+- [x] Criar validações e schemas Zod para CRM (`src/models/schemas/crm.schema.ts`)
+- [x] Criar types TypeScript para CRM (`src/models/types/crm.types.ts`)
 
 #### 8.6 Painel Admin
-- [ ] Criar estrutura de rotas admin (`/admin/*`)
-- [ ] Implementar autenticação e autorização
-- [ ] Criar dashboard administrativo:
-  - [ ] Visão geral (estatísticas, métricas)
+
+**Status:** ⏳ **EM PROGRESSO** (Estrutura básica concluída - 30%)
+
+**Objetivo:** Criar painel administrativo completo para gerenciamento do site.
+
+**Tarefas:**
+- [x] Criar estrutura de rotas admin (`/admin/*`)
+- [x] Implementar autenticação básica (cookies/sessões)
+- [x] Criar layout admin com sidebar e header
+- [x] Criar página de login
+- [x] Criar dashboard administrativo básico:
+  - [x] Visão geral (estatísticas, métricas)
   - [ ] Gerenciamento de leads/CRM
   - [ ] Gerenciamento de projetos
   - [ ] Gerenciamento de depoimentos
@@ -713,7 +730,7 @@ light: {
 - [ ] Criar formulários de CRUD para cada entidade
 - [ ] Implementar upload de imagens para projetos
 - [ ] Adicionar filtros e busca
-- [ ] Criar interface responsiva para admin
+- [x] Criar interface responsiva para admin (layout mobile-friendly)
 
 #### 8.7 Modelos de Sites Profissionais
 - [ ] Criar template/modelo para "E-commerce Fashion"
@@ -871,7 +888,7 @@ npm run type-check   # Verifica tipos TypeScript
 | Fase 5: Backend | 100% | ✅ **Concluída** (APIs funcionando, newsletter opcional) |
 | Fase 6: SEO | 100% | ✅ **Concluída** (otimizações aplicadas) |
 | Fase 7: Deploy | 100% | ✅ **Concluída** (Deploy, monitoramento, documentação e testes automatizados) |
-| Fase 8: Funcionalidades Avançadas | 25% | ⏳ **Em Progresso** (8.1 e 8.2 concluídas, 8.4 concluída) |
+| Fase 8: Funcionalidades Avançadas | 60% | ⏳ **Em Progresso** (8.1, 8.2, 8.4, 8.5 e 8.6 parcial concluídas) |
 
 **Progresso Total:** ✅ **100% Funcional (Core)** | ⏳ **Fase 8 Pendente**
 

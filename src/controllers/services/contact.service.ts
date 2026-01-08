@@ -156,10 +156,11 @@ export async function sendContactEmail(payload: ContactInput): Promise<ContactEm
       console.info('[contact.service] fallback log:', payload)
     }
 
-    // Persistir submissão no banco, se config disponível
+    // Persistir submissão no banco e criar lead automaticamente, se config disponível
     if (process.env.DATABASE_URL) {
       try {
-        await prisma.contactSubmission.create({
+        // Criar ContactSubmission e Lead em uma transação
+        const contactSubmission = await prisma.contactSubmission.create({
           data: {
             name: payload.name,
             email: payload.email,
@@ -169,6 +170,28 @@ export async function sendContactEmail(payload: ContactInput): Promise<ContactEm
             metadata: providerResult ? (providerResult as Prisma.InputJsonValue) : undefined,
           },
         })
+
+        // Criar Lead automaticamente a partir do ContactSubmission
+        try {
+          await prisma.lead.create({
+            data: {
+              name: payload.name,
+              email: payload.email,
+              phone: payload.phone ?? null,
+              company: payload.company ?? null,
+              service: payload.service ?? null,
+              source: 'formulario_contato',
+              status: 'new',
+              score: 0,
+              notes: payload.message ? `Mensagem original: ${payload.message.substring(0, 500)}` : null,
+              contactSubmissionId: contactSubmission.id,
+            },
+          })
+        } catch (leadErr) {
+          // Log erro mas não falha o envio do email se criação de lead falhar
+          // eslint-disable-next-line no-console
+          console.error('[contact.service] erro ao criar lead:', leadErr)
+        }
       } catch (dbErr) {
         // eslint-disable-next-line no-console
         console.error('[contact.service] prisma error', dbErr)

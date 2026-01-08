@@ -33,3 +33,17 @@ export type {
   SendWhatsAppOptions,
 } from './whatsapp.types'
 
+// CRM
+export type {
+  LeadDTO,
+  LeadListDTO,
+  ClientDTO,
+  ClientListDTO,
+  InteractionDTO,
+  InteractionListDTO,
+  LeadStatus,
+  ClientStatus,
+  InteractionType,
+  InteractionChannel,
+} from './crm.types'
+
