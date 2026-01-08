@@ -34,7 +34,8 @@ function usePageTracking() {
 
   useEffect(() => {
     // Só track se GA estiver configurado e consentimento dado
-    if (!process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || isLoading) return
+    if (!process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID) return
+    if (isLoading) return
     if (!isAllowed('analytics')) return
     
     // Construir URL completa
@@ -46,8 +47,7 @@ function usePageTracking() {
     }, 300)
 
     return () => clearTimeout(timer)
-  }, [pathname, searchParams, isAllowed, isLoading])
-}
+  }, [pathname, searchParams, isLoading, isAllowed])
 
 export default function GoogleAnalytics() {
   // Só renderizar se o measurement ID estiver configurado
@@ -65,7 +65,8 @@ export default function GoogleAnalytics() {
 
       return () => clearTimeout(timer)
     }
-  }, [hasConsent, isLoading, isAllowed])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [hasConsent, isLoading])
 
   // Ouvir eventos de atualização de consentimento
   useEffect(() => {
