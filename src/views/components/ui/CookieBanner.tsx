@@ -89,7 +89,7 @@ export function CookieBanner({ className }: CookieBannerProps) {
                       acceptEssential()
                       setShowBanner(false)
                     }}
-                    variant="outline"
+                    variant="secondary"
                     size="sm"
                     className="bg-transparent border-dark-700 text-light-200 hover:bg-dark-900 hover:border-primary-500 hover:text-primary-500"
                   >
@@ -107,7 +107,7 @@ export function CookieBanner({ className }: CookieBannerProps) {
                   </Button>
                   <Button
                     onClick={() => setShowSettings(true)}
-                    variant="outline"
+                    variant="secondary"
                     size="sm"
                     className="bg-transparent border-dark-700 text-light-200 hover:bg-dark-900 hover:border-primary-500 hover:text-primary-500"
                   >
@@ -247,7 +247,7 @@ export function CookieBanner({ className }: CookieBannerProps) {
                   acceptEssential()
                   setShowBanner(false)
                 }}
-                variant="outline"
+                variant="secondary"
                 className="bg-transparent border-dark-700 text-light-200 hover:bg-dark-900 hover:border-primary-500 hover:text-primary-500"
               >
                 Apenas Essenciais
@@ -257,7 +257,7 @@ export function CookieBanner({ className }: CookieBannerProps) {
                   acceptAll()
                   setShowBanner(false)
                 }}
-                variant="outline"
+                variant="secondary"
                 className="bg-transparent border-dark-700 text-light-200 hover:bg-dark-900 hover:border-primary-500 hover:text-primary-500"
               >
                 Aceitar Todos

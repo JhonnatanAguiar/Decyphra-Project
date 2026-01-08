@@ -76,9 +76,9 @@ export function useCookieConsent() {
    */
   const savePreferences = useCallback((newPreferences: Partial<CookiePreferences>) => {
     const finalPreferences: CookiePreferences = {
-      essential: true, // Sempre true
       ...DEFAULT_COOKIE_PREFERENCES,
       ...newPreferences,
+      essential: true, // Sempre true (garantir depois do spread)
       timestamp: Date.now(),
     }
 

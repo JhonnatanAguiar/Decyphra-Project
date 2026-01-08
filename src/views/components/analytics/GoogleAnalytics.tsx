@@ -48,6 +48,7 @@ function usePageTracking() {
 
     return () => clearTimeout(timer)
   }, [pathname, searchParams, isLoading, isAllowed])
+}
 
 export default function GoogleAnalytics() {
   // Só renderizar se o measurement ID estiver configurado
