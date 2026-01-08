@@ -651,7 +651,7 @@ light: {
 ---
 
 ### 🚀 Fase 8: Funcionalidades Avançadas e Melhorias
-**Status:** ⏳ **PENDENTE** (Novas funcionalidades planejadas)
+**Status:** ⏳ **EM PROGRESSO** (25% concluído - 8.1, 8.2 e 8.4 concluídas)
 
 #### 8.1 Páginas Legais
 - [x] Criar página de Política de Privacidade (`/privacidade`)
@@ -676,13 +676,13 @@ light: {
 - [ ] Adicionar Schema.org para redes sociais (sameAs)
 
 #### 8.4 Integração WhatsApp
-- [ ] Criar API endpoint para envio de mensagens WhatsApp (`/api/v1/whatsapp`)
-- [ ] Integrar com serviço de WhatsApp (Twilio API ou similar)
-- [ ] Criar template de mensagem padrão (similar ao e-mail automático)
-- [ ] Implementar envio de imagem junto com mensagem
-- [ ] Criar service para WhatsApp (`src/controllers/services/whatsapp.service.ts`)
-- [ ] Adicionar validação e tratamento de erros
-- [ ] Configurar variáveis de ambiente (API keys, números, etc.)
+- [x] Criar API endpoint para envio de mensagens WhatsApp (`/api/v1/whatsapp`)
+- [x] Integrar com serviço de WhatsApp (Twilio API ou similar)
+- [x] Criar template de mensagem padrão (similar ao e-mail automático)
+- [x] Implementar envio de imagem junto com mensagem
+- [x] Criar service para WhatsApp (`src/controllers/services/whatsapp.service.ts`)
+- [x] Adicionar validação e tratamento de erros
+- [x] Configurar variáveis de ambiente (API keys, números, etc.)
 
 #### 8.5 Mini-CRM
 - [ ] Definir estrutura de dados do CRM
@@ -845,7 +845,7 @@ npm run type-check   # Verifica tipos TypeScript
 | Fase 5: Backend | 100% | ✅ **Concluída** (APIs funcionando, newsletter opcional) |
 | Fase 6: SEO | 100% | ✅ **Concluída** (otimizações aplicadas) |
 | Fase 7: Deploy | 100% | ✅ **Concluída** (Deploy, monitoramento, documentação e testes automatizados) |
-| Fase 8: Funcionalidades Avançadas | 0% | ⏳ **Pendente** (Novas funcionalidades planejadas) |
+| Fase 8: Funcionalidades Avançadas | 25% | ⏳ **Em Progresso** (8.1 e 8.2 concluídas, 8.4 concluída) |
 
 **Progresso Total:** ✅ **100% Funcional (Core)** | ⏳ **Fase 8 Pendente**
 

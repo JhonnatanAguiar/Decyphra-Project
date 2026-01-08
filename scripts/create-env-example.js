@@ -30,6 +30,24 @@ EMAIL_FROM="noreply@decyphra.com.br"
 EMAIL_TO="jhonnatanaguiar@decyphra.com.br"
 
 # ============================================
+# CONFIGURAÇÃO DO TWILIO (WHATSAPP)
+# ============================================
+# Account SID da sua conta Twilio
+TWILIO_ACCOUNT_SID="ACxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+
+# Auth Token da sua conta Twilio
+TWILIO_AUTH_TOKEN="your_auth_token_here"
+
+# Número do WhatsApp do Twilio (formato: whatsapp:+14155238886)
+# Para desenvolvimento: use o número do Sandbox (whatsapp:+14155238886)
+# Para produção: use o número verificado do Twilio
+TWILIO_WHATSAPP_FROM="whatsapp:+14155238886"
+
+# Número de WhatsApp da Decyphra (onde receberá notificações internas)
+# Formato: +5511999999999 (E.164, sem prefixo whatsapp:)
+WHATSAPP_TO="+5511999999999"
+
+# ============================================
 # CONFIGURAÇÃO DO NEXT.JS (Públicas)
 # ============================================
 # URL do site (usado em links e metadados)

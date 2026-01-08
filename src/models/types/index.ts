@@ -27,3 +27,9 @@ export type {
   ServiceListDTO,
 } from './service.types'
 
+// WhatsApp
+export type {
+  WhatsAppResult,
+  SendWhatsAppOptions,
+} from './whatsapp.types'
+

@@ -30,3 +30,6 @@ export {
   type ServiceListQuery,
 } from './service.schema'
 
+// WhatsApp
+export { whatsappSchema, type WhatsAppInput } from './whatsapp.schema'
+
