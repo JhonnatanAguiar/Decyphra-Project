@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { X, Settings, Check, Cookie } from 'lucide-react'
 import { useCookieConsent } from '@/lib/hooks/useCookieConsent'
-import type { CookieCategory } from '@/lib/utils/cookies'
+import type { CookieCategory, CookiePreferences } from '@/lib/utils/cookies'
 import Link from 'next/link'
 import { Button } from './Button'
 import { cn } from '@/lib/utils/cn'
@@ -24,6 +24,8 @@ export function CookieBanner({ className }: CookieBannerProps) {
     useCookieConsent()
   const [showBanner, setShowBanner] = useState(false)
   const [showSettings, setShowSettings] = useState(false)
+  // Estado temporário para preferências enquanto o usuário personaliza
+  const [tempPreferences, setTempPreferences] = useState<CookiePreferences | null>(preferences)
 
   useEffect(() => {
     // Só mostrar o banner se não houver consentimento
@@ -32,13 +34,20 @@ export function CookieBanner({ className }: CookieBannerProps) {
     }
   }, [hasConsent, isLoading])
 
+  // Atualizar tempPreferences quando preferences mudar ou quando entrar na view de configurações
+  useEffect(() => {
+    if (showSettings && preferences) {
+      setTempPreferences(preferences)
+    }
+  }, [showSettings, preferences])
+
   if (isLoading || !showBanner || hasConsent) {
     return null
   }
 
   const handleSavePreferences = () => {
-    if (preferences) {
-      savePreferences(preferences)
+    if (tempPreferences) {
+      savePreferences(tempPreferences)
     }
     setShowBanner(false)
   }
@@ -46,11 +55,12 @@ export function CookieBanner({ className }: CookieBannerProps) {
   const toggleCategory = (category: CookieCategory) => {
     if (category === 'essential') return // Não pode desativar essenciais
 
-    if (!preferences) return
+    if (!tempPreferences) return
 
-    savePreferences({
-      ...preferences,
-      [category]: !preferences[category],
+    // Apenas atualiza o estado local, não salva ainda
+    setTempPreferences({
+      ...tempPreferences,
+      [category]: !tempPreferences[category],
     })
   }
 
@@ -189,7 +199,7 @@ export function CookieBanner({ className }: CookieBannerProps) {
                       onClick={() => toggleCategory('analytics')}
                       className={cn(
                         'w-12 h-6 rounded-full flex items-center transition-colors',
-                        preferences?.analytics
+                        tempPreferences?.analytics
                           ? 'bg-primary-500 justify-end'
                           : 'bg-dark-700 justify-start'
                       )}
@@ -222,7 +232,7 @@ export function CookieBanner({ className }: CookieBannerProps) {
                       onClick={() => toggleCategory('marketing')}
                       className={cn(
                         'w-12 h-6 rounded-full flex items-center transition-colors',
-                        preferences?.marketing
+                        tempPreferences?.marketing
                           ? 'bg-primary-500 justify-end'
                           : 'bg-dark-700 justify-start'
                       )}
