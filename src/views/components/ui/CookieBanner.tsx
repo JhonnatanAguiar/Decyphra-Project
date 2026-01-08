@@ -91,7 +91,7 @@ export function CookieBanner({ className }: CookieBannerProps) {
                     }}
                     variant="secondary"
                     size="sm"
-                    className="bg-transparent border-dark-700 text-light-200 hover:bg-dark-900 hover:border-primary-500 hover:text-primary-500"
+                    className="bg-transparent border-dark-700 text-light-200 hover:bg-dark-900 hover:border-primary-500 hover:text-primary-400"
                   >
                     Apenas Essenciais
                   </Button>
@@ -101,7 +101,7 @@ export function CookieBanner({ className }: CookieBannerProps) {
                       setShowBanner(false)
                     }}
                     size="sm"
-                    className="bg-primary-500 text-dark-950 hover:bg-primary-400"
+                    className="bg-primary-500 text-dark-950 hover:bg-primary-400 hover:text-dark-950"
                   >
                     Aceitar Todos
                   </Button>
@@ -109,7 +109,7 @@ export function CookieBanner({ className }: CookieBannerProps) {
                     onClick={() => setShowSettings(true)}
                     variant="secondary"
                     size="sm"
-                    className="bg-transparent border-dark-700 text-light-200 hover:bg-dark-900 hover:border-primary-500 hover:text-primary-500"
+                    className="bg-transparent border-dark-700 text-light-200 hover:bg-dark-900 hover:border-primary-500 hover:text-primary-400"
                   >
                     <Settings className="w-4 h-4 mr-2" />
                     Personalizar
@@ -237,7 +237,7 @@ export function CookieBanner({ className }: CookieBannerProps) {
             <div className="flex flex-wrap gap-3 pt-4 border-t border-dark-800">
               <Button
                 onClick={handleSavePreferences}
-                className="bg-primary-500 text-dark-950 hover:bg-primary-400"
+                className="bg-primary-500 text-dark-950 hover:bg-primary-400 hover:text-dark-950"
               >
                 <Check className="w-4 h-4 mr-2" />
                 Salvar Preferências
@@ -248,7 +248,7 @@ export function CookieBanner({ className }: CookieBannerProps) {
                   setShowBanner(false)
                 }}
                 variant="secondary"
-                className="bg-transparent border-dark-700 text-light-200 hover:bg-dark-900 hover:border-primary-500 hover:text-primary-500"
+                className="bg-transparent border-dark-700 text-light-200 hover:bg-dark-900 hover:border-primary-500 hover:text-primary-400"
               >
                 Apenas Essenciais
               </Button>
@@ -258,7 +258,7 @@ export function CookieBanner({ className }: CookieBannerProps) {
                   setShowBanner(false)
                 }}
                 variant="secondary"
-                className="bg-transparent border-dark-700 text-light-200 hover:bg-dark-900 hover:border-primary-500 hover:text-primary-500"
+                className="bg-transparent border-dark-700 text-light-200 hover:bg-dark-900 hover:border-primary-500 hover:text-primary-400"
               >
                 Aceitar Todos
               </Button>
