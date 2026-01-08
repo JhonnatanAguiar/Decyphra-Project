@@ -12,3 +12,5 @@ export type { UseAnimationOptions, UseAnimationReturn } from './useAnimation'
 
 export { useForm } from './useForm'
 export type { UseFormOptions } from './useForm'
+
+export { useCookieConsent } from './useCookieConsent'

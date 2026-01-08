@@ -661,12 +661,12 @@ light: {
 - [x] Adicionar metadata e SEO para cada página legal
 
 #### 8.2 Configuração de Cookies
-- [ ] Criar componente de banner/pop-up de cookies
-- [ ] Implementar gerenciamento de consentimento de cookies
-- [ ] Integrar com Google Analytics (respeitar consentimento)
-- [ ] Criar sistema de categorização de cookies (essenciais, analíticos, marketing)
-- [ ] Persistir preferências do usuário (localStorage/cookies)
-- [ ] Adicionar script de consentimento (se necessário)
+- [x] Criar componente de banner/pop-up de cookies
+- [x] Implementar gerenciamento de consentimento de cookies
+- [x] Integrar com Google Analytics (respeitar consentimento)
+- [x] Criar sistema de categorização de cookies (essenciais, analíticos, marketing)
+- [x] Persistir preferências do usuário (localStorage/cookies)
+- [x] Adicionar script de consentimento (se necessário)
 
 #### 8.3 Redes Sociais
 - [ ] Verificar e atualizar links das redes sociais no Footer

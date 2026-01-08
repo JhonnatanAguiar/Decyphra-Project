@@ -3,7 +3,8 @@
 import dynamic from 'next/dynamic'
 import { useEffect } from 'react'
 import { usePathname, useSearchParams } from 'next/navigation'
-import { trackPageView } from '@/lib/utils/analytics'
+import { trackPageView, configureGAConsent } from '@/lib/utils/analytics'
+import { useCookieConsent } from '@/lib/hooks/useCookieConsent'
 
 /**
  * Google Analytics Component
@@ -11,6 +12,7 @@ import { trackPageView } from '@/lib/utils/analytics'
  * Componente otimizado para carregar Google Analytics 4 (GA4)
  * - Lazy loaded para não bloquear renderização inicial
  * - Track automático de mudanças de página
+ * - Respeita consentimento de cookies do usuário
  * - Só carrega se NEXT_PUBLIC_GA_MEASUREMENT_ID estiver configurado
  */
 
@@ -28,10 +30,12 @@ const GoogleAnalyticsScript = dynamic(
 function usePageTracking() {
   const pathname = usePathname()
   const searchParams = useSearchParams()
+  const { isAllowed, isLoading } = useCookieConsent()
 
   useEffect(() => {
-    // Só track se GA estiver configurado
-    if (!process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID) return
+    // Só track se GA estiver configurado e consentimento dado
+    if (!process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || isLoading) return
+    if (!isAllowed('analytics')) return
     
     // Construir URL completa
     const url = pathname + (searchParams?.toString() ? `?${searchParams.toString()}` : '')
@@ -39,20 +43,49 @@ function usePageTracking() {
     // Pequeno delay para garantir que o GA está carregado
     const timer = setTimeout(() => {
       trackPageView(url, document.title)
-    }, 100)
+    }, 300)
 
     return () => clearTimeout(timer)
-  }, [pathname, searchParams])
+  }, [pathname, searchParams, isAllowed, isLoading])
 }
 
 export default function GoogleAnalytics() {
   // Só renderizar se o measurement ID estiver configurado
   const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID
+  const { hasConsent, isAllowed, isLoading } = useCookieConsent()
+
+
+  // Configurar consentimento quando carregar ou quando mudar preferências
+  useEffect(() => {
+    if (!isLoading && typeof window !== 'undefined' && typeof window.gtag === 'function') {
+      // Pequeno delay para garantir que gtag está disponível
+      const timer = setTimeout(() => {
+        configureGAConsent()
+      }, 500)
+
+      return () => clearTimeout(timer)
+    }
+  }, [hasConsent, isLoading, isAllowed])
+
+  // Ouvir eventos de atualização de consentimento
+  useEffect(() => {
+    const handleConsentUpdate = () => {
+      configureGAConsent()
+    }
+
+    window.addEventListener('cookieConsentUpdated', handleConsentUpdate)
+
+    return () => {
+      window.removeEventListener('cookieConsentUpdated', handleConsentUpdate)
+    }
+  }, [])
 
   if (!gaId) {
     return null
   }
 
+  // Sempre carregar o script do GA
+  // O consentimento será configurado via gtag('consent', 'update')
   return (
     <>
       <GoogleAnalyticsScript gaId={gaId} />

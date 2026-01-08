@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import dynamic from 'next/dynamic'
+import Script from 'next/script'
 import * as Sentry from '@sentry/nextjs'
 import './globals.css'
 
@@ -16,6 +17,11 @@ const GoogleAnalytics = dynamic(() => import('@/views/components/analytics/Googl
 
 // Lazy load Vercel Analytics para não bloquear renderização inicial
 const Analytics = dynamic(() => import('@vercel/analytics/react').then(mod => ({ default: mod.Analytics })), {
+  ssr: false,
+})
+
+// Lazy load Cookie Banner para não bloquear renderização inicial
+const CookieBanner = dynamic(() => import('@/views/components/ui/CookieBanner').then(mod => ({ default: mod.CookieBanner })), {
   ssr: false,
 })
 
@@ -64,12 +70,30 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://cdn.simpleicons.org" />
         {/* Preconnect para Google Analytics */}
         <link rel="preconnect" href="https://www.googletagmanager.com" />
+        {/* Script de consentimento padrão do Google Analytics - deve carregar ANTES do GA */}
+        <Script
+          id="ga-consent-default"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('consent', 'default', {
+                'analytics_storage': 'denied',
+                'ad_storage': 'denied',
+                'ad_user_data': 'denied',
+                'ad_personalization': 'denied'
+              });
+            `,
+          }}
+        />
       </head>
       <body className="antialiased">
         {children}
         <SpeedInsights />
         <GoogleAnalytics />
         <Analytics />
+        <CookieBanner />
       </body>
     </html>
   )

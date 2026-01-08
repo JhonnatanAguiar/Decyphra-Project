@@ -157,7 +157,7 @@ Documento resumindo o status atual do projeto e o que falta para finalização c
 
 ---
 
-## 🎉 Projeto Concluído
+## 🎉 Projeto Concluído (Core)
 
 **Status:** ✅ **TODAS AS FASES CRÍTICAS CONCLUÍDAS**
 
@@ -169,3 +169,20 @@ Documento resumindo o status atual do projeto e o que falta para finalização c
 - ✅ Integração de e-mails: 100% (templates com identidade visual)
 
 **O site está pronto para uso em produção!** 🚀
+
+---
+
+## 🚀 Próximas Funcionalidades (Fase 8)
+
+**Status:** ⏳ **PLANEJADAS** (Para desenvolvimento futuro)
+
+### Funcionalidades Avançadas:
+- ⏳ Páginas Legais (Privacidade, Termos, Cookies)
+- ⏳ Sistema de Gerenciamento de Cookies
+- ⏳ Integração WhatsApp
+- ⏳ Mini-CRM
+- ⏳ Painel Admin
+- ⏳ Modelos de Sites Profissionais
+- ⏳ Newsletter Completa
+
+Ver detalhes completos em `docs/PLANEJAMENTO-COMPLETO.md` - Fase 8.
