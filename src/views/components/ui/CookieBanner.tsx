@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { X, Settings, Check, Cookie } from 'lucide-react'
 import { useCookieConsent } from '@/lib/hooks/useCookieConsent'
 import type { CookieCategory, CookiePreferences } from '@/lib/utils/cookies'
+import { DEFAULT_COOKIE_PREFERENCES } from '@/lib/utils/cookies'
 import Link from 'next/link'
 import { Button } from './Button'
 import { cn } from '@/lib/utils/cn'
@@ -25,7 +26,10 @@ export function CookieBanner({ className }: CookieBannerProps) {
   const [showBanner, setShowBanner] = useState(false)
   const [showSettings, setShowSettings] = useState(false)
   // Estado temporário para preferências enquanto o usuário personaliza
-  const [tempPreferences, setTempPreferences] = useState<CookiePreferences | null>(preferences)
+  // Usa DEFAULT_COOKIE_PREFERENCES como fallback para evitar race conditions
+  const [tempPreferences, setTempPreferences] = useState<CookiePreferences>(
+    preferences || DEFAULT_COOKIE_PREFERENCES
+  )
 
   useEffect(() => {
     // Só mostrar o banner se não houver consentimento
@@ -36,8 +40,8 @@ export function CookieBanner({ className }: CookieBannerProps) {
 
   // Atualizar tempPreferences quando preferences mudar ou quando entrar na view de configurações
   useEffect(() => {
-    if (showSettings && preferences) {
-      setTempPreferences(preferences)
+    if (showSettings) {
+      setTempPreferences(preferences || DEFAULT_COOKIE_PREFERENCES)
     }
   }, [showSettings, preferences])
 
@@ -46,18 +50,15 @@ export function CookieBanner({ className }: CookieBannerProps) {
   }
 
   const handleSavePreferences = () => {
-    if (tempPreferences) {
-      savePreferences(tempPreferences)
-    }
+    savePreferences(tempPreferences)
     setShowBanner(false)
   }
 
   const toggleCategory = (category: CookieCategory) => {
     if (category === 'essential') return // Não pode desativar essenciais
 
-    if (!tempPreferences) return
-
     // Apenas atualiza o estado local, não salva ainda
+    // tempPreferences sempre tem um valor válido devido ao fallback na inicialização
     setTempPreferences({
       ...tempPreferences,
       [category]: !tempPreferences[category],
@@ -199,7 +200,7 @@ export function CookieBanner({ className }: CookieBannerProps) {
                       onClick={() => toggleCategory('analytics')}
                       className={cn(
                         'w-12 h-6 rounded-full flex items-center transition-colors',
-                        tempPreferences?.analytics
+                        tempPreferences.analytics
                           ? 'bg-primary-500 justify-end'
                           : 'bg-dark-700 justify-start'
                       )}
@@ -232,7 +233,7 @@ export function CookieBanner({ className }: CookieBannerProps) {
                       onClick={() => toggleCategory('marketing')}
                       className={cn(
                         'w-12 h-6 rounded-full flex items-center transition-colors',
-                        tempPreferences?.marketing
+                        tempPreferences.marketing
                           ? 'bg-primary-500 justify-end'
                           : 'bg-dark-700 justify-start'
                       )}
