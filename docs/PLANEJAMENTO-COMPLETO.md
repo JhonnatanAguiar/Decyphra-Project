@@ -2,7 +2,7 @@
 
  > **Documento Central de Planejamento**  
  > Este arquivo consolida toda a documentação de planejamento do projeto.  
- > Última atualização: 19/12/2025
+ > Última atualização: 26/12/2024
 
 ---
 
@@ -650,6 +650,196 @@ light: {
 
 ---
 
+### 🚀 Fase 8: Funcionalidades Avançadas e Melhorias
+**Status:** ⏳ **PENDENTE** (Novas funcionalidades planejadas)
+
+#### 8.1 Páginas Legais
+- [x] Criar página de Política de Privacidade (`/privacidade`)
+- [x] Criar página de Termos de Uso (`/termos`)
+- [ ] Criar página de Política de Cookies (`/cookies`)
+- [ ] Atualizar links no Footer para apontar para as novas páginas
+- [x] Adicionar metadata e SEO para cada página legal
+
+#### 8.2 Configuração de Cookies
+- [ ] Criar componente de banner/pop-up de cookies
+- [ ] Implementar gerenciamento de consentimento de cookies
+- [ ] Integrar com Google Analytics (respeitar consentimento)
+- [ ] Criar sistema de categorização de cookies (essenciais, analíticos, marketing)
+- [ ] Persistir preferências do usuário (localStorage/cookies)
+- [ ] Adicionar script de consentimento (se necessário)
+
+#### 8.3 Redes Sociais
+- [ ] Verificar e atualizar links das redes sociais no Footer
+- [ ] Adicionar/atualizar links no Header (se necessário)
+- [ ] Adicionar links nas páginas de contato e sobre
+- [ ] Garantir que todos os links estejam funcionando
+- [ ] Adicionar Schema.org para redes sociais (sameAs)
+
+#### 8.4 Integração WhatsApp
+- [ ] Criar API endpoint para envio de mensagens WhatsApp (`/api/v1/whatsapp`)
+- [ ] Integrar com serviço de WhatsApp (Twilio API ou similar)
+- [ ] Criar template de mensagem padrão (similar ao e-mail automático)
+- [ ] Implementar envio de imagem junto com mensagem
+- [ ] Criar service para WhatsApp (`src/controllers/services/whatsapp.service.ts`)
+- [ ] Adicionar validação e tratamento de erros
+- [ ] Configurar variáveis de ambiente (API keys, números, etc.)
+
+#### 8.5 Mini-CRM
+- [ ] Definir estrutura de dados do CRM
+- [ ] Criar schema Prisma para CRM (clientes, leads, interações, etc.)
+- [ ] Criar migrations do banco de dados
+- [ ] Criar API endpoints para CRM:
+  - [ ] GET/POST `/api/v1/crm/leads`
+  - [ ] GET/PUT/DELETE `/api/v1/crm/leads/[id]`
+  - [ ] GET/POST `/api/v1/crm/clients`
+  - [ ] GET/PUT/DELETE `/api/v1/crm/clients/[id]`
+  - [ ] GET/POST `/api/v1/crm/interactions`
+- [ ] Criar services para CRM (`src/controllers/services/crm.service.ts`)
+- [ ] Implementar integração com formulário de contato (cria lead automaticamente)
+- [ ] Criar validações e schemas Zod para CRM
+
+#### 8.6 Painel Admin
+- [ ] Criar estrutura de rotas admin (`/admin/*`)
+- [ ] Implementar autenticação e autorização
+- [ ] Criar dashboard administrativo:
+  - [ ] Visão geral (estatísticas, métricas)
+  - [ ] Gerenciamento de leads/CRM
+  - [ ] Gerenciamento de projetos
+  - [ ] Gerenciamento de depoimentos
+  - [ ] Gerenciamento de serviços
+  - [ ] Visualização de submissões de contato
+  - [ ] Logs e auditoria
+- [ ] Criar formulários de CRUD para cada entidade
+- [ ] Implementar upload de imagens para projetos
+- [ ] Adicionar filtros e busca
+- [ ] Criar interface responsiva para admin
+
+#### 8.7 Modelos de Sites Profissionais
+- [ ] Criar template/modelo para "E-commerce Fashion"
+- [ ] Criar template/modelo para "Clínica Médica Digital"
+- [ ] Criar template/modelo para "Startup Tecnológica"
+- [ ] Criar template/modelo para "Restaurante Gourmet"
+- [ ] Criar template/modelo para "Consultoria Empresarial"
+- [ ] Criar template/modelo para "Academia Fitness"
+- [ ] Cada modelo deve incluir:
+  - [ ] Layout responsivo completo
+  - [ ] Seções principais (Hero, Sobre, Serviços, Contato, etc.)
+  - [ ] Componentes reutilizáveis
+  - [ ] Documentação do modelo
+- [ ] Integrar modelos na página de portfólio
+- [ ] Criar páginas de detalhes para cada modelo
+
+#### 8.8 Newsletter
+- [ ] Implementar endpoint de newsletter (`POST /api/v1/newsletter`)
+- [ ] Criar schema Prisma para NewsletterSubscriber (já existe no schema)
+- [ ] Criar service de newsletter (`src/controllers/services/newsletter.service.ts`)
+- [ ] Integrar com Resend para envio de e-mails
+- [ ] Criar templates de e-mail para newsletter:
+  - [ ] Template de confirmação de inscrição
+  - [ ] Template de newsletter periódica
+  - [ ] Template de desinscrição
+- [ ] Implementar sistema de listas e segmentação
+- [ ] Criar componente de formulário de newsletter no site
+- [ ] Adicionar página de gerenciamento de newsletter (admin)
+- [ ] Implementar funcionalidade de desinscrição
+
+---
+
+### 🚀 Fase 8: Funcionalidades Avançadas e Melhorias
+**Status:** ⏳ **PENDENTE** (Novas funcionalidades planejadas)
+
+#### 8.1 Páginas Legais
+- [x] Criar página de Política de Privacidade (`/privacidade`)
+- [x] Criar página de Termos de Uso (`/termos`)
+- [ ] Criar página de Política de Cookies (`/cookies`)
+- [ ] Atualizar links no Footer para apontar para as novas páginas
+- [x] Adicionar metadata e SEO para cada página legal
+
+#### 8.2 Configuração de Cookies
+- [ ] Criar componente de banner/pop-up de cookies
+- [ ] Implementar gerenciamento de consentimento de cookies
+- [ ] Integrar com Google Analytics (respeitar consentimento)
+- [ ] Criar sistema de categorização de cookies (essenciais, analíticos, marketing)
+- [ ] Persistir preferências do usuário (localStorage/cookies)
+- [ ] Adicionar script de consentimento (se necessário)
+
+#### 8.3 Redes Sociais
+- [ ] Verificar e atualizar links das redes sociais no Footer
+- [ ] Adicionar/atualizar links no Header (se necessário)
+- [ ] Adicionar links nas páginas de contato e sobre
+- [ ] Garantir que todos os links estejam funcionando
+- [ ] Adicionar Schema.org para redes sociais (sameAs)
+
+#### 8.4 Integração WhatsApp
+- [ ] Criar API endpoint para envio de mensagens WhatsApp (`/api/v1/whatsapp`)
+- [ ] Integrar com serviço de WhatsApp (Twilio API ou similar)
+- [ ] Criar template de mensagem padrão (similar ao e-mail automático)
+- [ ] Implementar envio de imagem junto com mensagem
+- [ ] Criar service para WhatsApp (`src/controllers/services/whatsapp.service.ts`)
+- [ ] Adicionar validação e tratamento de erros
+- [ ] Configurar variáveis de ambiente (API keys, números, etc.)
+
+#### 8.5 Mini-CRM
+- [ ] Definir estrutura de dados do CRM
+- [ ] Criar schema Prisma para CRM (clientes, leads, interações, etc.)
+- [ ] Criar migrations do banco de dados
+- [ ] Criar API endpoints para CRM:
+  - [ ] GET/POST `/api/v1/crm/leads`
+  - [ ] GET/PUT/DELETE `/api/v1/crm/leads/[id]`
+  - [ ] GET/POST `/api/v1/crm/clients`
+  - [ ] GET/PUT/DELETE `/api/v1/crm/clients/[id]`
+  - [ ] GET/POST `/api/v1/crm/interactions`
+- [ ] Criar services para CRM (`src/controllers/services/crm.service.ts`)
+- [ ] Implementar integração com formulário de contato (cria lead automaticamente)
+- [ ] Criar validações e schemas Zod para CRM
+
+#### 8.6 Painel Admin
+- [ ] Criar estrutura de rotas admin (`/admin/*`)
+- [ ] Implementar autenticação e autorização
+- [ ] Criar dashboard administrativo:
+  - [ ] Visão geral (estatísticas, métricas)
+  - [ ] Gerenciamento de leads/CRM
+  - [ ] Gerenciamento de projetos
+  - [ ] Gerenciamento de depoimentos
+  - [ ] Gerenciamento de serviços
+  - [ ] Visualização de submissões de contato
+  - [ ] Logs e auditoria
+- [ ] Criar formulários de CRUD para cada entidade
+- [ ] Implementar upload de imagens para projetos
+- [ ] Adicionar filtros e busca
+- [ ] Criar interface responsiva para admin
+
+#### 8.7 Modelos de Sites Profissionais
+- [ ] Criar template/modelo para "E-commerce Fashion"
+- [ ] Criar template/modelo para "Clínica Médica Digital"
+- [ ] Criar template/modelo para "Startup Tecnológica"
+- [ ] Criar template/modelo para "Restaurante Gourmet"
+- [ ] Criar template/modelo para "Consultoria Empresarial"
+- [ ] Criar template/modelo para "Academia Fitness"
+- [ ] Cada modelo deve incluir:
+  - [ ] Layout responsivo completo
+  - [ ] Seções principais (Hero, Sobre, Serviços, Contato, etc.)
+  - [ ] Componentes reutilizáveis
+  - [ ] Documentação do modelo
+- [ ] Integrar modelos na página de portfólio
+- [ ] Criar páginas de detalhes para cada modelo
+
+#### 8.8 Newsletter
+- [ ] Implementar endpoint de newsletter (`POST /api/v1/newsletter`)
+- [ ] Criar schema Prisma para NewsletterSubscriber (já existe no schema)
+- [ ] Criar service de newsletter (`src/controllers/services/newsletter.service.ts`)
+- [ ] Integrar com Resend para envio de e-mails
+- [ ] Criar templates de e-mail para newsletter:
+  - [ ] Template de confirmação de inscrição
+  - [ ] Template de newsletter periódica
+  - [ ] Template de desinscrição
+- [ ] Implementar sistema de listas e segmentação
+- [ ] Criar componente de formulário de newsletter no site
+- [ ] Adicionar página de gerenciamento de newsletter (admin)
+- [ ] Implementar funcionalidade de desinscrição
+
+---
+
 ## 👥 Responsabilidades
 
 ### ✅ Você Precisa Fazer Manualmente
@@ -750,8 +940,9 @@ npm run type-check   # Verifica tipos TypeScript
 | Fase 5: Backend | 100% | ✅ **Concluída** (APIs funcionando, newsletter opcional) |
 | Fase 6: SEO | 100% | ✅ **Concluída** (otimizações aplicadas) |
 | Fase 7: Deploy | 100% | ✅ **Concluída** (Deploy, monitoramento, documentação e testes automatizados) |
+| Fase 8: Funcionalidades Avançadas | 0% | ⏳ **Pendente** (Novas funcionalidades planejadas) |
 
-**Progresso Total:** ✅ **100% Funcional**
+**Progresso Total:** ✅ **100% Funcional (Core)** | ⏳ **Fase 8 Pendente**
 
 **Status:** ✅ **Pronto para Produção** | ✅ **Projeto Concluído**
 
