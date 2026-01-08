@@ -1,5 +1,6 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import { Container, Section } from '@/views/components/layout'
 import { FadeIn } from '@/views/components/animations'
 
@@ -10,6 +11,15 @@ import { FadeIn } from '@/views/components/animations'
  */
 
 export default function PrivacidadePageClient() {
+  const [lastUpdate, setLastUpdate] = useState<string>('')
+
+  useEffect(() => {
+    // Garantir que a data só seja gerada no cliente após hidratação
+    setLastUpdate(
+      new Date().toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' })
+    )
+  }, [])
+
   return (
     <>
       {/* Hero Section */}
@@ -24,9 +34,11 @@ export default function PrivacidadePageClient() {
               <p className="text-lg md:text-xl text-light-200 leading-relaxed max-w-3xl mx-auto drop-shadow-[0_0_15px_rgba(0,0,0,0.8)]">
                 Sua privacidade é importante para nós. Esta política explica como coletamos, usamos e protegemos seus dados pessoais.
               </p>
-              <p className="text-sm text-light-300 mt-4">
-                Última atualização: {new Date().toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' })}
-              </p>
+              {lastUpdate && (
+                <p className="text-sm text-light-300 mt-4">
+                  Última atualização: {lastUpdate}
+                </p>
+              )}
             </div>
           </FadeIn>
         </Container>
