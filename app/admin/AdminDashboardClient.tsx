@@ -122,9 +122,7 @@ export default function AdminDashboardClient() {
         }
 
         // Carregar analytics
-        const analyticsResponse = await fetch(`/api/v1/admin/analytics?days=${analyticsPeriod}`, {
-          next: { revalidate: 300 }, // Cache de 5 minutos
-        })
+        const analyticsResponse = await fetch(`/api/v1/admin/analytics?days=${analyticsPeriod}`)
         if (analyticsResponse.ok) {
           const analyticsData = await analyticsResponse.json()
           setAnalytics(analyticsData)

@@ -862,10 +862,17 @@ light: {
 - [x] `npm run db:seed:admin` - Script para popular banco com dados de teste do admin
 
 **Próximos passos (após migration):**
-1. Executar migration: `npx prisma migrate dev --name add_analytics_models`
+1. Executar migration: `npx prisma migrate dev --name add_analytics_and_performance_models`
 2. Popular banco com dados de teste: `npm run db:seed:admin`
 3. O tracking de analytics começará a coletar dados automaticamente nas páginas públicas
 4. Acessar `/admin` para visualizar analytics e performance no dashboard
+
+**Observações importantes:**
+- O sistema de analytics está completamente funcional e pronto para uso
+- Os gráficos aparecerão vazios inicialmente até que haja dados coletados
+- O tracking funciona automaticamente em todas as páginas públicas
+- As métricas de Core Web Vitals são coletadas automaticamente
+- Os erros do frontend são automaticamente logados no sistema
 
 ---
 

@@ -131,10 +131,10 @@ export async function getPageViewsStats(startDate: Date, endDate: Date) {
     prisma.$queryRaw<
       Array<{ date: Date; count: bigint }>
     >`
-      SELECT DATE("createdAt") as date, COUNT(*)::bigint as count
+      SELECT DATE_TRUNC('day', "createdAt")::date as date, COUNT(*)::bigint as count
       FROM page_views
       WHERE "createdAt" >= ${startDate} AND "createdAt" <= ${endDate}
-      GROUP BY DATE("createdAt")
+      GROUP BY DATE_TRUNC('day', "createdAt")
       ORDER BY date ASC
     `,
   ])
