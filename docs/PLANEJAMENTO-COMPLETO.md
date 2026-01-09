@@ -862,10 +862,18 @@ light: {
 - [x] `npm run db:seed:admin` - Script para popular banco com dados de teste do admin
 
 **Próximos passos (após migration):**
-1. Executar migration: `npx prisma migrate dev --name add_analytics_and_performance_models`
+1. ✅ Executar migration: `node scripts/migrate.js dev --name add_analytics_and_performance_models` ou `npm run db:migrate` (se não precisar de nome customizado)
 2. Popular banco com dados de teste: `npm run db:seed:admin`
 3. O tracking de analytics começará a coletar dados automaticamente nas páginas públicas
 4. Acessar `/admin` para visualizar analytics e performance no dashboard
+
+**Como executar migrations:**
+- Migration com nome customizado: `node scripts/migrate.js dev --name nome_da_migration`
+- Migration padrão (desenvolvimento): `npm run db:migrate`
+- Deploy (produção): `npm run db:migrate:deploy`
+- Reset (desenvolvimento): `npm run db:migrate:reset`
+
+O script `scripts/migrate.js` carrega automaticamente as variáveis de ambiente do `.env.local`.
 
 **Observações importantes:**
 - O sistema de analytics está completamente funcional e pronto para uso

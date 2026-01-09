@@ -161,11 +161,15 @@ npm run build        # Build para produção
 npm run start        # Inicia servidor de produção
 
 # Banco de Dados
-npm run db:migrate   # Aplica migrations (lê .env.local)
-npm run db:push      # Push schema direto (lê .env.local)
-npm run db:seed      # Popula banco com dados iniciais
-npm run db:studio    # Abre Prisma Studio (lê .env.local)
-npm run db:generate  # Gera Prisma Client
+npm run db:migrate        # Migration padrão (desenvolvimento)
+npm run db:migrate:dev    # Migration com nome customizado: node scripts/migrate.js dev --name nome_da_migration
+npm run db:migrate:deploy # Deploy migration (produção)
+npm run db:migrate:reset  # Reset banco e aplica todas migrations (desenvolvimento)
+npm run db:push           # Push schema direto (lê .env.local)
+npm run db:seed           # Popula banco com dados iniciais
+npm run db:seed:admin     # Popula banco com dados de teste do admin
+npm run db:studio         # Abre Prisma Studio (lê .env.local)
+npm run db:generate       # Gera Prisma Client
 npm run test:connection # Testa conexão com banco
 
 # Testes
