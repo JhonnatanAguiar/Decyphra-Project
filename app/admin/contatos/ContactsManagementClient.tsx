@@ -124,7 +124,7 @@ export default function ContactsManagementClient() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [statusFilter, offset])
 
-  // Filtrar contatos localmente por busca
+  // Filtrar contatos localmente por busca (usa debouncedSearchTerm para evitar filtros excessivos)
   const filteredContacts = contacts.filter(contact => {
     if (!debouncedSearchTerm) return true
     const search = debouncedSearchTerm.toLowerCase()
@@ -133,19 +133,6 @@ export default function ContactsManagementClient() {
       contact.email.toLowerCase().includes(search) ||
       (contact.phone && contact.phone.toLowerCase().includes(search)) ||
       (contact.service && contact.service.toLowerCase().includes(search)) ||
-      contact.message.toLowerCase().includes(search)
-    )
-  })
-
-  // Filtrar contatos localmente por busca
-  const filteredContacts = contacts.filter(contact => {
-    if (!searchTerm) return true
-    const search = searchTerm.toLowerCase()
-    return (
-      contact.name.toLowerCase().includes(search) ||
-      contact.email.toLowerCase().includes(search) ||
-      contact.phone?.toLowerCase().includes(search) ||
-      contact.service?.toLowerCase().includes(search) ||
       contact.message.toLowerCase().includes(search)
     )
   })
