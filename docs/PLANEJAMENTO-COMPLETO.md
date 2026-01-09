@@ -687,7 +687,7 @@ light: {
 
 #### 8.5 Mini-CRM
 
-**Status:** ✅ **CONCLUÍDO** (Migration pendente - requer DATABASE_URL)
+**Status:** ✅ **CONCLUÍDO** (100% - Migration executada)
 
 **Objetivo:** Criar um sistema de CRM (Customer Relationship Management) básico para gerenciar leads, clientes e interações.
 
