@@ -111,14 +111,6 @@ export default function ClientsManagementClient() {
 
   // Usar clientes diretamente, a busca é feita no servidor
   const filteredClients = clients
-    return (
-      client.name.toLowerCase().includes(search) ||
-      client.email.toLowerCase().includes(search) ||
-      client.phone?.toLowerCase().includes(search) ||
-      client.company?.toLowerCase().includes(search) ||
-      client.cnpj?.toLowerCase().includes(search)
-    )
-  })
 
   // Abrir modal de visualização
   const handleView = (client: ClientDTO) => {
@@ -186,7 +178,7 @@ export default function ClientsManagementClient() {
       if (response.ok) {
         showToast(isEditMode ? 'Cliente atualizado com sucesso!' : 'Cliente criado com sucesso!', 'success')
         setIsModalOpen(false)
-        fetchClients()
+        fetchClients(debouncedSearchTerm)
       } else {
         const error = await response.json()
         showToast(error.message || 'Erro ao salvar cliente', 'error')
@@ -210,7 +202,7 @@ export default function ClientsManagementClient() {
 
       if (response.ok) {
         showToast('Cliente deletado com sucesso!', 'success')
-        fetchClients()
+        fetchClients(debouncedSearchTerm)
       } else {
         showToast('Erro ao deletar cliente', 'error')
       }
