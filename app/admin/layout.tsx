@@ -46,35 +46,47 @@ export default function AdminLayout({
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
 
-  // Verificar autenticação
+  // Verificar autenticação apenas uma vez ao montar
   useEffect(() => {
+    // Só verificar se não estiver na página de login
+    if (pathname === '/admin/login') {
+      setIsLoading(false)
+      return
+    }
+
+    let mounted = true
+
     const checkAuth = async () => {
       try {
-        const response = await fetch('/api/v1/admin/auth/check')
-        if (response.ok) {
-          setIsAuthenticated(true)
-        } else {
-          // Redirecionar para login se não estiver autenticado
-          if (pathname !== '/admin/login') {
+        const response = await fetch('/api/v1/admin/auth/check', {
+          cache: 'no-store',
+        })
+        if (mounted) {
+          if (response.ok) {
+            setIsAuthenticated(true)
+          } else {
+            // Redirecionar para login se não estiver autenticado
             router.push('/admin/login')
           }
         }
       } catch {
-        if (pathname !== '/admin/login') {
+        if (mounted && pathname !== '/admin/login') {
           router.push('/admin/login')
         }
       } finally {
-        setIsLoading(false)
+        if (mounted) {
+          setIsLoading(false)
+        }
       }
     }
 
-    // Só verificar se não estiver na página de login
-    if (pathname !== '/admin/login') {
-      checkAuth()
-    } else {
-      setIsLoading(false)
+    checkAuth()
+
+    return () => {
+      mounted = false
     }
-  }, [pathname, router])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []) // Verificar apenas uma vez ao montar
 
   const handleLogout = async () => {
     try {

@@ -318,7 +318,7 @@ export default function ProjectsManagementClient() {
           title={selectedProject.title}
           size="lg"
         >
-          <div className="space-y-4">
+          <div className="space-y-4 flex flex-col">
             {selectedProject.featuredImage && (
               <div className="relative h-64 bg-dark-700 rounded-lg overflow-hidden">
                 <Image
@@ -445,8 +445,9 @@ export default function ProjectsManagementClient() {
                 </div>
               </div>
             </div>
-          </div>
-          <div className="flex justify-end gap-2 mt-6 pt-6 border-t border-dark-700">
+
+            {/* Footer do Modal */}
+            <div className="flex justify-end gap-2 mt-6 pt-6 border-t border-dark-700 flex-shrink-0">
             <Button variant="secondary" onClick={() => setIsViewModalOpen(false)}>
               Fechar
             </Button>

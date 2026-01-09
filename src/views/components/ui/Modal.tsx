@@ -85,6 +85,7 @@ const Modal = ({
           'relative z-10 w-full rounded-lg bg-dark-800 border border-dark-700 shadow-2xl',
           'transform transition-all duration-300 ease-out',
           'scale-100 opacity-100',
+          'max-h-[90vh] flex flex-col',
           sizes[size],
           className
         )}
@@ -127,7 +128,7 @@ const Modal = ({
         )}
 
         {/* Content */}
-        <div className="p-6">{children}</div>
+        <div className="p-6 overflow-y-auto flex-1 min-h-0">{children}</div>
       </div>
     </div>
   )
