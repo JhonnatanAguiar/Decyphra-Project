@@ -7,7 +7,7 @@ import { Badge } from '@/views/components/ui/Badge'
 import { Input } from '@/views/components/ui/Input'
 import { Select } from '@/views/components/ui/Select'
 import { Modal } from '@/views/components/ui/Modal'
-import { useToast } from '@/lib/hooks'
+import { useToast, useDebounce } from '@/lib/hooks'
 import { Toast } from '@/views/components/ui/Toast'
 import Image from 'next/image'
 import { 
@@ -50,6 +50,7 @@ export default function ProjectsManagementClient() {
   const [total, setTotal] = useState(0)
   const [isLoading, setIsLoading] = useState(true)
   const [searchTerm, setSearchTerm] = useState('')
+  const debouncedSearchTerm = useDebounce(searchTerm, 500)
   const [statusFilter, setStatusFilter] = useState<'draft' | 'published' | 'archived' | ''>('')
   const [categoryFilter, setCategoryFilter] = useState<string>('')
   const [limit] = useState(10)
@@ -90,8 +91,8 @@ export default function ProjectsManagementClient() {
 
   // Filtrar projetos localmente por busca
   const filteredProjects = projects.filter(project => {
-    if (!searchTerm) return true
-    const search = searchTerm.toLowerCase()
+    if (!debouncedSearchTerm) return true
+    const search = debouncedSearchTerm.toLowerCase()
     return (
       project.title.toLowerCase().includes(search) ||
       project.description.toLowerCase().includes(search) ||

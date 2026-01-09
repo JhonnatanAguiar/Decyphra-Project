@@ -36,11 +36,20 @@ import type {
  * Lista leads com filtros e paginação
  */
 export async function listLeads(query: LeadListQuery): Promise<LeadListDTO> {
-  const { status, source, limit, offset } = query
+  const { status, source, search, limit, offset } = query
 
   const where: Prisma.LeadWhereInput = {}
   if (status) where.status = status
   if (source) where.source = source
+  if (search) {
+    // PostgreSQL não suporta 'insensitive' diretamente, usar Prisma Raw para ILIKE
+    where.OR = [
+      { name: { contains: search } },
+      { email: { contains: search } },
+      { company: { contains: search } },
+      { phone: { contains: search } },
+    ]
+  }
 
   const [leads, total] = await Promise.all([
     prisma.lead.findMany({
@@ -207,11 +216,20 @@ export async function convertLeadToClient(leadId: string, clientData?: Partial<C
  * Lista clients com filtros e paginação
  */
 export async function listClients(query: ClientListQuery): Promise<ClientListDTO> {
-  const { status, segment, limit, offset } = query
+  const { status, segment, search, limit, offset } = query
 
   const where: Prisma.ClientWhereInput = {}
   if (status) where.status = status
   if (segment) where.segment = segment
+  if (search) {
+    where.OR = [
+      { name: { contains: search } },
+      { email: { contains: search } },
+      { company: { contains: search } },
+      { phone: { contains: search } },
+      { cnpj: { contains: search } },
+    ]
+  }
 
   const [clients, total] = await Promise.all([
     prisma.client.findMany({

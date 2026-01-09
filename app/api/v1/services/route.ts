@@ -21,7 +21,10 @@ export async function GET(req: Request) {
     // Buscar serviços
     const result = await listServices(query)
 
-    return apiResponse(result, 200)
+    // Cache headers para melhor performance (serviços mudam raramente)
+    const response = apiResponse(result, 200)
+    response.headers.set('Cache-Control', 'public, s-maxage=300, stale-while-revalidate=600')
+    return response
   } catch (err) {
     // eslint-disable-next-line no-console
     console.error('[api/services] error', err)

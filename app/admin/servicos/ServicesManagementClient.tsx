@@ -6,7 +6,7 @@ import { Button } from '@/views/components/ui/Button'
 import { Badge } from '@/views/components/ui/Badge'
 import { Input } from '@/views/components/ui/Input'
 import { Modal } from '@/views/components/ui/Modal'
-import { useToast } from '@/lib/hooks'
+import { useToast, useDebounce } from '@/lib/hooks'
 import { Toast } from '@/views/components/ui/Toast'
 import { 
   Search, 
@@ -34,6 +34,7 @@ export default function ServicesManagementClient() {
   const [total, setTotal] = useState(0)
   const [isLoading, setIsLoading] = useState(true)
   const [searchTerm, setSearchTerm] = useState('')
+  const debouncedSearchTerm = useDebounce(searchTerm, 500)
   const [limit] = useState(10)
   const [offset, setOffset] = useState(0)
   const [selectedService, setSelectedService] = useState<Service | null>(null)
@@ -68,10 +69,10 @@ export default function ServicesManagementClient() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [offset])
 
-  // Filtrar serviços localmente por busca
+  // Filtrar serviços localmente por busca (serviços são poucos, então filtro local é aceitável)
   const filteredServices = services.filter(service => {
-    if (!searchTerm) return true
-    const search = searchTerm.toLowerCase()
+    if (!debouncedSearchTerm) return true
+    const search = debouncedSearchTerm.toLowerCase()
     return (
       service.title.toLowerCase().includes(search) ||
       service.description.toLowerCase().includes(search) ||

@@ -79,6 +79,7 @@ export type InteractionInput = z.infer<typeof interactionSchema>
 export const leadListQuerySchema = z.object({
   status: z.enum(['new', 'contacted', 'qualified', 'proposal', 'negotiation', 'won', 'lost', 'archived']).optional(),
   source: z.string().optional(),
+  search: z.string().optional(),
   limit: z.coerce.number().int().min(1).max(100).default(10),
   offset: z.coerce.number().int().min(0).default(0),
 })
@@ -91,6 +92,7 @@ export type LeadListQuery = z.infer<typeof leadListQuerySchema>
 export const clientListQuerySchema = z.object({
   status: z.enum(['active', 'inactive', 'suspended', 'archived']).optional(),
   segment: z.string().optional(),
+  search: z.string().optional(),
   limit: z.coerce.number().int().min(1).max(100).default(10),
   offset: z.coerce.number().int().min(0).default(0),
 })

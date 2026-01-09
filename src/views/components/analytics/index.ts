@@ -1,7 +1,7 @@
 /**
- * Analytics Components
- * 
- * Componentes relacionados a analytics e tracking
+ * Analytics Components Barrel Export
  */
 
-export { default as GoogleAnalytics } from './GoogleAnalytics'
+export { LineChart } from './LineChart'
+export { BarChart } from './BarChart'
+export { PieChart } from './PieChart'

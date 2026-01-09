@@ -7,7 +7,7 @@ import { Badge } from '@/views/components/ui/Badge'
 import { Input } from '@/views/components/ui/Input'
 import { Select } from '@/views/components/ui/Select'
 import { Modal } from '@/views/components/ui/Modal'
-import { useToast } from '@/lib/hooks'
+import { useToast, useDebounce } from '@/lib/hooks'
 import { Toast } from '@/views/components/ui/Toast'
 import { 
   Search, 
@@ -80,6 +80,7 @@ export default function ContactsManagementClient() {
   const [total, setTotal] = useState(0)
   const [isLoading, setIsLoading] = useState(true)
   const [searchTerm, setSearchTerm] = useState('')
+  const debouncedSearchTerm = useDebounce(searchTerm, 500)
   const [statusFilter, setStatusFilter] = useState<'new' | 'read' | 'replied' | 'archived' | ''>('')
   const [limit] = useState(10)
   const [offset, setOffset] = useState(0)
@@ -120,7 +121,21 @@ export default function ContactsManagementClient() {
 
   useEffect(() => {
     fetchContacts()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [statusFilter, offset])
+
+  // Filtrar contatos localmente por busca
+  const filteredContacts = contacts.filter(contact => {
+    if (!debouncedSearchTerm) return true
+    const search = debouncedSearchTerm.toLowerCase()
+    return (
+      contact.name.toLowerCase().includes(search) ||
+      contact.email.toLowerCase().includes(search) ||
+      (contact.phone && contact.phone.toLowerCase().includes(search)) ||
+      (contact.service && contact.service.toLowerCase().includes(search)) ||
+      contact.message.toLowerCase().includes(search)
+    )
+  })
 
   // Filtrar contatos localmente por busca
   const filteredContacts = contacts.filter(contact => {

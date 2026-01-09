@@ -25,4 +25,16 @@ export {
   getInteractionById,
   createInteraction,
 } from './crm.service'
+export {
+  createPageView,
+  createEvent,
+  createPerformanceMetric,
+  createErrorLog,
+  getPageViewsStats,
+  getEventsStats,
+  getAverageSessionDuration,
+  getUniqueSessions,
+  getPerformanceStats,
+  getErrorLogs,
+} from './analytics.service'
 

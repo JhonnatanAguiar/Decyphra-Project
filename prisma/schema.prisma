@@ -286,3 +286,95 @@ enum InteractionChannel {
   system      // Sistema/plataforma
   other       // Outro
 }
+
+// ============================================
+// ANALYTICS - TRACKING DE VISITAS E EVENTOS
+// ============================================
+
+model PageView {
+  id          String   @id @default(uuid())
+  path        String   // Caminho da página (ex: /servicos/desenvolvimento-web)
+  title       String?  // Título da página
+  referrer    String?  // URL de referência
+  userAgent   String?  @db.Text // User agent do navegador
+  ip          String?  // IP do visitante (hasheado se necessário)
+  country     String?  // País do visitante
+  city        String?  // Cidade do visitante
+  device      String?  // Dispositivo (mobile, desktop, tablet)
+  browser     String?  // Navegador
+  os          String?  // Sistema operacional
+  screenWidth Int?     // Largura da tela
+  screenHeight Int?    // Altura da tela
+  sessionId   String   // ID da sessão do visitante
+  userId      String?  // ID do usuário (se autenticado)
+  duration    Int?     // Duração da visita em segundos
+  createdAt   DateTime @default(now())
+  
+  @@index([path])
+  @@index([sessionId])
+  @@index([createdAt])
+  @@index([device])
+  @@map("page_views")
+}
+
+model Event {
+  id          String   @id @default(uuid())
+  name        String   // Nome do evento (ex: button_click, form_submit)
+  category    String?  // Categoria do evento
+  action      String?  // Ação realizada
+  label       String?  // Label adicional
+  value       Float?   // Valor numérico associado
+  path        String   // Caminho onde ocorreu o evento
+  sessionId   String   // ID da sessão
+  userId      String?  // ID do usuário (se autenticado)
+  metadata    Json?    // Dados extras do evento
+  createdAt   DateTime @default(now())
+  
+  @@index([name])
+  @@index([category])
+  @@index([sessionId])
+  @@index([createdAt])
+  @@index([path])
+  @@map("events")
+}
+
+// ============================================
+// PERFORMANCE E FALHAS
+// ============================================
+
+model PerformanceMetric {
+  id          String   @id @default(uuid())
+  path        String   // Caminho da página
+  metric      String   // Nome da métrica (FCP, LCP, FID, CLS, TTFB)
+  value       Float    // Valor da métrica
+  device      String?  // Dispositivo
+  connection  String?  // Tipo de conexão
+  metadata    Json?    // Dados extras
+  createdAt   DateTime @default(now())
+  
+  @@index([path])
+  @@index([metric])
+  @@index([createdAt])
+  @@map("performance_metrics")
+}
+
+model ErrorLog {
+  id          String   @id @default(uuid())
+  message     String   @db.Text // Mensagem de erro
+  stack       String?  @db.Text // Stack trace
+  path        String?  // Caminho onde ocorreu
+  userAgent   String?  @db.Text
+  userId      String?  // ID do usuário (se autenticado)
+  sessionId   String?  // ID da sessão
+  severity    String   // severity: error, warning, info
+  resolved    Boolean  @default(false)
+  resolvedAt  DateTime?
+  metadata    Json?    // Dados extras
+  createdAt   DateTime @default(now())
+  
+  @@index([severity])
+  @@index([resolved])
+  @@index([createdAt])
+  @@index([path])
+  @@map("error_logs")
+}

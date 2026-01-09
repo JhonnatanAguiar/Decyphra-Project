@@ -790,6 +790,85 @@ light: {
 
 ---
 
+### 8.10 Sistema de Analytics e Performance
+
+**Status:** ✅ **CONCLUÍDO** (100%)
+
+**Objetivo:** Implementar sistema completo de analytics e monitoramento de performance similar ao Google Analytics, com tracking de visitas, eventos, métricas de performance e logs de erro.
+
+**Tarefas:**
+- [x] Criar modelos Prisma para analytics:
+  - [x] `PageView` - Rastreamento de visitas às páginas
+  - [x] `Event` - Rastreamento de eventos (cliques, submits, etc)
+  - [x] `PerformanceMetric` - Métricas de Core Web Vitals (FCP, LCP, FID, CLS, TTFB)
+  - [x] `ErrorLog` - Logs de erros do frontend
+- [x] Criar APIs de tracking:
+  - [x] POST `/api/v1/analytics/pageview` - Registrar page view
+  - [x] POST `/api/v1/analytics/event` - Registrar evento
+  - [x] POST `/api/v1/analytics/performance` - Registrar métrica de performance
+  - [x] POST `/api/v1/analytics/error` - Registrar erro
+- [x] Criar APIs administrativas de analytics:
+  - [x] GET `/api/v1/admin/analytics` - Estatísticas de analytics (requer autenticação)
+  - [x] GET `/api/v1/admin/performance` - Estatísticas de performance e erros (requer autenticação)
+- [x] Criar services de analytics:
+  - [x] `src/controllers/services/analytics.service.ts` - Lógica de negócio de analytics
+  - [x] Funções para buscar estatísticas agregadas (visitas, sessões, eventos, etc)
+  - [x] Funções para buscar métricas de performance
+  - [x] Funções para buscar logs de erro
+- [x] Criar utilitários de tracking no frontend:
+  - [x] `src/lib/utils/analytics-tracker.ts` - Funções para tracking de page views e eventos
+  - [x] `src/lib/utils/web-vitals-tracker.ts` - Tracking de Core Web Vitals
+  - [x] Detecção automática de dispositivo, navegador, SO
+  - [x] Geração e persistência de session ID
+- [x] Integrar tracking automático:
+  - [x] Componente `AnalyticsTracker` que rastreia page views automaticamente
+  - [x] Inicialização de Web Vitals tracking no layout de rotas públicas
+  - [x] Tracking de tempo de permanência na página
+- [x] Criar componentes de gráficos:
+  - [x] `LineChart` - Gráfico de linha para visualização temporal (usando Recharts)
+  - [x] `BarChart` - Gráfico de barras para comparações
+  - [x] `PieChart` - Gráfico de pizza para distribuições
+- [x] Implementar seção Analytics no Dashboard:
+  - [x] Métricas principais (Total de Visitas, Sessões Únicas, Tempo Médio, Total de Eventos)
+  - [x] Gráfico de visitas ao longo do tempo
+  - [x] Top 10 páginas mais visitadas
+  - [x] Distribuição de visitas por dispositivo
+  - [x] Eventos por categoria
+  - [x] Seletor de período (7, 15, 30, 90 dias)
+- [x] Implementar seção Performance e Falhas no Dashboard:
+  - [x] Métricas de Core Web Vitals (FCP, LCP, FID, CLS, TTFB)
+  - [x] Valores médios, máximos e mínimos por métrica
+  - [x] Lista de logs de erro recentes
+  - [x] Filtros por severidade (error, warning, info)
+  - [x] Status de resolução de erros
+  - [x] Informações detalhadas de cada erro (mensagem, stack, path, data)
+- [x] Otimizações de performance implementadas:
+  - [x] Cache de APIs com headers `Cache-Control` e `revalidate`
+  - [x] Debounce em campos de busca (500ms) para evitar requisições excessivas
+  - [x] Busca no servidor para leads e clientes (mais eficiente)
+  - [x] Verificação de autenticação otimizada (apenas uma vez ao montar o layout)
+  - [x] Lazy loading de componentes de gráficos (Recharts)
+  - [x] Loading states para melhor UX durante carregamento
+- [x] Correções de UI:
+  - [x] Modal de projetos corrigido (scroll quando conteúdo longo, footer fixo)
+  - [x] Página Configurações criada (resolve erro 404)
+  - [x] Melhorias de layout e responsividade
+
+**Bibliotecas adicionadas:**
+- [x] `recharts` - Biblioteca de gráficos React
+- [x] `@types/recharts` - Types TypeScript para Recharts
+
+**Scripts adicionados:**
+- [x] `npm run db:seed:admin` - Script para popular banco com dados de teste do admin
+
+**Próximos passos (após migration):**
+1. Executar migration: `npx prisma migrate dev --name add_analytics_models`
+2. Popular banco com dados de teste: `npm run db:seed:admin`
+3. O tracking de analytics começará a coletar dados automaticamente nas páginas públicas
+4. Acessar `/admin` para visualizar analytics e performance no dashboard
+
+---
+
 ## 👥 Responsabilidades
 
 ### ✅ Você Precisa Fazer Manualmente
@@ -890,7 +969,7 @@ npm run type-check   # Verifica tipos TypeScript
 | Fase 5: Backend | 100% | ✅ **Concluída** (APIs funcionando, newsletter opcional) |
 | Fase 6: SEO | 100% | ✅ **Concluída** (otimizações aplicadas) |
 | Fase 7: Deploy | 100% | ✅ **Concluída** (Deploy, monitoramento, documentação e testes automatizados) |
-| Fase 8: Funcionalidades Avançadas | 75% | ⏳ **Em Progresso** (8.1, 8.2, 8.4, 8.5 e 8.6 parcial concluídas - Painel Admin 85%) |
+| Fase 8: Funcionalidades Avançadas | 82% | ⏳ **Em Progresso** (8.1, 8.2, 8.4, 8.5 e 8.6 concluídas - Analytics e Performance implementados) |
 
 **Progresso Total:** ✅ **100% Funcional (Core)** | ⏳ **Fase 8 Pendente**
 

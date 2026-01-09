@@ -25,6 +25,8 @@ const CookieBanner = dynamic(() => import('@/views/components/ui/CookieBanner').
   ssr: false,
 })
 
+// Web Vitals Tracker será inicializado no AnalyticsTracker
+
 const inter = Inter({ 
   subsets: ['latin'],
   variable: '--font-inter',

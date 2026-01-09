@@ -4,6 +4,7 @@ import { Header } from '@/views/components/layout/Header'
 import { Footer } from '@/views/components/layout/Footer'
 import { ScrollToTop } from '@/views/components/layout/ScrollToTop'
 import { PageTransition } from '@/views/components/animations/PageTransition'
+import { AnalyticsTracker } from './AnalyticsTracker'
 
 /**
  * Layout para rotas públicas
@@ -20,6 +21,8 @@ export default function RoutesLayout({
 }) {
   return (
     <>
+      <AnalyticsTracker />
+      <WebVitalsInit />
       <ScrollToTop />
       <Header variant="default" sticky={true} />
       <main id="main-content">

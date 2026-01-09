@@ -6,7 +6,7 @@ import { Button } from '@/views/components/ui/Button'
 import { Badge } from '@/views/components/ui/Badge'
 import { Input } from '@/views/components/ui/Input'
 import { Modal } from '@/views/components/ui/Modal'
-import { useToast } from '@/lib/hooks'
+import { useToast, useDebounce } from '@/lib/hooks'
 import { Toast } from '@/views/components/ui/Toast'
 import Image from 'next/image'
 import { 
@@ -37,6 +37,7 @@ export default function TestimonialsManagementClient() {
   const [total, setTotal] = useState(0)
   const [isLoading, setIsLoading] = useState(true)
   const [searchTerm, setSearchTerm] = useState('')
+  const debouncedSearchTerm = useDebounce(searchTerm, 500)
   const [limit] = useState(10)
   const [offset, setOffset] = useState(0)
   const [selectedTestimonial, setSelectedTestimonial] = useState<Testimonial | null>(null)
@@ -73,8 +74,8 @@ export default function TestimonialsManagementClient() {
 
   // Filtrar depoimentos localmente por busca
   const filteredTestimonials = testimonials.filter(testimonial => {
-    if (!searchTerm) return true
-    const search = searchTerm.toLowerCase()
+    if (!debouncedSearchTerm) return true
+    const search = debouncedSearchTerm.toLowerCase()
     return (
       testimonial.name.toLowerCase().includes(search) ||
       testimonial.company?.toLowerCase().includes(search) ||

@@ -8,7 +8,7 @@ import { Input } from '@/views/components/ui/Input'
 import { Select } from '@/views/components/ui/Select'
 import { Modal } from '@/views/components/ui/Modal'
 import { Textarea } from '@/views/components/ui/Textarea'
-import { useToast } from '@/lib/hooks'
+import { useToast, useDebounce } from '@/lib/hooks'
 import { Toast } from '@/views/components/ui/Toast'
 import { 
   Plus, 
@@ -53,6 +53,7 @@ export default function ClientsManagementClient() {
   const [total, setTotal] = useState(0)
   const [isLoading, setIsLoading] = useState(true)
   const [searchTerm, setSearchTerm] = useState('')
+  const debouncedSearchTerm = useDebounce(searchTerm, 500)
   const [statusFilter, setStatusFilter] = useState<ClientStatus | ''>('')
   const [limit] = useState(10)
   const [offset, setOffset] = useState(0)
@@ -103,14 +104,12 @@ export default function ClientsManagementClient() {
   }
 
   useEffect(() => {
-    fetchClients()
+    fetchClients(debouncedSearchTerm)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [statusFilter, offset])
+  }, [statusFilter, offset, debouncedSearchTerm])
 
-  // Filtrar clientes localmente por busca
-  const filteredClients = clients.filter(client => {
-    if (!searchTerm) return true
-    const search = searchTerm.toLowerCase()
+  // Usar clientes diretamente, a busca é feita no servidor
+  const filteredClients = clients
     return (
       client.name.toLowerCase().includes(search) ||
       client.email.toLowerCase().includes(search) ||

@@ -21,7 +21,10 @@ export async function GET(req: Request) {
     // Buscar projetos
     const result = await listProjects(query)
 
-    return apiResponse(result, 200)
+    // Cache headers para melhor performance
+    const response = apiResponse(result, 200)
+    response.headers.set('Cache-Control', 'public, s-maxage=60, stale-while-revalidate=120')
+    return response
   } catch (err) {
     // eslint-disable-next-line no-console
     console.error('[api/projects] error', err)

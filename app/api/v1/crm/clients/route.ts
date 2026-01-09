@@ -17,12 +17,17 @@ export async function GET(req: Request) {
     const query = clientListQuerySchema.parse({
       status: searchParams.get('status') || undefined,
       segment: searchParams.get('segment') || undefined,
+      search: searchParams.get('search') || undefined,
       limit: searchParams.get('limit') || '10',
       offset: searchParams.get('offset') || '0',
     })
 
     const result = await listClients(query)
-    return apiResponse(result, 200)
+    
+    // Cache headers para melhor performance
+    const response = apiResponse(result, 200)
+    response.headers.set('Cache-Control', 'public, s-maxage=30, stale-while-revalidate=60')
+    return response
   } catch (err) {
     if (err instanceof z.ZodError) {
       return apiError('Parâmetros inválidos', 400, err.errors)

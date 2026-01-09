@@ -8,7 +8,7 @@ import { Input } from '@/views/components/ui/Input'
 import { Select } from '@/views/components/ui/Select'
 import { Modal } from '@/views/components/ui/Modal'
 import { Textarea } from '@/views/components/ui/Textarea'
-import { useToast } from '@/lib/hooks'
+import { useToast, useDebounce } from '@/lib/hooks'
 import { Toast } from '@/views/components/ui/Toast'
 import { 
   Plus, 
@@ -63,6 +63,7 @@ export default function LeadsManagementClient() {
   const [total, setTotal] = useState(0)
   const [isLoading, setIsLoading] = useState(true)
   const [searchTerm, setSearchTerm] = useState('')
+  const debouncedSearchTerm = useDebounce(searchTerm, 500)
   const [statusFilter, setStatusFilter] = useState<LeadStatus | ''>('')
   const [limit] = useState(10)
   const [offset, setOffset] = useState(0)
@@ -85,11 +86,12 @@ export default function LeadsManagementClient() {
   })
 
   // Carregar leads
-  const fetchLeads = async () => {
+  const fetchLeads = async (search?: string) => {
     setIsLoading(true)
     try {
       const params = new URLSearchParams()
       if (statusFilter) params.append('status', statusFilter)
+      if (search) params.append('search', search)
       params.append('limit', limit.toString())
       params.append('offset', offset.toString())
 
@@ -110,14 +112,12 @@ export default function LeadsManagementClient() {
   }
 
   useEffect(() => {
-    fetchLeads()
+    fetchLeads(debouncedSearchTerm)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [statusFilter, offset])
+  }, [statusFilter, offset, debouncedSearchTerm])
 
-  // Filtrar leads localmente por busca
-  const filteredLeads = leads.filter(lead => {
-    if (!searchTerm) return true
-    const search = searchTerm.toLowerCase()
+  // Usar leads diretamente, a busca é feita no servidor
+  const filteredLeads = leads
     return (
       lead.name.toLowerCase().includes(search) ||
       lead.email.toLowerCase().includes(search) ||
