@@ -5,6 +5,7 @@ import { Footer } from '@/views/components/layout/Footer'
 import { ScrollToTop } from '@/views/components/layout/ScrollToTop'
 import { PageTransition } from '@/views/components/animations/PageTransition'
 import { AnalyticsTracker } from './AnalyticsTracker'
+import { WebVitalsInit } from './WebVitalsInit'
 
 /**
  * Layout para rotas públicas
