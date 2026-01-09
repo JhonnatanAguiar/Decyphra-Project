@@ -12,6 +12,7 @@
         "db:migrate": "npx dotenv-cli -e .env.local -- prisma migrate dev",
         "db:push": "npx dotenv-cli -e .env.local -- prisma db push",
         "db:seed": "npx dotenv-cli -e .env.local -- tsx prisma/seed.ts",
+        "db:seed:admin": "npx dotenv-cli -e .env.local -- tsx prisma/seed-admin.ts",
         "test:connection": "node scripts/test-connection.js",
         "db:studio": "npx dotenv-cli -e .env.local -- prisma studio",
         "db:generate": "prisma generate",

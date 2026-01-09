@@ -49,6 +49,8 @@ export async function GET(req: Request) {
           lead: {
             select: {
               id: true,
+              name: true,
+              email: true,
               status: true,
             },
           },

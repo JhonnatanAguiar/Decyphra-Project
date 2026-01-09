@@ -86,6 +86,7 @@ export default function ProjectsManagementClient() {
 
   useEffect(() => {
     fetchProjects()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [statusFilter, categoryFilter, offset])
 
   // Filtrar projetos localmente por busca

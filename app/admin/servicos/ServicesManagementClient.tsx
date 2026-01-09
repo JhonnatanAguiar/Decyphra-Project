@@ -66,6 +66,7 @@ export default function ServicesManagementClient() {
 
   useEffect(() => {
     fetchServices()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [offset])
 
   // Filtrar serviços localmente por busca

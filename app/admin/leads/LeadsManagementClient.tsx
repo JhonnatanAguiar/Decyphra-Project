@@ -112,6 +112,7 @@ export default function LeadsManagementClient() {
 
   useEffect(() => {
     fetchLeads()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [statusFilter, offset])
 
   // Filtrar leads localmente por busca

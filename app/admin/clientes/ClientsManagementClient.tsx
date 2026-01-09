@@ -105,6 +105,7 @@ export default function ClientsManagementClient() {
 
   useEffect(() => {
     fetchClients()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [statusFilter, offset])
 
   // Filtrar clientes localmente por busca

@@ -46,6 +46,8 @@ type ContactSubmission = {
   updatedAt: Date
   lead?: {
     id: string
+    name: string
+    email: string
     status: string
   } | null
 }
@@ -219,13 +221,13 @@ export default function ContactsManagementClient() {
                             </div>
                           </div>
                           {contact.phone && (
-                            <div className="flex items-center gap-2 text-sm text-light-400 ml-13 mb-2">
+                            <div className="flex items-center gap-2 text-sm text-light-400 mt-1">
                               <Phone size={14} />
                               {contact.phone}
                             </div>
                           )}
                           {contact.service && (
-                            <div className="ml-13 mb-2">
+                            <div className="mt-2">
                               <Badge variant="secondary">{contact.service}</Badge>
                             </div>
                           )}
@@ -248,7 +250,7 @@ export default function ContactsManagementClient() {
                           Mensagem:
                         </div>
                         <p className="text-sm text-light-300 line-clamp-2 ml-6">
-                          {contact.message}
+                          {contact.message.substring(0, 150)}{contact.message.length > 150 ? '...' : ''}
                         </p>
                       </div>
 
@@ -353,8 +355,11 @@ export default function ContactsManagementClient() {
               {selectedContact.lead && (
                 <div>
                   <label className="text-sm text-light-400">Lead Criado</label>
-                  <div>
-                    <Badge variant="primary">Status: {selectedContact.lead.status}</Badge>
+                  <div className="space-y-1">
+                    <div className="text-light-50 text-sm">{selectedContact.lead.name}</div>
+                    <div>
+                      <Badge variant="primary">{selectedContact.lead.status}</Badge>
+                    </div>
                   </div>
                 </div>
               )}
