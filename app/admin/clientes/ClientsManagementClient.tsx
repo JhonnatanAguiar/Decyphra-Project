@@ -79,11 +79,12 @@ export default function ClientsManagementClient() {
   })
 
   // Carregar clientes
-  const fetchClients = async () => {
+  const fetchClients = async (search?: string) => {
     setIsLoading(true)
     try {
       const params = new URLSearchParams()
       if (statusFilter) params.append('status', statusFilter)
+      if (search) params.append('search', search)
       params.append('limit', limit.toString())
       params.append('offset', offset.toString())
 
