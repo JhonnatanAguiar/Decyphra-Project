@@ -710,7 +710,7 @@ light: {
 
 #### 8.6 Painel Admin
 
-**Status:** ⏳ **EM PROGRESSO** (Estrutura básica concluída - 30%)
+**Status:** ⏳ **EM PROGRESSO** (Estrutura básica concluída - 85%)
 
 **Objetivo:** Criar painel administrativo completo para gerenciamento do site.
 
@@ -723,12 +723,13 @@ light: {
   - [x] Visão geral (estatísticas, métricas)
   - [x] Gerenciamento de leads/CRM (CRUD completo)
   - [x] Gerenciamento de clientes (CRUD completo)
-  - [ ] Gerenciamento de projetos (em progresso)
-  - [ ] Gerenciamento de depoimentos
-  - [ ] Gerenciamento de serviços
-  - [ ] Visualização de submissões de contato
+  - [x] Gerenciamento de projetos (visualização completa)
+  - [x] Gerenciamento de depoimentos (visualização completa)
+  - [x] Gerenciamento de serviços (visualização completa)
+  - [x] Visualização de submissões de contato (visualização completa)
   - [ ] Logs e auditoria
 - [x] Criar formulários de CRUD para leads e clientes
+- [x] Criar páginas de visualização para projetos, depoimentos, serviços e contatos
 - [ ] Implementar upload de imagens para projetos
 - [ ] Adicionar filtros e busca
 - [x] Criar interface responsiva para admin (layout mobile-friendly)
@@ -889,7 +890,7 @@ npm run type-check   # Verifica tipos TypeScript
 | Fase 5: Backend | 100% | ✅ **Concluída** (APIs funcionando, newsletter opcional) |
 | Fase 6: SEO | 100% | ✅ **Concluída** (otimizações aplicadas) |
 | Fase 7: Deploy | 100% | ✅ **Concluída** (Deploy, monitoramento, documentação e testes automatizados) |
-| Fase 8: Funcionalidades Avançadas | 65% | ⏳ **Em Progresso** (8.1, 8.2, 8.4, 8.5 e 8.6 parcial concluídas - Leads e Clientes 100%) |
+| Fase 8: Funcionalidades Avançadas | 75% | ⏳ **Em Progresso** (8.1, 8.2, 8.4, 8.5 e 8.6 parcial concluídas - Painel Admin 85%) |
 
 **Progresso Total:** ✅ **100% Funcional (Core)** | ⏳ **Fase 8 Pendente**
 
