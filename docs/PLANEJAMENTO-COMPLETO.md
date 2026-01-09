@@ -721,13 +721,14 @@ light: {
 - [x] Criar página de login
 - [x] Criar dashboard administrativo básico:
   - [x] Visão geral (estatísticas, métricas)
-  - [ ] Gerenciamento de leads/CRM
-  - [ ] Gerenciamento de projetos
+  - [x] Gerenciamento de leads/CRM (CRUD completo)
+  - [x] Gerenciamento de clientes (CRUD completo)
+  - [ ] Gerenciamento de projetos (em progresso)
   - [ ] Gerenciamento de depoimentos
   - [ ] Gerenciamento de serviços
   - [ ] Visualização de submissões de contato
   - [ ] Logs e auditoria
-- [ ] Criar formulários de CRUD para cada entidade
+- [x] Criar formulários de CRUD para leads e clientes
 - [ ] Implementar upload de imagens para projetos
 - [ ] Adicionar filtros e busca
 - [x] Criar interface responsiva para admin (layout mobile-friendly)
@@ -888,7 +889,7 @@ npm run type-check   # Verifica tipos TypeScript
 | Fase 5: Backend | 100% | ✅ **Concluída** (APIs funcionando, newsletter opcional) |
 | Fase 6: SEO | 100% | ✅ **Concluída** (otimizações aplicadas) |
 | Fase 7: Deploy | 100% | ✅ **Concluída** (Deploy, monitoramento, documentação e testes automatizados) |
-| Fase 8: Funcionalidades Avançadas | 60% | ⏳ **Em Progresso** (8.1, 8.2, 8.4, 8.5 e 8.6 parcial concluídas) |
+| Fase 8: Funcionalidades Avançadas | 65% | ⏳ **Em Progresso** (8.1, 8.2, 8.4, 8.5 e 8.6 parcial concluídas - Leads e Clientes 100%) |
 
 **Progresso Total:** ✅ **100% Funcional (Core)** | ⏳ **Fase 8 Pendente**
 
