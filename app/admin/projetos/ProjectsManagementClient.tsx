@@ -447,19 +447,20 @@ export default function ProjectsManagementClient() {
             </div>
 
             {/* Footer do Modal */}
-            <div className="flex justify-end gap-2 mt-6 pt-6 border-t border-dark-700 flex-shrink-0">
-            <Button variant="secondary" onClick={() => setIsViewModalOpen(false)}>
-              Fechar
-            </Button>
-            {selectedProject.slug && (
-              <Button
-                variant="primary"
-                onClick={() => window.open(`/portfolio/${selectedProject.slug}`, '_blank')}
-              >
-                <ExternalLink size={16} className="mr-2" />
-                Ver no Site
+            <div className="flex justify-end gap-2 pt-6 border-t border-dark-700 flex-shrink-0 mt-auto">
+              <Button variant="secondary" onClick={() => setIsViewModalOpen(false)}>
+                Fechar
               </Button>
-            )}
+              {selectedProject.slug && (
+                <Button
+                  variant="primary"
+                  onClick={() => window.open(`/portfolio/${selectedProject.slug}`, '_blank')}
+                >
+                  <ExternalLink size={16} className="mr-2" />
+                  Ver no Site
+                </Button>
+              )}
+            </div>
           </div>
         </Modal>
       )}
