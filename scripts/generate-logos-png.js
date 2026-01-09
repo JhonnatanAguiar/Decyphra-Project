@@ -67,62 +67,26 @@ async function generatePNG(svgFile, outputFile, width, height, resize = true) {
     const inputPath = path.join(logosDir, svgFile)
     const outputPath = path.join(outputDir, outputFile)
     
-    // #region agent log
-    fetch('http://127.0.0.1:7244/ingest/c36098a2-7e18-46c4-a378-0eb2465d49c5',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'generate-logos-png.js:67',message:'generatePNG entry',data:{svgFile,outputFile,width,height,resize},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'B'})}).catch(()=>{});
-    // #endregion
-    
     if (!fs.existsSync(inputPath)) {
       console.warn(`⚠️  Arquivo SVG não encontrado: ${svgFile}`)
       return false
     }
     
-    // #region agent log
-    const svgContent = fs.readFileSync(inputPath, 'utf8');
-    const viewBoxMatch = svgContent.match(/viewBox="([^"]+)"/);
-    const viewBox = viewBoxMatch ? viewBoxMatch[1] : 'not found';
-    const hasCircle = svgContent.includes('<circle');
-    const hasPath = svgContent.includes('<path');
-    const aspectRatio = width / height;
-    fetch('http://127.0.0.1:7244/ingest/c36098a2-7e18-46c4-a378-0eb2465d49c5',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'generate-logos-png.js:78',message:'SVG metadata',data:{viewBox,hasCircle,hasPath,aspectRatio,svgWidth:width,svgHeight:height},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'B'})}).catch(()=>{});
-    // #endregion
-    
     let sharpInstance = sharp(inputPath)
-    
-    // #region agent log
-    const metadata = await sharpInstance.metadata();
-    fetch('http://127.0.0.1:7244/ingest/c36098a2-7e18-46c4-a378-0eb2465d49c5',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'generate-logos-png.js:86',message:'Original SVG metadata',data:{width:metadata.width,height:metadata.height,format:metadata.format,hasAlpha:metadata.hasAlpha},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'B'})}).catch(()=>{});
-    // #endregion
     
     if (resize) {
       sharpInstance = sharpInstance.resize(width, height, {
         fit: 'contain',
         background: { r: 0, g: 0, b: 0, alpha: 0 }, // Transparente por padrão
       })
-      
-      // #region agent log
-      fetch('http://127.0.0.1:7244/ingest/c36098a2-7e18-46c4-a378-0eb2465d49c5',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'generate-logos-png.js:93',message:'Resize config applied',data:{targetWidth:width,targetHeight:height,fit:'contain'},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'B'})}).catch(()=>{});
-      // #endregion
     }
     
     await sharpInstance.png().toFile(outputPath)
     
-    // #region agent log
-    const outputMetadata = await sharp(outputPath).metadata();
-    fetch('http://127.0.0.1:7244/ingest/c36098a2-7e18-46c4-a378-0eb2465d49c5',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'generate-logos-png.js:100',message:'Output PNG metadata',data:{width:outputMetadata.width,height:outputMetadata.height,format:outputMetadata.format},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'B'})}).catch(()=>{});
-    // #endregion
-    
     console.log(`✅ Gerado: ${outputFile} (${width}x${height})`)
-    
-    // #region agent log
-    fetch('http://127.0.0.1:7244/ingest/c36098a2-7e18-46c4-a378-0eb2465d49c5',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'generate-logos-png.js:105',message:'generatePNG success',data:{outputFile},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'B'})}).catch(()=>{});
-    // #endregion
     
     return true
   } catch (error) {
-    // #region agent log
-    fetch('http://127.0.0.1:7244/ingest/c36098a2-7e18-46c4-a378-0eb2465d49c5',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'generate-logos-png.js:110',message:'generatePNG error',data:{error:error.message,svgFile,outputFile},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'B'})}).catch(()=>{});
-    // #endregion
-    
     console.error(`❌ Erro ao gerar ${outputFile}:`, error.message)
     return false
   }
