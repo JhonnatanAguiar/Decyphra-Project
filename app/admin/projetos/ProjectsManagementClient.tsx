@@ -69,8 +69,7 @@ export default function ProjectsManagementClient() {
 
       const response = await fetch(`/api/v1/projects?${params.toString()}`)
       if (response.ok) {
-        const data = await response.json()
-        const result: ProjectListDTO = data.data
+        const result: ProjectListDTO = await response.json()
         setProjects(result.projects)
         setTotal(result.total)
       } else {

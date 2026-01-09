@@ -88,8 +88,7 @@ export default function ClientsManagementClient() {
 
       const response = await fetch(`/api/v1/crm/clients?${params.toString()}`)
       if (response.ok) {
-        const data = await response.json()
-        const result: ClientListDTO = data.data
+        const result: ClientListDTO = await response.json()
         setClients(result.clients)
         setTotal(result.total)
       } else {

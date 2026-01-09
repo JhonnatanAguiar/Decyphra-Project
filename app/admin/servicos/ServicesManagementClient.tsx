@@ -49,8 +49,7 @@ export default function ServicesManagementClient() {
 
       const response = await fetch(`/api/v1/services?${params.toString()}`)
       if (response.ok) {
-        const data = await response.json()
-        const result: ServiceListDTO = data.data
+        const result: ServiceListDTO = await response.json()
         setServices(result.services)
         setTotal(result.total)
       } else {

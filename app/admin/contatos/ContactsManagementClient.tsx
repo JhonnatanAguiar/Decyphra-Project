@@ -97,8 +97,7 @@ export default function ContactsManagementClient() {
 
       const response = await fetch(`/api/v1/admin/contacts?${params.toString()}`)
       if (response.ok) {
-        const data = await response.json()
-        const result: ContactListDTO = data.data
+        const result: ContactListDTO = await response.json()
         setContacts(result.contacts)
         setTotal(result.total)
       } else {

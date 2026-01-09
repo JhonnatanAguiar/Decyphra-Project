@@ -47,8 +47,8 @@ export default function AdminDashboardClient() {
       try {
         const response = await fetch('/api/v1/admin/stats')
         if (response.ok) {
-          const data = await response.json()
-          setStats(data.data)
+          const statsData = await response.json()
+          setStats(statsData)
         }
       } catch (error) {
         console.error('Erro ao carregar estatísticas:', error)

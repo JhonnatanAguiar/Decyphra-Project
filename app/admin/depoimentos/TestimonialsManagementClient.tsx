@@ -52,8 +52,7 @@ export default function TestimonialsManagementClient() {
 
       const response = await fetch(`/api/v1/testimonials?${params.toString()}`)
       if (response.ok) {
-        const data = await response.json()
-        const result: TestimonialListDTO = data.data
+        const result: TestimonialListDTO = await response.json()
         setTestimonials(result.testimonials)
         setTotal(result.total)
       } else {

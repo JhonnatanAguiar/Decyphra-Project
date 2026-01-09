@@ -95,8 +95,7 @@ export default function LeadsManagementClient() {
 
       const response = await fetch(`/api/v1/crm/leads?${params.toString()}`)
       if (response.ok) {
-        const data = await response.json()
-        const result: LeadListDTO = data.data
+        const result: LeadListDTO = await response.json()
         setLeads(result.leads)
         setTotal(result.total)
       } else {
