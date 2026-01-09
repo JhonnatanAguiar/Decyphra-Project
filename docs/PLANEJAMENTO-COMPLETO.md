@@ -694,7 +694,7 @@ light: {
 **Tarefas:**
 - [x] Definir estrutura de dados do CRM
 - [x] Criar schema Prisma para CRM (Lead, Client, Interaction com enums)
-- [ ] ⚠️ **Migration pendente:** Executar `npx prisma migrate dev --name add_crm_models` quando DATABASE_URL estiver configurado
+- [x] ✅ **Migration executada:** `add_crm_models` - Models do CRM (Lead, Client, Interaction) criados
 - [x] Criar API endpoints para CRM:
   - [x] GET/POST `/api/v1/crm/leads`
   - [x] GET/PUT/DELETE `/api/v1/crm/leads/[id]`
@@ -861,11 +861,13 @@ light: {
 **Scripts adicionados:**
 - [x] `npm run db:seed:admin` - Script para popular banco com dados de teste do admin
 
-**Próximos passos (após migration):**
-1. ✅ Executar migration: `node scripts/migrate.js dev --name add_analytics_and_performance_models` ou `npm run db:migrate` (se não precisar de nome customizado)
-2. Popular banco com dados de teste: `npm run db:seed:admin`
-3. O tracking de analytics começará a coletar dados automaticamente nas páginas públicas
-4. Acessar `/admin` para visualizar analytics e performance no dashboard
+**Status das migrations:**
+- ✅ **Migration executada:** `add_analytics_and_performance_models` - Models de Analytics e Performance criados (PageView, Event, PerformanceMetric, ErrorLog)
+
+**Próximos passos:**
+1. Popular banco com dados de teste: `npm run db:seed:admin` (opcional, para testar o painel admin)
+2. O tracking de analytics começará a coletar dados automaticamente nas páginas públicas
+3. Acessar `/admin` para visualizar analytics e performance no dashboard
 
 **Como executar migrations:**
 - Migration com nome customizado: `node scripts/migrate.js dev --name nome_da_migration`
