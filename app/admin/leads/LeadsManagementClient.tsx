@@ -186,7 +186,7 @@ export default function LeadsManagementClient() {
       if (response.ok) {
         showToast(isEditMode ? 'Lead atualizado com sucesso!' : 'Lead criado com sucesso!', 'success')
         setIsModalOpen(false)
-        fetchLeads()
+        fetchLeads(debouncedSearchTerm)
       } else {
         const error = await response.json()
         showToast(error.message || 'Erro ao salvar lead', 'error')
@@ -210,7 +210,7 @@ export default function LeadsManagementClient() {
 
       if (response.ok) {
         showToast('Lead deletado com sucesso!', 'success')
-        fetchLeads()
+        fetchLeads(debouncedSearchTerm)
       } else {
         showToast('Erro ao deletar lead', 'error')
       }
