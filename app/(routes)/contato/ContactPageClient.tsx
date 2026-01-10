@@ -11,6 +11,7 @@ import { API_ROUTES } from '@/lib/constants/routes'
 import { contactSchema, type ContactInput } from '@/models/schemas'
 import { DEFAULT_COUNTRY, getCountryByCode } from '@/lib/constants/countries'
 import { formatPhoneAsYouType, getPhoneExample, validateAndFormatPhone } from '@/lib/utils/phone'
+import { formatDocument, validateDocument } from '@/lib/utils/document'
 import type { CountryCode } from 'libphonenumber-js'
 
 /**
@@ -74,6 +75,7 @@ export default function ContactPageClient() {
   const watchedMessage = watch('message')
   const watchedPhone = watch('phone')
   const watchedCountryCode = watch('countryCode')
+  const watchedDocument = watch('document')
 
   // Atualizar país selecionado quando mudar no formulário
   useEffect(() => {
@@ -294,18 +296,57 @@ export default function ContactPageClient() {
                     </div>
                   </div>
                   
-                  {/* Empresa */}
-                  <div>
-                    <label htmlFor="company" className="block text-sm font-medium text-light-200 mb-2">
-                      Empresa
-                    </label>
-                    <Input
-                      id="company"
-                      type="text"
-                      placeholder="Nome da empresa (opcional)"
-                      variant="primary"
-                      {...register('company')}
-                    />
+                  {/* Empresa e CNPJ/CPF */}
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div>
+                      <label htmlFor="company" className="block text-sm font-medium text-light-200 mb-2">
+                        Empresa
+                      </label>
+                      <Input
+                        id="company"
+                        type="text"
+                        placeholder="Nome da empresa (opcional)"
+                        variant="primary"
+                        {...register('company')}
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="document" className="block text-sm font-medium text-light-200 mb-2">
+                        CNPJ/CPF
+                      </label>
+                      <Input
+                        id="document"
+                        type="text"
+                        placeholder="00.000.000/0000-00 ou 000.000.000-00"
+                        variant={errors.document ? 'error' : 'primary'}
+                        showValidationIcon={!!watchedDocument}
+                        isValid={!errors.document && !!watchedDocument && validateDocument(watchedDocument) !== null}
+                        value={watchedDocument ? formatDocument(watchedDocument) : ''}
+                        onChange={(e) => {
+                          const value = e.target.value
+                          // Remover caracteres não numéricos, mas manter formatação durante digitação
+                          const formatted = formatDocument(value)
+                          setValue('document', formatted, { shouldValidate: true })
+                        }}
+                        onBlur={(e) => {
+                          register('document').onBlur(e)
+                          // Garantir formatação correta no blur
+                          if (e.target.value) {
+                            const formatted = formatDocument(e.target.value)
+                            setValue('document', formatted, { shouldValidate: true })
+                          }
+                        }}
+                        maxLength={18} // CNPJ formatado: 18 caracteres
+                      />
+                      {errors.document && (
+                        <p className="mt-1 text-sm text-red-500">{errors.document.message}</p>
+                      )}
+                      {watchedDocument && !errors.document && validateDocument(watchedDocument) === null && (
+                        <p className="mt-1 text-sm text-yellow-500">
+                          Digite um CPF (11 dígitos) ou CNPJ (14 dígitos) válido
+                        </p>
+                      )}
+                    </div>
                   </div>
 
                   {/* Serviço de Interesse */}

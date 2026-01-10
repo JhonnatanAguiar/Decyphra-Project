@@ -99,6 +99,7 @@ async function sendInternalNotification(payload: ContactInput): Promise<unknown>
     phone: payload.phone,
     countryCode: payload.countryCode,
     company: payload.company,
+    document: payload.document,
     service: payload.service,
     message: payload.message,
   })

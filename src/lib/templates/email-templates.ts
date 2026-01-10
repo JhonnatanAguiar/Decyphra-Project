@@ -115,6 +115,7 @@ export function getInternalNotificationTemplate(data: {
   phone?: string | null
   countryCode?: string | null
   company?: string | null
+  document?: string | null
   service?: string | null
   message: string
 }): string {
@@ -151,6 +152,14 @@ export function getInternalNotificationTemplate(data: {
         <td style="padding: 12px 0; border-bottom: 1px solid rgba(0, 255, 136, 0.2);">
           <strong style="color: #00FF88; font-size: 14px; display: inline-block; width: 120px; vertical-align: top;">Empresa:</strong>
           <span style="color: #E6F0F3; font-size: 14px; font-weight: 500;">${escapeHtml(data.company)}</span>
+        </td>
+      </tr>
+      ` : ''}
+      ${data.document ? `
+      <tr>
+        <td style="padding: 12px 0; border-bottom: 1px solid rgba(0, 255, 136, 0.2);">
+          <strong style="color: #00FF88; font-size: 14px; display: inline-block; width: 120px; vertical-align: top;">CNPJ/CPF:</strong>
+          <span style="color: #E6F0F3; font-size: 14px; font-weight: 500;">${escapeHtml(data.document)}</span>
         </td>
       </tr>
       ` : ''}
