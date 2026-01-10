@@ -13,10 +13,16 @@ export function AnalyticsTracker() {
   const pathname = usePathname()
 
   useEffect(() => {
+    // Verificar se está no cliente antes de acessar document
+    if (typeof window === 'undefined' || typeof document === 'undefined') return
+    
     if (pathname) {
       // Aguardar um pouco para garantir que a página carregou
       const timer = setTimeout(() => {
-        trackPageView(pathname, document.title)
+        // Verificar novamente dentro do timeout para garantir que ainda está no cliente
+        if (typeof window !== 'undefined' && typeof document !== 'undefined') {
+          trackPageView(pathname, document.title)
+        }
       }, 100)
 
       return () => clearTimeout(timer)
