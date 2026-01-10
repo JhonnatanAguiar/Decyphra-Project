@@ -60,6 +60,18 @@ NEXT_PUBLIC_SITE_NAME="Decyphra"
 NEXT_PUBLIC_API_VERSION="v1"
 
 # ============================================
+# REDES SOCIAIS (Links públicos)
+# ============================================
+# Links das redes sociais da Decyphra (opcional)
+# Se não configurados, serão usados URLs padrão
+NEXT_PUBLIC_SOCIAL_FACEBOOK="https://facebook.com/decyphra"
+NEXT_PUBLIC_SOCIAL_INSTAGRAM="https://instagram.com/decyphra"
+NEXT_PUBLIC_SOCIAL_LINKEDIN="https://linkedin.com/company/decyphra"
+NEXT_PUBLIC_SOCIAL_TWITTER="https://twitter.com/decyphra"
+# NEXT_PUBLIC_SOCIAL_YOUTUBE="https://youtube.com/@decyphra"
+# NEXT_PUBLIC_SOCIAL_TIKTOK="https://tiktok.com/@decyphra"
+
+# ============================================
 # CONFIGURAÇÃO DO ADMIN (PAINEL ADMINISTRATIVO)
 # ============================================
 # E-mail do administrador
