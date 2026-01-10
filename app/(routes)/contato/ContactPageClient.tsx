@@ -127,9 +127,16 @@ export default function ContactPageClient() {
         message: 'Mensagem enviada com sucesso! Entraremos em contato em breve.',
         type: 'success',
       })
+      // Resetar todos os campos do formulário
       reset({
+        name: '',
+        email: '',
         countryCode: DEFAULT_COUNTRY,
         phone: '',
+        company: '',
+        document: '',
+        service: '',
+        message: '',
       })
       setSelectedCountry(DEFAULT_COUNTRY)
       setFormattedPhone('')
@@ -274,14 +281,20 @@ export default function ContactPageClient() {
                         value={formattedPhone}
                         onChange={handlePhoneChange}
                         onBlur={(e) => {
-                          register('phone').onBlur(e)
                           // Validar e formatar no blur
                           if (e.target.value) {
                             const validation = validateAndFormatPhone(e.target.value, selectedCountry)
                             if (validation.isValid && validation.formatted) {
                               setFormattedPhone(validation.formatted)
                               setValue('phone', validation.formatted, { shouldValidate: true })
+                            } else {
+                              // Garantir que o valor está sincronizado mesmo se inválido
+                              setValue('phone', e.target.value, { shouldValidate: true })
                             }
+                          } else {
+                            // Limpar campo se vazio
+                            setFormattedPhone('')
+                            setValue('phone', '', { shouldValidate: true })
                           }
                         }}
                       />
@@ -329,11 +342,13 @@ export default function ContactPageClient() {
                           setValue('document', formatted, { shouldValidate: true })
                         }}
                         onBlur={(e) => {
-                          register('document').onBlur(e)
                           // Garantir formatação correta no blur
                           if (e.target.value) {
                             const formatted = formatDocument(e.target.value)
                             setValue('document', formatted, { shouldValidate: true })
+                          } else {
+                            // Limpar campo se vazio
+                            setValue('document', '', { shouldValidate: true })
                           }
                         }}
                         maxLength={18} // CNPJ formatado: 18 caracteres
