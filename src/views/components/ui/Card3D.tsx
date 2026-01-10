@@ -44,6 +44,12 @@ const TILT_SMOOTHING = 0.12 // Factor de suavização (lerp)
 let spotlightElement: HTMLDivElement | null = null
 let spotlightInitialized = false
 const cardInstances = new Set<HTMLDivElement>()
+// Cache de valores de glow para interpolação suave (global para acesso no cleanup)
+const cardGlowCache = new Map<HTMLDivElement, {
+  intensity: number
+  x: number
+  y: number
+}>()
 let lastGlobalMouseMoveTime = 0
 const GLOBAL_THROTTLE_MS = 16 // ~60fps
 
@@ -78,13 +84,6 @@ const initializeSpotlight = () => {
   // Throttle para evitar atualizações excessivas
   let lastUpdateTime = 0
   const THROTTLE_MS = 32 // ~30fps (32ms por frame) - reduzido para melhor performance
-  
-  // Cache de valores anteriores para interpolação suave
-  const cardGlowCache = new Map<HTMLDivElement, {
-    intensity: number
-    x: number
-    y: number
-  }>()
 
   // Handler global de movimento do mouse para spotlight (com throttling otimizado)
   const handleGlobalMouseMove = (e: MouseEvent) => {
