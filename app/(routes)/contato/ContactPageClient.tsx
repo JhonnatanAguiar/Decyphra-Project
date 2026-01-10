@@ -277,7 +277,7 @@ export default function ContactPageClient() {
                         id="phone"
                         type="tel"
                         placeholder={getPhoneExample(selectedCountry)}
-                        variant={errors.phone ? 'error' : phoneValidation.isValid ? 'primary' : 'primary'}
+                        variant={errors.phone || (watchedPhone && !phoneValidation.isValid) ? 'error' : 'primary'}
                         showValidationIcon={!!watchedPhone}
                         isValid={phoneValidation.isValid && !!watchedPhone}
                         value={formattedPhone}
