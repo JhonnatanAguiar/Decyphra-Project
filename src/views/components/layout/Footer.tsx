@@ -43,21 +43,23 @@ const Footer = ({
   ]
 
   // Mapeamento de plataformas para ícones
-  const socialIconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+  const socialIconMap = {
     facebook: Facebook,
     instagram: Instagram,
     linkedin: Linkedin,
     twitter: Twitter,
     youtube: Youtube,
-  }
+  } as const
+
+  type SocialPlatform = keyof typeof socialIconMap
 
   // Criar array de links de redes sociais apenas para as que têm URL definida e ícone disponível
-  const socialLinks = Object.entries(SOCIAL_LINKS)
-    .filter(([platform, url]) => url !== undefined && socialIconMap[platform])
+  const socialLinks = (Object.entries(SOCIAL_LINKS) as Array<[SocialPlatform, string | undefined]>)
+    .filter(([platform, url]) => url !== undefined && platform in socialIconMap)
     .map(([platform, url]) => ({
       icon: socialIconMap[platform],
       href: url as string,
-      label: platform.charAt(0).toUpperCase() + platform.slice(1).replace(/^(linkedin)$/, 'LinkedIn'),
+      label: platform === 'linkedin' ? 'LinkedIn' : platform.charAt(0).toUpperCase() + platform.slice(1),
     }))
 
   const emails = [
