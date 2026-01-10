@@ -44,6 +44,8 @@ const TILT_SMOOTHING = 0.12 // Factor de suavização (lerp)
 let spotlightElement: HTMLDivElement | null = null
 let spotlightInitialized = false
 const cardInstances = new Set<HTMLDivElement>()
+let lastGlobalMouseMoveTime = 0
+const GLOBAL_THROTTLE_MS = 16 // ~60fps
 
 const initializeSpotlight = () => {
   if (spotlightInitialized || typeof window === 'undefined') return
@@ -73,37 +75,74 @@ const initializeSpotlight = () => {
   document.body.appendChild(spotlightElement)
   spotlightInitialized = true
 
-  // Handler global de movimento do mouse para spotlight
+  // Throttle para evitar atualizações excessivas
+  let lastUpdateTime = 0
+  const THROTTLE_MS = 32 // ~30fps (32ms por frame) - reduzido para melhor performance
+  
+  // Cache de valores anteriores para interpolação suave
+  const cardGlowCache = new Map<HTMLDivElement, {
+    intensity: number
+    x: number
+    y: number
+  }>()
+
+  // Handler global de movimento do mouse para spotlight (com throttling otimizado)
   const handleGlobalMouseMove = (e: MouseEvent) => {
     if (!spotlightElement) return
 
+    const now = performance.now()
+    if (now - lastUpdateTime < THROTTLE_MS) return
+    lastUpdateTime = now
+
+    // Atualizar spotlight com GSAP (suave)
     gsap.to(spotlightElement, {
       left: e.clientX,
       top: e.clientY,
-      duration: 0.1,
-      ease: 'none',
+      duration: 0.2,
+      ease: 'power2.out',
     })
 
-    // Atualizar glow em todos os cards baseado na distância
-    cardInstances.forEach((card) => {
-      const rect = card.getBoundingClientRect()
-      const cardCenterX = rect.left + rect.width / 2
-      const cardCenterY = rect.top + rect.height / 2
-      const distance = Math.hypot(e.clientX - cardCenterX, e.clientY - cardCenterY)
+    // Atualizar glow em todos os cards baseado na distância (com interpolação suave)
+    requestAnimationFrame(() => {
+      cardInstances.forEach((card) => {
+        const rect = card.getBoundingClientRect()
+        const cardCenterX = rect.left + rect.width / 2
+        const cardCenterY = rect.top + rect.height / 2
+        const distance = Math.hypot(e.clientX - cardCenterX, e.clientY - cardCenterY)
 
-      // Calcular intensidade baseada na distância (raio 500px)
-      let intensity = 0
-      if (distance <= SPOTLIGHT_RADIUS) {
-        intensity = 1 - distance / SPOTLIGHT_RADIUS
-      }
+        // Calcular intensidade baseada na distância (raio 500px)
+        let targetIntensity = 0
+        if (distance <= SPOTLIGHT_RADIUS) {
+          targetIntensity = 1 - distance / SPOTLIGHT_RADIUS
+          // Suavizar a transição de intensidade para evitar piscar
+          targetIntensity = Math.pow(targetIntensity, 0.7)
+        }
 
-      // Aplicar glow na borda do card
-      const relativeX = ((e.clientX - rect.left) / rect.width) * 100
-      const relativeY = ((e.clientY - rect.top) / rect.height) * 100
+        // Interpolação suave (lerp) com valores anteriores
+        const cached = cardGlowCache.get(card) || { intensity: 0, x: 50, y: 50 }
+        const lerpFactor = 0.3 // Fator de interpolação (menor = mais suave)
+        const smoothIntensity = cached.intensity + (targetIntensity - cached.intensity) * lerpFactor
 
-      card.style.setProperty('--glow-x', `${relativeX}%`)
-      card.style.setProperty('--glow-y', `${relativeY}%`)
-      card.style.setProperty('--glow-intensity', intensity.toString())
+        // Aplicar glow na borda do card
+        const relativeX = ((e.clientX - rect.left) / rect.width) * 100
+        const relativeY = ((e.clientY - rect.top) / rect.height) * 100
+        
+        // Interpolar posição também para evitar saltos
+        const smoothX = cached.x + (relativeX - cached.x) * lerpFactor
+        const smoothY = cached.y + (relativeY - cached.y) * lerpFactor
+
+        // Atualizar cache
+        cardGlowCache.set(card, {
+          intensity: smoothIntensity,
+          x: smoothX,
+          y: smoothY,
+        })
+
+        // Aplicar valores suavizados
+        card.style.setProperty('--glow-x', `${smoothX}%`)
+        card.style.setProperty('--glow-y', `${smoothY}%`)
+        card.style.setProperty('--glow-intensity', smoothIntensity.toString())
+      })
     })
 
     // Mostrar spotlight se houver cards próximos
@@ -129,9 +168,11 @@ const initializeSpotlight = () => {
       duration: 0.3,
       ease: 'power2.out',
     })
-    // Resetar glow em todos os cards
+    // Resetar glow em todos os cards com transição suave
     cardInstances.forEach((card) => {
       card.style.setProperty('--glow-intensity', '0')
+      // Limpar cache quando o mouse sai
+      cardGlowCache.delete(card)
     })
   }
 
@@ -313,6 +354,7 @@ const Card3D = ({
 
     return () => {
       cardInstances.delete(element)
+      cardGlowCache.delete(element) // Limpar cache ao desmontar
       if (animationFrameRef.current) {
         cancelAnimationFrame(animationFrameRef.current)
       }
@@ -503,7 +545,8 @@ const Card3D = ({
               mask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
               maskComposite: 'exclude',
               opacity: 1,
-              transition: 'opacity 0.3s ease',
+              transition: 'opacity 0.15s ease-out, background 0.15s ease-out',
+              willChange: 'background',
             }}
           />
         )}
