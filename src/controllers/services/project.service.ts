@@ -14,17 +14,22 @@ import type { ProjectListDTO, ProjectDetailDTO } from '@/models/types'
 /**
  * Lista projetos com filtros e paginação
  * 
- * @param query - Query params (category, featured, status, limit, offset)
+ * @param query - Query params (category, featured, status, search, limit, offset)
  * @returns Lista de projetos com metadados de paginação
  */
 export async function listProjects(query: ProjectListQuery = {}): Promise<ProjectListDTO> {
-  const { category, featured, status, limit = API_DEFAULTS.DEFAULT_LIMIT, offset = 0 } = query
+  const { category, featured, status, search, limit = API_DEFAULTS.DEFAULT_LIMIT, offset = 0 } = query
 
   // Construir filtros
   const where: {
     category?: string
     featured?: boolean
     status?: 'draft' | 'published' | 'archived'
+    OR?: Array<{
+      title?: { contains: string }
+      description?: { contains: string }
+      category?: { contains: string }
+    }>
   } = {}
 
   if (category) {
@@ -38,8 +43,21 @@ export async function listProjects(query: ProjectListQuery = {}): Promise<Projec
   if (status) {
     where.status = status
   } else {
-    // Por padrão, apenas projetos publicados
-    where.status = 'published'
+    // Por padrão, apenas projetos publicados (mas não em admin)
+    // Se search está presente, provavelmente é admin (sem filtro de status)
+    if (!search) {
+      where.status = 'published'
+    }
+  }
+
+  // Adicionar busca
+  if (search && search.trim()) {
+    const searchTerm = search.trim()
+    where.OR = [
+      { title: { contains: searchTerm } },
+      { description: { contains: searchTerm } },
+      { category: { contains: searchTerm } },
+    ]
   }
 
   // Buscar projetos

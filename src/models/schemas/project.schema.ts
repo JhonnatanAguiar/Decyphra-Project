@@ -12,6 +12,7 @@ export const projectListQuerySchema = z.object({
   category: z.string().optional(),
   featured: z.string().transform((val) => val === 'true').optional(),
   status: z.enum(['draft', 'published', 'archived']).optional(),
+  search: z.string().optional(), // Busca por título, descrição ou categoria
   limit: z.string().transform((val) => parseInt(val, 10)).pipe(z.number().int().positive().max(100)).optional(),
   offset: z.string().transform((val) => parseInt(val, 10)).pipe(z.number().int().nonnegative()).optional(),
 })

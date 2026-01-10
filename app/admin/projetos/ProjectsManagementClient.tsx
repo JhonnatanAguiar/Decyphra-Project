@@ -66,6 +66,7 @@ export default function ProjectsManagementClient() {
       const params = new URLSearchParams()
       if (statusFilter) params.append('status', statusFilter)
       if (categoryFilter) params.append('category', categoryFilter)
+      if (debouncedSearchTerm) params.append('search', debouncedSearchTerm)
       params.append('limit', limit.toString())
       params.append('offset', offset.toString())
 
@@ -88,19 +89,10 @@ export default function ProjectsManagementClient() {
   useEffect(() => {
     fetchProjects()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [statusFilter, categoryFilter, offset])
+  }, [statusFilter, categoryFilter, offset, debouncedSearchTerm])
 
-  // Filtrar projetos localmente por busca
-  const filteredProjects = projects.filter(project => {
-    if (!debouncedSearchTerm) return true
-    const search = debouncedSearchTerm.toLowerCase()
-    return (
-      project.title.toLowerCase().includes(search) ||
-      project.description.toLowerCase().includes(search) ||
-      project.category.toLowerCase().includes(search) ||
-      project.client?.toLowerCase().includes(search)
-    )
-  })
+  // Projetos já vêm filtrados do servidor
+  const filteredProjects = projects
 
   // Abrir modal de visualização
   const handleView = (project: Project) => {
@@ -171,8 +163,22 @@ export default function ProjectsManagementClient() {
               ))}
             </Select>
           </div>
-          <div className="mt-4 text-light-300 text-sm">
-            Total: <span className="font-bold text-light-50 ml-2">{total}</span>
+          <div className="mt-4 flex items-center justify-between">
+            <div className="text-light-300 text-sm">
+              Total: <span className="font-bold text-light-50 ml-2">{total}</span>
+            </div>
+            {/* Botão de Upload de Imagem (para uso futuro) */}
+            <Button
+              variant="secondary"
+              size="sm"
+              onClick={() => {
+                // Abrir modal de upload (implementar se necessário)
+                showToast('Funcionalidade de upload será implementada quando houver CRUD de projetos', 'info')
+              }}
+            >
+              <ImageIcon className="w-4 h-4 mr-2" />
+              Upload Imagem
+            </Button>
           </div>
         </CardContent>
       </Card>

@@ -731,8 +731,13 @@ light: {
   - [ ] Logs e auditoria
 - [x] Criar formulários de CRUD para leads e clientes
 - [x] Criar páginas de visualização para projetos, depoimentos, serviços e contatos
-- [ ] Implementar upload de imagens para projetos
-- [ ] Adicionar filtros e busca
+- [x] Implementar upload de imagens para projetos (API criada: `/api/v1/admin/projects/upload`)
+  - [x] Endpoint de upload com validação de tipo e tamanho
+  - [ ] Componente visual de upload (opcional - será implementado quando houver CRUD completo de projetos)
+- [x] Adicionar filtros e busca
+  - [x] Busca server-side implementada para projetos (título, descrição, categoria)
+  - [x] Filtros de status e categoria já implementados
+  - [x] Busca e filtros já implementados para leads, clientes, serviços, depoimentos e contatos
 - [x] Criar interface responsiva para admin (layout mobile-friendly)
 
 #### 8.7 Modelos de Sites Profissionais
