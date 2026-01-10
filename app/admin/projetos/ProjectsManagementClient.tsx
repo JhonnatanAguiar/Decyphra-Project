@@ -57,6 +57,7 @@ export default function ProjectsManagementClient() {
   const [offset, setOffset] = useState(0)
   const [selectedProject, setSelectedProject] = useState<Project | null>(null)
   const [isViewModalOpen, setIsViewModalOpen] = useState(false)
+  const [failedImages, setFailedImages] = useState<Set<string>>(new Set())
 
   // Carregar projetos
   const fetchProjects = async () => {
@@ -105,6 +106,11 @@ export default function ProjectsManagementClient() {
   const handleView = (project: Project) => {
     setSelectedProject(project)
     setIsViewModalOpen(true)
+  }
+
+  // Handler para erro de carregamento de imagem
+  const handleImageError = (imageUrl: string) => {
+    setFailedImages((prev) => new Set(prev).add(imageUrl))
   }
 
   const totalPages = Math.ceil(total / limit)
@@ -188,13 +194,15 @@ export default function ProjectsManagementClient() {
                 {filteredProjects.map((project) => (
                   <Card key={project.id} variant="interactive" className="overflow-hidden">
                     <div className="relative h-48 bg-dark-700">
-                      {project.featuredImage ? (
+                      {project.featuredImage && !failedImages.has(project.featuredImage) ? (
                         <Image
                           src={project.featuredImage}
                           alt={project.title}
                           fill
                           className="object-cover"
                           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                          unoptimized={project.featuredImage.startsWith('/images/')}
+                          onError={() => handleImageError(project.featuredImage!)}
                         />
                       ) : (
                         <div className="flex items-center justify-center h-full text-light-500">
@@ -320,7 +328,7 @@ export default function ProjectsManagementClient() {
           size="lg"
         >
           <div className="space-y-4 flex flex-col">
-            {selectedProject.featuredImage && (
+            {selectedProject.featuredImage && !failedImages.has(selectedProject.featuredImage) ? (
               <div className="relative h-64 bg-dark-700 rounded-lg overflow-hidden">
                 <Image
                   src={selectedProject.featuredImage}
@@ -328,9 +336,18 @@ export default function ProjectsManagementClient() {
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, 768px"
+                  unoptimized={selectedProject.featuredImage.startsWith('/images/')}
+                  onError={() => handleImageError(selectedProject.featuredImage!)}
                 />
               </div>
-            )}
+            ) : selectedProject.featuredImage ? (
+              <div className="relative h-64 bg-dark-700 rounded-lg overflow-hidden flex items-center justify-center">
+                <div className="text-light-500 text-center">
+                  <ImageIcon size={48} className="mx-auto mb-2" />
+                  <p className="text-sm">Imagem não disponível</p>
+                </div>
+              </div>
+            ) : null}
             
             <div className="grid grid-cols-2 gap-4">
               <div>
@@ -419,13 +436,21 @@ export default function ProjectsManagementClient() {
                 <div className="grid grid-cols-3 gap-2 mt-2">
                   {selectedProject.images.slice(0, 6).map((img, idx) => (
                     <div key={idx} className="relative h-24 bg-dark-700 rounded overflow-hidden">
-                      <Image
-                        src={img}
-                        alt={`${selectedProject.title} - Imagem ${idx + 1}`}
-                        fill
-                        className="object-cover"
-                        sizes="(max-width: 768px) 33vw, 150px"
-                      />
+                      {!failedImages.has(img) ? (
+                        <Image
+                          src={img}
+                          alt={`${selectedProject.title} - Imagem ${idx + 1}`}
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 768px) 33vw, 150px"
+                          unoptimized={img.startsWith('/images/')}
+                          onError={() => handleImageError(img)}
+                        />
+                      ) : (
+                        <div className="flex items-center justify-center h-full text-light-500">
+                          <ImageIcon size={24} />
+                        </div>
+                      )}
                     </div>
                   ))}
                 </div>
