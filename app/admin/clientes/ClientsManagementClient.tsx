@@ -535,7 +535,7 @@ export default function ClientsManagementClient() {
             <div>
               <label className="block text-sm text-light-300 mb-2">Telefone</label>
               <Input
-                value={formData.phone}
+                value={formData.phone || ''}
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                 placeholder="+55 11 99999-9999"
               />
@@ -543,7 +543,7 @@ export default function ClientsManagementClient() {
             <div>
               <label className="block text-sm text-light-300 mb-2">Empresa</label>
               <Input
-                value={formData.company}
+                value={formData.company || ''}
                 onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                 placeholder="Nome da empresa"
               />
@@ -551,7 +551,7 @@ export default function ClientsManagementClient() {
             <div>
               <label className="block text-sm text-light-300 mb-2">CNPJ</label>
               <Input
-                value={formData.cnpj}
+                value={formData.cnpj || ''}
                 onChange={(e) => setFormData({ ...formData, cnpj: e.target.value })}
                 placeholder="00.000.000/0000-00"
               />
@@ -559,7 +559,7 @@ export default function ClientsManagementClient() {
             <div>
               <label className="block text-sm text-light-300 mb-2">Segmento</label>
               <Input
-                value={formData.segment}
+                value={formData.segment || ''}
                 onChange={(e) => setFormData({ ...formData, segment: e.target.value })}
                 placeholder="Segmento do cliente"
               />
@@ -580,7 +580,7 @@ export default function ClientsManagementClient() {
             <div>
               <label className="block text-sm text-light-300 mb-2">CEP</label>
               <Input
-                value={formData.zipCode}
+                value={formData.zipCode || ''}
                 onChange={(e) => setFormData({ ...formData, zipCode: e.target.value })}
                 placeholder="00000-000"
               />
@@ -588,7 +588,7 @@ export default function ClientsManagementClient() {
             <div>
               <label className="block text-sm text-light-300 mb-2">Endereço</label>
               <Input
-                value={formData.address}
+                value={formData.address || ''}
                 onChange={(e) => setFormData({ ...formData, address: e.target.value })}
                 placeholder="Rua, número, complemento"
               />
@@ -596,7 +596,7 @@ export default function ClientsManagementClient() {
             <div>
               <label className="block text-sm text-light-300 mb-2">Cidade</label>
               <Input
-                value={formData.city}
+                value={formData.city || ''}
                 onChange={(e) => setFormData({ ...formData, city: e.target.value })}
                 placeholder="Cidade"
               />
@@ -604,7 +604,7 @@ export default function ClientsManagementClient() {
             <div>
               <label className="block text-sm text-light-300 mb-2">Estado</label>
               <Input
-                value={formData.state}
+                value={formData.state || ''}
                 onChange={(e) => setFormData({ ...formData, state: e.target.value })}
                 placeholder="Estado (UF)"
                 maxLength={2}
@@ -614,7 +614,7 @@ export default function ClientsManagementClient() {
           <div>
             <label className="block text-sm text-light-300 mb-2">Notas</label>
             <Textarea
-              value={formData.notes}
+              value={formData.notes || ''}
               onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
               placeholder="Observações sobre o cliente..."
               rows={4}

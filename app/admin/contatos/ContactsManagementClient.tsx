@@ -380,7 +380,7 @@ export default function ContactsManagementClient() {
               <div>
                 <label className="text-sm text-light-400">Metadata</label>
                 <pre className="text-xs text-light-400 bg-dark-700 p-4 rounded-lg overflow-auto max-h-48">
-                  {JSON.stringify(selectedContact.metadata, null, 2)}
+                  {String(JSON.stringify(selectedContact.metadata, null, 2) || '{}')}
                 </pre>
               </div>
             )}

@@ -510,7 +510,7 @@ export default function LeadsManagementClient() {
             <div>
               <label className="block text-sm text-light-300 mb-2">Telefone</label>
               <Input
-                value={formData.phone}
+                value={formData.phone || ''}
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                 placeholder="+55 11 99999-9999"
               />
@@ -518,7 +518,7 @@ export default function LeadsManagementClient() {
             <div>
               <label className="block text-sm text-light-300 mb-2">Empresa</label>
               <Input
-                value={formData.company}
+                value={formData.company || ''}
                 onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                 placeholder="Nome da empresa"
               />
@@ -526,7 +526,7 @@ export default function LeadsManagementClient() {
             <div>
               <label className="block text-sm text-light-300 mb-2">Serviço</label>
               <Input
-                value={formData.service}
+                value={formData.service || ''}
                 onChange={(e) => setFormData({ ...formData, service: e.target.value })}
                 placeholder="Tipo de serviço"
               />
@@ -534,7 +534,7 @@ export default function LeadsManagementClient() {
             <div>
               <label className="block text-sm text-light-300 mb-2">Origem</label>
               <Input
-                value={formData.source}
+                value={formData.source || ''}
                 onChange={(e) => setFormData({ ...formData, source: e.target.value })}
                 placeholder="Origem do lead"
               />
@@ -566,7 +566,7 @@ export default function LeadsManagementClient() {
           <div>
             <label className="block text-sm text-light-300 mb-2">Notas</label>
             <Textarea
-              value={formData.notes}
+              value={formData.notes || ''}
               onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
               placeholder="Observações sobre o lead..."
               rows={4}
