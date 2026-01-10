@@ -9,6 +9,7 @@
         "start": "next start",
         "lint": "next lint",
         "type-check": "tsc --noEmit",
+        "sync-lockfile": "node scripts/sync-lockfile.js",
         "db:migrate": "node scripts/migrate.js dev",
         "db:migrate:dev": "node scripts/migrate.js dev",
         "db:migrate:deploy": "node scripts/migrate.js deploy",
@@ -26,6 +27,7 @@
         "a11y:test": "node scripts/a11y-test.js",
         "a11y:axe": "node scripts/a11y-axe-test.js"
     },
+    "packageManager": "pnpm@10.0.0",
     "dependencies": {
         "@hookform/resolvers": "^3.9.0",
         "@next/third-parties": "^16.1.1",

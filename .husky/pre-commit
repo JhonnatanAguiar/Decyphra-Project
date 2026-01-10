@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# Sincronizar lockfile antes de commitar (apenas se pnpm estiver disponível)
+# Não falha o commit se pnpm não estiver instalado
+if command -v pnpm >/dev/null 2>&1; then
+  node scripts/sync-lockfile.js 2>/dev/null && git add pnpm-lock.yaml || true
+fi

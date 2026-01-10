@@ -60,9 +60,9 @@ RESEND_WEBHOOK_SECRET="whsec_xxxxxxxxxxxxxxxxxxxxx"
 - Framework: **Next.js** (detectado automaticamente)
 
 **Build Settings:**
-- Build Command: `npm run build` (padrão)
+- Build Command: `pnpm run build` (configurado no `vercel.json`)
 - Output Directory: `.next` (padrão)
-- Install Command: `npm install` (ou `pnpm install` se usar pnpm)
+- Install Command: `pnpm install --no-frozen-lockfile` (configurado no `vercel.json` - atualiza lockfile se necessário)
 
 **Root Directory:**
 - Deixe vazio (raiz do projeto)
@@ -213,7 +213,14 @@ Antes de fazer deploy, verifique:
 
 ### Erro: "Cannot find module"
 
-**Solução:** Verifique se todas as dependências estão no `package.json` e o `package-lock.json` / `pnpm-lock.yaml` está atualizado.
+**Solução:** Verifique se todas as dependências estão no `package.json` e o `pnpm-lock.yaml` está atualizado. Execute `npm run sync-lockfile` após adicionar dependências.
+
+### Erro: "ERR_PNPM_OUTDATED_LOCKFILE"
+
+**Solução:** O `pnpm-lock.yaml` está desatualizado em relação ao `package.json`. 
+1. Execute localmente: `npm run sync-lockfile` ou `pnpm install --lockfile-only`
+2. Faça commit do `pnpm-lock.yaml` atualizado
+3. O deploy na Vercel está configurado para atualizar automaticamente (`--no-frozen-lockfile`), mas é recomendado manter o lockfile sincronizado
 
 ### Erro: "Database connection failed"
 

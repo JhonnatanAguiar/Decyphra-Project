@@ -55,6 +55,26 @@ function removeDir(dirPath) {
 function main() {
   log('=== Iniciando build do projeto ===', 'cyan');
 
+  // Sincronizar lockfile antes do build (apenas em ambiente local, não na Vercel)
+  // Na Vercel, o installCommand já faz isso com --no-frozen-lockfile
+  if (!process.env.VERCEL && !process.env.CI) {
+    try {
+      log('Verificando sincronização do lockfile...', 'yellow');
+      // Verificar se pnpm está disponível antes de tentar sincronizar
+      try {
+        execSync('pnpm --version', { stdio: 'ignore' });
+        log('Sincronizando pnpm-lock.yaml...', 'yellow');
+        execSync('pnpm install --lockfile-only', { stdio: 'inherit', cwd: process.cwd() });
+        log('Lockfile sincronizado!', 'green');
+      } catch (pnpmError) {
+        log('Aviso: pnpm não disponível, pulando sincronização de lockfile', 'yellow');
+      }
+    } catch (error) {
+      log(`Aviso: Erro ao sincronizar lockfile: ${error.message}`, 'yellow');
+      // Não falha o build por causa disso
+    }
+  }
+
   const nextDir = path.join(process.cwd(), '.next');
   const cacheDir = path.join(process.cwd(), 'node_modules', '.cache');
 

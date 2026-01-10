@@ -65,8 +65,12 @@ Toda a documentação está organizada na pasta `docs/`:
 ### Pré-requisitos
 
 - Node.js 18+
-- npm ou yarn
+- pnpm (gerenciador de pacotes - o projeto usa `pnpm-lock.yaml`)
+  - Instalar: `npm install -g pnpm`
+  - Ou usar `npx pnpm` quando necessário
 - Conta no Neon (banco de dados)
+
+**⚠️ IMPORTANTE:** Após adicionar/modificar dependências, sempre execute `npm run sync-lockfile` para sincronizar o `pnpm-lock.yaml`. Isso evita erros de deploy.
 
 ### Instalação
 
@@ -76,7 +80,12 @@ git clone [url-do-repositorio]
 cd decyphra-website
 
 # Instalar dependências
-npm install
+# IMPORTANTE: Use pnpm (o projeto usa pnpm-lock.yaml)
+# Se não tiver pnpm instalado: npm install -g pnpm
+pnpm install
+
+# Ou use npx se não quiser instalar globalmente:
+# npx pnpm install
 
 # Configurar variáveis de ambiente
 # Crie o arquivo .env.local na raiz e adicione:
@@ -159,6 +168,7 @@ Veja todas as rotas e detalhes em [PLANEJAMENTO-COMPLETO.md](./docs/PLANEJAMENTO
 npm run dev          # Inicia servidor de desenvolvimento
 npm run build        # Build para produção
 npm run start        # Inicia servidor de produção
+npm run sync-lockfile # ⚠️ IMPORTANTE: Sincroniza pnpm-lock.yaml após adicionar dependências
 
 # Banco de Dados
 npm run db:migrate        # Migration padrão (desenvolvimento)

@@ -1,0 +1,4 @@
+{
+  "installCommand": "pnpm install --no-frozen-lockfile || (pnpm install && echo '⚠️ Lockfile atualizado durante deploy')",
+  "buildCommand": "pnpm run build"
+}
