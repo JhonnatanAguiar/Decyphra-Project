@@ -22,12 +22,22 @@ export async function POST(req: Request) {
     const body = await req.json()
     const data = loginSchema.parse(body)
 
-    // TODO: Implementar verificação real de credenciais
-    // Por enquanto, usar credenciais hardcoded (substituir depois)
+    // Credenciais padrão (substituir por variáveis de ambiente em produção)
     const ADMIN_EMAIL = process.env.ADMIN_EMAIL || 'admin@decyphra.com.br'
     const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'admin123'
 
-    if (data.email !== ADMIN_EMAIL || data.password !== ADMIN_PASSWORD) {
+    // Normalizar e-mail para comparação (lowercase, trim)
+    const normalizedEmail = data.email.toLowerCase().trim()
+    const normalizedAdminEmail = ADMIN_EMAIL.toLowerCase().trim()
+
+    if (normalizedEmail !== normalizedAdminEmail || data.password !== ADMIN_PASSWORD) {
+      // eslint-disable-next-line no-console
+      console.log('[api/admin/auth/login] Login falhou:', {
+        providedEmail: normalizedEmail,
+        expectedEmail: normalizedAdminEmail,
+        emailMatch: normalizedEmail === normalizedAdminEmail,
+        passwordMatch: data.password === ADMIN_PASSWORD,
+      })
       return apiError('E-mail ou senha inválidos', 401)
     }
 

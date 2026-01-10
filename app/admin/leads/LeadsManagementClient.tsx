@@ -118,13 +118,6 @@ export default function LeadsManagementClient() {
 
   // Usar leads diretamente, a busca é feita no servidor
   const filteredLeads = leads
-    return (
-      lead.name.toLowerCase().includes(search) ||
-      lead.email.toLowerCase().includes(search) ||
-      lead.phone?.toLowerCase().includes(search) ||
-      lead.company?.toLowerCase().includes(search)
-    )
-  })
 
   // Abrir modal de visualização
   const handleView = (lead: LeadDTO) => {
