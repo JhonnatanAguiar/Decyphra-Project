@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { cn } from '@/lib/utils/cn'
 import { ROUTES } from '@/lib/constants/routes'
-import { SITE_CONFIG, SOCIAL_LINKS } from '@/lib/constants/site'
+import { SITE_CONFIG, SOCIAL_LINKS, SOCIAL_UNAVAILABLE_MESSAGE } from '@/lib/constants/site'
 import { DecyphraLogo } from './DecyphraLogo'
 import { Mail, MapPin, Clock, Facebook, Instagram, Linkedin, Twitter, Youtube } from 'lucide-react'
 
@@ -53,13 +53,14 @@ const Footer = ({
 
   type SocialPlatform = keyof typeof socialIconMap
 
-  // Criar array de links de redes sociais apenas para as que têm URL definida e ícone disponível
+  // Criar array de todas as redes sociais (com ou sem URL)
   const socialLinks = (Object.entries(SOCIAL_LINKS) as Array<[SocialPlatform, string | undefined]>)
-    .filter(([platform, url]) => url !== undefined && platform in socialIconMap)
+    .filter(([platform]) => platform in socialIconMap)
     .map(([platform, url]) => ({
       icon: socialIconMap[platform],
-      href: url as string,
+      href: url,
       label: platform === 'linkedin' ? 'LinkedIn' : platform.charAt(0).toUpperCase() + platform.slice(1),
+      available: url !== undefined && url !== '',
     }))
 
   const emails = [
@@ -215,18 +216,36 @@ const Footer = ({
                 <div className="flex gap-3">
                   {socialLinks.map((social) => {
                     const IconComponent = social.icon
+                    if (social.available) {
+                      return (
+                        <a
+                          key={social.label}
+                          href={social.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="w-10 h-10 bg-primary-500 rounded-lg flex items-center justify-center hover:bg-primary-400 transition-colors"
+                          aria-label={`${social.label} - Abre em nova aba`}
+                          title={`Visite nosso ${social.label}`}
+                        >
+                          <IconComponent className="w-5 h-5 text-dark-950" />
+                        </a>
+                      )
+                    }
                     return (
-                      <a
+                      <button
                         key={social.label}
-                        href={social.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="w-10 h-10 bg-primary-500 rounded-lg flex items-center justify-center hover:bg-primary-400 transition-colors"
-                        aria-label={`${social.label} - Abre em nova aba`}
-                        title={`Visite nosso ${social.label}`}
+                        disabled
+                        className="w-10 h-10 bg-dark-700 rounded-lg flex items-center justify-center cursor-not-allowed opacity-50 relative group"
+                        aria-label={`${social.label} - ${SOCIAL_UNAVAILABLE_MESSAGE}`}
+                        title={SOCIAL_UNAVAILABLE_MESSAGE}
                       >
-                        <IconComponent className="w-5 h-5 text-dark-950" />
-                      </a>
+                        <IconComponent className="w-5 h-5 text-light-400" />
+                        {/* Tooltip */}
+                        <span className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 bg-dark-800 text-light-50 text-xs rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10 border border-dark-600 shadow-lg">
+                          {SOCIAL_UNAVAILABLE_MESSAGE}
+                          <span className="absolute top-full left-1/2 transform -translate-x-1/2 -mt-1 border-4 border-transparent border-t-dark-800"></span>
+                        </span>
+                      </button>
                     )
                   })}
                 </div>

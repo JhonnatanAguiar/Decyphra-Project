@@ -12,7 +12,7 @@ import { contactSchema, type ContactInput } from '@/models/schemas'
 import { DEFAULT_COUNTRY, getCountryByCode } from '@/lib/constants/countries'
 import { formatPhoneAsYouType, getPhoneExample, validateAndFormatPhone } from '@/lib/utils/phone'
 import { formatDocument, validateDocument } from '@/lib/utils/document'
-import { SOCIAL_LINKS } from '@/lib/constants/site'
+import { SOCIAL_LINKS, SOCIAL_UNAVAILABLE_MESSAGE } from '@/lib/constants/site'
 import { Facebook, Instagram, Linkedin, Twitter } from 'lucide-react'
 import type { CountryCode } from 'libphonenumber-js'
 
@@ -500,112 +500,156 @@ export default function ContactPageClient() {
                     </div>
 
                     {/* Redes Sociais */}
-                    {SOCIAL_LINKS.facebook || SOCIAL_LINKS.instagram || SOCIAL_LINKS.linkedin || SOCIAL_LINKS.twitter ? (
-                      <div className="flex items-start gap-3">
-                        <div className="w-10 h-10 bg-primary-500/10 rounded-lg flex items-center justify-center flex-shrink-0 border border-primary-500/20">
-                          <div className="grid grid-cols-2 gap-1">
-                            {SOCIAL_LINKS.facebook && (
-                              <a
-                                href={SOCIAL_LINKS.facebook}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-primary-500 hover:text-primary-400 transition-colors"
-                                aria-label="Facebook - Abre em nova aba"
-                              >
-                                <Facebook size={12} />
-                              </a>
-                            )}
-                            {SOCIAL_LINKS.instagram && (
-                              <a
-                                href={SOCIAL_LINKS.instagram}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-primary-500 hover:text-primary-400 transition-colors"
-                                aria-label="Instagram - Abre em nova aba"
-                              >
-                                <Instagram size={12} />
-                              </a>
-                            )}
-                            {SOCIAL_LINKS.linkedin && (
-                              <a
-                                href={SOCIAL_LINKS.linkedin}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-primary-500 hover:text-primary-400 transition-colors"
-                                aria-label="LinkedIn - Abre em nova aba"
-                              >
-                                <Linkedin size={12} />
-                              </a>
-                            )}
-                            {SOCIAL_LINKS.twitter && (
-                              <a
-                                href={SOCIAL_LINKS.twitter}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-primary-500 hover:text-primary-400 transition-colors"
-                                aria-label="Twitter - Abre em nova aba"
-                              >
-                                <Twitter size={12} />
-                              </a>
-                            )}
-                          </div>
-                        </div>
-                        <div>
-                          <p className="text-sm text-light-300 mb-1">Redes Sociais</p>
-                          <div className="flex gap-2 flex-wrap">
-                            {SOCIAL_LINKS.facebook && (
-                              <a
-                                href={SOCIAL_LINKS.facebook}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-light-50 hover:text-primary-500 transition-colors text-sm"
-                              >
-                                Facebook
-                              </a>
-                            )}
-                            {SOCIAL_LINKS.instagram && (
-                              <>
-                                {SOCIAL_LINKS.facebook && <span className="text-dark-600">|</span>}
-                                <a
-                                  href={SOCIAL_LINKS.instagram}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="text-light-50 hover:text-primary-500 transition-colors text-sm"
-                                >
-                                  Instagram
-                                </a>
-                              </>
-                            )}
-                            {SOCIAL_LINKS.linkedin && (
-                              <>
-                                {(SOCIAL_LINKS.facebook || SOCIAL_LINKS.instagram) && <span className="text-dark-600">|</span>}
-                                <a
-                                  href={SOCIAL_LINKS.linkedin}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="text-light-50 hover:text-primary-500 transition-colors text-sm"
-                                >
-                                  LinkedIn
-                                </a>
-                              </>
-                            )}
-                            {SOCIAL_LINKS.twitter && (
-                              <>
-                                {(SOCIAL_LINKS.facebook || SOCIAL_LINKS.instagram || SOCIAL_LINKS.linkedin) && <span className="text-dark-600">|</span>}
-                                <a
-                                  href={SOCIAL_LINKS.twitter}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="text-light-50 hover:text-primary-500 transition-colors text-sm"
-                                >
-                                  Twitter
-                                </a>
-                              </>
-                            )}
-                          </div>
+                    <div className="flex items-start gap-3">
+                      <div className="w-10 h-10 bg-primary-500/10 rounded-lg flex items-center justify-center flex-shrink-0 border border-primary-500/20">
+                        <div className="grid grid-cols-2 gap-1">
+                          {SOCIAL_LINKS.facebook ? (
+                            <a
+                              href={SOCIAL_LINKS.facebook}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-primary-500 hover:text-primary-400 transition-colors"
+                              aria-label="Facebook - Abre em nova aba"
+                            >
+                              <Facebook size={12} />
+                            </a>
+                          ) : (
+                            <button
+                              disabled
+                              className="text-light-400 opacity-50 cursor-not-allowed relative group"
+                              title={SOCIAL_UNAVAILABLE_MESSAGE}
+                              aria-label={`Facebook - ${SOCIAL_UNAVAILABLE_MESSAGE}`}
+                            >
+                              <Facebook size={12} />
+                            </button>
+                          )}
+                          {SOCIAL_LINKS.instagram ? (
+                            <a
+                              href={SOCIAL_LINKS.instagram}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-primary-500 hover:text-primary-400 transition-colors"
+                              aria-label="Instagram - Abre em nova aba"
+                            >
+                              <Instagram size={12} />
+                            </a>
+                          ) : (
+                            <button
+                              disabled
+                              className="text-light-400 opacity-50 cursor-not-allowed relative group"
+                              title={SOCIAL_UNAVAILABLE_MESSAGE}
+                              aria-label={`Instagram - ${SOCIAL_UNAVAILABLE_MESSAGE}`}
+                            >
+                              <Instagram size={12} />
+                            </button>
+                          )}
+                          {SOCIAL_LINKS.linkedin ? (
+                            <a
+                              href={SOCIAL_LINKS.linkedin}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-primary-500 hover:text-primary-400 transition-colors"
+                              aria-label="LinkedIn - Abre em nova aba"
+                            >
+                              <Linkedin size={12} />
+                            </a>
+                          ) : (
+                            <button
+                              disabled
+                              className="text-light-400 opacity-50 cursor-not-allowed relative group"
+                              title={SOCIAL_UNAVAILABLE_MESSAGE}
+                              aria-label={`LinkedIn - ${SOCIAL_UNAVAILABLE_MESSAGE}`}
+                            >
+                              <Linkedin size={12} />
+                            </button>
+                          )}
+                          {SOCIAL_LINKS.twitter ? (
+                            <a
+                              href={SOCIAL_LINKS.twitter}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-primary-500 hover:text-primary-400 transition-colors"
+                              aria-label="Twitter - Abre em nova aba"
+                            >
+                              <Twitter size={12} />
+                            </a>
+                          ) : (
+                            <button
+                              disabled
+                              className="text-light-400 opacity-50 cursor-not-allowed relative group"
+                              title={SOCIAL_UNAVAILABLE_MESSAGE}
+                              aria-label={`Twitter - ${SOCIAL_UNAVAILABLE_MESSAGE}`}
+                            >
+                              <Twitter size={12} />
+                            </button>
+                          )}
                         </div>
                       </div>
-                    ) : null}
+                      <div>
+                        <p className="text-sm text-light-300 mb-1">Redes Sociais</p>
+                        <div className="flex gap-2 flex-wrap">
+                          {SOCIAL_LINKS.facebook ? (
+                            <a
+                              href={SOCIAL_LINKS.facebook}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-light-50 hover:text-primary-500 transition-colors text-sm"
+                            >
+                              Facebook
+                            </a>
+                          ) : (
+                            <span className="text-light-400 opacity-50 text-sm cursor-not-allowed" title={SOCIAL_UNAVAILABLE_MESSAGE}>
+                              Facebook
+                            </span>
+                          )}
+                          <span className="text-dark-600">|</span>
+                          {SOCIAL_LINKS.instagram ? (
+                            <a
+                              href={SOCIAL_LINKS.instagram}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-light-50 hover:text-primary-500 transition-colors text-sm"
+                            >
+                              Instagram
+                            </a>
+                          ) : (
+                            <span className="text-light-400 opacity-50 text-sm cursor-not-allowed" title={SOCIAL_UNAVAILABLE_MESSAGE}>
+                              Instagram
+                            </span>
+                          )}
+                          <span className="text-dark-600">|</span>
+                          {SOCIAL_LINKS.linkedin ? (
+                            <a
+                              href={SOCIAL_LINKS.linkedin}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-light-50 hover:text-primary-500 transition-colors text-sm"
+                            >
+                              LinkedIn
+                            </a>
+                          ) : (
+                            <span className="text-light-400 opacity-50 text-sm cursor-not-allowed" title={SOCIAL_UNAVAILABLE_MESSAGE}>
+                              LinkedIn
+                            </span>
+                          )}
+                          <span className="text-dark-600">|</span>
+                          {SOCIAL_LINKS.twitter ? (
+                            <a
+                              href={SOCIAL_LINKS.twitter}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-light-50 hover:text-primary-500 transition-colors text-sm"
+                            >
+                              Twitter
+                            </a>
+                          ) : (
+                            <span className="text-light-400 opacity-50 text-sm cursor-not-allowed" title={SOCIAL_UNAVAILABLE_MESSAGE}>
+                              Twitter
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </ScrollReveal>
