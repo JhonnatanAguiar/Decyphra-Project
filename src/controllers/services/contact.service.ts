@@ -97,6 +97,7 @@ async function sendInternalNotification(payload: ContactInput): Promise<unknown>
     name: payload.name,
     email: payload.email,
     phone: payload.phone,
+    countryCode: payload.countryCode,
     company: payload.company,
     service: payload.service,
     message: payload.message,

@@ -113,6 +113,7 @@ export function getInternalNotificationTemplate(data: {
   name: string
   email: string
   phone?: string | null
+  countryCode?: string | null
   company?: string | null
   service?: string | null
   message: string
@@ -139,7 +140,9 @@ export function getInternalNotificationTemplate(data: {
       <tr>
         <td style="padding: 12px 0; border-bottom: 1px solid rgba(0, 255, 136, 0.2);">
           <strong style="color: #00FF88; font-size: 14px; display: inline-block; width: 120px; vertical-align: top;">Telefone:</strong>
-          <a href="tel:${escapeHtml(data.phone)}" style="color: #E6F0F3; font-size: 14px; text-decoration: none; font-weight: 500;">${escapeHtml(data.phone)}</a>
+          <a href="tel:${escapeHtml(data.phone)}" style="color: #E6F0F3; font-size: 14px; text-decoration: none; font-weight: 500;">
+            ${data.countryCode ? `(${escapeHtml(data.countryCode)}) ` : ''}${escapeHtml(data.phone)}
+          </a>
         </td>
       </tr>
       ` : ''}

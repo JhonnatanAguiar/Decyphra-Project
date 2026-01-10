@@ -1,14 +1,17 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Container, Section } from '@/views/components/layout'
 import { FadeIn, ScrollReveal, Waves } from '@/views/components/animations'
-import { Input, Textarea, Select, Button, Toast } from '@/views/components/ui'
+import { Input, Textarea, Select, Button, Toast, CountrySelect } from '@/views/components/ui'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Mail, MapPin, Send, CheckCircle, Clock } from 'lucide-react'
 import { API_ROUTES } from '@/lib/constants/routes'
 import { contactSchema, type ContactInput } from '@/models/schemas'
+import { DEFAULT_COUNTRY, getCountryByCode } from '@/lib/constants/countries'
+import { formatPhoneAsYouType, getPhoneExample, validateAndFormatPhone } from '@/lib/utils/phone'
+import type { CountryCode } from 'libphonenumber-js'
 
 /**
  * Página de Contato Client Component
@@ -48,6 +51,8 @@ const businessHours = [
 export default function ContactPageClient() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [toast, setToast] = useState<{ message: string; type: 'success' | 'error' } | null>(null)
+  const [selectedCountry, setSelectedCountry] = useState<CountryCode>(DEFAULT_COUNTRY)
+  const [formattedPhone, setFormattedPhone] = useState('')
 
   const {
     register,
@@ -55,14 +60,49 @@ export default function ContactPageClient() {
     formState: { errors },
     reset,
     watch,
+    setValue,
   } = useForm<ContactFormData>({
     resolver: zodResolver(contactSchema),
+    defaultValues: {
+      countryCode: DEFAULT_COUNTRY,
+    },
   })
 
   // Observar valores dos campos para validação visual
   const watchedName = watch('name')
   const watchedEmail = watch('email')
   const watchedMessage = watch('message')
+  const watchedPhone = watch('phone')
+  const watchedCountryCode = watch('countryCode')
+
+  // Atualizar país selecionado quando mudar no formulário
+  useEffect(() => {
+    if (watchedCountryCode && watchedCountryCode !== selectedCountry) {
+      setSelectedCountry(watchedCountryCode as CountryCode)
+      // Limpar formatação do telefone ao mudar de país
+      if (watchedPhone) {
+        const country = getCountryByCode(watchedCountryCode as CountryCode)
+        const example = getPhoneExample(watchedCountryCode as CountryCode)
+        // Reformatar o telefone com o novo país
+        const formatted = formatPhoneAsYouType(watchedPhone, watchedCountryCode as CountryCode)
+        setFormattedPhone(formatted)
+        setValue('phone', formatted, { shouldValidate: true })
+      }
+    }
+  }, [watchedCountryCode, selectedCountry, watchedPhone, setValue])
+
+  // Formatação em tempo real do telefone
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value
+    const formatted = formatPhoneAsYouType(value, selectedCountry)
+    setFormattedPhone(formatted)
+    setValue('phone', formatted, { shouldValidate: true })
+  }
+
+  // Validação visual do telefone
+  const phoneValidation = watchedPhone
+    ? validateAndFormatPhone(watchedPhone, selectedCountry)
+    : { isValid: false }
 
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true)
@@ -85,7 +125,12 @@ export default function ContactPageClient() {
         message: 'Mensagem enviada com sucesso! Entraremos em contato em breve.',
         type: 'success',
       })
-      reset()
+      reset({
+        countryCode: DEFAULT_COUNTRY,
+        phone: '',
+      })
+      setSelectedCountry(DEFAULT_COUNTRY)
+      setFormattedPhone('')
     } catch {
       setToast({
         message: 'Erro ao enviar mensagem. Tente novamente mais tarde.',
@@ -186,8 +231,33 @@ export default function ContactPageClient() {
                     </div>
                   </div>
 
-                  {/* Telefone e Empresa */}
+                  {/* País, Telefone e Empresa */}
                   <div className="grid md:grid-cols-2 gap-6">
+                    <div>
+                      <label htmlFor="countryCode" className="block text-sm font-medium text-light-200 mb-2">
+                        País
+                      </label>
+                      <CountrySelect
+                        id="countryCode"
+                        variant={errors.countryCode ? 'error' : 'primary'}
+                        value={watchedCountryCode || DEFAULT_COUNTRY}
+                        {...register('countryCode')}
+                        onChange={(e) => {
+                          const newCountry = e.target.value as CountryCode
+                          setValue('countryCode', newCountry, { shouldValidate: true })
+                          setSelectedCountry(newCountry)
+                          // Reformatar telefone se houver valor
+                          if (watchedPhone) {
+                            const formatted = formatPhoneAsYouType(watchedPhone, newCountry)
+                            setFormattedPhone(formatted)
+                            setValue('phone', formatted, { shouldValidate: true })
+                          }
+                        }}
+                      />
+                      {errors.countryCode && (
+                        <p className="mt-1 text-sm text-red-500">{errors.countryCode.message}</p>
+                      )}
+                    </div>
                     <div>
                       <label htmlFor="phone" className="block text-sm font-medium text-light-200 mb-2">
                         WhatsApp
@@ -195,23 +265,47 @@ export default function ContactPageClient() {
                       <Input
                         id="phone"
                         type="tel"
-                        placeholder="(11) 99999-9999"
-                        variant="primary"
-                        {...register('phone')}
+                        placeholder={getPhoneExample(selectedCountry)}
+                        variant={errors.phone ? 'error' : phoneValidation.isValid ? 'primary' : 'primary'}
+                        showValidationIcon={!!watchedPhone}
+                        isValid={phoneValidation.isValid && !!watchedPhone}
+                        value={formattedPhone}
+                        onChange={handlePhoneChange}
+                        onBlur={(e) => {
+                          register('phone').onBlur(e)
+                          // Validar e formatar no blur
+                          if (e.target.value) {
+                            const validation = validateAndFormatPhone(e.target.value, selectedCountry)
+                            if (validation.isValid && validation.formatted) {
+                              setFormattedPhone(validation.formatted)
+                              setValue('phone', validation.formatted, { shouldValidate: true })
+                            }
+                          }
+                        }}
                       />
+                      {errors.phone && (
+                        <p className="mt-1 text-sm text-red-500">{errors.phone.message}</p>
+                      )}
+                      {watchedPhone && !errors.phone && !phoneValidation.isValid && (
+                        <p className="mt-1 text-sm text-yellow-500">
+                          Formato: {getPhoneExample(selectedCountry)}
+                        </p>
+                      )}
                     </div>
-                    <div>
-                      <label htmlFor="company" className="block text-sm font-medium text-light-200 mb-2">
-                        Empresa
-                      </label>
-                      <Input
-                        id="company"
-                        type="text"
-                        placeholder="Nome da empresa (opcional)"
-                        variant="primary"
-                        {...register('company')}
-                      />
-                    </div>
+                  </div>
+                  
+                  {/* Empresa */}
+                  <div>
+                    <label htmlFor="company" className="block text-sm font-medium text-light-200 mb-2">
+                      Empresa
+                    </label>
+                    <Input
+                      id="company"
+                      type="text"
+                      placeholder="Nome da empresa (opcional)"
+                      variant="primary"
+                      {...register('company')}
+                    />
                   </div>
 
                   {/* Serviço de Interesse */}
