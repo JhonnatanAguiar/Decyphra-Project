@@ -251,8 +251,7 @@ export default function ContactPageClient() {
                       <CountrySelect
                         id="countryCode"
                         variant={errors.countryCode ? 'error' : 'primary'}
-                        value={watchedCountryCode || DEFAULT_COUNTRY}
-                        {...register('countryCode')}
+                        value={selectedCountry}
                         onChange={(e) => {
                           const newCountry = e.target.value as CountryCode
                           setValue('countryCode', newCountry, { shouldValidate: true })
