@@ -376,7 +376,7 @@ export default function ContactsManagementClient() {
               </div>
             </div>
 
-            {selectedContact.metadata && (
+            {selectedContact.metadata != null && (
               <div>
                 <label className="text-sm text-light-400">Metadata</label>
                 <pre className="text-xs text-light-400 bg-dark-700 p-4 rounded-lg overflow-auto max-h-48">
