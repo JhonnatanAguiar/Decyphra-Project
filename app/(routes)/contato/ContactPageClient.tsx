@@ -12,6 +12,8 @@ import { contactSchema, type ContactInput } from '@/models/schemas'
 import { DEFAULT_COUNTRY, getCountryByCode } from '@/lib/constants/countries'
 import { formatPhoneAsYouType, getPhoneExample, validateAndFormatPhone } from '@/lib/utils/phone'
 import { formatDocument, validateDocument } from '@/lib/utils/document'
+import { SOCIAL_LINKS } from '@/lib/constants/site'
+import { Facebook, Instagram, Linkedin, Twitter } from 'lucide-react'
 import type { CountryCode } from 'libphonenumber-js'
 
 /**
@@ -496,6 +498,114 @@ export default function ContactPageClient() {
                         <p className="text-light-50">Sumaré, SP - Brasil</p>
                       </div>
                     </div>
+
+                    {/* Redes Sociais */}
+                    {SOCIAL_LINKS.facebook || SOCIAL_LINKS.instagram || SOCIAL_LINKS.linkedin || SOCIAL_LINKS.twitter ? (
+                      <div className="flex items-start gap-3">
+                        <div className="w-10 h-10 bg-primary-500/10 rounded-lg flex items-center justify-center flex-shrink-0 border border-primary-500/20">
+                          <div className="grid grid-cols-2 gap-1">
+                            {SOCIAL_LINKS.facebook && (
+                              <a
+                                href={SOCIAL_LINKS.facebook}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-primary-500 hover:text-primary-400 transition-colors"
+                                aria-label="Facebook - Abre em nova aba"
+                              >
+                                <Facebook size={12} />
+                              </a>
+                            )}
+                            {SOCIAL_LINKS.instagram && (
+                              <a
+                                href={SOCIAL_LINKS.instagram}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-primary-500 hover:text-primary-400 transition-colors"
+                                aria-label="Instagram - Abre em nova aba"
+                              >
+                                <Instagram size={12} />
+                              </a>
+                            )}
+                            {SOCIAL_LINKS.linkedin && (
+                              <a
+                                href={SOCIAL_LINKS.linkedin}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-primary-500 hover:text-primary-400 transition-colors"
+                                aria-label="LinkedIn - Abre em nova aba"
+                              >
+                                <Linkedin size={12} />
+                              </a>
+                            )}
+                            {SOCIAL_LINKS.twitter && (
+                              <a
+                                href={SOCIAL_LINKS.twitter}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-primary-500 hover:text-primary-400 transition-colors"
+                                aria-label="Twitter - Abre em nova aba"
+                              >
+                                <Twitter size={12} />
+                              </a>
+                            )}
+                          </div>
+                        </div>
+                        <div>
+                          <p className="text-sm text-light-300 mb-1">Redes Sociais</p>
+                          <div className="flex gap-2 flex-wrap">
+                            {SOCIAL_LINKS.facebook && (
+                              <a
+                                href={SOCIAL_LINKS.facebook}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-light-50 hover:text-primary-500 transition-colors text-sm"
+                              >
+                                Facebook
+                              </a>
+                            )}
+                            {SOCIAL_LINKS.instagram && (
+                              <>
+                                {SOCIAL_LINKS.facebook && <span className="text-dark-600">|</span>}
+                                <a
+                                  href={SOCIAL_LINKS.instagram}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="text-light-50 hover:text-primary-500 transition-colors text-sm"
+                                >
+                                  Instagram
+                                </a>
+                              </>
+                            )}
+                            {SOCIAL_LINKS.linkedin && (
+                              <>
+                                {(SOCIAL_LINKS.facebook || SOCIAL_LINKS.instagram) && <span className="text-dark-600">|</span>}
+                                <a
+                                  href={SOCIAL_LINKS.linkedin}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="text-light-50 hover:text-primary-500 transition-colors text-sm"
+                                >
+                                  LinkedIn
+                                </a>
+                              </>
+                            )}
+                            {SOCIAL_LINKS.twitter && (
+                              <>
+                                {(SOCIAL_LINKS.facebook || SOCIAL_LINKS.instagram || SOCIAL_LINKS.linkedin) && <span className="text-dark-600">|</span>}
+                                <a
+                                  href={SOCIAL_LINKS.twitter}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="text-light-50 hover:text-primary-500 transition-colors text-sm"
+                                >
+                                  Twitter
+                                </a>
+                              </>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    ) : null}
                   </div>
                 </div>
               </ScrollReveal>

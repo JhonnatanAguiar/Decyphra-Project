@@ -1,9 +1,9 @@
 import Link from 'next/link'
 import { cn } from '@/lib/utils/cn'
 import { ROUTES } from '@/lib/constants/routes'
-import { SITE_CONFIG } from '@/lib/constants/site'
+import { SITE_CONFIG, SOCIAL_LINKS } from '@/lib/constants/site'
 import { DecyphraLogo } from './DecyphraLogo'
-import { Mail, MapPin, Clock, Facebook, Instagram, Linkedin, Twitter } from 'lucide-react'
+import { Mail, MapPin, Clock, Facebook, Instagram, Linkedin, Twitter, Youtube } from 'lucide-react'
 
 /**
  * Footer Component
@@ -42,12 +42,23 @@ const Footer = ({
     { label: 'Consultoria Digital', href: `${ROUTES.services}/consultoria-digital` },
   ]
 
-  const socialLinks = [
-    { icon: Facebook, href: 'https://facebook.com/decyphra', label: 'Facebook' },
-    { icon: Instagram, href: 'https://instagram.com/decyphra', label: 'Instagram' },
-    { icon: Linkedin, href: 'https://linkedin.com/company/decyphra', label: 'LinkedIn' },
-    { icon: Twitter, href: 'https://twitter.com/decyphra', label: 'Twitter' },
-  ]
+  // Mapeamento de plataformas para ícones
+  const socialIconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+    facebook: Facebook,
+    instagram: Instagram,
+    linkedin: Linkedin,
+    twitter: Twitter,
+    youtube: Youtube,
+  }
+
+  // Criar array de links de redes sociais apenas para as que têm URL definida e ícone disponível
+  const socialLinks = Object.entries(SOCIAL_LINKS)
+    .filter(([platform, url]) => url !== undefined && socialIconMap[platform])
+    .map(([platform, url]) => ({
+      icon: socialIconMap[platform],
+      href: url as string,
+      label: platform.charAt(0).toUpperCase() + platform.slice(1).replace(/^(linkedin)$/, 'LinkedIn'),
+    }))
 
   const emails = [
     'contato@decyphra.com.br',
@@ -196,26 +207,29 @@ const Footer = ({
             </div>
 
             {/* Redes Sociais */}
-            <div>
-              <h3 className="text-light-50 font-semibold mb-4">Siga-nos</h3>
-              <div className="flex gap-3">
-                {socialLinks.map((social) => {
-                  const IconComponent = social.icon
-                  return (
-                    <a
-                      key={social.label}
-                      href={social.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-10 h-10 bg-primary-500 rounded-lg flex items-center justify-center hover:bg-primary-400 transition-colors"
-                      aria-label={social.label}
-                    >
-                      <IconComponent className="w-5 h-5 text-dark-950" />
-                    </a>
-                  )
-                })}
+            {socialLinks.length > 0 && (
+              <div>
+                <h3 className="text-light-50 font-semibold mb-4">Siga-nos</h3>
+                <div className="flex gap-3">
+                  {socialLinks.map((social) => {
+                    const IconComponent = social.icon
+                    return (
+                      <a
+                        key={social.label}
+                        href={social.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-10 h-10 bg-primary-500 rounded-lg flex items-center justify-center hover:bg-primary-400 transition-colors"
+                        aria-label={`${social.label} - Abre em nova aba`}
+                        title={`Visite nosso ${social.label}`}
+                      >
+                        <IconComponent className="w-5 h-5 text-dark-950" />
+                      </a>
+                    )
+                  })}
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
 

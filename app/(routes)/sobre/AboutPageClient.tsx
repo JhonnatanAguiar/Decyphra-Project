@@ -6,7 +6,8 @@ import { Card3D } from '@/views/components/ui/Card3D'
 import { Button } from '@/views/components/ui/Button'
 import Link from 'next/link'
 import { ROUTES } from '@/lib/constants/routes'
-import { Users, Code, Zap, ArrowRight } from 'lucide-react'
+import { SOCIAL_LINKS } from '@/lib/constants/site'
+import { Users, Code, Zap, ArrowRight, Facebook, Instagram, Linkedin, Twitter } from 'lucide-react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 
@@ -279,6 +280,59 @@ export default function AboutPageClient() {
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
               </Link>
+              
+              {/* Redes Sociais */}
+              {(SOCIAL_LINKS.facebook || SOCIAL_LINKS.instagram || SOCIAL_LINKS.linkedin || SOCIAL_LINKS.twitter) && (
+                <div className="mt-6 pt-6 border-t border-primary-500/20">
+                  <p className="text-sm text-light-300 mb-3">Siga-nos nas redes sociais:</p>
+                  <div className="flex justify-center gap-3">
+                    {SOCIAL_LINKS.facebook && (
+                      <a
+                        href={SOCIAL_LINKS.facebook}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-10 h-10 bg-primary-500/10 rounded-lg flex items-center justify-center hover:bg-primary-500/20 transition-colors border border-primary-500/20"
+                        aria-label="Facebook - Abre em nova aba"
+                      >
+                        <Facebook className="w-5 h-5 text-primary-500" />
+                      </a>
+                    )}
+                    {SOCIAL_LINKS.instagram && (
+                      <a
+                        href={SOCIAL_LINKS.instagram}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-10 h-10 bg-primary-500/10 rounded-lg flex items-center justify-center hover:bg-primary-500/20 transition-colors border border-primary-500/20"
+                        aria-label="Instagram - Abre em nova aba"
+                      >
+                        <Instagram className="w-5 h-5 text-primary-500" />
+                      </a>
+                    )}
+                    {SOCIAL_LINKS.linkedin && (
+                      <a
+                        href={SOCIAL_LINKS.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-10 h-10 bg-primary-500/10 rounded-lg flex items-center justify-center hover:bg-primary-500/20 transition-colors border border-primary-500/20"
+                        aria-label="LinkedIn - Abre em nova aba"
+                      >
+                        <Linkedin className="w-5 h-5 text-primary-500" />
+                      </a>
+                    )}
+                    {SOCIAL_LINKS.twitter && (
+                      <a
+                        href={SOCIAL_LINKS.twitter}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-10 h-10 bg-primary-500/10 rounded-lg flex items-center justify-center hover:bg-primary-500/20 transition-colors border border-primary-500/20"
+                        aria-label="Twitter - Abre em nova aba"
+                      >
+                        <Twitter className="w-5 h-5 text-primary-500" />
+                      </a>
+                    )}
+                  </div>
+                </div>
+              )}
             </motion.div>
           </ScrollReveal>
         </Container>

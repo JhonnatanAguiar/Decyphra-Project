@@ -2,7 +2,7 @@
  * Utilitários para gerar dados estruturados Schema.org (JSON-LD)
  */
 
-import { SITE_CONFIG, CONTACT_INFO } from '@/lib/constants/site'
+import { SITE_CONFIG, CONTACT_INFO, SOCIAL_LINKS_FOR_SCHEMA } from '@/lib/constants/site'
 
 /**
  * Gera schema Organization
@@ -15,13 +15,7 @@ export function generateOrganizationSchema() {
     description: SITE_CONFIG.description,
     url: SITE_CONFIG.url,
     logo: `${SITE_CONFIG.url}/logos/logo-horizontal.svg`,
-    sameAs: [
-      // Redes sociais (atualizar quando disponíveis)
-      'https://facebook.com/decyphra',
-      'https://instagram.com/decyphra',
-      'https://linkedin.com/company/decyphra',
-      'https://twitter.com/decyphra',
-    ],
+    sameAs: SOCIAL_LINKS_FOR_SCHEMA,
     contactPoint: {
       '@type': 'ContactPoint',
       email: CONTACT_INFO.email,

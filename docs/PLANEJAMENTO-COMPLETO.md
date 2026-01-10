@@ -669,11 +669,12 @@ light: {
 - [x] Adicionar script de consentimento (se necessário)
 
 #### 8.3 Redes Sociais
-- [ ] Verificar e atualizar links das redes sociais no Footer
-- [ ] Adicionar/atualizar links no Header (se necessário)
-- [ ] Adicionar links nas páginas de contato e sobre
-- [ ] Garantir que todos os links estejam funcionando
-- [ ] Adicionar Schema.org para redes sociais (sameAs)
+- [x] Centralizar links de redes sociais em constantes (`src/lib/constants/site.ts`)
+- [x] Verificar e atualizar links das redes sociais no Footer (usa constantes centralizadas)
+- [x] Adicionar links nas páginas de contato e sobre
+- [x] Garantir que todos os links estejam funcionando (com suporte a variáveis de ambiente)
+- [x] Adicionar Schema.org para redes sociais (sameAs usa constantes centralizadas)
+- [x] Suporte a variáveis de ambiente para configuração dos links (NEXT_PUBLIC_SOCIAL_*)
 
 #### 8.4 Integração WhatsApp
 - [x] Criar API endpoint para envio de mensagens WhatsApp (`/api/v1/whatsapp`)
