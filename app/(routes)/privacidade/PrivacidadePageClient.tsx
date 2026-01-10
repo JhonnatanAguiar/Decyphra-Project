@@ -57,7 +57,7 @@ export default function PrivacidadePageClient() {
                     1. Introdução
                   </h2>
                   <p className="leading-relaxed">
-                    A <strong className="text-primary-500">Decyphra</strong> ("nós", "nosso" ou "empresa") está comprometida em proteger a privacidade e os dados pessoais de nossos usuários e visitantes. Esta Política de Privacidade descreve como coletamos, usamos, armazenamos e protegemos suas informações pessoais em conformidade com a <strong>Lei Geral de Proteção de Dados (LGPD - Lei nº 13.709/2018)</strong> e demais normas aplicáveis.
+                    A <strong className="text-primary-500">Decyphra</strong> ({'"'}nós{'"'}, {'"'}nosso{'"'} ou {'"'}empresa{'"'}) está comprometida em proteger a privacidade e os dados pessoais de nossos usuários e visitantes. Esta Política de Privacidade descreve como coletamos, usamos, armazenamos e protegemos suas informações pessoais em conformidade com a <strong>Lei Geral de Proteção de Dados (LGPD - Lei nº 13.709/2018)</strong> e demais normas aplicáveis.
                   </p>
                   <p className="leading-relaxed mt-4">
                     Ao utilizar nosso site e serviços, você concorda com as práticas descritas nesta política. Recomendamos que você leia atentamente este documento.

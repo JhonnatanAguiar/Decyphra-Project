@@ -57,7 +57,7 @@ export default function TermosPageClient() {
                     1. Introdução
                   </h2>
                   <p className="leading-relaxed">
-                    Bem-vindo ao site da <strong className="text-primary-500">Decyphra</strong>. Estes Termos de Uso ("Termos") regulam o acesso e uso de nosso site, serviços e plataforma (coletivamente, os "Serviços"). Ao acessar ou utilizar nossos Serviços, você concorda em ficar vinculado a estes Termos.
+                    Bem-vindo ao site da <strong className="text-primary-500">Decyphra</strong>. Estes Termos de Uso ({'"'}Termos{'"'}) regulam o acesso e uso de nosso site, serviços e plataforma (coletivamente, os {'"'}Serviços{'"'}). Ao acessar ou utilizar nossos Serviços, você concorda em ficar vinculado a estes Termos.
                   </p>
                   <p className="leading-relaxed mt-4">
                     Se você não concorda com algum destes Termos, não deve utilizar nossos Serviços. Recomendamos que você leia atentamente este documento antes de utilizar nossos Serviços.
@@ -155,7 +155,7 @@ export default function TermosPageClient() {
                   <ul className="list-disc pl-6 space-y-2 text-light-200 mb-4">
                     <li>Textos, gráficos, logotipos, ícones, imagens e software</li>
                     <li>Design, layout e estrutura do site</li>
-                    <li>Marca "Decyphra" e demais marcas registradas</li>
+                    <li>Marca {'"'}Decyphra{'"'} e demais marcas registradas</li>
                     <li>Código-fonte, algoritmos e tecnologias proprietárias</li>
                   </ul>
                   <p className="leading-relaxed">
@@ -194,7 +194,7 @@ export default function TermosPageClient() {
                     Na medida máxima permitida por lei:
                   </p>
                   <ul className="list-disc pl-6 space-y-2 text-light-200">
-                    <li>Os Serviços são fornecidos "como estão" e "conforme disponível", sem garantias de qualquer tipo, expressas ou implícitas</li>
+                    <li>Os Serviços são fornecidos {'"'}como estão{'"'} e {'"'}conforme disponível{'"'}, sem garantias de qualquer tipo, expressas ou implícitas</li>
                     <li>Não garantimos que os Serviços estarão sempre disponíveis, ininterruptos, seguros ou livres de erros</li>
                     <li>Não nos responsabilizamos por danos diretos, indiretos, incidentais, especiais ou consequenciais resultantes do uso ou impossibilidade de uso dos Serviços</li>
                     <li>Não nos responsabilizamos por perda de dados, lucros, receitas ou oportunidades de negócio</li>

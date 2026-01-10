@@ -180,7 +180,7 @@ export default function TestimonialsManagementClient() {
                       <div className="flex-1 mb-4">
                         <Quote className="text-primary-500 mb-2" size={20} />
                         <p className="text-sm text-light-300 line-clamp-4 italic">
-                          "{testimonial.content}"
+                          {'"'}{testimonial.content}{'"'}
                         </p>
                       </div>
                       {testimonial.rating && (
@@ -316,7 +316,7 @@ export default function TestimonialsManagementClient() {
             <div className="pt-4 border-t border-dark-700">
               <Quote className="text-primary-500 mb-3" size={24} />
               <p className="text-light-50 whitespace-pre-wrap italic leading-relaxed">
-                "{selectedTestimonial.content}"
+                {'"'}{selectedTestimonial.content}{'"'}
               </p>
             </div>
 

@@ -50,8 +50,6 @@ const cardGlowCache = new Map<HTMLDivElement, {
   x: number
   y: number
 }>()
-let lastGlobalMouseMoveTime = 0
-const GLOBAL_THROTTLE_MS = 16 // ~60fps
 
 const initializeSpotlight = () => {
   if (spotlightInitialized || typeof window === 'undefined') return

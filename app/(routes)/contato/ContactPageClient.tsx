@@ -9,7 +9,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { Mail, MapPin, Send, CheckCircle, Clock } from 'lucide-react'
 import { API_ROUTES } from '@/lib/constants/routes'
 import { contactSchema, type ContactInput } from '@/models/schemas'
-import { DEFAULT_COUNTRY, getCountryByCode } from '@/lib/constants/countries'
+import { DEFAULT_COUNTRY } from '@/lib/constants/countries'
 import { formatPhoneAsYouType, getPhoneExample, validateAndFormatPhone } from '@/lib/utils/phone'
 import { formatDocument, validateDocument } from '@/lib/utils/document'
 import { SOCIAL_LINKS, SOCIAL_UNAVAILABLE_MESSAGE } from '@/lib/constants/site'
@@ -85,8 +85,6 @@ export default function ContactPageClient() {
       setSelectedCountry(watchedCountryCode as CountryCode)
       // Limpar formatação do telefone ao mudar de país
       if (watchedPhone) {
-        const country = getCountryByCode(watchedCountryCode as CountryCode)
-        const example = getPhoneExample(watchedCountryCode as CountryCode)
         // Reformatar o telefone com o novo país
         const formatted = formatPhoneAsYouType(watchedPhone, watchedCountryCode as CountryCode)
         setFormattedPhone(formatted)
@@ -154,7 +152,7 @@ export default function ContactPageClient() {
 
   return (
     <>
-      {/* Seção Introdutória "Vamos Conversar?" */}
+      {/* Seção Introdutória &quot;Vamos Conversar?&quot; */}
       <Section variant="dark" spacing="lg" className="relative overflow-hidden">
         <div className="absolute inset-0 w-full h-full pointer-events-auto">
           <Waves

@@ -91,6 +91,7 @@ export function isValidPhone(phoneNumber: string, countryCode: CountryCode): boo
 export function formatPhoneAsYouType(value: string, countryCode: CountryCode): string {
   try {
     // Importação dinâmica para reduzir bundle size
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
     const { AsYouType } = require('libphonenumber-js')
     const formatter = new AsYouType(countryCode)
     return formatter.input(value)
