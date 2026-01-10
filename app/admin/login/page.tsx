@@ -64,8 +64,12 @@ export default function AdminLoginPage() {
       const result = await response.json()
 
       if (response.ok && result.ok) {
-        showToast('Login realizado com sucesso!', 'success', 3000)
-        setTimeout(() => router.push('/admin'), 1000)
+        showToast('Login realizado com sucesso!', 'success', 2000)
+        // Usar refresh para garantir que o layout admin verifique a autenticação novamente
+        setTimeout(() => {
+          router.refresh()
+          router.push('/admin')
+        }, 500)
       } else {
         showToast(result.message || 'E-mail ou senha inválidos', 'error')
       }

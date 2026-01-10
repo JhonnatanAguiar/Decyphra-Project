@@ -46,31 +46,36 @@ export default function AdminLayout({
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
 
-  // Verificar autenticação apenas uma vez ao montar
+  // Verificar autenticação ao montar e quando pathname mudar (para detectar login)
   useEffect(() => {
     // Só verificar se não estiver na página de login
     if (pathname === '/admin/login') {
       setIsLoading(false)
+      setIsAuthenticated(false)
       return
     }
 
     let mounted = true
 
     const checkAuth = async () => {
+      setIsLoading(true)
       try {
         const response = await fetch('/api/v1/admin/auth/check', {
           cache: 'no-store',
+          credentials: 'include', // Garantir que cookies são enviados
         })
         if (mounted) {
           if (response.ok) {
             setIsAuthenticated(true)
           } else {
+            setIsAuthenticated(false)
             // Redirecionar para login se não estiver autenticado
             router.push('/admin/login')
           }
         }
       } catch {
         if (mounted && pathname !== '/admin/login') {
+          setIsAuthenticated(false)
           router.push('/admin/login')
         }
       } finally {
@@ -86,7 +91,7 @@ export default function AdminLayout({
       mounted = false
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []) // Verificar apenas uma vez ao montar
+  }, [pathname]) // Verificar quando pathname mudar (inclui após login)
 
   const handleLogout = async () => {
     try {
