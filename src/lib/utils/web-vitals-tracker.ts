@@ -97,12 +97,15 @@ export function initWebVitalsTracking() {
     }).observe({ entryTypes: ['navigation'] })
   } catch {
     // Fallback: usar performance.timing (apenas uma vez)
-    if (performance.timing && !performance.timing.ttfb) {
-      const ttfb = performance.timing.responseStart - performance.timing.requestStart
-      if (ttfb > 0) {
-        trackPerformanceMetric('TTFB', Math.round(ttfb))
-        // Marcar como enviado para evitar reenvio
-        ;(performance.timing as any).ttfb = ttfb
+    if (performance.timing) {
+      const timing = performance.timing as PerformanceTiming & { _ttfbSent?: boolean }
+      if (!timing._ttfbSent) {
+        const ttfb = timing.responseStart - timing.requestStart
+        if (ttfb > 0) {
+          trackPerformanceMetric('TTFB', Math.round(ttfb))
+          // Marcar como enviado para evitar reenvio
+          timing._ttfbSent = true
+        }
       }
     }
   }

@@ -68,21 +68,36 @@ export async function createPageView(data: PageViewInput) {
  * Cria um novo evento
  */
 export async function createEvent(data: EventInput) {
-  return prisma.event.create({ data })
+  return prisma.event.create({
+    data: {
+      ...data,
+      metadata: data.metadata ? (data.metadata as Prisma.InputJsonValue) : undefined,
+    },
+  })
 }
 
 /**
  * Cria uma nova métrica de performance
  */
 export async function createPerformanceMetric(data: PerformanceMetricInput) {
-  return prisma.performanceMetric.create({ data })
+  return prisma.performanceMetric.create({
+    data: {
+      ...data,
+      metadata: data.metadata ? (data.metadata as Prisma.InputJsonValue) : undefined,
+    },
+  })
 }
 
 /**
  * Cria um novo log de erro
  */
 export async function createErrorLog(data: ErrorLogInput) {
-  return prisma.errorLog.create({ data })
+  return prisma.errorLog.create({
+    data: {
+      ...data,
+      metadata: data.metadata ? (data.metadata as Prisma.InputJsonValue) : undefined,
+    },
+  })
 }
 
 /**
