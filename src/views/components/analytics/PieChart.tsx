@@ -11,6 +11,7 @@ import { PieChart as RechartsPieChart, Pie, Cell, ResponsiveContainer, Tooltip, 
 interface PieChartData {
   name: string
   value: number
+  [key: string]: any
 }
 
 interface PieChartProps {
