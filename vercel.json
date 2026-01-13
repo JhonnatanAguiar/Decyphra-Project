@@ -1,6 +1,5 @@
 {
-  "buildCommand": "pnpm install && pnpm run build",
+  "buildCommand": "pnpm --filter site build",
   "installCommand": "pnpm install --no-frozen-lockfile || (pnpm install && echo '⚠️ Lockfile atualizado durante deploy')",
-  "devCommand": "pnpm dev",
-  "rootDirectory": "apps/site"
+  "devCommand": "pnpm --filter site dev"
 }

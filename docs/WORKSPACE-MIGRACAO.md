@@ -67,8 +67,9 @@ decyphra-monorepo/
 - [x] Código copiado para `apps/site` (app/, src/, public/, prisma/, tests/, scripts/)
 - [x] Criado `package.json` para apps/site
 - [x] Ajustado `package.json` raiz para usar pnpm workspaces
-- [x] Ajustado `vercel.json` com `rootDirectory: "apps/site"`
+- [x] Ajustado `vercel.json` para usar comandos do pnpm workspace (`pnpm --filter site`)
 - [x] Configurações ajustadas (tsconfig.json, next.config.js, etc já usam caminhos relativos)
+- [x] **IMPORTANTE:** `rootDirectory: "apps/site"` deve ser configurado na dashboard da Vercel (não no `vercel.json`)
 
 **Critério de Conclusão:**
 - [x] Site roda localmente a partir de `apps/site` (✅ Validado)
@@ -84,7 +85,7 @@ decyphra-monorepo/
 **Objetivo:** Garantir que o site principal continue sendo entregue normalmente.
 
 **Ações:**
-- [ ] Ajustar `vercel.json` para apontar para `apps/site`
+- [ ] Configurar `Root Directory: "apps/site"` na dashboard da Vercel (Settings → General → Root Directory)
 - [ ] Validar deploy em produção
 - [ ] Garantir que domínio principal continua funcionando
 

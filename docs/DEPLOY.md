@@ -60,12 +60,13 @@ RESEND_WEBHOOK_SECRET="whsec_xxxxxxxxxxxxxxxxxxxxx"
 - Framework: **Next.js** (detectado automaticamente)
 
 **Build Settings:**
-- Build Command: `pnpm run build` (configurado no `vercel.json`)
+- Build Command: `pnpm --filter site build` (configurado no `vercel.json`)
 - Output Directory: `.next` (padrão)
 - Install Command: `pnpm install --no-frozen-lockfile` (configurado no `vercel.json` - atualiza lockfile se necessário)
 
-**Root Directory:**
-- Deixe vazio (raiz do projeto)
+**Root Directory (IMPORTANTE para monorepos):**
+- Configure como: `apps/site`
+- ⚠️ **OBSERVAÇÃO:** A propriedade `rootDirectory` não é mais permitida no `vercel.json`. Deve ser configurada na dashboard da Vercel em **Settings → General → Root Directory**
 
 #### 2.3 Configurar Variáveis de Ambiente
 

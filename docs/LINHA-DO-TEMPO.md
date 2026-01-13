@@ -3280,4 +3280,35 @@ trackFormSubmit('contact', true) // true = sucesso
 
 ---
 
+**26/12/2025 - Correção Crítica do vercel.json para Migração Workspace (Fase 3)**
+
+**Contexto:** Erro crítico no deploy na Vercel devido à propriedade `rootDirectory` no `vercel.json` não ser mais suportada pela plataforma.
+
+**Problema Encontrado:**
+- **Erro:** "Build Failed" - "The `vercel.json` schema validation failed with the following message: should NOT have additional property `rootDirectory`"
+- **Causa:** A Vercel mudou a forma como configura monorepos. A propriedade `rootDirectory` não é mais permitida no `vercel.json` e deve ser configurada através da dashboard da Vercel.
+
+**Solução Implementada:**
+- ✅ Removida propriedade `rootDirectory` do `vercel.json`
+- ✅ Ajustados comandos de build/install para usar pnpm workspace (`pnpm --filter site build`)
+- ✅ Atualizada documentação (`WORKSPACE-MIGRACAO.md` e `DEPLOY.md`) explicando que `rootDirectory` deve ser configurado na dashboard da Vercel (Settings → General → Root Directory: `apps/site`)
+
+**Mudanças Realizadas:**
+- ✅ `vercel.json` corrigido (removida propriedade `rootDirectory`, comandos ajustados para pnpm workspace)
+- ✅ `docs/WORKSPACE-MIGRACAO.md` atualizado com instruções sobre configuração do rootDirectory na dashboard
+- ✅ `docs/DEPLOY.md` atualizado com instruções sobre configuração do rootDirectory na dashboard
+
+**Aprendizado:**
+- A Vercel não permite mais `rootDirectory` no `vercel.json` (mudança na política da plataforma)
+- O `rootDirectory` deve ser configurado na dashboard da Vercel em **Settings → General → Root Directory**
+- Comandos de build/install devem usar pnpm workspace (`pnpm --filter site`) quando o projeto está em um monorepo
+- Em monorepos, a configuração do diretório raiz é feita na dashboard, não no arquivo de configuração
+
+**Ação Necessária:**
+- ⚠️ **IMPORTANTE:** Configurar `Root Directory: "apps/site"` na dashboard da Vercel (Settings → General → Root Directory) para que o deploy funcione corretamente
+
+**Status:** ✅ `vercel.json` corrigido | Documentação atualizada | ⚠️ Requer configuração na dashboard da Vercel
+
+---
+
 **Última atualização:** 26/12/2025
