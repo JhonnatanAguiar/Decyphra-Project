@@ -1,0 +1,5 @@
+{
+  "/api/v1/analytics/pageview/route": "app/api/v1/analytics/pageview/route.js",
+  "/api/v1/analytics/performance/route": "app/api/v1/analytics/performance/route.js",
+  "/(routes)/page": "app/(routes)/page.js"
+}

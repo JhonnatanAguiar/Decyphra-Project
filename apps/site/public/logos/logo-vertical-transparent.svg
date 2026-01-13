@@ -1,0 +1,46 @@
+<svg width="140" height="220" viewBox="0 0 140 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Ícone (100x100 centralizado horizontalmente, centro em 50,50) -->
+  <g transform="translate(20, 0)">
+    <!-- Aro externo - path exato do componente original (escala 1:1, centro em 50,50) -->
+    <path
+      d="M50 2.5C23.76 2.5 2.5 23.76 2.5 50C2.5 76.24 23.76 97.5 50 97.5C76.24 97.5 97.5 76.24 97.5 50"
+      stroke="#00FF88"
+      stroke-width="5"
+      stroke-linecap="round"
+      fill="none"
+    />
+    
+    <!-- Aro interno - círculo completo para sombreamento suave -->
+    <circle
+      cx="50"
+      cy="50"
+      r="42"
+      stroke="#00FF88"
+      stroke-width="5"
+      fill="none"
+      opacity="0.5"
+    />
+    
+    <!-- Círculo central -->
+    <circle
+      cx="50"
+      cy="50"
+      r="15"
+      fill="#00FF88"
+    />
+  </g>
+  
+  <!-- Texto DECYPHRA - centralizado horizontalmente com espaço suficiente -->
+  <text
+    x="70"
+    y="165"
+    font-family="Inter, system-ui, sans-serif"
+    font-size="22"
+    font-weight="700"
+    fill="#E6F0F3"
+    letter-spacing="0.15em"
+    text-anchor="middle"
+  >
+    DECYPHRA
+  </text>
+</svg>

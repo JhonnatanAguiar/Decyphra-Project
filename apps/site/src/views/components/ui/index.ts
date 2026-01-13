@@ -1,0 +1,18 @@
+/**
+ * UI Components Barrel Export
+ * 
+ * Exporta todos os componentes UI base para facilitar imports
+ */
+
+export { Button, type ButtonProps } from './Button'
+export { Input, type InputProps } from './Input'
+export { Textarea, type TextareaProps } from './Textarea'
+export { Select, type SelectProps } from './Select'
+export { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter, type CardProps } from './Card'
+export { Card3D, type Card3DProps } from './Card3D'
+export { Badge, type BadgeProps } from './Badge'
+export { Modal, type ModalProps } from './Modal'
+export { LoadingSpinner, type LoadingSpinnerProps } from './LoadingSpinner'
+export { Toast, type ToastProps } from './Toast'
+export { CookieBanner } from './CookieBanner'
+export { CountrySelect, type CountrySelectProps } from './CountrySelect'

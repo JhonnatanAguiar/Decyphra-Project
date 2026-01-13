@@ -3248,4 +3248,36 @@ trackFormSubmit('contact', true) // true = sucesso
 
 ---
 
+**26/12/2025 - Correção de Variáveis de Ambiente na Migração para Workspace (Fase 2)**
+
+**Contexto:** Correção de problemas relacionados às variáveis de ambiente após migração do projeto para estrutura de workspace (monorepo) com `apps/site`.
+
+**Problemas Encontrados e Corrigidos:**
+
+1. **DATABASE_URL não encontrada:**
+   - **Problema:** Após migração para `apps/site`, o Next.js procura `.env.local` em `apps/site/.env.local`, mas o arquivo estava na raiz do projeto
+   - **Causa:** Next.js carrega variáveis de ambiente do diretório onde está o `next.config.js` (agora `apps/site/`)
+   - **Solução:** Arquivo `.env.local` copiado da raiz para `apps/site/.env.local`
+   - **Status:** ✅ Resolvido
+
+2. **Erros 500 nas APIs de Analytics:**
+   - **Problema:** APIs `/api/v1/analytics/performance` e `/api/v1/analytics/pageview` retornavam 500 por falta de `DATABASE_URL`
+   - **Causa:** Prisma não encontrava `DATABASE_URL` porque `.env.local` não estava no local correto
+   - **Solução:** Com `.env.local` em `apps/site/.env.local`, todas as APIs funcionam corretamente
+   - **Status:** ✅ Resolvido
+
+**Mudanças Realizadas:**
+- ✅ Arquivo `.env.local` copiado para `apps/site/.env.local`
+- ✅ Variáveis de ambiente agora carregadas corretamente pelo Next.js
+- ✅ Todas as APIs funcionando corretamente com conexão ao banco de dados
+
+**Aprendizado:**
+- Em estruturas de monorepo, cada app deve ter seu próprio `.env.local` no diretório raiz do app
+- O Next.js procura variáveis de ambiente no mesmo diretório onde está o `next.config.js`
+- Após migração para workspace, é necessário garantir que arquivos de configuração (como `.env.local`) estejam no local correto
+
+**Status:** ✅ Fase 2 da migração para workspace validada | Servidor funcionando corretamente | Pronto para próxima fase
+
+---
+
 **Última atualização:** 26/12/2025

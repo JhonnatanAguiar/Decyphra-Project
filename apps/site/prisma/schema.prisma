@@ -1,0 +1,380 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ============================================
+// PROJETOS
+// ============================================
+
+model Project {
+  id              String   @id @default(uuid())
+  slug            String   @unique
+  title           String
+  description     String   @db.Text
+  longDescription String?  @db.Text
+  category        String   // web, ecommerce, system, api, etc.
+  technologies    String[] // Array de tecnologias
+  images          String[] // Array de URLs de imagens
+  featuredImage   String
+  client          String?
+  year            Int
+  challenges      String?  @db.Text
+  solutions       String?  @db.Text
+  results         String?  @db.Text
+  featured        Boolean  @default(false)
+  status          ProjectStatus @default(draft)
+  order           Int      @default(0) // Para ordenação customizada
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@index([slug])
+  @@index([category])
+  @@index([featured])
+  @@index([status])
+  @@map("projects")
+}
+
+enum ProjectStatus {
+  draft
+  published
+  archived
+}
+
+// ============================================
+// SERVIÇOS
+// ============================================
+
+model Service {
+  id          String   @id @default(uuid())
+  slug        String   @unique
+  title       String
+  description String   @db.Text
+  longDescription String? @db.Text
+  icon        String?  // Nome do ícone ou URL
+  features    String[] // Array de features
+  order       Int      @default(0)
+  active      Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([slug])
+  @@index([active])
+  @@index([order])
+  @@map("services")
+}
+
+// ============================================
+// DEPOIMENTOS
+// ============================================
+
+model Testimonial {
+  id        String   @id @default(uuid())
+  name      String
+  company   String?
+  role      String?
+  content   String   @db.Text
+  image     String?  // URL da imagem
+  video     String?  // URL do vídeo (opcional)
+  rating    Int?     // 1-5 (opcional)
+  featured  Boolean  @default(false)
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([featured])
+  @@index([order])
+  @@map("testimonials")
+}
+
+// ============================================
+// FORMULÁRIOS DE CONTATO
+// ============================================
+
+model ContactSubmission {
+  id        String            @id @default(uuid())
+  name      String
+  email     String
+  phone     String?
+  service   String?           // Tipo de serviço solicitado
+  message   String            @db.Text
+  status    ContactStatus     @default(new)
+  metadata  Json?             // Dados extras (IP, user agent, etc.)
+  createdAt DateTime          @default(now())
+  updatedAt DateTime          @updatedAt
+  emailEvents EmailEvent[]
+  lead      Lead?             // Relação opcional com Lead (criado automaticamente)
+
+  @@index([email])
+  @@index([status])
+  @@index([createdAt])
+  @@map("contact_submissions")
+}
+
+enum ContactStatus {
+  new
+  read
+  replied
+  archived
+}
+
+// ============================================
+// NEWSLETTER
+// ============================================
+
+model NewsletterSubscriber {
+  id          String   @id @default(uuid())
+  email       String   @unique
+  active      Boolean  @default(true)
+  source      String?  // De onde veio a inscrição
+  metadata    Json?    // Dados extras
+  subscribedAt DateTime @default(now())
+  unsubscribedAt DateTime?
+
+  @@index([email])
+  @@index([active])
+  @@map("newsletter_subscribers")
+}
+
+// ============================================
+// EMAIL EVENTS (webhook)
+// ============================================
+
+model EmailEvent {
+  id                  String   @id @default(uuid())
+  messageId           String
+  event               String
+  payload             Json
+  contactSubmission   ContactSubmission? @relation(fields: [contactSubmissionId], references: [id])
+  contactSubmissionId String?
+  createdAt           DateTime @default(now())
+
+  @@index([messageId])
+  @@map("email_events")
+}
+
+// ============================================
+// CRM - LEADS
+// ============================================
+
+model Lead {
+  id              String        @id @default(uuid())
+  name            String
+  email           String
+  phone           String?
+  company         String?
+  service         String?       // Tipo de serviço de interesse
+  source          String?       // Origem do lead (formulário, site, referência, etc.)
+  status          LeadStatus    @default(new)
+  score           Int           @default(0) // Score do lead (0-100)
+  notes           String?       @db.Text
+  metadata        Json?         // Dados extras
+  contactSubmissionId String?   @unique // Relação opcional com ContactSubmission
+  contactSubmission ContactSubmission? @relation(fields: [contactSubmissionId], references: [id], onDelete: SetNull)
+  interactions    Interaction[]
+  convertedToClient Client?     @relation("LeadToClient") // Cliente convertido (relação reversa)
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+
+  @@index([email])
+  @@index([status])
+  @@index([source])
+  @@index([createdAt])
+  @@map("leads")
+}
+
+enum LeadStatus {
+  new           // Novo lead
+  contacted     // Contatado
+  qualified     // Qualificado
+  proposal      // Proposta enviada
+  negotiation   // Em negociação
+  won           // Convertido (vira Client)
+  lost          // Perdido
+  archived      // Arquivado
+}
+
+// ============================================
+// CRM - CLIENTES
+// ============================================
+
+model Client {
+  id              String        @id @default(uuid())
+  name            String
+  email           String
+  phone           String?
+  company         String?
+  cnpj            String?       // CNPJ da empresa (se aplicável)
+  address         String?       @db.Text
+  city            String?
+  state           String?
+  zipCode         String?
+  status          ClientStatus  @default(active)
+  segment         String?       // Segmento do cliente
+  notes           String?       @db.Text
+  metadata        Json?         // Dados extras
+  convertedFromLeadId String?   @unique // Lead original (se convertido)
+  convertedFromLead Lead?       @relation("LeadToClient", fields: [convertedFromLeadId], references: [id], onDelete: SetNull)
+  interactions    Interaction[]
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+
+  @@index([email])
+  @@index([status])
+  @@index([company])
+  @@index([createdAt])
+  @@map("clients")
+}
+
+enum ClientStatus {
+  active      // Cliente ativo
+  inactive    // Cliente inativo
+  suspended   // Suspenso
+  archived    // Arquivado
+}
+
+// ============================================
+// CRM - INTERAÇÕES
+// ============================================
+
+model Interaction {
+  id          String          @id @default(uuid())
+  type        InteractionType
+  subject     String?
+  description String          @db.Text
+  channel     InteractionChannel
+  leadId      String?         // Relação opcional com Lead
+  lead        Lead?           @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  clientId    String?         // Relação opcional com Client
+  client      Client?         @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  metadata    Json?           // Dados extras (duração, participantes, etc.)
+  createdAt   DateTime        @default(now())
+  createdBy   String?         // ID do usuário que criou (quando tiver autenticação)
+
+  @@index([leadId])
+  @@index([clientId])
+  @@index([type])
+  @@index([channel])
+  @@index([createdAt])
+  @@map("interactions")
+}
+
+enum InteractionType {
+  call           // Chamada telefônica
+  email          // E-mail
+  whatsapp       // WhatsApp
+  meeting        // Reunião
+  proposal       // Proposta enviada
+  follow_up      // Follow-up
+  note           // Nota/anotação
+  other          // Outro
+}
+
+enum InteractionChannel {
+  phone       // Telefone
+  email       // E-mail
+  whatsapp    // WhatsApp
+  video_call  // Videoconferência
+  in_person   // Presencial
+  system      // Sistema/plataforma
+  other       // Outro
+}
+
+// ============================================
+// ANALYTICS - TRACKING DE VISITAS E EVENTOS
+// ============================================
+
+model PageView {
+  id          String   @id @default(uuid())
+  path        String   // Caminho da página (ex: /servicos/desenvolvimento-web)
+  title       String?  // Título da página
+  referrer    String?  // URL de referência
+  userAgent   String?  @db.Text // User agent do navegador
+  ip          String?  // IP do visitante (hasheado se necessário)
+  country     String?  // País do visitante
+  city        String?  // Cidade do visitante
+  device      String?  // Dispositivo (mobile, desktop, tablet)
+  browser     String?  // Navegador
+  os          String?  // Sistema operacional
+  screenWidth Int?     // Largura da tela
+  screenHeight Int?    // Altura da tela
+  sessionId   String   // ID da sessão do visitante
+  userId      String?  // ID do usuário (se autenticado)
+  duration    Int?     // Duração da visita em segundos
+  createdAt   DateTime @default(now())
+  
+  @@index([path])
+  @@index([sessionId])
+  @@index([createdAt])
+  @@index([device])
+  @@map("page_views")
+}
+
+model Event {
+  id          String   @id @default(uuid())
+  name        String   // Nome do evento (ex: button_click, form_submit)
+  category    String?  // Categoria do evento
+  action      String?  // Ação realizada
+  label       String?  // Label adicional
+  value       Float?   // Valor numérico associado
+  path        String   // Caminho onde ocorreu o evento
+  sessionId   String   // ID da sessão
+  userId      String?  // ID do usuário (se autenticado)
+  metadata    Json?    // Dados extras do evento
+  createdAt   DateTime @default(now())
+  
+  @@index([name])
+  @@index([category])
+  @@index([sessionId])
+  @@index([createdAt])
+  @@index([path])
+  @@map("events")
+}
+
+// ============================================
+// PERFORMANCE E FALHAS
+// ============================================
+
+model PerformanceMetric {
+  id          String   @id @default(uuid())
+  path        String   // Caminho da página
+  metric      String   // Nome da métrica (FCP, LCP, FID, CLS, TTFB)
+  value       Float    // Valor da métrica
+  device      String?  // Dispositivo
+  connection  String?  // Tipo de conexão
+  metadata    Json?    // Dados extras
+  createdAt   DateTime @default(now())
+  
+  @@index([path])
+  @@index([metric])
+  @@index([createdAt])
+  @@map("performance_metrics")
+}
+
+model ErrorLog {
+  id          String   @id @default(uuid())
+  message     String   @db.Text // Mensagem de erro
+  stack       String?  @db.Text // Stack trace
+  path        String?  // Caminho onde ocorreu
+  userAgent   String?  @db.Text
+  userId      String?  // ID do usuário (se autenticado)
+  sessionId   String?  // ID da sessão
+  severity    String   // severity: error, warning, info
+  resolved    Boolean  @default(false)
+  resolvedAt  DateTime?
+  metadata    Json?    // Dados extras
+  createdAt   DateTime @default(now())
+  
+  @@index([severity])
+  @@index([resolved])
+  @@index([createdAt])
+  @@index([path])
+  @@map("error_logs")
+}

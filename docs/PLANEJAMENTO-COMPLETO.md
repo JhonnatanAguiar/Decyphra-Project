@@ -740,20 +740,38 @@ light: {
   - [x] Busca e filtros já implementados para leads, clientes, serviços, depoimentos e contatos
 - [x] Criar interface responsiva para admin (layout mobile-friendly)
 
-#### 8.7 Modelos de Sites Profissionais
-- [ ] Criar template/modelo para "E-commerce Fashion"
-- [ ] Criar template/modelo para "Clínica Médica Digital"
-- [ ] Criar template/modelo para "Startup Tecnológica"
-- [ ] Criar template/modelo para "Restaurante Gourmet"
-- [ ] Criar template/modelo para "Consultoria Empresarial"
-- [ ] Criar template/modelo para "Academia Fitness"
-- [ ] Cada modelo deve incluir:
-  - [ ] Layout responsivo completo
-  - [ ] Seções principais (Hero, Sobre, Serviços, Contato, etc.)
-  - [ ] Componentes reutilizáveis
-  - [ ] Documentação do modelo
-- [ ] Integrar modelos na página de portfólio
-- [ ] Criar páginas de detalhes para cada modelo
+#### 8.7 Projetos Demonstrativos do Portfólio
+**Estratégia:** Opção A - Separação Total (projetos independentes em subdomínios)
+
+**Documentação:**
+- ✅ Estratégia completa: `docs/PORTFOLIO-ESTRATEGIA.md`
+- ✅ Template de estudo de caso: `docs/PORTFOLIO-TEMPLATE-ESTUDO-CASO.md`
+- ✅ Guia rápido de criação: `docs/PORTFOLIO-GUIA-RAPIDO.md`
+
+**Princípios:**
+- Cada projeto é completamente independente (repositório separado ou monorepo)
+- Identidade visual única (cores, fontes, componentes próprios)
+- Header, Footer e Logo próprios (sem vínculo com Decyphra)
+- Deploy em subdomínios: `{projeto}.decyphra.com.br`
+- Site da Decyphra exibe apenas estudos de caso (descrições)
+
+**Projetos Planejados:**
+- [ ] Startup Tecnológica (SaaS/Landing Page) - `startup-tech.decyphra.com.br`
+- [ ] E-commerce Fashion (Loja Virtual) - `fashion-store.decyphra.com.br`
+- [ ] Clínica Médica Digital (Site Institucional) - `clinica-medica.decyphra.com.br`
+- [ ] Restaurante Gourmet (Site Institucional) - `restaurante-gourmet.decyphra.com.br`
+- [ ] Consultoria Empresarial (Site Corporativo) - `consultoria-empresarial.decyphra.com.br`
+- [ ] Academia Fitness (Plataforma Digital) - `academia-fitness.decyphra.com.br`
+
+**Checklist por Projeto:**
+- [ ] Criar repositório/pasta separada
+- [ ] Configurar design system único (cores, fontes, componentes)
+- [ ] Desenvolver site completo (Header, Footer, páginas próprias)
+- [ ] Implementar animações e interatividade
+- [ ] Otimizar performance (Lighthouse > 80)
+- [ ] Fazer deploy em subdomínio
+- [ ] Criar estudo de caso no site Decyphra
+- [ ] Documentar projeto (README)
 
 #### 8.8 Newsletter
 - [ ] Implementar endpoint de newsletter (`POST /api/v1/newsletter`)
