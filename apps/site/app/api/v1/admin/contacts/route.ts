@@ -78,3 +78,4 @@ export async function GET(req: Request) {
 
 // Usar runtime Node para permitir uso de Prisma no servidor
 export const runtime = 'nodejs'
+export const dynamic = 'force-dynamic'

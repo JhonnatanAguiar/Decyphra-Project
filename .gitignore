@@ -11,9 +11,8 @@ yarn.lock
 /coverage
 
 # Next.js
-/.next/
-/out/
-.next/.build-lock
+.next/
+out/
 
 # Production
 /build
