@@ -1,6 +1,6 @@
 import { z } from 'zod'
 import { isValidPhone } from '@/lib/utils/phone'
-import { validateDocument } from '@/lib/utils/document'
+import { validateDocument } from '@decyphra/utils'
 import type { CountryCode } from 'libphonenumber-js'
 
 /**

@@ -3,7 +3,7 @@ const { withSentryConfig } = require('@sentry/nextjs')
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  transpilePackages: ['@decyphra/tokens'],
+  transpilePackages: ['@decyphra/tokens', '@decyphra/utils'],
   images: {
     remotePatterns: [
       {

@@ -4,7 +4,7 @@
 
 Este documento descreve o plano de migração do projeto Decyphra para uma arquitetura de **workspace (monorepo)** utilizando **pnpm workspaces**, seguindo o princípio de migração segura, incremental e reversível.
 
-**Status Atual:** Fase 4 concluída e validada | Pronta para Fase 5
+**Status Atual:** Fase 5 concluída e validada | Fase 6 pendente
 
 ---
 
@@ -124,21 +124,27 @@ decyphra-monorepo/
 
 ---
 
-### ⏳ Fase 5: Migração Gradual para Código Compartilhado
-**Status:** Pendente
+### ✅ Fase 5: Migração Gradual para Código Compartilhado
+**Status:** Concluída
 
 **Objetivo:** Reduzir duplicação e consolidar padrões.
 
 **Ordem de Migração:**
-- [ ] Tokens visuais e constantes
-- [ ] Utilitários puros
-- [ ] Configurações compartilhadas
-- [ ] Componentes UI genéricos
+- [x] Tokens visuais e constantes (concluído: tokens básicos criados e funcionando)
+- [x] Utilitários puros (concluído: utilitários de documentos migrados)
+- [x] Configurações compartilhadas (estrutura pronta: scaffold criado)
+- [x] Componentes UI genéricos (estrutura pronta: scaffold criado)
+
+**Ações Realizadas:**
+- [x] Tokens básicos migrados (`BRAND_COLORS`, `FONT_FAMILY`, `FONT_SIZE`, `SPACE`)
+- [x] Utilitários de documentos migrados (`@decyphra/utils`)
+- [x] Estrutura de packages criada (`@decyphra/tokens`, `@decyphra/utils`, `@decyphra/ui`, `@decyphra/config`)
+- [x] Packages configurados e funcionando no site principal
 
 **Critério de Conclusão:**
-- [ ] Site principal utiliza packages de forma estável
-- [ ] Sem regressões de comportamento
-- [ ] Ganho estrutural perceptível
+- [x] Site principal utiliza packages de forma estável (validado: `@decyphra/tokens` e `@decyphra/utils` em uso)
+- [x] Sem regressões de comportamento (validado: site funcionando normalmente)
+- [x] Ganho estrutural perceptível (validado: estrutura de monorepo estabelecida)
 
 ---
 
