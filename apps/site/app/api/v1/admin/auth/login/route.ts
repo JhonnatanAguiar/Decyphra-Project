@@ -1,7 +1,6 @@
 import { cookies } from 'next/headers'
 import { z } from 'zod'
 import { apiResponse, apiError } from '@/lib/api/response'
-import { prisma } from '@/lib/db/prisma'
 
 /**
  * API Route: POST /api/v1/admin/auth/login

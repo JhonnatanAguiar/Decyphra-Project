@@ -73,7 +73,7 @@ export default function AdminLoginPage() {
       } else {
         showToast(result.message || 'E-mail ou senha inválidos', 'error')
       }
-    } catch (error) {
+    } catch {
       showToast('Erro ao fazer login. Tente novamente.', 'error')
     } finally {
       setIsLoading(false)

@@ -1,4 +1,4 @@
-import { parsePhoneNumber, isValidPhoneNumber, type CountryCode, type PhoneNumber } from 'libphonenumber-js'
+import { parsePhoneNumber, isValidPhoneNumber, type CountryCode } from 'libphonenumber-js'
 
 /**
  * Phone Number Utilities

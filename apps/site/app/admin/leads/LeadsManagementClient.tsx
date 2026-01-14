@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { Card, CardHeader, CardTitle, CardContent } from '@/views/components/ui/Card'
+import { Card, CardContent } from '@/views/components/ui/Card'
 import { Button } from '@/views/components/ui/Button'
 import { Badge } from '@/views/components/ui/Badge'
 import { Input } from '@/views/components/ui/Input'
@@ -13,17 +13,14 @@ import { Toast } from '@/views/components/ui/Toast'
 import { 
   Plus, 
   Search, 
-  Filter, 
   Edit, 
   Trash2, 
   Eye,
-  ArrowUpDown,
   ChevronLeft,
   ChevronRight,
   Mail,
   Phone,
-  Building,
-  CheckCircle2
+  Building
 } from 'lucide-react'
 import { format } from 'date-fns'
 import { ptBR } from 'date-fns/locale/pt-BR'
