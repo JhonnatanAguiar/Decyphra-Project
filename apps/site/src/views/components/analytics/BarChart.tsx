@@ -1,6 +1,7 @@
 'use client'
 
 import { BarChart as RechartsBarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts'
+import { FONT_SIZE, SPACE } from '@decyphra/tokens'
 
 /**
  * Bar Chart Component
@@ -34,14 +35,14 @@ export function BarChart({ data, dataKey = 'count', title, color = '#10b981', he
           <XAxis 
             dataKey="name" 
             stroke="#9ca3af"
-            style={{ fontSize: '12px' }}
+            style={{ fontSize: FONT_SIZE.sm }}
             angle={-45}
             textAnchor="end"
             height={80}
           />
           <YAxis 
             stroke="#9ca3af"
-            style={{ fontSize: '12px' }}
+            style={{ fontSize: FONT_SIZE.sm }}
           />
           <Tooltip 
             contentStyle={{ 
@@ -49,6 +50,7 @@ export function BarChart({ data, dataKey = 'count', title, color = '#10b981', he
               border: '1px solid #374151',
               borderRadius: '8px',
               color: '#f3f4f6',
+              padding: SPACE.sm,
             }}
           />
           <Legend />

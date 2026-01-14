@@ -1,6 +1,7 @@
 'use client'
 
 import { LineChart as RechartsLineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts'
+import { FONT_SIZE, SPACE } from '@decyphra/tokens'
 
 /**
  * Line Chart Component
@@ -56,11 +57,11 @@ export function LineChart({ data, dataKey, title, color = '#10b981', height = 30
           <XAxis 
             dataKey="date" 
             stroke="#9ca3af"
-            style={{ fontSize: '12px' }}
+            style={{ fontSize: FONT_SIZE.sm }}
           />
           <YAxis 
             stroke="#9ca3af"
-            style={{ fontSize: '12px' }}
+            style={{ fontSize: FONT_SIZE.sm }}
           />
           <Tooltip 
             contentStyle={{ 
@@ -68,6 +69,7 @@ export function LineChart({ data, dataKey, title, color = '#10b981', height = 30
               border: '1px solid #374151',
               borderRadius: '8px',
               color: '#f3f4f6',
+              padding: SPACE.sm,
             }}
           />
           <Legend />

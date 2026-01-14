@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import dynamic from 'next/dynamic'
 import Script from 'next/script'
@@ -35,6 +35,7 @@ const inter = Inter({
   adjustFontFallback: true, // Melhora CLS (Cumulative Layout Shift)
 })
 
+import { BRAND_COLORS, FONT_FAMILY } from '@decyphra/tokens'
 import { baseMetadata } from '@/lib/constants/metadata'
 
 // Generate metadata com trace data do Sentry
@@ -54,6 +55,10 @@ export function generateMetadata(): Metadata {
     ...baseMetadata,
     ...(Object.keys(otherMetadata).length > 0 && { other: otherMetadata }),
   }
+}
+
+export const viewport: Viewport = {
+  themeColor: BRAND_COLORS.primary,
 }
 
 export default function RootLayout({
@@ -90,7 +95,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="antialiased">
+      <body className="antialiased" style={{ fontFamily: FONT_FAMILY.sans }}>
         {children}
         <SpeedInsights />
         <GoogleAnalytics />

@@ -2,7 +2,7 @@
 
  > **Documento Central de Planejamento**  
  > Este arquivo consolida toda a documentação de planejamento do projeto.  
- > Última atualização: 26/12/2024
+> Última atualização: 14/01/2026
 
 ---
 
@@ -1024,6 +1024,22 @@ Para ver o status detalhado do que falta, consulte: `docs/STATUS-FINAL.md`
 
 ## 🔄 Melhorias e Ajustes Implementados
 
+### 14/01/2026 - Início da Fase 4 do Workspace
+
+- ✅ Fase 3 do workspace concluída (deploy validado em produção)
+- ✅ Scaffolds dos packages compartilhados criados (`config`, `tokens`, `utils`, `ui`)
+- ✅ Primeiro token compartilhado aplicado no app (`themeColor` via `@decyphra/tokens`)
+- ✅ Tipografia compartilhada aplicada no layout (`FONT_FAMILY` no body)
+- ✅ Tokens de tipografia aplicados em gráficos (`FONT_SIZE`)
+- ✅ Workspace validado com app principal rodando normalmente
+- ✅ Token de espaçamento aplicado em tooltip de gráficos (`SPACE`)
+- ✅ Estrutura base preparada para migração gradual de código compartilhado
+
+---
+
+## 💡 Sugestões de Melhorias (Simples)
+
+- ✅ **Fase 4:** Validar reconhecimento do workspace com `pnpm install` e `pnpm --filter site dev`, mantendo a migração incremental sem criar abstrações desnecessárias.
 ### 18/12/2025 - Melhorias de UX e Performance
 
 #### Scroll para Topo no Refresh

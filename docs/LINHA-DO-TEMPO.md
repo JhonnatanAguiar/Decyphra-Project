@@ -6,6 +6,29 @@
 
 ---
 
+## 📅 Janeiro 2026
+
+### ✅ Continuidade do Deploy e Início da Fase 4 do Workspace
+
+**Data:** 14/01/2026
+
+**Contexto:** Deploy validado em produção após ajustes de migração para workspace.
+
+**Mudança:**
+- Fase 3 concluída (Root Directory configurado na Vercel e deploy validado).
+- Fase 4 iniciada com criação dos packages compartilhados (`config`, `tokens`, `utils`, `ui`).
+- Scaffolds base adicionados (`package.json` e `src/index.ts`).
+- Primeiro token compartilhado exportado e usado no app (`BRAND_COLORS` em `themeColor`).
+- Tipografia compartilhada criada e aplicada no layout (`FONT_FAMILY` no body).
+- `themeColor` movido de `metadata` para `viewport` (warning do Next.js).
+- Tokens de tamanho de fonte adicionados e aplicados nos gráficos (`FONT_SIZE`).
+- Workspace validado com app principal rodando normalmente.
+- Token de espaçamento aplicado em tooltip de gráficos (`SPACE`).
+
+**Resultado:** Workspace preparado para receber código compartilhado sem impactar o app principal.
+
+**Status:** ✅ Resolvido
+
 ## 📅 Dezembro 2024
 
 ### 🎯 Início do Projeto

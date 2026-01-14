@@ -4,7 +4,7 @@
 
 Este documento descreve o plano de migração do projeto Decyphra para uma arquitetura de **workspace (monorepo)** utilizando **pnpm workspaces**, seguindo o princípio de migração segura, incremental e reversível.
 
-**Status Atual:** Fase 2 concluída e validada | Pronta para Fase 3
+**Status Atual:** Fase 4 concluída e validada | Pronta para Fase 5
 
 ---
 
@@ -79,36 +79,48 @@ decyphra-monorepo/
 
 ---
 
-### ⏳ Fase 3: Continuidade de Deploy do Site Principal
-**Status:** Pendente
+### ✅ Fase 3: Continuidade de Deploy do Site Principal
+**Status:** Concluída
 
 **Objetivo:** Garantir que o site principal continue sendo entregue normalmente.
 
 **Ações:**
-- [ ] Configurar `Root Directory: "apps/site"` na dashboard da Vercel (Settings → General → Root Directory)
-- [ ] Validar deploy em produção
-- [ ] Garantir que domínio principal continua funcionando
+- [x] Configurar `Root Directory: "apps/site"` na dashboard da Vercel (Settings → General → Root Directory)
+- [x] Validar deploy em produção
+- [x] Garantir que domínio principal continua funcionando
 
 **Critério de Conclusão:**
-- [ ] Deploy em produção funcionando
-- [ ] Nenhuma regressão para o usuário final
+- [x] Deploy em produção funcionando
+- [x] Nenhuma regressão para o usuário final
 
 ---
 
-### ⏳ Fase 4: Criação das Camadas Compartilhadas (`packages`)
-**Status:** Pendente
+### ✅ Fase 4: Criação das Camadas Compartilhadas (`packages`)
+**Status:** Concluída
 
 **Objetivo:** Introduzir pacotes compartilhados sem criar dependências obrigatórias.
 
 **Estrutura:**
-- [ ] `packages/config`: ESLint, TypeScript, Tailwind configs
-- [ ] `packages/tokens`: Design tokens e constantes visuais
-- [ ] `packages/utils`: Funções utilitárias puras
-- [ ] `packages/ui`: Componentes UI reutilizáveis
+- [x] `packages/config`: ESLint, TypeScript, Tailwind configs (scaffold criado)
+- [x] `packages/tokens`: Design tokens e constantes visuais (scaffold criado)
+- [x] `packages/utils`: Funções utilitárias puras (scaffold criado)
+- [x] `packages/ui`: Componentes UI reutilizáveis (scaffold criado)
+
+**Ações Realizadas:**
+- [x] Criados `package.json` base para cada package
+- [x] Criados `src/index.ts` base para cada package
+- [x] Adicionado export inicial de tokens (`BRAND_COLORS`)
+- [x] Primeiro consumo no app (`themeColor` em `metadata`)
+- [x] Módulo mínimo de tipografia criado (`FONT_FAMILY`)
+- [x] Uso de tipografia aplicado no layout (`fontFamily` no body)
+- [x] `themeColor` movido para `viewport` (compatibilidade Next.js)
+- [x] Tokens de tamanho de fonte adicionados (`FONT_SIZE`)
+- [x] Consumo de token de tipografia em gráficos (Recharts)
+- [x] Token de espaçamento aplicado em tooltip de gráficos (`SPACE`)
 
 **Critério de Conclusão:**
-- [ ] Workspace reconhece os pacotes
-- [ ] Site principal continua funcionando sem dependências obrigatórias
+- [x] Workspace reconhece os pacotes (validado)
+- [x] Site principal continua funcionando sem dependências obrigatórias (validado)
 
 ---
 
@@ -233,4 +245,4 @@ pnpm --filter @decyphra/config add <package>
 
 ---
 
-**Última atualização:** 2024-12-26
+**Última atualização:** 2026-01-14

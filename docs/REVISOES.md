@@ -4,6 +4,27 @@ Este arquivo centraliza todas as revisões realizadas no projeto, organizadas po
 
 ---
 
+## 🔍 Revisão Workspace - Fase 4 (Scaffolds de Packages)
+
+**Data:** 14/01/2026  
+**Status:** ✅ Concluído
+
+### Problemas Encontrados e Corrigidos
+- Scaffold ausente dos packages compartilhados (`config`, `tokens`, `utils`, `ui`)
+- Inclusão dos `package.json` e `src/index.ts` base para cada package
+- Export e consumo inicial de token compartilhado (`BRAND_COLORS` em `themeColor`)
+- Tipografia compartilhada criada e aplicada (`FONT_FAMILY` no layout)
+- Ajuste de compatibilidade: `themeColor` movido para `viewport`
+- Tipografia refinada com token de tamanho de fonte (`FONT_SIZE`) aplicado em gráficos
+- Workspace validado com app principal rodando normalmente
+- Token de espaçamento (`SPACE`) aplicado em tooltip de gráficos
+
+### Verificações Realizadas
+- Revisão estrutural dos packages
+- Lint: não executado
+- TypeScript: não executado
+- Build: não executado
+
 ## 🔍 Revisão Completa da Fase 3 - Páginas Principais
 
 **Data:** 04/12/2024  
