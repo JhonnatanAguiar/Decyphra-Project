@@ -34,3 +34,30 @@
 - ✔ Coerência com a metodologia do `PLANEJAMENTO-COMPLETO.md` do site principal.
 - ✔ Foco em UI/UX e independência visual de cada demo mantido.
 
+---
+
+## 🔍 Revisão Fase 1 - Setup e Estrutura Base
+
+**Data:** 15/01/2026  
+**Status:** ✅ Concluído
+
+### Problemas Encontrados e Decisões
+
+- Necessidade de garantir que o novo app demo funcione **isolado** mas integrado ao workspace (pnpm workspaces).
+- Garantir que a estrutura inicial do app siga o padrão Next 14 / App Router já adotado no site principal.
+
+### Ações Realizadas
+
+- Criado app `apps/demo-startup-tech` com:
+  - `package.json`, `next.config.js`, `tsconfig.json`, `postcss.config.js`, `tailwind.config.ts`
+  - Estrutura base de `app/` (`layout.tsx`, `page.tsx`, `globals.css`, `not-found.tsx`)
+  - `README.md` com scripts via `pnpm --filter demo-startup-tech ...`
+- Executado `pnpm install` para atualizar o workspace.
+- Executado `pnpm --filter demo-startup-tech dev` e validado servidor em `http://localhost:3000`.
+
+### Verificações Realizadas
+
+- ✔ App reconhecido pelo workspace (`pnpm-workspace.yaml` com `apps/*`).
+- ✔ Servidor dev funcionando sem erros críticos.
+- ✔ Estrutura mínima pronta para receber Design System na Fase 2.
+

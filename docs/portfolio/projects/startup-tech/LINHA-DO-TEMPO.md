@@ -21,3 +21,22 @@ Fase 0 (Planejamento) definida e documentada. Projeto pronto para iniciar a Fase
 
 **Status:** ✅ Resolvido
 
+---
+
+#### 15/01/2026 - Conclusão da Fase 1 (Setup e Estrutura Base)
+
+**Contexto:**  
+Início da implementação do projeto demo dentro do monorepo, criando um app independente em `apps/demo-startup-tech`.
+
+**Mudança:**  
+- Criado app `apps/demo-startup-tech` com:
+  - `package.json`, `next.config.js`, `tsconfig.json`, `postcss.config.js`, `tailwind.config.ts`
+  - Estrutura base de App Router (`app/layout.tsx`, `app/page.tsx`, `app/globals.css`, `app/not-found.tsx`)
+  - `README.md` com scripts via `pnpm --filter demo-startup-tech ...`
+- Rodado `pnpm install` (workspace atualizado) e `pnpm --filter demo-startup-tech dev` com sucesso (servidor local em `http://localhost:3000`).
+
+**Resultado:**  
+Fase 1 concluída: app mínimo funcional rodando dentro do monorepo, pronto para receber o Design System próprio na Fase 2.
+
+**Status:** ✅ Resolvido
+

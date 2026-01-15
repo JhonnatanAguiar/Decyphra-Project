@@ -100,13 +100,13 @@ apps/demo-startup-tech/
   - [x] `REVISOES.md`
 - [x] Definir estrutura geral do app em `apps/demo-startup-tech` (conceitualmente)
 
-### ⏳ Fase 1: Setup e Estrutura Base
+### ✅ Fase 1: Setup e Estrutura Base
 
-- [ ] Criar pasta `apps/demo-startup-tech`
-- [ ] Inicializar Next.js 14+ com TypeScript e Tailwind
-- [ ] Configurar `tsconfig`, `eslint`, `prettier` (seguindo metodologia Decyphra, simplificada)
-- [ ] Garantir que `pnpm --filter demo-startup-tech dev` funcione
-- [ ] Documentar scripts no `README.md` do projeto
+- [x] Criar pasta `apps/demo-startup-tech`
+- [x] Inicializar Next.js 14+ com TypeScript e Tailwind
+- [x] Configurar `tsconfig`, `eslint`, `prettier` (seguindo metodologia Decyphra, simplificada)
+- [x] Garantir que `pnpm --filter demo-startup-tech dev` funcione
+- [x] Documentar scripts no `README.md` do projeto
 
 ### ⏳ Fase 2: Design System do Projeto
 

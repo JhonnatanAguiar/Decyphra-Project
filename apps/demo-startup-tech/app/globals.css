@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Estilos globais mínimos para a Fase 1.
+ * O visual final será definido na Fase 2 (Design System do projeto).
+ */
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
