@@ -108,16 +108,16 @@ apps/demo-startup-tech/
 - [x] Garantir que `pnpm --filter demo-startup-tech dev` funcione
 - [x] Documentar scripts no `README.md` do projeto
 
-### ⏳ Fase 2: Design System do Projeto
+### ✅ Fase 2: Design System do Projeto
 
-- [ ] Definir paleta de cores final (para este projeto)
-- [ ] Definir tipografia (títulos + corpo)
-- [ ] Configurar Tailwind com tema do projeto
-- [ ] Criar componentes base:
-  - [ ] `Button`
-  - [ ] `Card`
-  - [ ] Tipografia utilitária (títulos, parágrafos)
-- [ ] Garantir consistência visual com o conceito da Fase 0
+- [x] Definir paleta de cores final (para este projeto)
+- [x] Definir tipografia (títulos + corpo)
+- [x] Configurar Tailwind com tema do projeto (`tailwind.config.ts`)
+- [x] Criar componentes base:
+  - [x] `Button`
+  - [x] `Card`
+  - [ ] Tipografia utilitária adicional (títulos, parágrafos) – opcional nas próximas iterações
+- [x] Garantir consistência visual com o conceito da Fase 0
 
 ### ⏳ Fase 3: Estrutura de Páginas
 

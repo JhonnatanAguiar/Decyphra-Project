@@ -2,13 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Estilos globais mínimos para a Fase 1.
- * O visual final será definido na Fase 2 (Design System do projeto).
- */
+/* Estilos globais para o demo Startup Tech (Design System base) */
+
+:root {
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-display: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
 
 html,
 body {
   margin: 0;
   padding: 0;
+}
+
+body {
+  @apply min-h-screen bg-[#020617] text-brand-light antialiased;
+}
+
+.ds-heading-display {
+  @apply font-display tracking-tight;
+}
+
+.ds-pill {
+  @apply inline-flex items-center gap-2 rounded-full border border-brand-border/60 bg-white/5 px-4 py-1 text-xs font-medium uppercase tracking-[0.25em] text-brand-muted;
 }
 

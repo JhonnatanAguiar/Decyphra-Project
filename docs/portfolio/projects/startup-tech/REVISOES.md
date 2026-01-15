@@ -61,3 +61,31 @@
 - ✔ Servidor dev funcionando sem erros críticos.
 - ✔ Estrutura mínima pronta para receber Design System na Fase 2.
 
+---
+
+## 🔍 Revisão Fase 2 - Design System do Projeto
+
+**Data:** 15/01/2026  
+**Status:** ✅ Concluído
+
+### Problemas Encontrados e Decisões
+
+- Necessidade de definir uma identidade visual forte para o demo Startup Tech sem herdar o tema da Decyphra.
+- Garantir que o design system seja simples o suficiente para não complexificar o projeto, mas consistente para ser reutilizado nas próximas fases (seções, animações).
+
+### Ações Realizadas
+
+- Definição de paleta de cores própria no `tailwind.config.ts` (namespace `brand`).
+- Definição de tipografia com `Inter` (texto) e `Space Grotesk` (display) via `next/font/google`.
+- Atualização de `app/globals.css` com estilos globais e utilitários (`ds-heading-display`, `ds-pill`).
+- Criação de componentes base em `src/components/ui/`:
+  - `Button.tsx` (variantes e tamanhos)
+  - `Card.tsx` (card SaaS com glow e borda customizados)
+- Aplicação inicial do design system na `app/page.tsx` para validar aparência e composição.
+
+### Verificações Realizadas
+
+- ✔ Identidade visual distinta do site principal da Decyphra.
+- ✔ Componentes base reutilizáveis e simples (sem abstrações excessivas).
+- ✔ Página inicial renderizando corretamente com o novo design system.
+

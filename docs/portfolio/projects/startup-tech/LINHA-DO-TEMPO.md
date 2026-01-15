@@ -40,3 +40,26 @@ Fase 1 concluída: app mínimo funcional rodando dentro do monorepo, pronto para
 
 **Status:** ✅ Resolvido
 
+---
+
+#### 15/01/2026 - Conclusão da Fase 2 (Design System do Projeto)
+
+**Contexto:**  
+Aplicar identidade visual própria ao demo Startup Tech e criar componentes base reutilizáveis.
+
+**Mudança:**  
+- Configurado `tailwind.config.ts` com paleta `brand` específica (primary, secondary, accent, dark, etc.) e famílias tipográficas (`sans`, `display`).
+- Atualizado `app/layout.tsx` para usar `Inter` e `Space Grotesk` via `next/font/google`, expondo as variáveis `--font-sans` e `--font-display`.
+- Atualizado `app/globals.css` com:
+  - Estilos globais baseados na nova identidade visual
+  - Helpers como `.ds-heading-display` e `.ds-pill`.
+- Criados componentes base em `src/components/ui/`:
+  - `Button.tsx` com variantes (`primary`, `secondary`, `ghost`) e tamanhos (`sm`, `md`, `lg`)
+  - `Card.tsx` com visual de card SaaS moderno (gradiente sutil, glow leve, borda customizada).
+- Atualizada `app/page.tsx` para usar `Card` e `Button` de forma simples, apenas como “preview” do design system.
+
+**Resultado:**  
+Design system inicial concluído e aplicado na home, pronto para ser usado na construção das seções da landing nas próximas fases.
+
+**Status:** ✅ Resolvido
+
