@@ -8,6 +8,15 @@
     "start": "pnpm --filter site start",
     "lint": "pnpm --filter site lint",
     "type-check": "pnpm --filter site type-check",
+
+    "dev:site": "pnpm --filter site dev",
+    "build:site": "pnpm --filter site build",
+    "start:site": "pnpm --filter site start",
+
+    "dev:demo-startup-tech": "pnpm --filter demo-startup-tech dev",
+    "build:demo-startup-tech": "pnpm --filter demo-startup-tech build",
+    "start:demo-startup-tech": "pnpm --filter demo-startup-tech start",
+
     "db:migrate": "pnpm --filter site db:migrate",
     "db:migrate:dev": "pnpm --filter site db:migrate",
     "db:migrate:deploy": "pnpm --filter site db:migrate:deploy",
@@ -18,7 +27,9 @@
     "test:connection": "pnpm --filter site test:connection",
     "db:studio": "pnpm --filter site db:studio",
     "db:generate": "pnpm --filter site db:generate",
+
     "test": "pnpm --filter site test",
+
     "sync-lockfile": "node scripts/sync-lockfile.js",
     "logos:generate": "pnpm --filter site logos:generate",
     "lighthouse": "pnpm --filter site lighthouse",

@@ -115,3 +115,33 @@
 - ✔ Layout consistente com o design system (cores, tipografia, componentes).
 - ✔ Pronta para receber animações e interatividade na Fase 4 sem refatorações grandes.
 
+---
+
+## 🔍 Revisão Fase 4 - Animações e Interatividade
+
+**Data:** 15/01/2026  
+**Status:** ✅ Concluído
+
+### Problemas Encontrados e Decisões
+
+- Necessidade de trazer vida à landing sem torná-la pesada ou excessivamente complexa.
+- Decisão de usar Framer Motion para manter consistência com a stack de frontend moderna e facilitar animações declarativas.
+
+### Ações Realizadas
+
+- Adicionada a dependência `framer-motion` ao projeto `demo-startup-tech`.
+- Atualização dos componentes de UI:
+  - `Button` passou a usar `motion.button` com microinterações de hover/tap.
+  - `Card` passou a usar `motion.article` com leve elevação ao hover.
+- Atualização das seções:
+  - `Hero`: background animado sutil + entrada animada de título, texto e CTAs.
+  - `Features`, `SocialProof`, `Pricing`, `CallToAction`: animações de entrada ao entrar no viewport, com pequenos delays em grids/listas.
+- Ajuste de usabilidade:
+  - Habilitado `scroll-smooth` no `html` para transições suaves entre anchors do header.
+
+### Verificações Realizadas
+
+- ✔ Build (`pnpm --filter demo-startup-tech build`) executando sem erros.
+- ✔ ESLint e TypeScript sem apontar problemas nos arquivos alterados.
+- ✔ Animações suaves, sem “travadas” perceptíveis e mantendo boa legibilidade.
+

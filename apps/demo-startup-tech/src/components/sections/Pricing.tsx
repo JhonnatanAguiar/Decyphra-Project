@@ -1,3 +1,7 @@
+'use client'
+
+import { motion } from 'framer-motion'
+
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
 
@@ -26,7 +30,13 @@ export function Pricing() {
   return (
     <section id="pricing" className="px-6 py-16">
       <div className="mx-auto max-w-5xl space-y-10 text-center">
-        <div className="space-y-3">
+        <motion.div
+          className="space-y-3"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
+        >
           <span className="ds-pill">Planos</span>
           <h2 className="ds-heading-display text-2xl md:text-3xl text-brand.light">
             Estrutura de preços focada em escala
@@ -35,35 +45,42 @@ export function Pricing() {
             Tabela fictícia apenas para demonstrar composição de seções de pricing em
             uma landing page SaaS.
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid gap-6 md:grid-cols-3">
-          {PLANS.map((plan) => (
-            <Card
+          {PLANS.map((plan, index) => (
+            <motion.div
               key={plan.name}
-              className={plan.highlight ? 'border-brand.primary/70' : ''}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.55, ease: 'easeOut', delay: 0.08 * index }}
             >
-              <div className="space-y-4 text-left">
-                <h3 className="text-sm font-semibold text-brand.light">
-                  {plan.name}
-                </h3>
-                <p className="text-lg font-semibold text-brand.light">
-                  {plan.price}
-                </p>
-                <ul className="space-y-1 text-xs text-brand.muted">
-                  {plan.features.map((feature) => (
-                    <li key={feature}>• {feature}</li>
-                  ))}
-                </ul>
-                <Button
-                  size="sm"
-                  variant={plan.highlight ? 'primary' : 'secondary'}
-                  className="mt-4 w-full"
-                >
-                  Falar com time comercial
-                </Button>
-              </div>
-            </Card>
+              <Card
+                className={plan.highlight ? 'border-brand.primary/70' : ''}
+              >
+                <div className="space-y-4 text-left">
+                  <h3 className="text-sm font-semibold text-brand.light">
+                    {plan.name}
+                  </h3>
+                  <p className="text-lg font-semibold text-brand.light">
+                    {plan.price}
+                  </p>
+                  <ul className="space-y-1 text-xs text-brand.muted">
+                    {plan.features.map((feature) => (
+                      <li key={feature}>• {feature}</li>
+                    ))}
+                  </ul>
+                  <Button
+                    size="sm"
+                    variant={plan.highlight ? 'primary' : 'secondary'}
+                    className="mt-4 w-full"
+                  >
+                    Falar com time comercial
+                  </Button>
+                </div>
+              </Card>
+            </motion.div>
           ))}
         </div>
       </div>

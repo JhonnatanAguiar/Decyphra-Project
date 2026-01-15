@@ -14,7 +14,7 @@ export function Card({ className, children, ...props }: CardProps) {
   return (
     <article
       className={cn(
-        'relative overflow-hidden rounded-2xl border border-brand.border/60 bg-gradient-to-b from-white/5 via-white/2 to-white/[0.02] p-8 shadow-brand-soft backdrop-blur',
+        'relative overflow-hidden rounded-2xl border border-brand.border/60 bg-gradient-to-b from-white/5 via-white/2 to-white/[0.02] p-8 shadow-brand-soft backdrop-blur transition-transform duration-200 hover:-translate-y-1',
         className,
       )}
       {...props}
@@ -25,4 +25,5 @@ export function Card({ className, children, ...props }: CardProps) {
     </article>
   )
 }
+
 

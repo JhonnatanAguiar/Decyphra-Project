@@ -130,12 +130,12 @@ apps/demo-startup-tech/
   - [x] CTA final
 - [x] Página 404 customizada (opcional, mas desejável)
 
-### ⏳ Fase 4: Animações e Interatividade
+### ✅ Fase 4: Animações e Interatividade
 
-- [ ] Animações de entrada das seções (Framer Motion)
-+- [ ] Microinterações em botões e cards
-+- [ ] Background animado ou interativo na hero
-+- [ ] Scroll suave / pequenas transições entre seções
+- [x] Animações de entrada das seções (Framer Motion)
+- [x] Microinterações em botões e cards
+- [x] Background animado ou interativo na hero
+- [x] Scroll suave / pequenas transições entre seções
 
 ### ⏳ Fase 5: Funcionalidades Mínimas
 
@@ -169,6 +169,6 @@ apps/demo-startup-tech/
 ## 📌 Status Atual
 
 - **Projeto:** Demo Startup Tech (SaaS)
-- **Fase:** 3 - Estrutura de Páginas (**Concluída**)
-- **Próximo passo:** Fase 4 – Animações e Interatividade
+- **Fase:** 4 - Animações e Interatividade (**Concluída**)
+- **Próximo passo:** Fase 5 – Funcionalidades Mínimas
 

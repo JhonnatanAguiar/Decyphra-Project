@@ -86,3 +86,22 @@ Landing page com estrutura completa de seções, já utilizando o design system 
 
 **Status:** ✅ Resolvido
 
+---
+
+#### 15/01/2026 - Conclusão da Fase 4 (Animações e Interatividade)
+
+**Contexto:**  
+Com a estrutura da landing pronta, o próximo passo foi deixá-la mais viva e dinâmica, mantendo foco em UI/UX e na narrativa SaaS.
+
+**Mudança:**  
+- Adicionada a dependência `framer-motion` ao app `demo-startup-tech`.  
+- Implementadas animações de entrada nas seções principais (`Hero`, `Features`, `SocialProof`, `Pricing`, `CallToAction`) usando Framer Motion.  
+- Adicionadas microinterações em botões (`Button` como `motion.button`) e cards (`Card` como `motion.article`).  
+- Criado background animado sutil na seção `Hero`, com glow em movimento.  
+- Habilitado scroll suave via Tailwind (`scroll-smooth` no `html`).
+
+**Resultado:**  
+Landing page com movimento agradável, seções que entram de forma suave ao rolar, elementos interativos e sensação de produto SaaS vivo, sem comprometer simplicidade ou performance.
+
+**Status:** ✅ Resolvido
+
