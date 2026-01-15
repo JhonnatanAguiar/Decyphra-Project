@@ -1,15 +1,16 @@
-# Estratégia de Portfólio - Opção A
+# Estratégia de Portfólio - Opção A (Monorepo)
 
 ## Visão Geral
 
-Esta documentação descreve a estratégia completa para criação e gestão de projetos demonstrativos do portfólio da Decyphra, seguindo a **Opção A: Separação Total entre Site Institucional e Demos**.
+Esta documentação descreve a estratégia completa para criação e gestão de projetos demonstrativos do portfólio da Decyphra, seguindo a **Opção A: Separação Total entre Site Institucional e Demos**, **implementada em um único monorepo pnpm** com apps independentes sob `apps/`.
 
 ## Princípios Fundamentais
 
-### 1. Separação Total
+### 1. Separação Total (Lógica e Identidade)
 - **Site da Decyphra**: Hub institucional com estudos de caso
 - **Projetos Demo**: Sites completos e independentes com identidade própria
-- **Nenhuma dependência**: Cada projeto é totalmente autônomo
+- **Nenhuma dependência visual/funcional**: Cada projeto é totalmente autônomo em termos de UI/UX, conteúdo e regras de negócio
+- **Implementação técnica**: Todos convivem no **mesmo monorepo**, mas cada demo é um app separado em `apps/`, com build, rotas e deploy próprios
 
 ### 2. Identidade Visual Única
 Cada projeto deve ter:
@@ -19,11 +20,12 @@ Cada projeto deve ter:
 - Tipografia personalizada
 - Componentes visuais únicos (botões, cards, etc)
 
-### 3. Autonomia Técnica
-- Stack independente (pode usar diferentes frameworks)
-- Dependências próprias
-- Configurações isoladas
-- Build e deploy independentes
+### 3. Autonomia Técnica (dentro do monorepo)
+- Cada projeto demo é um **app independente** em `apps/demo-*` (ex: `apps/demo-startup-tech`)
+- **Dependências próprias por app** (`apps/demo-*/package.json`)
+- Pode **reaproveitar infraestrutura** do monorepo (scripts, configs base, packages internos como `@decyphra/tokens` ou `@decyphra/utils`) quando fizer sentido, **sem forçar compartilhamento de UI**
+- **Build e deploy independentes** (cada app pode ter projeto próprio na Vercel, com `rootDirectory` apontando para o app correspondente)
+- **Backend mínimo**: o foco desses projetos é **UI/UX impactante**; backend deve ser enxuto (contato, mock de dados, integrações simples) e apenas quando necessário para demonstrar a experiência
 
 ### 4. Domínio Unificado
 - Projetos em subdomínios: `demo-x.decyphra.com.br`
@@ -34,41 +36,39 @@ Cada projeto deve ter:
 
 ## Estrutura de Arquivos Recomendada
 
-### Opção 1: Repositórios Separados (Recomendado para início)
+### Estrutura oficial: Monorepo com Apps Independentes
 
-```
-decyphra-site/              # Site principal da Decyphra
-  ├── app/
-  ├── src/
-  └── ...
-
-portfolio-startup-tech/     # Projeto demo 1 (repositório separado)
-  ├── app/
-  ├── src/
-  ├── public/
-  └── ...
-
-portfolio-clinica-medica/   # Projeto demo 2 (repositório separado)
-  ├── app/
-  ├── src/
-  ├── public/
-  └── ...
-```
-
-### Opção 2: Monorepo (Para quando houver múltiplos projetos)
+> **Metodologia oficial:** todos os projetos vivem em **um único monorepo pnpm** (o mesmo do site da Decyphra), mas cada demo é um app independente em `apps/`, com identidade, rotas e deploy próprios.
 
 ```
 decyphra-monorepo/
   ├── apps/
-  │   ├── decyphra-site/        # Site principal
-  │   ├── portfolio-startup/    # Demo 1
-  │   ├── portfolio-clinica/    # Demo 2
+  │   ├── site/                     # Site principal (já existente)
+  │   ├── demo-startup-tech/        # Projeto demo 1 (SaaS / landing page)
+  │   ├── demo-clinica-medica/      # Projeto demo 2 (site institucional)
+  │   ├── demo-ecommerce-fashion/   # Projeto demo 3 (e-commerce)
+  │   ├── demo-plataforma-curso/    # Projeto demo 4 (curso/plataforma)
   │   └── ...
   ├── packages/
-  │   ├── ui/                   # Componentes compartilhados (opcional)
-  │   └── config/               # Configs compartilhadas (eslint, tsconfig)
-  └── package.json              # Workspace root
+  │   ├── tokens/                   # Design tokens globais (cores base, tipografia, espaçamentos)
+  │   ├── utils/                    # Utilitários puros (ex: documentos, datas)
+  │   ├── ui/                       # (Opcional) Componentes UI genéricos
+  │   └── config/                   # Configs compartilhadas (eslint, tsconfig, etc.)
+  ├── pnpm-workspace.yaml           # Workspace root
+  └── package.json                  # Scripts e dependências do workspace
 ```
+
+### Notas Importantes sobre o Monorepo
+
+- Cada app demo:
+  - Tem **seu próprio `package.json`** (scripts, dependências específicas)
+  - Usa **rotas próprias** (`app/`, `app/(routes)/`, etc.)
+  - Pode ter **design system próprio** por cima dos tokens globais
+  - Pode (opcionalmente) usar utilitários de `@decyphra/utils` quando isso não “vazar” identidade visual
+- O site da Decyphra **não depende** dos apps demo, e os apps demo **não dependem** do site
+- Os packages compartilhados existem para:
+  - Facilitar manutenção e consistência mínima (tipos, utilitários, tokens básicos)
+  - **Não** para forçar reutilização de UI; cada demo segue sua **identidade própria**
 
 ---
 

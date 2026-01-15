@@ -11,28 +11,35 @@ Este guia fornece passos práticos para criar um novo projeto demonstrativo segu
 
 ---
 
-## Passo 1: Criar Repositório
+## Passo 1: Criar App no Monorepo
 
-### Opção A: Repositório Separado (Recomendado)
+### Opção A (Oficial): App dentro do monorepo `decyphra-monorepo`
+
+```bash
+# Partindo da raiz do monorepo
+cd apps
+
+# Criar pasta do novo app demo
+mkdir demo-{nome-projeto}
+cd demo-{nome-projeto}
+
+# Exemplo:
+# mkdir demo-startup-tech && cd demo-startup-tech
+```
+
+> Cada demo é um app independente em `apps/demo-*`, com `package.json`, `next.config.js` e rotas próprias.
+
+### Opção B (Alternativa): Repositório Separado
+
+> **Não é a abordagem principal deste projeto**, mas pode ser usada em casos especiais.
 
 ```bash
 # Criar novo repositório no GitHub
 # Nome: portfolio-{nome-projeto}-demo
 # Exemplo: portfolio-startup-tech-demo
 
-# Clonar e inicializar
 git clone https://github.com/seu-usuario/portfolio-startup-tech-demo.git
 cd portfolio-startup-tech-demo
-```
-
-### Opção B: Monorepo
-
-Se estiver usando monorepo:
-
-```bash
-cd apps/
-mkdir portfolio-{nome-projeto}
-cd portfolio-{nome-projeto}
 ```
 
 ---
