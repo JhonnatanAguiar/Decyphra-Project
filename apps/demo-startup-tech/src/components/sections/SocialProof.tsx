@@ -4,8 +4,6 @@ import { motion } from 'framer-motion'
 
 import { Card } from '@/components/ui/Card'
 
-const LOGOS = ['Acme Corp', 'Skyline', 'NeonLabs', 'Corelytics', 'Northwind']
-
 export function SocialProof() {
   return (
     <section id="social-proof" className="px-6 py-16">
@@ -22,8 +20,13 @@ export function SocialProof() {
             Criada para escalar junto com empresas modernas
           </h2>
           <p className="text-sm md:text-base text-brand.muted max-w-2xl mx-auto">
-            Marcas fictícias apenas para reforçar a percepção de confiança e
-            maturidade do produto.
+            A Startup Tech acompanha desde times enxutos até operações robustas, para
+            empresas que valorizam eficiência operacional, clareza estratégica e
+            crescimento sustentável.
+          </p>
+          <p className="text-sm text-brand.muted max-w-2xl mx-auto">
+            Marcas presentes nesta página são ilustrativas e representam empresas que
+            priorizam eficiência operacional e visibilidade em tempo real.
           </p>
         </motion.div>
 
@@ -33,19 +36,14 @@ export function SocialProof() {
           viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 0.6, ease: 'easeOut', delay: 0.1 }}
         >
-          <Card className="flex flex-wrap items-center justify-center gap-6 bg-white/[0.03]">
-            {LOGOS.map((logo, index) => (
-              <motion.span
-                key={logo}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.5 }}
-                transition={{ duration: 0.4, ease: 'easeOut', delay: 0.06 * index }}
-                className="text-xs font-medium uppercase tracking-[0.28em] text-brand-muted/80"
-              >
-                {logo}
-              </motion.span>
-            ))}
+          <Card className="bg-white/[0.03]">
+            <p className="text-sm md:text-base text-brand-muted text-center">
+              Confiada por equipes em empresas como{' '}
+              <span className="font-semibold text-brand-light">
+                Acme Corp, Skyline, NeonLabs, Corelytics e Northwind
+              </span>
+              , que usam a Startup Tech para unificar dados e decisões em um só lugar.
+            </p>
           </Card>
         </motion.div>
       </div>

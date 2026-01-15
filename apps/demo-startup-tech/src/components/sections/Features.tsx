@@ -7,15 +7,18 @@ import { Card } from '@/components/ui/Card'
 const FEATURES = [
   {
     title: 'Painéis em tempo real',
-    description: 'Visualize métricas críticas do seu negócio em um só lugar.',
+    description:
+      'Visualize métricas essenciais do seu negócio em dashboards claros e personalizáveis, sem depender de relatórios manuais.',
   },
   {
     title: 'Fluxos automatizados',
-    description: 'Reduza tarefas repetitivas com automações configuráveis.',
+    description:
+      'Automatize tarefas repetitivas e processos operacionais com fluxos configuráveis que reduzem erros e liberam o time.',
   },
   {
     title: 'Integrações seguras',
-    description: 'Conecte sua stack atual sem comprometer segurança.',
+    description:
+      'Conecte a Startup Tech às ferramentas que você já utiliza, com integrações seguras que mantêm seus dados consistentes.',
   },
 ]
 
@@ -32,11 +35,12 @@ export function Features() {
         >
           <span className="ds-pill">Produto</span>
           <h2 className="ds-heading-display text-2xl md:text-3xl text-brand.light">
-            Tudo que você espera de um SaaS moderno
+            Tudo o que você espera de um SaaS moderno
           </h2>
           <p className="text-sm md:text-base text-brand.muted max-w-2xl mx-auto">
-            Benefícios fictícios para compor a narrativa visual do demo e mostrar
-            como organizar informação em seções claras.
+            A Startup Tech reúne, em um só lugar, painéis em tempo real, fluxos
+            automatizados e integrações seguras — a base de um produto SaaS pronto
+            para escalar com sua operação.
           </p>
         </motion.div>
 
@@ -59,7 +63,7 @@ export function Features() {
                 <h3 className="mb-2 text-sm font-semibold text-brand.light">
                   {item.title}
                 </h3>
-                <p className="text-xs text-brand.muted">{item.description}</p>
+                <p className="text-sm text-brand.muted">{item.description}</p>
               </Card>
             </motion.div>
           ))}

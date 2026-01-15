@@ -9,7 +9,7 @@ export function Header() {
         <div className="flex items-center gap-2">
           <div className="h-8 w-8 rounded-xl bg-gradient-to-br from-brand.primary to-brand.secondary shadow-brand-soft" />
           <span className="font-display text-xs tracking-[0.28em] uppercase text-brand.muted">
-            Novaera · SaaS Demo
+            Startup Tech · Plataforma SaaS B2B
           </span>
         </div>
 
@@ -27,9 +27,9 @@ export function Header() {
 
         <Link
           href="#cta"
-          className="hidden rounded-full bg-brand.primary px-4 py-2 text-xs font-semibold text-white shadow-brand-soft hover:bg-brand.primarySoft md:inline-flex"
+          className="hidden rounded-full border border-white/20 bg-[radial-gradient(circle_at_top,_rgba(148,163,184,0.4)_0,_rgba(15,23,42,0.9)_45%,_rgba(15,23,42,1)_100%)] px-5 py-2 text-xs font-semibold text-white shadow-brand-soft backdrop-blur-xl transition-all duration-200 hover:-translate-y-0.5 hover:border-white/30 md:inline-flex"
         >
-          Iniciar demo
+          Falar com o time comercial
         </Link>
       </div>
     </header>

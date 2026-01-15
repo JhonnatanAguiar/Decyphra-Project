@@ -21,19 +21,19 @@ export function CallToAction() {
               <h2 className="ds-heading-display text-2xl md:text-3xl text-brand.light">
                 Pronto para imaginar seu próximo produto SaaS?
               </h2>
-              <p className="text-sm md:text-base text-brand.muted max-w-2xl mx-auto">
-                Esta interface é apenas uma demonstração visual. Nas próximas fases
-                podemos conectar formulários, fluxos e integrações mínimas para uma
-                experiência ainda mais próxima de um produto real.
+              <p className="text-base md:text-lg text-brand.muted max-w-2xl mx-auto">
+                A Startup Tech foi projetada para ser o centro da sua operação SaaS
+                B2B, integrando formulários, fluxos personalizados, sistemas internos
+                e ferramentas externas em uma única experiência.
               </p>
             </div>
 
             <div className="flex flex-wrap items-center justify-center gap-4">
               <Button size="md" variant="primary">
-                Conversar sobre um projeto
+                Falar com o time comercial
               </Button>
               <Button size="md" variant="ghost">
-                Ver outros demos de portfólio
+                Ver outras soluções
               </Button>
             </div>
           </Card>

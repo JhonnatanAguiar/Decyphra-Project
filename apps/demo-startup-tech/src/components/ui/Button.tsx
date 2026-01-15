@@ -22,15 +22,15 @@ export function Button({
   ...props
 }: ButtonProps) {
   const base =
-    'inline-flex items-center justify-center font-semibold rounded-full transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand.secondary focus-visible:ring-offset-2 focus-visible:ring-offset-brand.dark'
+    'inline-flex items-center justify-center font-semibold rounded-full transition-all duration-200 backdrop-blur-xl border border-white/15 shadow-[0_18px_45px_rgba(15,23,42,0.85)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand.secondary/80 focus-visible:ring-offset-2 focus-visible:ring-offset-brand.dark'
 
   const variants: Record<ButtonVariant, string> = {
     primary:
-      'bg-brand.primary text-white shadow-brand-soft hover:bg-brand.primarySoft hover:-translate-y-0.5 hover:shadow-brand-soft',
+      'bg-[radial-gradient(circle_at_top,_rgba(148,163,184,0.6)_0,_rgba(15,23,42,0.95)_45%,_rgba(15,23,42,1)_100%)] text-white hover:border-white/30 hover:-translate-y-0.5',
     secondary:
-      'border border-brand.border bg-transparent text-brand.light hover:bg-white/5 hover:-translate-y-0.5',
+      'border border-white/15 bg-white/5 text-brand.light hover:bg-white/10 hover:-translate-y-0.5',
     ghost:
-      'bg-transparent text-brand.light hover:bg-white/5 hover:text-white hover:-translate-y-0.5',
+      'bg-transparent text-brand.light border border-transparent hover:border-white/10 hover:bg-white/5 hover:text-white hover:-translate-y-0.5',
   }
 
   const sizes: Record<ButtonSize, string> = {

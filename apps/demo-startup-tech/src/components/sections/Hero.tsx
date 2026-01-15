@@ -34,40 +34,46 @@ export function Hero() {
         </motion.span>
 
         <Card className="max-w-3xl">
-          <motion.div
-            className="space-y-4"
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.6 }}
-            transition={{ duration: 0.7, ease: 'easeOut' }}
-          >
-            <h1 className="ds-heading-display text-4xl md:text-5xl lg:text-6xl font-semibold text-brand.light">
-              Centralize sua operação{' '}
-              <span className="bg-gradient-to-r from-brand.primary via-brand.secondary to-brand.accent bg-clip-text text-transparent">
-                em uma única plataforma
-              </span>
-              .
-            </h1>
-            <p className="text-sm md:text-base text-brand.muted max-w-xl mx-auto">
-              Demonstração de uma experiência SaaS moderna, com foco em clareza,
-              conversão e uma UI impecável — pensada para impressionar decisores.
-            </p>
-          </motion.div>
+          <div className="px-4 py-10 sm:px-8 sm:py-12">
+            <motion.div
+              className="space-y-4"
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.6 }}
+              transition={{ duration: 0.7, ease: 'easeOut' }}
+            >
+              <h1 className="ds-heading-display text-4xl md:text-5xl lg:text-6xl font-semibold text-brand.light">
+                Centralize sua operação{' '}
+                <span className="bg-gradient-to-r from-brand.primary via-brand.primarySoft to-brand.accent bg-clip-text text-transparent drop-shadow-[0_0_18px_rgba(15,23,42,0.75)]">
+                  em uma única plataforma.
+                </span>
+              </h1>
+              <p className="text-sm md:text-base text-brand.muted max-w-xl mx-auto">
+                Controle processos, dados e integrações em tempo real com uma solução
+                SaaS pensada para escalar junto com o seu negócio.
+              </p>
+              <p className="text-xs md:text-sm text-brand.muted max-w-xl mx-auto">
+                A Startup Tech conecta times, automatiza rotinas e transforma
+                informações dispersas em decisões claras — tudo em uma interface
+                moderna, segura e preparada para empresas em crescimento.
+              </p>
+            </motion.div>
 
-          <motion.div
-            className="mt-8 flex flex-wrap items-center justify-center gap-4"
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.6 }}
-            transition={{ duration: 0.7, ease: 'easeOut', delay: 0.1 }}
-          >
-            <Button size="lg" variant="primary">
-              Explorar demo interativa
-            </Button>
-            <Button size="lg" variant="ghost">
-              Ver arquitetura visual
-            </Button>
-          </motion.div>
+            <motion.div
+              className="mt-8 flex flex-wrap items-center justify-center gap-4"
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.6 }}
+              transition={{ duration: 0.7, ease: 'easeOut', delay: 0.1 }}
+            >
+              <Button size="lg" variant="primary">
+                Explorar demo interativa
+              </Button>
+              <Button size="lg" variant="ghost">
+                Ver arquitetura da plataforma
+              </Button>
+            </motion.div>
+          </div>
         </Card>
       </div>
     </section>

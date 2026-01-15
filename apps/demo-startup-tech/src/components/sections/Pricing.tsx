@@ -10,19 +10,39 @@ const PLANS = [
     name: 'Starter',
     price: 'R$ 89/mês',
     highlight: false,
-    features: ['Até 3 times', 'Dashboards básicos', 'Suporte por email'],
+    subtitle:
+      'Indicado para pequenas equipes iniciando a organização de processos.',
+    features: [
+      'Até 3 times',
+      'Dashboards básicos',
+      'Automações simples',
+      'Suporte por email',
+    ],
   },
   {
     name: 'Growth',
     price: 'R$ 189/mês',
     highlight: true,
-    features: ['Times ilimitados', 'Automação avançada', 'Integrações premium'],
+    subtitle:
+      'Ideal para empresas em crescimento que precisam de mais controle e automação.',
+    features: [
+      'Times ilimitados',
+      'Dashboards avançados',
+      'Automações completas',
+      'Integrações premium',
+    ],
   },
   {
     name: 'Enterprise',
-    price: 'Fale com vendas',
+    price: 'Sob consulta',
     highlight: false,
-    features: ['Segurança avançada', 'SLA dedicado', 'Onboarding assistido'],
+    subtitle: 'Para operações complexas e demandas específicas.',
+    features: [
+      'Segurança avançada',
+      'SLA dedicado',
+      'Onboarding assistido',
+      'Suporte prioritário',
+    ],
   },
 ]
 
@@ -42,8 +62,8 @@ export function Pricing() {
             Estrutura de preços focada em escala
           </h2>
           <p className="text-sm md:text-base text-brand.muted max-w-2xl mx-auto">
-            Tabela fictícia apenas para demonstrar composição de seções de pricing em
-            uma landing page SaaS.
+            Uma estrutura de planos pensada para acompanhar desde as primeiras equipes
+            até operações complexas, sem perder controle nem previsibilidade.
           </p>
         </motion.div>
 
@@ -66,7 +86,12 @@ export function Pricing() {
                   <p className="text-lg font-semibold text-brand.light">
                     {plan.price}
                   </p>
-                  <ul className="space-y-1 text-xs text-brand.muted">
+                  {plan.subtitle ? (
+                    <p className="text-xs md:text-sm text-brand.muted">
+                      {plan.subtitle}
+                    </p>
+                  ) : null}
+                  <ul className="space-y-1 text-sm text-brand.muted">
                     {plan.features.map((feature) => (
                       <li key={feature}>• {feature}</li>
                     ))}
