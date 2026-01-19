@@ -10,6 +10,7 @@
     "type-check": "tsc --noEmit",
     "db:migrate": "dotenv-cli -e .env.local -- prisma migrate dev",
     "db:migrate:deploy": "dotenv-cli -e .env.local -- prisma migrate deploy",
+    "db:migrate:deploy:ci": "prisma migrate deploy",
     "db:migrate:reset": "dotenv-cli -e .env.local -- prisma migrate reset",
     "db:push": "dotenv-cli -e .env.local -- prisma db push",
     "db:seed": "dotenv-cli -e .env.local -- tsx prisma/seed.ts",

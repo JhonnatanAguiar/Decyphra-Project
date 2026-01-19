@@ -49,6 +49,10 @@ jobs:
         id: check_db
         run: echo "has_db=$([ -n \"$DATABASE_URL\" ] && echo 'true' || echo 'false')" >> $GITHUB_OUTPUT
 
+      - name: Database migrate deploy
+        if: steps.check_db.outputs.has_db == 'true'
+        run: pnpm --filter site db:migrate:deploy:ci
+
       - name: Run tests
         if: steps.check_db.outputs.has_db == 'true'
         run: pnpm run test
