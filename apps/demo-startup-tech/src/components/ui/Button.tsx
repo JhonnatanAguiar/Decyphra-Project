@@ -1,6 +1,7 @@
 'use client'
 
 import type { ButtonHTMLAttributes } from 'react'
+import { cn } from '@/lib/utils'
 
 type ButtonVariant = 'primary' | 'secondary' | 'ghost'
 type ButtonSize = 'sm' | 'md' | 'lg'
@@ -8,10 +9,6 @@ type ButtonSize = 'sm' | 'md' | 'lg'
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant
   size?: ButtonSize
-}
-
-function cn(...classes: Array<string | false | null | undefined>) {
-  return classes.filter(Boolean).join(' ')
 }
 
 export function Button({
@@ -26,7 +23,7 @@ export function Button({
 
   const variants: Record<ButtonVariant, string> = {
     primary:
-      'bg-[radial-gradient(circle_at_top,_rgba(148,163,184,0.6)_0,_rgba(15,23,42,0.95)_45%,_rgba(15,23,42,1)_100%)] text-white hover:border-white/30 hover:-translate-y-0.5',
+      'relative bg-[radial-gradient(circle_at_top,_rgba(51,65,85,0.25)_0,_rgba(15,23,42,0.96)_45%,_rgba(15,23,42,1)_100%)] text-white hover:border-white/30 hover:-translate-y-0.5 before:content-[""] before:absolute before:inset-0 before:rounded-full before:pointer-events-none before:-z-10 before:bg-[radial-gradient(circle_at_top,_rgba(148,163,184,0.5)_0,_transparent_55%)] before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-200',
     secondary:
       'border border-white/15 bg-white/5 text-brand.light hover:bg-white/10 hover:-translate-y-0.5',
     ghost:

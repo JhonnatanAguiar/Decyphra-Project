@@ -43,7 +43,7 @@ export function HowItWorks() {
 
         <div className="grid gap-4 md:grid-cols-4">
           {STEPS.map((step, index) => (
-            <Card key={step.title} className="p-5 text-left">
+            <Card key={step.title} articleClassName="p-5 text-left">
               <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.24em] text-brand-muted">
                 Etapa {index + 1}
               </p>

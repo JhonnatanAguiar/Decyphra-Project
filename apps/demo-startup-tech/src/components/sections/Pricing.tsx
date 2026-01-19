@@ -77,7 +77,7 @@ export function Pricing() {
               transition={{ duration: 0.55, ease: 'easeOut', delay: 0.08 * index }}
             >
               <Card
-                className={plan.highlight ? 'border-brand.primary/70' : ''}
+                articleClassName={plan.highlight ? 'border-brand.primary/70' : undefined}
               >
                 <div className="space-y-4 text-left">
                   <h3 className="text-sm font-semibold text-brand.light">

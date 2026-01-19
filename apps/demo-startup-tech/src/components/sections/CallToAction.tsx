@@ -15,7 +15,7 @@ export function CallToAction() {
           viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 0.65, ease: 'easeOut' }}
         >
-          <Card className="flex flex-col items-center gap-6 text-center">
+          <Card articleClassName="flex flex-col items-center gap-6 text-center">
             <div className="space-y-3">
               <span className="ds-pill">Próximo passo</span>
               <h2 className="ds-heading-display text-2xl md:text-3xl text-brand.light">

@@ -44,7 +44,9 @@ export function Hero() {
             >
               <h1 className="ds-heading-display text-4xl md:text-5xl lg:text-6xl font-semibold text-brand.light">
                 Centralize sua operação{' '}
-                <span className="bg-gradient-to-r from-brand.primary via-brand.primarySoft to-brand.accent bg-clip-text text-transparent drop-shadow-[0_0_18px_rgba(15,23,42,0.75)]">
+                <span
+                  className="bg-gradient-to-r from-[rgba(203,213,225,0.95)] via-[rgba(148,163,184,0.9)] to-[rgba(100,116,139,0.95)] bg-clip-text text-transparent [text-shadow:0_0_1px_rgba(255,255,255,0.15)]"
+                >
                   em uma única plataforma.
                 </span>
               </h1>

@@ -170,5 +170,6 @@ apps/demo-startup-tech/
 
 - **Projeto:** Demo Startup Tech (SaaS)
 - **Fase:** 4 - Animações e Interatividade (**Concluída**)
+- **Refinamentos pós-Fase 4:** brilho no hover do botão primary; feixe animado nos cards; limpeza de componentes/deps não usados (FluidGlass, GlassSurface, three, etc.); `cn` centralizado em `@/lib/utils`. Revisão completa em `REVISOES.md`.
 - **Próximo passo:** Fase 5 – Funcionalidades Mínimas
 

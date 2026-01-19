@@ -18,7 +18,7 @@ export function Security() {
           </p>
         </div>
 
-        <Card className="grid gap-4 text-left md:grid-cols-2">
+        <Card articleClassName="grid gap-4 text-left md:grid-cols-2">
           <ul className="space-y-2 text-sm text-brand.muted">
             <li>• Criptografia de dados em trânsito e em repouso</li>
             <li>• Infraestrutura escalável em nuvem</li>

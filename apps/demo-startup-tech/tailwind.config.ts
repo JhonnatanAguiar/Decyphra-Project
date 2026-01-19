@@ -14,6 +14,7 @@ const config: Config = {
   				primary: '#4F46E5',
   				primarySoft: '#6366F1',
   				secondary: '#06B6D4',
+  				secondaryDark: '#0e7490',
   				accent: '#F97316',
   				dark: '#020617',
   				surface: '#020617',

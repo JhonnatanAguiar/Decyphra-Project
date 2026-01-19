@@ -143,5 +143,30 @@
 
 - ✔ Build (`pnpm --filter demo-startup-tech build`) executando sem erros.
 - ✔ ESLint e TypeScript sem apontar problemas nos arquivos alterados.
-- ✔ Animações suaves, sem “travadas” perceptíveis e mantendo boa legibilidade.
+- ✔ Animações suaves, sem "travadas" perceptíveis e mantendo boa legibilidade.
 
+---
+
+## 🔍 Revisão Completa - Refinamentos UI e Limpeza de Código
+
+**Data:** 20/01/2026  
+**Status:** ✅ Concluído
+
+### Problemas Encontrados e Corrigidos
+
+1. **Brilho do botão primary sempre visível**  
+   - Ajuste: brilho central (gradiente radial) exibido apenas no hover, via pseudo-elemento `::before` com `opacity-0` → `hover:opacity-100` e transição de 200ms; estado normal com gradiente mais neutro.
+
+2. **Componentes e dependências não utilizados**  
+   - Removidos: `FluidGlass.tsx`, `FluidGlassBackground.tsx`, `GlassSurface.tsx` (abandonados em iterações anteriores).  
+   - Removidas deps: `@react-three/drei`, `@react-three/fiber`, `maath`, `three`, `@types/three`, `class-variance-authority`.
+
+3. **Duplicação da função `cn`**  
+   - `Button` e `Card` definiam `cn` local; passaram a importar `cn` de `@/lib/utils`, eliminando duplicata e aproveitando `twMerge`+`clsx`.
+
+### Verificações Realizadas
+
+- ✔ Build (`pnpm --filter demo-startup-tech build`) concluído com sucesso.
+- ✔ TypeScript e validação de tipos OK no build.
+- ✔ Nenhum `console.log` em `src/`.
+- ✔ Documentações (`LINHA-DO-TEMPO.md`, `PLANEJAMENTO-COMPLETO.md`, `REVISOES.md`) atualizadas.

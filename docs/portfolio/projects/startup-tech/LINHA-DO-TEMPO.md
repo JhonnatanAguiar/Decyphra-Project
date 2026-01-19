@@ -105,3 +105,37 @@ Landing page com movimento agradável, seções que entram de forma suave ao rol
 
 **Status:** ✅ Resolvido
 
+---
+
+#### 20/01/2026 - Refinamentos de UI: brilho no hover do botão e limpeza de código
+
+**Contexto:**  
+Após a Fase 4, aprimorar microinterações (brilho central do botão primary apenas no hover) e eliminar código e dependências não utilizados.
+
+**Mudança:**  
+- **Button (primary):** brilho central (gradiente radial no topo) exibido somente no hover, via `::before` com `opacity-0` → `hover:opacity-100` e transição de 200ms; estado normal com gradiente mais neutro.
+- **Limpeza:** removidos componentes não utilizados: `FluidGlass.tsx`, `FluidGlassBackground.tsx`, `GlassSurface.tsx`.
+- **Dependências removidas:** `@react-three/drei`, `@react-three/fiber`, `maath`, `three`, `@types/three`, `class-variance-authority`.
+- **Duplicatas:** `Button` e `Card` passaram a usar `cn` de `@/lib/utils` em vez de funções locais.
+
+**Resultado:**  
+Botão com feedback visual mais refinado no hover; projeto mais enxuto, sem código morto ou deps 3D desnecessárias; `cn` centralizado.
+
+**Status:** ✅ Resolvido
+
+---
+
+#### 20/01/2026 - Revisão completa do projeto
+
+**Contexto:**  
+Revisão geral em busca de erros, bugs, duplicatas e código não usado antes do commit de todas as alterações.
+
+**Mudança:**  
+- Revisão documentada em `REVISOES.md` (Revisão Completa - Refinamentos UI e Limpeza).
+- Verificações: build (`pnpm --filter demo-startup-tech build`) e type-check no build OK; sem `console.log` em `src`; documentações atualizadas.
+
+**Resultado:**  
+Projeto revisado, documentado e pronto para commit.
+
+**Status:** ✅ Resolvido
+

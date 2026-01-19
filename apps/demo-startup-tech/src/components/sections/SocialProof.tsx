@@ -36,7 +36,7 @@ export function SocialProof() {
           viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 0.6, ease: 'easeOut', delay: 0.1 }}
         >
-          <Card className="bg-white/[0.03]">
+          <Card articleClassName="bg-white/[0.03]">
             <p className="text-sm md:text-base text-brand-muted text-center">
               Confiada por equipes em empresas como{' '}
               <span className="font-semibold text-brand-light">

@@ -59,7 +59,7 @@ export function Features() {
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.5, ease: 'easeOut', delay: 0.1 * index }}
             >
-              <Card className="p-6 text-left">
+              <Card articleClassName="p-6 text-left">
                 <h3 className="mb-2 text-sm font-semibold text-brand.light">
                   {item.title}
                 </h3>

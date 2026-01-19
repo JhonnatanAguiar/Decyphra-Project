@@ -31,6 +31,12 @@ body {
   @apply inline-flex items-center gap-2 rounded-full border border-brand-border/60 bg-white/5 px-4 py-1 text-xs font-medium uppercase tracking-[0.25em] text-brand-muted;
 }
 
+@keyframes card-beam {
+  to {
+    stroke-dashoffset: -1000;
+  }
+}
+
 
 
 @layer base {
