@@ -139,3 +139,22 @@ Projeto revisado, documentado e pronto para commit.
 
 **Status:** ✅ Resolvido
 
+---
+
+#### 20/01/2026 - Conclusão da Fase 5 (Funcionalidades Mínimas)
+
+**Contexto:**  
+Implementar formulário "Request access" / "Solicitar acesso" com validação e backend mínimo, conforme roadmap do projeto.
+
+**Mudança:**  
+- **API:** `POST /api/request-access` em `app/api/request-access/route.ts`; validação com Zod (`requestAccessSchema`: nome 2–120 chars, e-mail); resposta 200 { ok } ou 400 { error }; em dev, log no servidor (mock, sem CRM).
+- **Schema compartilhado:** `src/lib/request-access-schema.ts` com `requestAccessSchema` e tipo `RequestAccessInput`.
+- **RequestAccessForm:** componente em `src/components/ui/RequestAccessForm.tsx`; campos nome e e-mail; validação no cliente com Zod; estados idle/loading/success/error; feedback de sucesso (mensagem + "Enviar outra") e de erro; layout responsivo (empilhado no mobile, inline no desktop).
+- **CallToAction:** copy alterada para "Solicite acesso à plataforma" e "Acesso antecipado"; botões substituídos pelo `RequestAccessForm`.
+- **Dependência:** `zod` adicionada ao `demo-startup-tech`.
+
+**Resultado:**  
+Fase 5 concluída: formulário funcional na CTA, validação cliente e servidor, feedback visual. Backend pronto para futura integração (Resend, webhook, CRM).
+
+**Status:** ✅ Resolvido
+

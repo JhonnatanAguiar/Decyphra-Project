@@ -170,3 +170,24 @@
 - ✔ TypeScript e validação de tipos OK no build.
 - ✔ Nenhum `console.log` em `src/`.
 - ✔ Documentações (`LINHA-DO-TEMPO.md`, `PLANEJAMENTO-COMPLETO.md`, `REVISOES.md`) atualizadas.
+
+---
+
+## 🔍 Revisão Fase 5 - Funcionalidades Mínimas
+
+**Data:** 20/01/2026  
+**Status:** ✅ Concluído
+
+### Ações Realizadas
+
+- **API:** `POST /api/request-access` com validação Zod (nome, e-mail); respostas 200/400/500; mock (log em dev).
+- **Schema:** `src/lib/request-access-schema.ts` compartilhado entre API e cliente.
+- **RequestAccessForm:** nome, e-mail, validação no cliente, estados idle/loading/success/error, feedback de sucesso e erro, layout responsivo.
+- **CallToAction:** copy "Solicite acesso à plataforma"; formulário integrado.
+- **Dep:** `zod` adicionada.
+
+### Verificações Realizadas
+
+- ✔ Build (`pnpm --filter demo-startup-tech build`) concluído com sucesso.
+- ✔ Formulário funcional; API e validação testados.
+- ✔ Documentações atualizadas (PLANEJAMENTO, LINHA-DO-TEMPO).

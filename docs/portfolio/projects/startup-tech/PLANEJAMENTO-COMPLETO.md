@@ -137,12 +137,12 @@ apps/demo-startup-tech/
 - [x] Background animado ou interativo na hero
 - [x] Scroll suave / pequenas transições entre seções
 
-### ⏳ Fase 5: Funcionalidades Mínimas
+### ✅ Fase 5: Funcionalidades Mínimas
 
-- [ ] Formulário de “Request access” ou “Join waitlist”
-  - [ ] Validação básica (nome, email)
-  - [ ] Feedback visual (sucesso/erro)
-  - [ ] Backend simples: mock, log ou integrações mínimas (sem CRM)
+- [x] Formulário de “Request access” ou “Join waitlist”
+  - [x] Validação básica (nome, email) — Zod no cliente e na API
+  - [x] Feedback visual (sucesso/erro) — RequestAccessForm com estados e mensagens
+  - [x] Backend simples: mock, log ou integrações mínimas (sem CRM) — POST /api/request-access
 
 ### ⏳ Fase 6: Performance, SEO e Acessibilidade
 
@@ -169,7 +169,7 @@ apps/demo-startup-tech/
 ## 📌 Status Atual
 
 - **Projeto:** Demo Startup Tech (SaaS)
-- **Fase:** 4 - Animações e Interatividade (**Concluída**)
-- **Refinamentos pós-Fase 4:** brilho no hover do botão primary; feixe animado nos cards; limpeza de componentes/deps não usados (FluidGlass, GlassSurface, three, etc.); `cn` centralizado em `@/lib/utils`. Revisão completa em `REVISOES.md`.
-- **Próximo passo:** Fase 5 – Funcionalidades Mínimas
+- **Fase:** 5 - Funcionalidades Mínimas (**Concluída**)
+- **Entregas Fase 5:** formulário "Solicitar acesso" na CallToAction; POST /api/request-access com Zod; RequestAccessForm com validação e feedback (sucesso/erro/loading).
+- **Próximo passo:** Fase 6 – Performance, SEO e Acessibilidade
 

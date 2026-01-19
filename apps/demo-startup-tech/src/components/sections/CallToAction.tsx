@@ -2,8 +2,8 @@
 
 import { motion } from 'framer-motion'
 
-import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
+import { RequestAccessForm } from '@/components/ui/RequestAccessForm'
 
 export function CallToAction() {
   return (
@@ -17,25 +17,17 @@ export function CallToAction() {
         >
           <Card articleClassName="flex flex-col items-center gap-6 text-center">
             <div className="space-y-3">
-              <span className="ds-pill">Próximo passo</span>
+              <span className="ds-pill">Acesso antecipado</span>
               <h2 className="ds-heading-display text-2xl md:text-3xl text-brand.light">
-                Pronto para imaginar seu próximo produto SaaS?
+                Solicite acesso à plataforma
               </h2>
               <p className="text-base md:text-lg text-brand.muted max-w-2xl mx-auto">
-                A Startup Tech foi projetada para ser o centro da sua operação SaaS
-                B2B, integrando formulários, fluxos personalizados, sistemas internos
-                e ferramentas externas em uma única experiência.
+                Deixe seu nome e e-mail. Nossa equipe entra em contato em breve
+                para apresentar a solução e abrir seu acesso.
               </p>
             </div>
 
-            <div className="flex flex-wrap items-center justify-center gap-4">
-              <Button size="md" variant="primary">
-                Falar com o time comercial
-              </Button>
-              <Button size="md" variant="ghost">
-                Ver outras soluções
-              </Button>
-            </div>
+            <RequestAccessForm />
           </Card>
         </motion.div>
       </div>
