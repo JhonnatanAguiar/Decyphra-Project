@@ -45,7 +45,7 @@ describe('GET /api/v1/testimonials', () => {
       const testimonial = body.testimonials[0]
       expect(testimonial).toHaveProperty('id')
       expect(testimonial).toHaveProperty('name')
-      expect(testimonial).toHaveProperty('message')
+      expect(testimonial).toHaveProperty('content')
     }
   })
 
