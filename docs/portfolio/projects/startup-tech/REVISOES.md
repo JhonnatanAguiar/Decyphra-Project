@@ -191,3 +191,21 @@
 - ✔ Build (`pnpm --filter demo-startup-tech build`) concluído com sucesso.
 - ✔ Formulário funcional; API e validação testados.
 - ✔ Documentações atualizadas (PLANEJAMENTO, LINHA-DO-TEMPO).
+
+---
+
+## 🔍 Revisão Fase 6 - Performance, SEO e Acessibilidade
+
+**Data:** 20/01/2026  
+**Status:** ✅ Concluído
+
+### Ações Realizadas
+
+- **SEO:** metadata (title, description, keywords, openGraph, twitter, robots, metadataBase); viewport (themeColor, width, initialScale).
+- **Acessibilidade:** skip link "Ir ao conteúdo"; main#main; focus-visible em Header e BackToTop; BackToTop por scroll (teclado); labels sr-only no formulário; nav com aria-label.
+- **Performance:** viewport, themeColor; font display: swap.
+
+### Verificações Realizadas
+
+- ✔ Build OK.
+- ✔ Recomenda-se: `npx lighthouse http://localhost:3001 --view` (ou URL de produção) para checagem Lighthouse.

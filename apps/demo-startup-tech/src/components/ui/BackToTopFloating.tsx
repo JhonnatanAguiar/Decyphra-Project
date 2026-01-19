@@ -2,39 +2,31 @@
 
 import { useEffect, useState } from 'react'
 
+const SCROLL_THRESHOLD = 400
+
 export function BackToTopFloating() {
-  const [isNear, setIsNear] = useState(false)
+  const [visible, setVisible] = useState(false)
 
   useEffect(() => {
-    const handleMouseMove = (event: MouseEvent) => {
-      const { innerHeight, innerWidth } = window
-      const distanceY = Math.abs(innerHeight - event.clientY)
-      const distanceX = Math.abs(innerWidth / 2 - event.clientX)
-
-      const nearBottom = distanceY < 160
-      const nearCenter = distanceX < 220
-
-      setIsNear(nearBottom && nearCenter)
-    }
-
-    window.addEventListener('mousemove', handleMouseMove)
-    return () => window.removeEventListener('mousemove', handleMouseMove)
+    const check = () => setVisible(window.scrollY > SCROLL_THRESHOLD)
+    check()
+    window.addEventListener('scroll', check, { passive: true })
+    return () => window.removeEventListener('scroll', check)
   }, [])
 
-  const handleClick = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-  }
+  const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
 
   return (
     <button
       type="button"
       aria-label="Voltar ao topo"
-      onClick={handleClick}
-      className={`fixed bottom-8 left-1/2 -translate-x-1/2 rounded-full border border-white/25 bg-white/10 shadow-[0_18px_45px_rgba(15,23,42,0.85)] backdrop-blur-xl transition-all duration-300 hover:bg-white/20 hover:border-white/40 flex h-12 w-12 items-center justify-center ${
-        isNear ? 'opacity-100 pointer-events-auto scale-100' : 'opacity-0 pointer-events-none scale-90'
+      onClick={scrollToTop}
+      tabIndex={visible ? 0 : -1}
+      className={`fixed bottom-8 left-1/2 z-40 flex h-12 w-12 -translate-x-1/2 items-center justify-center rounded-full border border-white/25 bg-white/10 shadow-[0_18px_45px_rgba(15,23,42,0.85)] backdrop-blur-xl transition-all duration-300 hover:border-white/40 hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand.secondary/80 focus-visible:ring-offset-2 focus-visible:ring-offset-brand.dark ${
+        visible ? 'pointer-events-auto scale-100 opacity-100' : 'pointer-events-none scale-90 opacity-0'
       }`}
     >
-      <span className="mt-[1px] text-lg text-white">↑</span>
+      <span className="mt-px text-lg text-white" aria-hidden>↑</span>
     </button>
   )
 }

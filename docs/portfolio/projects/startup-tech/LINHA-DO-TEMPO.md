@@ -158,3 +158,20 @@ Fase 5 concluída: formulário funcional na CTA, validação cliente e servidor,
 
 **Status:** ✅ Resolvido
 
+---
+
+#### 20/01/2026 - Conclusão da Fase 6 (Performance, SEO e Acessibilidade)
+
+**Contexto:**  
+Implementar itens da Fase 6 do roadmap: performance, SEO e acessibilidade.
+
+**Mudança:**  
+- **SEO:** metadata expandida (title template, description, keywords, authors, creator, openGraph, twitter, robots, metadataBase); viewport (width, initialScale, themeColor #020617).  
+- **Acessibilidade:** link "Ir ao conteúdo" (skip link) fixo no topo, visível ao focar; `main#main`; `aria-label="Navegação principal"` no nav; `focus-visible:ring` em links do Header e no CTA; BackToTopFloating alterado de "mouse near" para exibição por scroll (>400px), com `tabIndex` e `focus-visible`, acessível por teclado; labels `sr-only` no RequestAccessForm; Header CTA ajustado para "Solicitar acesso".  
+- **Performance:** viewport e themeColor; fontes já com `display: 'swap'`.
+
+**Resultado:**  
+Fase 6 concluída. Recomenda-se rodar Lighthouse em produção para checagem adicional.
+
+**Status:** ✅ Resolvido
+

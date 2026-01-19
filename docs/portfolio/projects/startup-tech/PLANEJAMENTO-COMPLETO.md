@@ -144,11 +144,11 @@ apps/demo-startup-tech/
   - [x] Feedback visual (sucesso/erro) — RequestAccessForm com estados e mensagens
   - [x] Backend simples: mock, log ou integrações mínimas (sem CRM) — POST /api/request-access
 
-### ⏳ Fase 6: Performance, SEO e Acessibilidade
+### ✅ Fase 6: Performance, SEO e Acessibilidade
 
-- [ ] Ajustar performance (Lighthouse)
-- [ ] SEO básico (metadata, Open Graph, etc.)
-- [ ] Verificar contrastes, foco, navegação por teclado
+- [x] Ajustar performance (Lighthouse) — viewport, themeColor, font display: swap; recomenda-se rodar Lighthouse em produção
+- [x] SEO básico (metadata, Open Graph, etc.) — title, description, keywords, openGraph, twitter, robots, metadataBase
+- [x] Verificar contrastes, foco, navegação por teclado — skip link "Ir ao conteúdo", focus-visible em links e botões, main#main, BackToTop por scroll (acessível por teclado), labels no formulário
 
 ### ⏳ Fase 7: Deploy e Integração com o Site da Decyphra
 
@@ -169,7 +169,7 @@ apps/demo-startup-tech/
 ## 📌 Status Atual
 
 - **Projeto:** Demo Startup Tech (SaaS)
-- **Fase:** 5 - Funcionalidades Mínimas (**Concluída**)
-- **Entregas Fase 5:** formulário "Solicitar acesso" na CallToAction; POST /api/request-access com Zod; RequestAccessForm com validação e feedback (sucesso/erro/loading).
-- **Próximo passo:** Fase 6 – Performance, SEO e Acessibilidade
+- **Fase:** 6 - Performance, SEO e Acessibilidade (**Concluída**)
+- **Entregas Fase 6:** metadata (Open Graph, Twitter, keywords, robots); viewport e themeColor; skip link; focus-visible em Header e BackToTop; BackToTop por scroll (teclado); labels no RequestAccessForm; main#main.
+- **Próximo passo:** Fase 7 – Deploy e Integração com o Site da Decyphra
 

@@ -13,23 +13,23 @@ export function Header() {
           </span>
         </div>
 
-        <nav className="hidden gap-6 text-xs font-medium text-brand.muted md:flex">
-          <Link href="#features" className="hover:text-brand.light">
+        <nav className="hidden gap-6 text-xs font-medium text-brand.muted md:flex" aria-label="Navegação principal">
+          <Link href="#features" className="hover:text-brand.light focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand.secondary/80 focus-visible:ring-offset-2 focus-visible:ring-offset-brand.dark rounded">
             Produto
           </Link>
-          <Link href="#social-proof" className="hover:text-brand.light">
+          <Link href="#social-proof" className="hover:text-brand.light focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand.secondary/80 focus-visible:ring-offset-2 focus-visible:ring-offset-brand.dark rounded">
             Prova social
           </Link>
-          <Link href="#pricing" className="hover:text-brand.light">
+          <Link href="#pricing" className="hover:text-brand.light focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand.secondary/80 focus-visible:ring-offset-2 focus-visible:ring-offset-brand.dark rounded">
             Planos
           </Link>
         </nav>
 
         <Link
           href="#cta"
-          className="hidden rounded-full border border-white/20 bg-[radial-gradient(circle_at_top,_rgba(148,163,184,0.4)_0,_rgba(15,23,42,0.9)_45%,_rgba(15,23,42,1)_100%)] px-5 py-2 text-xs font-semibold text-white shadow-brand-soft backdrop-blur-xl transition-all duration-200 hover:-translate-y-0.5 hover:border-white/30 md:inline-flex"
+          className="hidden rounded-full border border-white/20 bg-[radial-gradient(circle_at_top,_rgba(148,163,184,0.4)_0,_rgba(15,23,42,0.9)_45%,_rgba(15,23,42,1)_100%)] px-5 py-2 text-xs font-semibold text-white shadow-brand-soft backdrop-blur-xl transition-all duration-200 hover:-translate-y-0.5 hover:border-white/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand.secondary/80 focus-visible:ring-offset-2 focus-visible:ring-offset-brand.dark md:inline-flex"
         >
-          Falar com o time comercial
+          Solicitar acesso
         </Link>
       </div>
     </header>

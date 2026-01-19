@@ -16,7 +16,7 @@ export default function HomePage() {
   return (
     <>
       <Header />
-      <main className="relative bg-[radial-gradient(circle_at_top,_#1e293b_0,_#020617_55%,_#000_100%)]">
+      <main id="main" className="relative bg-[radial-gradient(circle_at_top,_#1e293b_0,_#020617_55%,_#000_100%)]">
         <Hero />
         <ValueProp />
         <Features />

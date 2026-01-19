@@ -74,7 +74,11 @@ export function RequestAccessForm() {
   return (
     <form onSubmit={handleSubmit} className="flex flex-wrap flex-col sm:flex-row gap-3 w-full max-w-lg mx-auto">
       <div className="flex flex-col sm:flex-row gap-3 flex-1">
+        <label htmlFor="request-name" className="sr-only">
+          Nome
+        </label>
         <input
+          id="request-name"
           type="text"
           name="name"
           value={name}
@@ -83,9 +87,12 @@ export function RequestAccessForm() {
           className={inputBase}
           disabled={status === 'loading'}
           autoComplete="name"
-          aria-label="Nome"
         />
+        <label htmlFor="request-email" className="sr-only">
+          E-mail
+        </label>
         <input
+          id="request-email"
           type="email"
           name="email"
           value={email}
@@ -94,7 +101,6 @@ export function RequestAccessForm() {
           className={inputBase}
           disabled={status === 'loading'}
           autoComplete="email"
-          aria-label="E-mail"
         />
       </div>
       <Button
