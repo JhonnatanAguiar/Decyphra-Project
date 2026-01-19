@@ -1,3 +1,8 @@
+# CI para o monorepo Decyphra
+# - type-check e build do site (e demo-startup-tech) rodam sempre
+# - testes de integração só rodam se DATABASE_URL estiver em GitHub Secrets (Settings > Secrets and variables > Actions)
+# - Se "Install dependencies" falhar com erro de lockfile: rode `pnpm install` local e faça commit do pnpm-lock.yaml
+
 name: CI
 
 on:
@@ -18,25 +23,38 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: '22'
           cache: 'pnpm'
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 10
-
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Type check
+      - name: Type check (site)
         run: pnpm run type-check
 
-      - name: Build
+      - name: Build (site)
         run: pnpm run build
 
+      - name: Build (demo-startup-tech)
+        run: pnpm run build:demo-startup-tech
+
+      - name: Check DATABASE_URL for tests
+        id: check_db
+        run: echo "has_db=$([ -n \"$DATABASE_URL\" ] && echo 'true' || echo 'false')" >> $GITHUB_OUTPUT
+
       - name: Run tests
+        if: steps.check_db.outputs.has_db == 'true'
         run: pnpm run test
+
+      - name: Integration tests skipped
+        if: steps.check_db.outputs.has_db != 'true'
+        run: |
+          echo "::notice::Testes de integração exigem DATABASE_URL em GitHub Secrets (Actions). Adicione em Settings > Secrets and variables > Actions para executá-los no CI."
