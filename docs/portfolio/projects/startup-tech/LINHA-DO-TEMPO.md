@@ -175,3 +175,19 @@ Fase 6 concluída. Recomenda-se rodar Lighthouse em produção para checagem adi
 
 **Status:** ✅ Resolvido
 
+---
+
+#### 20/01/2026 - Conclusão da Fase 7 (Deploy e Integração com o Site da Decyphra)
+
+**Contexto:**  
+Implementar itens da Fase 7: preparar deploy na Vercel, documentar subdomínio e criar estudo de caso no site principal.
+
+**Mudança:**  
+- **Vercel:** `apps/demo-startup-tech/vercel.json` com `buildCommand` e `installCommand`; `docs/portfolio/projects/startup-tech/DEPLOY.md` com passos (Root Directory, env, Domains, CNAME).  
+- **Estudo de caso:** em `apps/site`: rota dinâmica `app/(routes)/portfolio/[slug]/page.tsx` (suporte a `startup-tecnologica` estático e a projetos do DB via `getProjectBySlug`); `CaseStudyClient.tsx` com hero, featured image, desafio, solução, galeria, resultados e CTA; conteúdo estático para `startup-tecnologica` (Desafio, Solução, Resultados, demoUrl via `NEXT_PUBLIC_DEMO_STARTUP_TECH_URL` ou fallback); `generateMetadata`; card "Startup Tech" no `PortfolioPageClient` e entrada no `sitemap.xml`.
+
+**Resultado:**  
+Fase 7 concluída. Deploy e DNS ficam a cargo do usuário conforme `DEPLOY.md`.
+
+**Status:** ✅ Resolvido
+

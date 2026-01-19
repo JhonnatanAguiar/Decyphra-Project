@@ -1,0 +1,4 @@
+{
+  "buildCommand": "pnpm --filter demo-startup-tech build",
+  "installCommand": "pnpm install"
+}

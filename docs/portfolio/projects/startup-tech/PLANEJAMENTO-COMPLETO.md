@@ -150,11 +150,11 @@ apps/demo-startup-tech/
 - [x] SEO básico (metadata, Open Graph, etc.) — title, description, keywords, openGraph, twitter, robots, metadataBase
 - [x] Verificar contrastes, foco, navegação por teclado — skip link "Ir ao conteúdo", focus-visible em links e botões, main#main, BackToTop por scroll (acessível por teclado), labels no formulário
 
-### ⏳ Fase 7: Deploy e Integração com o Site da Decyphra
+### ✅ Fase 7: Deploy e Integração com o Site da Decyphra
 
-- [ ] Configurar projeto na Vercel (rootDirectory `apps/demo-startup-tech`)
-- [ ] Configurar subdomínio (`startup-tech.decyphra.com.br`)
-- [ ] Criar estudo de caso no site principal (`/portfolio/...`)
+- [x] Configurar projeto na Vercel (rootDirectory `apps/demo-startup-tech`) — `vercel.json` no app; guia em `docs/portfolio/projects/startup-tech/DEPLOY.md`
+- [x] Configurar subdomínio (`startup-tech.decyphra.com.br`) — passos documentados em `DEPLOY.md` (CNAME, Domains na Vercel)
+- [x] Criar estudo de caso no site principal (`/portfolio/...`) — `apps/site`: rota `/portfolio/[slug]`, `CaseStudyClient`, conteúdo estático para `startup-tecnologica`; card no Portfolio atualizado; sitemap; `NEXT_PUBLIC_DEMO_STARTUP_TECH_URL`
 
 ---
 
@@ -169,7 +169,7 @@ apps/demo-startup-tech/
 ## 📌 Status Atual
 
 - **Projeto:** Demo Startup Tech (SaaS)
-- **Fase:** 6 - Performance, SEO e Acessibilidade (**Concluída**)
-- **Entregas Fase 6:** metadata (Open Graph, Twitter, keywords, robots); viewport e themeColor; skip link; focus-visible em Header e BackToTop; BackToTop por scroll (teclado); labels no RequestAccessForm; main#main.
-- **Próximo passo:** Fase 7 – Deploy e Integração com o Site da Decyphra
+- **Fase:** 7 - Deploy e Integração com o Site da Decyphra (**Concluída**)
+- **Entregas Fase 7:** `vercel.json` e `DEPLOY.md` para Vercel e subdomínio; estudo de caso em `/portfolio/startup-tecnologica` (página dinâmica `[slug]`, `CaseStudyClient`, conteúdo estático); card e sitemap no site.
+- **Próximo passo:** Publicar na Vercel e configurar DNS conforme `DEPLOY.md`; opcional: cadastrar projeto no DB para outros slugs.
 

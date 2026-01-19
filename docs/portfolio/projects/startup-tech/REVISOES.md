@@ -209,3 +209,21 @@
 
 - ✔ Build OK.
 - ✔ Recomenda-se: `npx lighthouse http://localhost:3001 --view` (ou URL de produção) para checagem Lighthouse.
+
+---
+
+## 🔍 Revisão Fase 7 - Deploy e Integração com o Site da Decyphra
+
+**Data:** 20/01/2026  
+**Status:** ✅ Concluído
+
+### Ações Realizadas
+
+- **Vercel:** `vercel.json` em `apps/demo-startup-tech`; `DEPLOY.md` com passos para projeto, Root Directory, env, domínio e CNAME.
+- **Estudo de caso:** `/portfolio/[slug]` em `apps/site` com `CaseStudyClient`; conteúdo estático para `startup-tecnologica`; card e sitemap atualizados; `NEXT_PUBLIC_DEMO_STARTUP_TECH_URL`.
+
+### Verificações Realizadas
+
+- ✔ Build `pnpm --filter site build` OK.
+- ✔ Rota `/portfolio/startup-tecnologica` funcional; demais slugs consomem API/DB.
+- ✔ Documentações (PLANEJAMENTO, LINHA-DO-TEMPO) atualizadas.
