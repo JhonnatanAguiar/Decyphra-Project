@@ -1,6 +1,6 @@
 # CI para o monorepo Decyphra
 # - type-check e build do site (e demo-startup-tech) rodam sempre
-# - testes de integração só rodam se DATABASE_URL estiver em GitHub Secrets (Settings > Secrets and variables > Actions)
+# - testes de integração e migrate só rodam se DATABASE_URL em Secrets começar com postgresql:// ou postgres://
 # - Se "Install dependencies" falhar com erro de lockfile: rode `pnpm install` local e faça commit do pnpm-lock.yaml
 
 name: CI
@@ -47,7 +47,12 @@ jobs:
 
       - name: Check DATABASE_URL for tests
         id: check_db
-        run: echo "has_db=$([ -n \"$DATABASE_URL\" ] && echo 'true' || echo 'false')" >> $GITHUB_OUTPUT
+        run: |
+          if [ -n "$DATABASE_URL" ] && { [[ "$DATABASE_URL" == postgresql://* ]] || [[ "$DATABASE_URL" == postgres://* ]]; }; then
+            echo "has_db=true" >> $GITHUB_OUTPUT
+          else
+            echo "has_db=false" >> $GITHUB_OUTPUT
+          fi
 
       - name: Database migrate deploy
         if: steps.check_db.outputs.has_db == 'true'
@@ -60,4 +65,4 @@ jobs:
       - name: Integration tests skipped
         if: steps.check_db.outputs.has_db != 'true'
         run: |
-          echo "::notice::Testes de integração exigem DATABASE_URL em GitHub Secrets (Actions). Adicione em Settings > Secrets and variables > Actions para executá-los no CI."
+          echo "::notice::Testes de integração exigem DATABASE_URL em GitHub Secrets (postgresql:// ou postgres://). Configure em Settings > Secrets and variables > Actions."
